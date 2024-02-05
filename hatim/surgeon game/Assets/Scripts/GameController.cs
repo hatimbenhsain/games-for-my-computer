@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO.Compression;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -121,6 +122,10 @@ public class GameController : MonoBehaviour
             if(heldOrgan!=null){
                 heldOrgan.targetPosition=point;
             }
+        }
+
+        if(Input.GetKeyDown(KeyCode.R)){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         
     }
