@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.Compression;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -18,6 +19,9 @@ public class GameController : MonoBehaviour
     public GameObject cutPrefab;
 
     public bool skinDetached;
+
+    public AudioSource audioSource;
+    public AudioClip zipping;
     
 
     private 
@@ -27,6 +31,7 @@ public class GameController : MonoBehaviour
         heldOrgan=null;
         targetPlane=targetPlaneObject.GetComponent<MeshCollider>();
         skinDetached=false;
+        audioSource=GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -60,8 +65,16 @@ public class GameController : MonoBehaviour
         if(Input.GetMouseButton(0)){
             if (!skinDetached && Physics.Raycast(ray, out hitData, 1000) && hitData.transform.gameObject.tag=="Patient Skin"){
                 Collider skin=hitData.transform.gameObject.GetComponent<Collider>();
-                Instantiate(cutPrefab,hitData.point,cutPrefab.transform.rotation,skin.transform);
+                GameObject cut=Instantiate(cutPrefab,hitData.point,cutPrefab.transform.rotation,skin.transform);
+                cut.transform.localPosition=new Vector3(cut.transform.localPosition.x,0.05f,cut.transform.localPosition.z);
+                if(!audioSource.isPlaying){
+                    audioSource.clip=zipping;
+                    audioSource.loop=true;
+                    audioSource.Play();
+                }
             }
+        }else{
+            audioSource.Stop();
         }
 
         if(heldOrgan!=null){
