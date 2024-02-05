@@ -22,9 +22,15 @@ public class GameController : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip zipping;
-    
 
-    private 
+    public GameObject hand;
+    public GameObject tool;
+    public GameObject toolTable;
+
+    private int mood=0;
+    public AudioClip[] songs;
+    public GameObject[] lights;
+    public AudioSource musicPlayer;
     void Start()
     {
         cam=FindObjectOfType<Camera>();
@@ -32,6 +38,10 @@ public class GameController : MonoBehaviour
         targetPlane=targetPlaneObject.GetComponent<MeshCollider>();
         skinDetached=false;
         audioSource=GetComponent<AudioSource>();
+
+        Cursor.visible=true;
+
+        tool=null;
     }
 
     // Update is called once per frame
@@ -52,18 +62,39 @@ public class GameController : MonoBehaviour
         }
 
         
+        RaycastHit hit;
+        bool b;
+        
         if(Input.GetMouseButtonDown(0)){
-            if(heldOrgan==null && hoveredOrgan!=null){
-                hoveredOrgan.held=true;
-                heldOrgan=hoveredOrgan;
-            }else if(heldOrgan!=null){
-                heldOrgan.held=false;
-                //heldOrgan.transform.localPosition=heldOrgan.targetPosition;
-                heldOrgan=null;
+            if (tool==null && Physics.Raycast(ray, out hitData, 1000) && hitData.transform.gameObject.tag=="Tool"){
+                tool=hitData.transform.gameObject;
+                tool.GetComponent<Rigidbody>().isKinematic=true;
+                tool.layer=2;
+                tool.transform.rotation=Quaternion.Euler(Vector3.zero);
+                hand.SetActive(false);
+            }else if(tool==null){
+                if(heldOrgan==null && hoveredOrgan!=null){
+                    hoveredOrgan.held=true;
+                    heldOrgan=hoveredOrgan;
+                    ChangeMood(1);
+                }else if(heldOrgan!=null){
+                    heldOrgan.held=false;
+                    //heldOrgan.transform.localPosition=heldOrgan.targetPosition;
+                    heldOrgan=null;
+                    //ChangeMood(1);
+                }
+            }else{
+                b=toolTable.GetComponent<Collider>().Raycast(ray, out hit,100f);
+                if(b){
+                    tool.GetComponent<Rigidbody>().isKinematic=false;
+                    tool.layer=1;
+                    hand.SetActive(true);
+                    tool=null;
+                }
             }
         }
         if(Input.GetMouseButton(0)){
-            if (!skinDetached && Physics.Raycast(ray, out hitData, 1000) && hitData.transform.gameObject.tag=="Patient Skin"){
+            if (tool!=null && tool.name=="Scalpel" && !skinDetached && Physics.Raycast(ray, out hitData, 1000) && hitData.transform.gameObject.tag=="Patient Skin"){
                 Collider skin=hitData.transform.gameObject.GetComponent<Collider>();
                 GameObject cut=Instantiate(cutPrefab,hitData.point,cutPrefab.transform.rotation,skin.transform);
                 cut.transform.localPosition=new Vector3(cut.transform.localPosition.x,0.05f,cut.transform.localPosition.z);
@@ -77,12 +108,38 @@ public class GameController : MonoBehaviour
             audioSource.Stop();
         }
 
-        if(heldOrgan!=null){
-            RaycastHit hit;
-            if(targetPlane.Raycast(ray, out hit,100f)){
-                Vector3 point=ray.GetPoint(hit.distance);
+        
+        b=targetPlane.Raycast(ray, out hit,100f);
+
+        if(b){
+            Vector3 point=ray.GetPoint(hit.distance);
+            if(tool!=null){
+                tool.transform.localPosition=point;
+            }else{
+                hand.transform.localPosition=point;
+            }
+            if(heldOrgan!=null){
                 heldOrgan.targetPosition=point;
             }
         }
+        
+    }
+
+    void ChangeMood(int m){
+        lights[mood].SetActive(false);
+        mood=(mood+1)%songs.Length;
+        musicPlayer.Stop();
+        musicPlayer.clip=songs[mood];
+        musicPlayer.Play();
+        if(mood==3){
+            cam.GetComponent<Animator>().speed=104f*0.25f/60f;
+        }else if(mood==0){
+            cam.GetComponent<Animator>().speed=114f*0.5f/60f;
+        }else if(mood==1){
+            cam.GetComponent<Animator>().speed=170*0.5f/60f;
+        }else if(mood==2){
+            cam.GetComponent<Animator>().speed=120*0.5f/60f;
+        }
+        lights[mood].SetActive(true);
     }
 }

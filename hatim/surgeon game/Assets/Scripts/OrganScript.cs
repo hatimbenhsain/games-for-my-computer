@@ -41,12 +41,20 @@ public class OrganScript : MonoBehaviour
             audioSource.loop=false;
             audioSource.Play();
             audioSource.volume=1f;
-            animator.SetBool("held",true);
-            particleSystem.Play();
+            if(animator!=null){
+                animator.SetBool("held",true);
+            }
+            if(particleSystem!=null){
+                particleSystem.Play();
+            }
         }else if(prevHeld!=held){
             body.useGravity=true;
-            animator.SetBool("held",false);
-            particleSystem.Stop();
+            if(animator!=null){
+                animator.SetBool("held",false);
+            }
+            if(particleSystem!=null){
+                particleSystem.Stop();
+            }
         }
 
         if(held){
