@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 3.0.0 commit date:2021-12-02, commit time:18:35, hash:f1cca3055776</authoring_tool>
+    </contributor>
+    <created>2022-01-10T18:08:16</created>
+    <modified>2022-01-10T18:08:16</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="mtl0-effect">
+      <profile_COMMON>
+        <newparam sid="Maze_of_Memories_Painting_1_png-surface">
+          <surface type="2D">
+            <init_from>Maze_of_Memories_Painting_1_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="Maze_of_Memories_Painting_1_png-sampler">
+          <sampler2D>
+            <source>Maze_of_Memories_Painting_1_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="Maze_of_Memories_Painting_1_png-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="Maze_of_Memories_Painting_1_png" name="Maze_of_Memories_Painting_1_png">
+      <init_from>Maze%20of%20Memories%20Painting%201.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="mtl0-material" name="mtl0">
+      <instance_effect url="#mtl0-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="part2-mesh" name="part2">
+      <mesh>
+        <source id="part2-mesh-positions">
+          <float_array id="part2-mesh-positions-array" count="48">-3.942938 -0.1261332 4.690388 3.918459 -0.1232433 4.710957 -4.417043 -0.110494 4.937214 4.391204 -0.1072642 4.960163 -3.918459 -0.0260086 -4.705857 -3.942938 -0.1261332 4.690388 -4.391204 -0.04198771 -4.955234 -4.417043 -0.110494 4.937214 3.918459 -0.1232433 4.710957 3.943108 -0.02311873 -4.685288 4.391204 -0.1072642 4.960163 4.417212 -0.03875792 -4.932115 3.943108 -0.02311873 -4.685288 -3.918459 -0.0260086 -4.705857 4.417212 -0.03875792 -4.932115 -4.391204 -0.04198771 -4.955234</float_array>
+          <technique_common>
+            <accessor source="#part2-mesh-positions-array" count="16" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="part2-mesh-normals">
+          <float_array id="part2-mesh-normals-array" count="48">2.45656e-4 -0.9996255 0.02736765 2.43672e-4 -0.9996256 0.02736079 2.45545e-4 -0.9996255 0.02736723 2.46001e-4 -0.9996257 0.02736073 2.39044e-4 -0.9996259 0.02735316 2.39991e-4 -0.9996261 0.02734583 2.37344e-4 -0.9996259 0.02735257 2.32216e-4 -0.9996263 0.02733528 2.37152e-4 -0.9996258 0.0273562 2.30832e-4 -0.9996263 0.02733349 2.38685e-4 -0.9996258 0.02735763 2.31646e-4 -0.9996264 0.02733463 2.44866e-4 -0.9996255 0.02736771 2.43029e-4 -0.9996255 0.02736783 2.47136e-4 -0.9996256 0.02736473 2.42396e-4 -0.9996255 0.02736735</float_array>
+          <technique_common>
+            <accessor source="#part2-mesh-normals-array" count="16" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="part2-mesh-map-0">
+          <float_array id="part2-mesh-map-0-array" count="48">0.06988525 0.9609985 0.06286621 0.9609985 0.0703125 0.96875 0.06286621 0.9609985 0.0625 0.96875 0.0703125 0.96875 0.06988525 0.9609985 0.06286621 0.9609985 0.0703125 0.96875 0.06286621 0.9609985 0.0625 0.96875 0.0703125 0.96875 0.06988525 0.9609985 0.06286621 0.9609985 0.0703125 0.96875 0.06286621 0.9609985 0.0625 0.96875 0.0703125 0.96875 0.06988525 0.9609985 0.06286621 0.9609985 0.0703125 0.96875 0.06286621 0.9609985 0.0625 0.96875 0.0703125 0.96875</float_array>
+          <technique_common>
+            <accessor source="#part2-mesh-map-0-array" count="24" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="part2-mesh-vertices">
+          <input semantic="POSITION" source="#part2-mesh-positions"/>
+        </vertices>
+        <triangles material="mtl0-material" count="8">
+          <input semantic="VERTEX" source="#part2-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#part2-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#part2-mesh-map-0" offset="2" set="0"/>
+          <p>0 0 0 1 1 1 2 2 2 1 1 3 3 3 4 2 2 5 4 4 6 5 5 7 6 6 8 5 5 9 7 7 10 6 6 11 8 8 12 9 9 13 10 10 14 9 9 15 11 11 16 10 10 17 12 12 18 13 13 19 14 14 20 13 13 21 15 15 22 14 14 23</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="part1-mesh" name="part1">
+      <mesh>
+        <source id="part1-mesh-positions">
+          <float_array id="part1-mesh-positions-array" count="204">5.501924 0.9225404 -5.541192 5.502264 -0.7234811 -5.462486 -5.473536 0.9186306 -5.569921 -5.473026 -0.7275609 -5.491215 -4.391204 -0.04198771 -4.955234 -4.417043 -0.110494 4.937214 -4.391204 -0.2250679 -4.945544 -4.417043 -0.2935742 4.946904 5.473366 -0.7195713 5.565161 5.473026 0.9266202 5.486455 -5.501924 -0.7234811 5.536432 -5.502434 0.9225404 5.457726 -4.417043 -0.110494 4.937214 4.391204 -0.1072642 4.960163 -4.417043 -0.2935742 4.946904 4.391374 -0.2903444 4.970023 -4.417043 -0.2935742 4.946904 4.391374 -0.2903444 4.970023 -5.501924 -0.7234811 5.536432 5.473366 -0.7195713 5.565161 4.391374 -0.2903444 4.970023 4.417212 -0.2218381 -4.922425 5.473366 -0.7195713 5.565161 5.502264 -0.7234811 -5.462486 -4.391204 -0.2250679 -4.945544 -4.417043 -0.2935742 4.946904 -5.473026 -0.7275609 -5.491215 -5.501924 -0.7234811 5.536432 -5.473536 0.9186306 -5.569921 -5.473026 -0.7275609 -5.491215 -5.502434 0.9225404 5.457726 -5.501924 -0.7234811 5.536432 5.473026 0.9266202 5.486455 5.473366 -0.7195713 5.565161 5.501924 0.9225404 -5.541192 5.502264 -0.7234811 -5.462486 4.417212 -0.2218381 -4.922425 -4.391204 -0.2250679 -4.945544 5.502264 -0.7234811 -5.462486 -5.473026 -0.7275609 -5.491215 4.417212 -0.03875792 -4.932115 -4.391204 -0.04198771 -4.955234 4.417212 -0.2218381 -4.922425 -4.391204 -0.2250679 -4.945544 4.391204 -0.1072642 4.960163 4.417212 -0.03875792 -4.932115 4.391374 -0.2903444 4.970023 4.417212 -0.2218381 -4.922425 -3.943108 0.1565616 4.675429 3.918459 0.1594514 4.695998 -3.942938 -0.1261332 4.690388 3.918459 -0.1232433 4.710957 -3.918459 0.2566862 -4.720816 -3.943108 0.1565616 4.675429 -3.918459 -0.0260086 -4.705857 -3.942938 -0.1261332 4.690388 3.918459 0.1594514 4.695998 3.942938 0.259576 -4.700247 3.918459 -0.1232433 4.710957 3.943108 -0.02311873 -4.685288 3.942938 0.259576 -4.700247 -3.918459 0.2566862 -4.720816 3.943108 -0.02311873 -4.685288 -3.918459 -0.0260086 -4.705857 5.501924 0.9225404 -5.541192 -5.473536 0.9186306 -5.569921 5.473026 0.9266202 5.486455 -5.502434 0.9225404 5.457726</float_array>
+          <technique_common>
+            <accessor source="#part1-mesh-positions-array" count="68" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="part1-mesh-normals">
+          <float_array id="part1-mesh-normals-array" count="210">0.002367675 -0.04755342 -0.9988659 0.002367675 -0.04755342 -0.998866 0.002367734 -0.04755336 -0.9988659 0.002364456 -0.04755318 -0.9988659 0.002364456 -0.04755318 -0.9988659 0.002364456 -0.04755318 -0.9988659 0.9999973 3.15676e-4 0.002330243 0.9999973 3.15709e-4 0.002330243 0.9999973 3.15673e-4 0.002330243 0.9999966 1.43279e-4 0.002612888 -0.002364337 0.04755276 0.998866 -0.002364337 0.04755276 0.9988659 -0.002364337 0.04755276 0.998866 -0.002367854 0.04755383 0.9988659 -0.002367854 0.04755383 0.9988659 -0.002367854 0.04755383 0.9988659 0.002620995 -0.05285239 -0.9985989 0.002451062 -0.0530188 -0.9985905 0.1651315 -0.7362943 -0.656203 -0.1611275 -0.7364329 -0.6570424 0.1650765 -0.7363155 -0.656193 -0.1611397 -0.7364229 -0.6570505 0.212401 -0.9249401 -0.3152329 -0.2102175 -0.9251177 -0.3161737 -0.1611487 -0.736424 -0.6570471 -0.1696951 -0.6810475 0.7123046 -0.2102105 -0.9251197 -0.3161729 -0.2166419 -0.9038234 0.3690117 0.1662981 -0.6808518 0.7132923 0.1650788 -0.7363196 -0.6561878 0.2151397 -0.9037016 0.3701872 0.2124589 -0.9249274 -0.3152312 -0.9999974 -8.47878e-5 -0.002292513 -0.9999974 -8.47868e-5 -0.002292573 -0.9999974 -8.48087e-5 -0.002292513 -0.9999966 -4.35575e-4 -0.002620339 0.9999973 1.83674e-4 0.002319574 0.9999973 1.83673e-4 0.002319574 0.9999973 1.8367e-4 0.002319574 0.9999973 1.84023e-4 0.002318918 0.9999973 1.84006e-4 0.002318918 0.9999973 1.84022e-4 0.002318918 -0.1697151 -0.6810516 0.712296 0.1663057 -0.6808223 0.7133187 -0.2166153 -0.9038403 0.3689859 0.2151443 -0.90371 0.3701639 -0.002640306 0.05284982 0.998599 -0.002347946 0.05268543 0.9986085 -0.1697207 -0.6810469 0.7122992 0.1662528 -0.680836 0.7133179 -0.9999971 -1.37183e-4 -0.002416729 -0.9999971 -1.37181e-4 -0.002416729 -0.9999971 -1.37179e-4 -0.002416729 -0.9999966 -1.39065e-4 -0.002612829 0.002632021 -0.05283951 -0.9985997 0.0026322 -0.05284106 -0.9985995 0.9999966 1.40818e-4 0.00262469 0.999997 1.94929e-4 0.002424895 0.999997 1.94929e-4 0.002424895 0.999997 1.9494e-4 0.002424895 -0.9999973 -3.20476e-4 -0.002326905 -0.9999973 -3.20457e-4 -0.002326905 -0.9999973 -3.20502e-4 -0.002326905 -0.999997 -2.93379e-4 -0.002460658 -0.999997 -2.93381e-4 -0.002460658 -0.999997 -2.93396e-4 -0.002460658 -0.00263226 0.05284118 0.9985995 -0.002632081 0.05284273 0.9985994 -3.55263e-4 1 -3.70898e-4 -3.70786e-4 1 -3.55517e-4</float_array>
+          <technique_common>
+            <accessor source="#part1-mesh-normals-array" count="70" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="part1-mesh-map-0">
+          <float_array id="part1-mesh-map-0-array" count="204">0.1193847 0.986084 0.1227416 0.986084 0.1193847 0.9827271 0.1227416 0.986084 0.1227416 0.9827271 0.1193847 0.9827271 0.1193847 0.986084 0.1227416 0.986084 0.1193847 0.9827271 0.1227416 0.986084 0.1227416 0.9827271 0.1193847 0.9827271 0.1193847 0.986084 0.1227416 0.986084 0.1193847 0.9827271 0.1227416 0.986084 0.1227416 0.9827271 0.1193847 0.9827271 0.1193847 0.986084 0.1227416 0.986084 0.1193847 0.9827271 0.1227416 0.986084 0.1227416 0.9827271 0.1193847 0.9827271 0.07598876 1 0.1134643 1 0.07055664 0.96875 0.1134643 1 0.1168823 0.96875 0.07055664 0.96875 0.07598876 1 0.1134643 1 0.07055664 0.96875 0.1134643 1 0.1168823 0.96875 0.07055664 0.96875 0.07598876 1 0.1134643 1 0.07055664 0.96875 0.1134643 1 0.1168823 0.96875 0.07055664 0.96875 0.1193847 0.986084 0.1227416 0.986084 0.1193847 0.9827271 0.1227416 0.986084 0.1227416 0.9827271 0.1193847 0.9827271 0.1193847 0.986084 0.1227416 0.986084 0.1193847 0.9827271 0.1227416 0.986084 0.1227416 0.9827271 0.1193847 0.9827271 0.07598876 1 0.1134643 1 0.07055664 0.96875 0.1134643 1 0.1168823 0.96875 0.07055664 0.96875 0.1193847 0.986084 0.1227416 0.986084 0.1193847 0.9827271 0.1227416 0.986084 0.1227416 0.9827271 0.1193847 0.9827271 0.1193847 0.986084 0.1227416 0.986084 0.1193847 0.9827271 0.1227416 0.986084 0.1227416 0.9827271 0.1193847 0.9827271 0.1193847 0.986084 0.1227416 0.986084 0.1193847 0.9827271 0.1227416 0.986084 0.1227416 0.9827271 0.1193847 0.9827271 0.1193847 0.986084 0.1227416 0.986084 0.1193847 0.9827271 0.1227416 0.986084 0.1227416 0.9827271 0.1193847 0.9827271 0.1193847 0.986084 0.1227416 0.986084 0.1193847 0.9827271 0.1227416 0.986084 0.1227416 0.9827271 0.1193847 0.9827271 0.1193847 0.986084 0.1227416 0.986084 0.1193847 0.9827271 0.1227416 0.986084 0.1227416 0.9827271 0.1193847 0.9827271 0.1193847 0.986084 0.1227416 0.986084 0.1193847 0.9827271 0.1227416 0.986084 0.1227416 0.9827271 0.1193847 0.9827271</float_array>
+          <technique_common>
+            <accessor source="#part1-mesh-map-0-array" count="102" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="part1-mesh-vertices">
+          <input semantic="POSITION" source="#part1-mesh-positions"/>
+        </vertices>
+        <triangles material="mtl0-material" count="34">
+          <input semantic="VERTEX" source="#part1-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#part1-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#part1-mesh-map-0" offset="2" set="0"/>
+          <p>0 0 0 1 1 1 2 2 2 1 3 3 3 4 4 2 5 5 4 6 6 5 7 7 6 8 8 5 9 9 7 9 10 6 9 11 8 10 12 9 11 13 10 12 14 9 13 15 11 14 16 10 15 17 12 16 18 13 17 19 14 18 20 13 17 21 15 19 22 14 18 23 16 20 24 17 21 25 18 22 26 17 21 27 19 23 28 18 22 29 20 24 30 21 25 31 22 26 32 21 25 33 23 27 34 22 26 35 24 28 36 25 29 37 26 30 38 25 29 39 27 31 40 26 30 41 28 32 42 29 33 43 30 34 44 29 35 45 31 35 46 30 35 47 32 36 48 33 37 49 34 38 50 33 39 51 35 40 52 34 41 53 36 42 54 37 43 55 38 44 56 37 43 57 39 45 58 38 44 59 40 46 60 41 47 61 42 48 62 41 47 63 43 49 64 42 48 65 44 50 66 45 51 67 46 52 68 45 53 69 47 53 70 46 53 71 48 54 72 49 54 73 50 54 74 49 55 75 51 55 76 50 55 77 52 56 78 53 56 79 54 56 80 53 57 81 55 58 82 54 59 83 56 60 84 57 61 85 58 62 86 57 63 87 59 64 88 58 65 89 60 66 90 61 66 91 62 66 92 61 67 93 63 67 94 62 67 95 64 68 96 65 68 97 66 68 98 65 69 99 67 69 100 66 69 101</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="part0-mesh" name="part0">
+      <mesh>
+        <source id="part0-mesh-positions">
+          <float_array id="part0-mesh-positions-array" count="12">3.942938 0.259576 -4.700247 3.918459 0.1594514 4.695998 -3.918459 0.2566862 -4.720816 -3.943108 0.1565616 4.675429</float_array>
+          <technique_common>
+            <accessor source="#part0-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="part0-mesh-normals">
+          <float_array id="part0-mesh-normals-array" count="12">3.95454e-4 -0.9999433 -0.01065415 1.60421e-4 -0.9999458 -0.01041465 1.60401e-4 -0.9999458 -0.01041465 1.60409e-4 -0.9999458 -0.01041465</float_array>
+          <technique_common>
+            <accessor source="#part0-mesh-normals-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="part0-mesh-map-0">
+          <float_array id="part0-mesh-map-0-array" count="12">0.0625 0.937561 0 0.937561 0.0625 1 0 0.937561 0 1 0.0625 1</float_array>
+          <technique_common>
+            <accessor source="#part0-mesh-map-0-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="part0-mesh-vertices">
+          <input semantic="POSITION" source="#part0-mesh-positions"/>
+        </vertices>
+        <triangles material="mtl0-material" count="2">
+          <input semantic="VERTEX" source="#part0-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#part0-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#part0-mesh-map-0" offset="2" set="0"/>
+          <p>0 0 0 1 0 1 2 0 2 1 1 3 3 2 4 2 3 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers>
+    <controller id="Maze_of_Memories_Painting_1_part2-skin" name="Maze of Memories Painting 1">
+      <skin source="#part2-mesh">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="Maze_of_Memories_Painting_1_part2-skin-joints">
+          <Name_array id="Maze_of_Memories_Painting_1_part2-skin-joints-array" count="2">root_joint joint0</Name_array>
+          <technique_common>
+            <accessor source="#Maze_of_Memories_Painting_1_part2-skin-joints-array" count="2" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Maze_of_Memories_Painting_1_part2-skin-bind_poses">
+          <float_array id="Maze_of_Memories_Painting_1_part2-skin-bind_poses-array" count="32">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Maze_of_Memories_Painting_1_part2-skin-bind_poses-array" count="2" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Maze_of_Memories_Painting_1_part2-skin-weights">
+          <float_array id="Maze_of_Memories_Painting_1_part2-skin-weights-array" count="16">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#Maze_of_Memories_Painting_1_part2-skin-weights-array" count="16" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#Maze_of_Memories_Painting_1_part2-skin-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#Maze_of_Memories_Painting_1_part2-skin-bind_poses"/>
+        </joints>
+        <vertex_weights count="16">
+          <input semantic="JOINT" source="#Maze_of_Memories_Painting_1_part2-skin-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#Maze_of_Memories_Painting_1_part2-skin-weights" offset="1"/>
+          <vcount>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </vcount>
+          <v>1 0 1 1 1 2 1 3 1 4 1 5 1 6 1 7 1 8 1 9 1 10 1 11 1 12 1 13 1 14 1 15</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+    <controller id="Maze_of_Memories_Painting_1_part1-skin" name="Maze of Memories Painting 1">
+      <skin source="#part1-mesh">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="Maze_of_Memories_Painting_1_part1-skin-joints">
+          <Name_array id="Maze_of_Memories_Painting_1_part1-skin-joints-array" count="2">root_joint joint0</Name_array>
+          <technique_common>
+            <accessor source="#Maze_of_Memories_Painting_1_part1-skin-joints-array" count="2" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Maze_of_Memories_Painting_1_part1-skin-bind_poses">
+          <float_array id="Maze_of_Memories_Painting_1_part1-skin-bind_poses-array" count="32">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Maze_of_Memories_Painting_1_part1-skin-bind_poses-array" count="2" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Maze_of_Memories_Painting_1_part1-skin-weights">
+          <float_array id="Maze_of_Memories_Painting_1_part1-skin-weights-array" count="68">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#Maze_of_Memories_Painting_1_part1-skin-weights-array" count="68" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#Maze_of_Memories_Painting_1_part1-skin-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#Maze_of_Memories_Painting_1_part1-skin-bind_poses"/>
+        </joints>
+        <vertex_weights count="68">
+          <input semantic="JOINT" source="#Maze_of_Memories_Painting_1_part1-skin-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#Maze_of_Memories_Painting_1_part1-skin-weights" offset="1"/>
+          <vcount>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </vcount>
+          <v>1 0 1 1 1 2 1 3 1 4 1 5 1 6 1 7 1 8 1 9 1 10 1 11 1 12 1 13 1 14 1 15 1 16 1 17 1 18 1 19 1 20 1 21 1 22 1 23 1 24 1 25 1 26 1 27 1 28 1 29 1 30 1 31 1 32 1 33 1 34 1 35 1 36 1 37 1 38 1 39 1 40 1 41 1 42 1 43 1 44 1 45 1 46 1 47 1 48 1 49 1 50 1 51 1 52 1 53 1 54 1 55 1 56 1 57 1 58 1 59 1 60 1 61 1 62 1 63 1 64 1 65 1 66 1 67</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+    <controller id="Maze_of_Memories_Painting_1_part0-skin" name="Maze of Memories Painting 1">
+      <skin source="#part0-mesh">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="Maze_of_Memories_Painting_1_part0-skin-joints">
+          <Name_array id="Maze_of_Memories_Painting_1_part0-skin-joints-array" count="2">root_joint joint0</Name_array>
+          <technique_common>
+            <accessor source="#Maze_of_Memories_Painting_1_part0-skin-joints-array" count="2" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Maze_of_Memories_Painting_1_part0-skin-bind_poses">
+          <float_array id="Maze_of_Memories_Painting_1_part0-skin-bind_poses-array" count="32">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Maze_of_Memories_Painting_1_part0-skin-bind_poses-array" count="2" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Maze_of_Memories_Painting_1_part0-skin-weights">
+          <float_array id="Maze_of_Memories_Painting_1_part0-skin-weights-array" count="4">1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#Maze_of_Memories_Painting_1_part0-skin-weights-array" count="4" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#Maze_of_Memories_Painting_1_part0-skin-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#Maze_of_Memories_Painting_1_part0-skin-bind_poses"/>
+        </joints>
+        <vertex_weights count="4">
+          <input semantic="JOINT" source="#Maze_of_Memories_Painting_1_part0-skin-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#Maze_of_Memories_Painting_1_part0-skin-weights" offset="1"/>
+          <vcount>1 1 1 1 </vcount>
+          <v>1 0 1 1 1 2 1 3</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+  </library_controllers>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Maze_of_Memories_Painting_1" name="Maze of Memories Painting 1" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <node id="Maze_of_Memories_Painting_1_root_joint" name="root_joint" sid="root_joint" type="JOINT">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <node id="Maze_of_Memories_Painting_1_joint0" name="joint0" sid="joint0" type="JOINT">
+            <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+            <extra>
+              <technique profile="blender">
+                <layer sid="layer" type="string">0</layer>
+                <tip_x sid="tip_x" type="float">0</tip_x>
+                <tip_y sid="tip_y" type="float">1</tip_y>
+                <tip_z sid="tip_z" type="float">0</tip_z>
+              </technique>
+            </extra>
+          </node>
+          <extra>
+            <technique profile="blender">
+              <layer sid="layer" type="string">0</layer>
+              <tip_x sid="tip_x" type="float">0</tip_x>
+              <tip_y sid="tip_y" type="float">1</tip_y>
+              <tip_z sid="tip_z" type="float">0</tip_z>
+            </technique>
+          </extra>
+        </node>
+        <node id="part0" name="part0" type="NODE">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <instance_controller url="#Maze_of_Memories_Painting_1_part0-skin">
+            <skeleton>#Maze_of_Memories_Painting_1_root_joint</skeleton>
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="mtl0-material" target="#mtl0-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_controller>
+        </node>
+        <node id="part1" name="part1" type="NODE">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <instance_controller url="#Maze_of_Memories_Painting_1_part1-skin">
+            <skeleton>#Maze_of_Memories_Painting_1_root_joint</skeleton>
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="mtl0-material" target="#mtl0-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_controller>
+        </node>
+        <node id="part2" name="part2" type="NODE">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <instance_controller url="#Maze_of_Memories_Painting_1_part2-skin">
+            <skeleton>#Maze_of_Memories_Painting_1_root_joint</skeleton>
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="mtl0-material" target="#mtl0-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_controller>
+        </node>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
