@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Currently not using this script, it was meant for making sprites always face the camera
 public class PaperScript : MonoBehaviour
 {
     private Vector3 ogRotation;
