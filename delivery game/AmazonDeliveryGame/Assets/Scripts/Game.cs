@@ -14,5 +14,6 @@ public class Game : MonoBehaviour
     void Update()
     {
         Cursor.visible=true;
+        RenderSettings.skybox.SetFloat("_Rotation", Time.time * 0.4f);
     }
 }

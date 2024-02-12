@@ -6,13 +6,13 @@ using UnityEngine.AI;
 
 public class Boss : MonoBehaviour
 {
-    enum State {Idle,Patroling,Charging}
+    public enum State {Idle,Patroling,Charging,Sphering}
     private NavMeshAgent agent;
     private Transform player;
     public Transform[] patrolPoints;
     public Transform currentPatrolPoint;
     private Transform prevPatrolPoint;
-    [SerializeField]private State currentState;
+    [SerializeField]public State currentState;
 
     public float patrolLength=5f; //in seconds
     private float patrolTime=0f;
@@ -20,6 +20,18 @@ public class Boss : MonoBehaviour
     public float chargeLength=1f;
     private float chargeTime=0f;
     private float prevChargeTime=0f;
+    //probably wouold be more efficient to have one "time" value for every state
+    private float sphereTime=0f;
+
+    private float minRunSpeed=3f;
+    public float walkSpeed=1.5f;
+    public float walkAcceleration=8f;
+    public float chargeSpeed=5f;
+    public float chargeAcceleration=16f;
+
+    private Animator animator;
+
+    public GameObject spheresPrefab;
 
     void Start()
     {
@@ -33,6 +45,9 @@ public class Boss : MonoBehaviour
         currentState=State.Patroling;
         currentPatrolPoint=patrolPoints[0];
         prevPatrolPoint=currentPatrolPoint;
+        animator=GetComponent<Animator>();
+        agent.speed=walkSpeed;
+        agent.acceleration=walkAcceleration;
     }
 
     // Update is called once per frame
@@ -47,10 +62,21 @@ public class Boss : MonoBehaviour
             case State.Charging:
                 Charge();
                 break;
+            case State.Sphering:
+                Sphere();
+                break;
         }
-        // if(Vector3.Distance(transform.position,player.position)>1f){
-        //     ChasePlayer();
-        // }
+
+        if(agent.velocity.magnitude>=minRunSpeed){
+            animator.SetBool("running",true);
+            animator.SetBool("walking",false);
+        }else if(agent.velocity.magnitude>0f){
+            animator.SetBool("running",false);
+            animator.SetBool("walking",true);
+        }else{
+            animator.SetBool("running",false);
+            animator.SetBool("walking",false);
+        }
         
     }
 
@@ -60,6 +86,8 @@ public class Boss : MonoBehaviour
     }
 
     void Charge(){
+        agent.speed=chargeSpeed;
+        agent.acceleration=chargeAcceleration;
         if(chargeTime>chargeLength){
             if(prevChargeTime<=chargeLength){
                 agent.SetDestination(player.position);
@@ -90,10 +118,19 @@ public class Boss : MonoBehaviour
     }
 
     void Patrol(){
+        agent.speed=walkSpeed;
+        agent.acceleration=walkAcceleration;
         if(patrolTime>patrolLength){
-            currentState=State.Charging;
+            float r=Random.Range(0f,1f);
+            if(r<=0.5f){
+                currentState=State.Charging;
+                chargeTime=0f;
+            }else{
+                currentState=State.Sphering;
+                sphereTime=0f;
+                animator.SetTrigger("attacking");
+            }
             patrolTime=0f;
-            chargeTime=0f;
             return;
         }
 
@@ -117,5 +154,18 @@ public class Boss : MonoBehaviour
         agent.SetDestination(currentPatrolPoint.position);
 
         patrolTime+=Time.deltaTime;
+    }
+
+    //throwing out spheres
+    void Sphere(){
+        if(sphereTime==0f){
+            Instantiate(spheresPrefab,transform);
+            transform.LookAt(player);
+            agent.SetDestination(transform.position);
+        }else if(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name!="attack1"){
+            currentState=State.Patroling;
+            patrolTime=0f;
+        }
+        sphereTime+=Time.deltaTime;
     }
 }
