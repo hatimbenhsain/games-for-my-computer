@@ -90,6 +90,9 @@ public class Boss : MonoBehaviour
         agent.acceleration=chargeAcceleration;
         if(chargeTime>chargeLength){
             if(prevChargeTime<=chargeLength){
+                chargeTime=0f;
+                GetComponent<AudioSource>().pitch=1.5f;
+                GetComponent<AudioSource>().Play();
                 agent.SetDestination(player.position);
                 transform.LookAt(player);
                 //finding wall
@@ -124,7 +127,6 @@ public class Boss : MonoBehaviour
             float r=Random.Range(0f,1f);
             if(r<=0.5f){
                 currentState=State.Charging;
-                chargeTime=0f;
             }else{
                 currentState=State.Sphering;
                 sphereTime=0f;
@@ -162,6 +164,8 @@ public class Boss : MonoBehaviour
             Instantiate(spheresPrefab,transform);
             transform.LookAt(player);
             agent.SetDestination(transform.position);
+            GetComponent<AudioSource>().pitch=1f;
+            GetComponent<AudioSource>().Play();
         }else if(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name!="attack1"){
             currentState=State.Patroling;
             patrolTime=0f;
