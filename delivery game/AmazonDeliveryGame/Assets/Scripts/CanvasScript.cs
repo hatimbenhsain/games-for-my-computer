@@ -27,8 +27,8 @@ public class CanvasScript : MonoBehaviour
     void Update()
     {
         if(shaking){
-            cWidth = canvas.GetComponent<RectTransform>().rect.height;
-            cHeight = canvas.GetComponent<RectTransform>().rect.width;
+            cWidth = canvas.GetComponent<RectTransform>().rect.width;
+            cHeight = canvas.GetComponent<RectTransform>().rect.height;
             foreach(GameObject w in windows){
                 if(w.activeInHierarchy){
                     RectTransform r=w.GetComponent<RectTransform>();
