@@ -31,6 +31,10 @@ public class CanvasScript : MonoBehaviour
             cHeight = canvas.GetComponent<RectTransform>().rect.height;
             foreach(GameObject w in windows){
                 if(w.activeInHierarchy){
+                    DraggableWindow dw=w.GetComponent<DraggableWindow>();
+                    if(dw!=null && dw.shakeImmune){
+                        continue;
+                    }
                     RectTransform r=w.GetComponent<RectTransform>();
                     Vector2 pos=r.anchoredPosition;
                     float intensity=2f+(shakeTime-shakeLength)*shakeIntensity/shakeLength;
@@ -53,6 +57,12 @@ public class CanvasScript : MonoBehaviour
     public void WhiteScreen(){
         shaking=true;
         shakeTime=shakeLength;
+        foreach(GameObject w in windows){
+            DraggableWindow dw=w.GetComponent<DraggableWindow>();
+            if(dw!=null){
+                dw.shakeImmune=false;
+            }
+        }
         GetComponent<Animator>().SetTrigger("WhiteScreen");
     }
 
