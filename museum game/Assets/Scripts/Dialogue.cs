@@ -11,11 +11,14 @@ public class Dialogue : MonoBehaviour
     public string[] lines;
     public float textSpeed;
 
+    public AudioSource alienSounds;
+    
     private int index;
     
     // Start is called before the first frame update
     void Start()
     {
+        
         alienTextComponent.text = string.Empty;
         StartDialogue();
     }
@@ -23,6 +26,7 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetMouseButtonDown(0))
         {
             if (alienTextComponent.text == lines[index])
@@ -32,6 +36,7 @@ public class Dialogue : MonoBehaviour
             else
             {
                 StopAllCoroutines();
+                
                 alienTextComponent.text = lines[index];
             }
         }
@@ -54,17 +59,20 @@ public class Dialogue : MonoBehaviour
 
     void NextLine()
     {
+        
         if (index < lines.Length - 1)
         {
             index++;
             alienTextComponent.text = string.Empty;
             StartCoroutine(TypeLine());
+            alienSounds.Play();
         }
         else
-        {
-            gameObject.SetActive(false);
+        { 
+            index = 0;
             alienGooHolder.SetActive(false);
             janitorGooHolder.SetActive(true);
+            alienSounds.Stop();
         }
     }
 }
