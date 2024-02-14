@@ -18,7 +18,7 @@ public class Boss : MonoBehaviour
     private float patrolTime=0f;
 
     public float chargeLength=1f;
-    private float chargeTime=0f;
+    public float chargeTime=0f;
     private float prevChargeTime=0f;
     //probably wouold be more efficient to have one "time" value for every state
     private float sphereTime=0f;
@@ -90,7 +90,7 @@ public class Boss : MonoBehaviour
         agent.acceleration=chargeAcceleration;
         if(chargeTime>chargeLength){
             if(prevChargeTime<=chargeLength){
-                chargeTime=0f;
+                //chargeTime=0f;
                 GetComponent<AudioSource>().pitch=1.5f;
                 GetComponent<AudioSource>().Play();
                 agent.SetDestination(player.position);
