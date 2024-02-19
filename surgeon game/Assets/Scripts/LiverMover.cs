@@ -13,6 +13,8 @@ public class LiverMover : MonoBehaviour
     [SerializeField]
     private GameObject intestine_0;
 
+    //I'm so sorry for my sin of making unnescay scripts
+
     // Update is called once per frame
     void Update()
     {
