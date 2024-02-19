@@ -13,7 +13,6 @@ public class LiverMover : MonoBehaviour
     [SerializeField]
     private GameObject intestine_0;
 
-    // Update is called once per frame
     void Update()
     {
         if (ableToMove)
@@ -37,6 +36,8 @@ public class LiverMover : MonoBehaviour
             }
         }
     }
+
+    // This shouldn't be different for every organ
 
     // Called when the Collider other enters the trigger
     private void OnTriggerEnter(Collider other)
