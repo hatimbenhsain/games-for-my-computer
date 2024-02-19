@@ -4,6 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
+//To-do: Add Comments
+
 public class Boss : MonoBehaviour
 {
     public enum State {Idle,Patroling,Charging,Sphering}
