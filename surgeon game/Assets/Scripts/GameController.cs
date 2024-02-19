@@ -45,7 +45,6 @@ public class GameController : MonoBehaviour
         tool=null;
     }
 
-    // Update is called once per frame
     void Update()
     {
         hoveredOrgan=null;
@@ -58,6 +57,7 @@ public class GameController : MonoBehaviour
         // But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
         layerMask = ~layerMask;
 
+        //Finding organ we're hovering on
         if (Physics.Raycast(ray, out hitData, 1000) && hitData.transform.gameObject.tag=="Organ"){
             hoveredOrgan=hitData.transform.gameObject.GetComponent<OrganScript>();
         }
@@ -66,7 +66,9 @@ public class GameController : MonoBehaviour
         RaycastHit hit;
         bool b;
         
+        //New left click
         if(Input.GetMouseButtonDown(0)){
+            // Picking up tool
             if (tool==null && Physics.Raycast(ray, out hitData, 1000) && hitData.transform.gameObject.tag=="Tool"){
                 tool=hitData.transform.gameObject;
                 tool.GetComponent<Rigidbody>().isKinematic=true;
@@ -74,17 +76,19 @@ public class GameController : MonoBehaviour
                 tool.transform.rotation=Quaternion.Euler(Vector3.zero);
                 hand.SetActive(false);
             }else if(tool==null){
+                //Picking up organ
                 if(heldOrgan==null && hoveredOrgan!=null){
                     hoveredOrgan.held=true;
                     heldOrgan=hoveredOrgan;
                     ChangeMood(1);
-                }else if(heldOrgan!=null){
+                }
+                //Dropping organ
+                else if(heldOrgan!=null){
                     heldOrgan.held=false;
-                    //heldOrgan.transform.localPosition=heldOrgan.targetPosition;
                     heldOrgan=null;
-                    //ChangeMood(1);
                 }
             }else{
+                //Dropping tool if above table
                 b=toolTable.GetComponent<Collider>().Raycast(ray, out hit,100f);
                 if(b){
                     tool.GetComponent<Rigidbody>().isKinematic=false;
@@ -94,9 +98,13 @@ public class GameController : MonoBehaviour
                 }
             }
         }
+
+        //Current left click
         if(Input.GetMouseButton(0)){
+            //Cutting skin if holding scalpel
             if (tool!=null && tool.name=="Scalpel" && !skinDetached && Physics.Raycast(ray, out hitData, 1000) && hitData.transform.gameObject.tag=="Patient Skin"){
                 Collider skin=hitData.transform.gameObject.GetComponent<Collider>();
+                //Creating cut marks
                 GameObject cut=Instantiate(cutPrefab,hitData.point,cutPrefab.transform.rotation,skin.transform);
                 cut.transform.localPosition=new Vector3(cut.transform.localPosition.x,0.05f,cut.transform.localPosition.z);
                 if(!audioSource.isPlaying){
@@ -109,9 +117,10 @@ public class GameController : MonoBehaviour
             audioSource.Stop();
         }
 
-        
+        //targetPlane is the collider of the plane in the scene where the current picked up objects should be
         b=targetPlane.Raycast(ray, out hit,100f);
 
+        //Moving picked up object to plane
         if(b){
             Vector3 point=ray.GetPoint(hit.distance);
             if(tool!=null){
@@ -124,18 +133,27 @@ public class GameController : MonoBehaviour
             }
         }
 
+        //Restarting scene
         if(Input.GetKeyDown(KeyCode.R)){
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         
     }
 
+    //Function to change the mood of the scene
     void ChangeMood(int m){
+
+        //Deactivate the current lights
         lights[mood].SetActive(false);
+        
+
+        //Change music
         mood=(mood+1)%songs.Length;
         musicPlayer.Stop();
         musicPlayer.clip=songs[mood];
         musicPlayer.Play();
+
+        //Change the camera zoom speed
         if(mood==3){
             cam.GetComponent<Animator>().speed=104f*0.25f/60f;
         }else if(mood==0){
@@ -145,6 +163,9 @@ public class GameController : MonoBehaviour
         }else if(mood==2){
             cam.GetComponent<Animator>().speed=120*0.5f/60f;
         }
+
+        //Activate new lights
         lights[mood].SetActive(true);
+        
     }
 }
