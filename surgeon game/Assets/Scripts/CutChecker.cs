@@ -4,9 +4,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
 
+//This class checks if this part of the patient skin has been cut, there's a lot of them on the skin.
 public class CutChecker : MonoBehaviour
 {
-    // Start is called before the first frame update
     public bool triggered;
     private bool prevTriggered;
     void Start()
@@ -15,7 +15,6 @@ public class CutChecker : MonoBehaviour
         prevTriggered=false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(triggered && prevTriggered==false){
