@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
+ * TODO: Add slippery dash
+ * TODO: Fix Crouch stand up bug
  */
 
 namespace StarterAssets
@@ -12,8 +14,21 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM 
     [RequireComponent(typeof(PlayerInput))]
 #endif
+    
+    
     public class ThirdPersonController : MonoBehaviour
     {
+        // Enum for character state machine
+        public enum CharacterState
+        {
+            Human,
+            Fish,
+            Leg,
+            Thigh,
+            Wing
+        }
+        public CharacterState currentState = CharacterState.Human;
+
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
@@ -85,7 +100,11 @@ namespace StarterAssets
         private float _targetRotation = 0.0f;
         private float _rotationVelocity;
         private float _verticalVelocity;
+        private Vector2 _horizontalVelocity;
         private float _terminalVelocity = 53.0f;
+        private bool _jumpLock = false;
+        private bool _moveLock = false;
+        private bool _crouch = false;
 
         // timeout deltatime
         private float _jumpTimeoutDelta;
@@ -159,11 +178,48 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+            Crouch();
+            //Change State when M(orph) is pressed
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                ChangeState();
+            }
+
+            // Call state-specific logic
+            HandleStateBehaviour();
         }
 
         private void LateUpdate()
         {
             CameraRotation();
+        }
+
+        // Switch Through States
+        void ChangeState()
+        {
+            currentState = (CharacterState)(((int)currentState + 1) % 5); // Cycle through states
+        }
+        // State Machine
+        void HandleStateBehaviour()
+        {
+            switch (currentState)
+            {
+                case CharacterState.Human:
+                    // Default behavior, no changes needed here
+                    break;
+                case CharacterState.Fish:
+                    HandleFishState();
+                    break;
+                case CharacterState.Leg:
+                    HandleLegState();
+                    break;
+                case CharacterState.Thigh:
+                    HandleThighState();
+                    break;
+                case CharacterState.Wing:
+                    HandleWingState();
+                    break;
+            }
         }
 
         private void AssignAnimationIDs()
@@ -211,8 +267,108 @@ namespace StarterAssets
                 _cinemachineTargetYaw, 0.0f);
         }
 
+        void HandleFishState()
+        {
+            Debug.Log("Fish");
+            if (Grounded)
+            {
+
+            }
+            else
+            {
+                MoveSpeed = 4;
+            }
+            _crouch = true;
+            _moveLock = true;
+            JumpHeight = 0.2f;
+        }
+
+        void HandleLegState()
+        {
+            // if pressed fish button goes back to what fish mode does
+            // if not can walk around but no jump
+            if (_input.fish && Grounded)
+            {
+                _moveLock = true;
+                _jumpLock = false;
+                _crouch = true;
+            }
+            else
+            {
+                _moveLock = false;
+                _jumpLock = true;
+                if (Grounded)
+                {
+                    _crouch = false;
+                }
+
+            }
+            MoveSpeed = 4;
+            Debug.Log(_input.jump);
+            Debug.Log("Leg");
+            // Enable walk and run with slippery effect
+        }
+
+        void HandleThighState()
+        {
+            // if pressed fish button goes back to what fish mode does
+            // if not can walk around and do normal jump
+            if (_input.fish && Grounded)
+            {
+                _moveLock = true;
+                JumpHeight = 0.2f;
+                _crouch = true;
+            }
+            else
+            {
+                _moveLock = false;
+                JumpHeight = 1.2f;
+                if (Grounded)
+                {
+                    _crouch = false;
+                }
+            }
+            MoveSpeed = 4;
+            _jumpLock = false;
+            Debug.Log("Thigh");
+            // Similar to LegState but allow jumping
+        }
+
+        void HandleWingState()
+        {
+            // if pressed fish button goes back to what fish mode does
+            // if not can walk around and do super jump (placeholder)
+            if (_input.fish && Grounded)
+            {
+                _moveLock = true;
+                JumpHeight = 0.2f;
+                _crouch = true;
+            }
+            else
+            {
+                _moveLock = false;
+                JumpHeight = 10; // Placeholder
+                if (Grounded)
+                {
+                    _crouch = false;
+                }
+            }
+            MoveSpeed = 4;
+            Debug.Log("Fly");
+            // Fly
+
+        }
+
+        // make the movement slippery after sprint is pressed
+
         private void Move()
         {
+            // Disable movement when movelock is on and grounded
+            if (_moveLock && Grounded)
+            {
+                MoveSpeed = 0; // Disable movement
+            }
+
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
@@ -269,8 +425,7 @@ namespace StarterAssets
 
             // move the player
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
-                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-
+                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime); 
             // update animator if using character
             if (_hasAnimator)
             {
@@ -279,10 +434,27 @@ namespace StarterAssets
             }
         }
 
+        private void Crouch()
+        {
+            if (_crouch)
+            {
+                transform.localScale = new Vector3(1.0f, 0.5f, 1.0f);
+            }
+            else
+            {
+                if (Grounded)
+                {
+                    transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                }
+            }
+        }
+
         private void JumpAndGravity()
         {
+            
             if (Grounded)
             {
+                
                 // reset the fall timeout timer
                 _fallTimeoutDelta = FallTimeout;
 
@@ -300,10 +472,10 @@ namespace StarterAssets
                 }
 
                 // Jump
-                if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+                if (_input.jump && !_jumpLock && _jumpTimeoutDelta <= 0.0f)
                 {
-                    // the square root of H * -2 * G = how much velocity needed to reach desired height
-                    _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+                    Debug.Log("jumped");
+                _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
                     // update animator if using character
                     if (_hasAnimator)
