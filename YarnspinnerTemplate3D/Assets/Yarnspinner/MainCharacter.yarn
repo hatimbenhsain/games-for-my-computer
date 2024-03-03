@@ -1,0 +1,44 @@
+﻿title: Stranger1
+tags:
+position: -207,3
+---
+/// Whether you complimented nose or heart
+<<declare $nosecompliment = false as bool>>
+MC:Wow you have such a... 
+-> Striking nose 
+    Stranger1: Really?
+    <<set $nosecompliment to true>>
+-> Fantastical heart
+    Stranger1: Really?
+<<if $nosecompliment>>
+    MC: Wow, your nose is really vibrating with beauty!
+<<else>>
+    MC: Wow, the fierce beat of your heart can be felt by everyone!
+<<endif>>
+===
+title: ComplimentIntro
+tags:
+position: 18,-287
+---
+MC: Doc said being nicer might help out with my current state...maybe I should try complimenting a stranger?
+-> Stranger1
+    <<jump Stranger1>>
+-> Stranger2
+    <<jump Stranger2>>
+===
+title: Stranger2
+position: -453,-199
+---
+<<declare $earlobescompliment = false as bool>>
+MC:Wow you have such a... 
+-> Shapely earlobes
+    Stranger1: Really?
+    <<set $earlobescompliment to true>>
+-> Magical stench
+    Stranger1: Really?
+<<if $earlobescompliment>>
+    MC: They look as if they were imagined by MC Escher 
+<<else>>
+    MC: You truly smell like all of the flowers of the world exploding at once
+<<endif>>
+===
