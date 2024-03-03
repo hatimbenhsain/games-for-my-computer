@@ -1,9 +1,10 @@
-﻿title: Stranger1
+title: Stranger1
 tags:
 position: -207,3
 ---
 /// Whether you complimented nose or heart
 <<declare $nosecompliment = false as bool>>
+<<declare $stranger1 = false as bool>>
 MC:Wow you have such a... 
 -> Striking nose 
     Stranger1: Really?
@@ -11,9 +12,13 @@ MC:Wow you have such a...
 -> Fantastical heart
     Stranger1: Really?
 <<if $nosecompliment>>
-    MC: Wow, your nose is really vibrating with beauty!
+    MC: Truly your nose is really vibrating with beauty!
+    MC: That felt awesome...maybe I should go talk to stranger 2!
+    <<jump Stranger2>>
 <<else>>
-    MC: Wow, the fierce beat of your heart can be felt by everyone!
+    MC: Truly the fierce beat of your heart can be felt by everyone!
+    MC: That felt awesome...maybe I should go talk to stranger 2!
+    <<jump Stranger2>>
 <<endif>>
 ===
 title: ComplimentIntro
@@ -38,7 +43,11 @@ MC:Wow you have such a...
     Stranger1: Really?
 <<if $earlobescompliment>>
     MC: They look as if they were imagined by MC Escher 
+     MC: That felt awesome...maybe I should go talk to stranger 2!
+    <<jump Stranger1>>
 <<else>>
     MC: You truly smell like all of the flowers of the world exploding at once
+    MC: That felt awesome...maybe I should go talk to stranger 2!
+    <<jump Stranger1>>
 <<endif>>
 ===
