@@ -57,9 +57,18 @@ namespace StarterAssets
         [Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
         public float Gravity = -15.0f;
 
+        public float FlyPower=1f;
+        [Tooltip("Boost at the beginning of flying")]
+        public float FlyBoost=5f;
+
+        [Tooltip("Maximum vertical speed when flying up")]
+        public float maxFlyPower=20f; 
+
         [Space(10)]
         [Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
         public float JumpTimeout = 0.50f;
+        [Tooltip("Maximum allowed time player can press jump before landing and it will still be read.")]
+        public float JumpMaxTime=0.2f;
 
         [Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
         public float FallTimeout = 0.15f;
@@ -97,6 +106,8 @@ namespace StarterAssets
         public float LegMoveSpeed=15f;
         public float LegAcceleration=1.5f;
         public float LegDeceleration=1.5f;
+
+        public float FishFlopHeight=0.2f;
 
         // cinemachine
         private float _cinemachineTargetYaw;
@@ -136,6 +147,14 @@ namespace StarterAssets
         private const float _threshold = 0.01f;
 
         private bool _hasAnimator;
+
+        //true if _input.jump was true in the last frame
+        private bool prevJumped=false;
+        //true if _input.fly was true in the last frame
+        private bool prevFly=false;
+        //time since jump input pressed, used to store jump if pressed too early before landing
+        private float timeSinceJump=0f;
+        
 
         private bool IsCurrentDeviceMouse
         {
@@ -288,7 +307,7 @@ namespace StarterAssets
             }
             _crouch = true;
             _moveLock = true;
-            JumpHeight = 0.2f;
+            JumpHeight = FishFlopHeight;
         }
 
         void HandleLegState()
@@ -327,7 +346,7 @@ namespace StarterAssets
             if (_input.fish && Grounded)
             {
                 _moveLock = true;
-                JumpHeight = 0.2f;
+                JumpHeight = FishFlopHeight;
                 _crouch = true;
             }
             else
@@ -530,7 +549,7 @@ namespace StarterAssets
                 }
 
                 // Jump
-                if (_input.jump && !_jumpLock && _jumpTimeoutDelta <= 0.0f)
+                if (_input.jump && (prevJumped==false || timeSinceJump<JumpMaxTime) && !_jumpLock && _jumpTimeoutDelta <= 0.0f )
                 {
                     Debug.Log("jumped");
                 _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
@@ -568,14 +587,41 @@ namespace StarterAssets
                 }
 
                 // if we are not grounded, do not jump
-                _input.jump = false;
+                //_input.jump = false;
+            }
+
+            if(_input.fly){
+                if(Grounded && _verticalVelocity<0){
+                    _verticalVelocity=0f;
+                }
+                _verticalVelocity+=FlyPower*Time.deltaTime;
+                if(!prevFly){
+                     _verticalVelocity+=FlyBoost;
+                }
+                _verticalVelocity=Mathf.Min(_verticalVelocity,maxFlyPower);
+            }
+
+            //gravity modifier
+            float gModifier=1f;
+
+            if(_input.jump && currentState==CharacterState.Fish){
+                gModifier=0.5f;
             }
 
             // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
             if (_verticalVelocity < _terminalVelocity)
             {
-                _verticalVelocity += Gravity * Time.deltaTime;
+                _verticalVelocity += Gravity * gModifier * Time.deltaTime;
             }
+
+            if(_input.jump && !prevJumped){
+                timeSinceJump=0f;
+            }else{
+                timeSinceJump+=Time.deltaTime;
+            }
+
+            prevJumped=_input.jump;
+            prevFly=_input.fly;
         }
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)

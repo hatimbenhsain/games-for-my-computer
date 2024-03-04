@@ -13,6 +13,7 @@ namespace StarterAssets
 		public bool jump;
 		public bool sprint;
         public bool fish;
+		public bool fly;
 
         [Header("Movement Settings")]
 		public bool analogMovement;
@@ -49,6 +50,10 @@ namespace StarterAssets
         {
             FishInput(value.isPressed);
         }
+
+		public void OnFly(InputValue value){
+			FlyInput(value.isPressed);
+		}
 #endif
 
 
@@ -76,6 +81,10 @@ namespace StarterAssets
         {
             fish = newFishState;
         }
+
+		public void FlyInput(bool newFlyState){
+			fly=newFlyState;
+		}
 
         private void OnApplicationFocus(bool hasFocus)
 		{
