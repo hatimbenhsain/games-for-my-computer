@@ -155,6 +155,8 @@ namespace StarterAssets
         //time since jump input pressed, used to store jump if pressed too early before landing
         private float timeSinceJump=0f;
         
+        //tresholds for switching animation when walking
+        public float[] walkSpeedTresholds={0f,0.5f,1f};
 
         private bool IsCurrentDeviceMouse
         {
@@ -214,6 +216,10 @@ namespace StarterAssets
 
             // Call state-specific logic
             HandleStateBehaviour();
+
+            if(_hasAnimator){
+                Animate();
+            }
         }
 
         private void LateUpdate()
@@ -269,7 +275,7 @@ namespace StarterAssets
             // update animator if using character
             if (_hasAnimator)
             {
-                _animator.SetBool(_animIDGrounded, Grounded);
+                //_animator.SetBool(_animIDGrounded, Grounded);
             }
         }
 
@@ -538,8 +544,8 @@ namespace StarterAssets
                 // update animator if using character
                 if (_hasAnimator)
                 {
-                    _animator.SetBool(_animIDJump, false);
-                    _animator.SetBool(_animIDFreeFall, false);
+                    //_animator.SetBool(_animIDJump, false);
+                    //_animator.SetBool(_animIDFreeFall, false);
                 }
 
                 // stop our velocity dropping infinitely when grounded
@@ -557,7 +563,7 @@ namespace StarterAssets
                     // update animator if using character
                     if (_hasAnimator)
                     {
-                        _animator.SetBool(_animIDJump, true);
+                        //_animator.SetBool(_animIDJump, true);
                     }
                 }
 
@@ -582,7 +588,7 @@ namespace StarterAssets
                     // update animator if using character
                     if (_hasAnimator)
                     {
-                        _animator.SetBool(_animIDFreeFall, true);
+                        //_animator.SetBool(_animIDFreeFall, true);
                     }
                 }
 
@@ -663,6 +669,25 @@ namespace StarterAssets
             {
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
+        }
+
+        void Animate(){
+            _animator.SetBool("grounded",Grounded);
+            bool walking=!_moveLock && _input.move!=Vector2.zero && Grounded;
+            _animator.SetBool("walking",walking);
+            int i=0;
+            if(walking){
+                float velocity=new Vector3(_controller.velocity.x,0f,_controller.velocity.z).magnitude;
+                Debug.Log(velocity);
+                foreach(float s in walkSpeedTresholds){
+                    if(velocity>=s){
+                        i++;
+                    }else{
+                        break;
+                    }
+                }
+            }
+            _animator.SetInteger("walkSpeed",i);
         }
     }
 }
