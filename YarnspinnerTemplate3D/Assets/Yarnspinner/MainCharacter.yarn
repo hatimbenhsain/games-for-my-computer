@@ -1,53 +1,34 @@
-title: Stranger1
+title: NPCTesterStart
 tags:
 position: -207,3
 ---
-/// Whether you complimented nose or heart
-<<declare $nosecompliment = false as bool>>
-<<declare $stranger1 = false as bool>>
-MC:Wow you have such a... 
--> Striking nose 
-    Stranger1: Really?
-    <<set $nosecompliment to true>>
--> Fantastical heart
-    Stranger1: Really?
-<<if $nosecompliment>>
-    MC: Truly your nose is really vibrating with beauty!
-    MC: That felt awesome...maybe I should go talk to stranger 2!
-    <<jump Stranger2>>
+<<declare $positiveanswer = false as bool>>
+MC: Greetings my dude.
+    <<MoveBox1 GameManager>>
+NPC: Whoa. Dude.
+NPC: I’ve never seen someone flop like that before. 
+    <<MoveBox2 GameManager>>
+-> You think that I’m flopping??? Like a fish??
+-> It feels awesome!!!!!! You should try it!!!
+    <<set $positiveanswer to true>>
+<<if $positiveanswer>>
+MC: It feels awesome!!!!!! You should try it!!!
+    <<MoveBox1 GameManager>>
+NPC: I don’t think I’m up for it, I messed up my back eating watermelon.
+NPC: Or was it when I was trying to arm wrestle my feet?
+NPC: I can't remember.
+    <<MoveBox2 GameManager>>
+MC: Bummer...See ya later!    
 <<else>>
-    MC: Truly the fierce beat of your heart can be felt by everyone!
-    MC: That felt awesome...maybe I should go talk to stranger 2!
-    <<jump Stranger2>>
-<<endif>>
-===
-title: ComplimentIntro
-tags:
-position: 18,-287
----
-MC: Doc said being nicer might help out with my current state...maybe I should try complimenting a stranger?
--> Stranger1
-    <<jump Stranger1>>
--> Stranger2
-    <<jump Stranger2>>
-===
-title: Stranger2
-position: -453,-199
----
-<<declare $earlobescompliment = false as bool>>
-MC:Wow you have such a... 
--> Shapely earlobes
-    Stranger1: Really?
-    <<set $earlobescompliment to true>>
--> Magical stench
-    Stranger1: Really?
-<<if $earlobescompliment>>
-    MC: They look as if they were imagined by MC Escher 
-     MC: That felt awesome...maybe I should go talk to stranger 2!
-    <<jump Stranger1>>
-<<else>>
-    MC: You truly smell like all of the flowers of the world exploding at once
-    MC: That felt awesome...maybe I should go talk to stranger 2!
-    <<jump Stranger1>>
+MC: You think that I’m flopping??? Like a fish??
+    <<MoveBox1 GameManager>>
+NPC: Like the most beautiful fish to ever venture out of the ocean!
+    <<MoveBox2 GameManager>>
+-> Thank you 
+    <<MoveBox1 GameManager>>
+    NPC: No problem dude! Flop on!
+-> Okay...
+    <<MoveBox1 GameManager>>
+    NPC: Just trying to appreciate a good flop, my bad…
 <<endif>>
 ===
