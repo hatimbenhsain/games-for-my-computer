@@ -158,6 +158,8 @@ namespace StarterAssets
         //tresholds for switching animation when walking
         public float[] walkSpeedTresholds={0f,0.5f,1f};
 
+        private SpriteRenderer sprite;
+
         private bool IsCurrentDeviceMouse
         {
             get
@@ -198,6 +200,8 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+            sprite=GetComponentInChildren<SpriteRenderer>();
         }
 
         private void Update()
@@ -413,6 +417,12 @@ namespace StarterAssets
             // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is no input, set the target speed to 0
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+
+            if(!_moveLock && _input.move.x<0){
+                sprite.flipX=true;
+            }else if(!_moveLock && _input.move.x>0){
+                sprite.flipX=false;
+            }
 
             if(currentState==CharacterState.Fish){
 
