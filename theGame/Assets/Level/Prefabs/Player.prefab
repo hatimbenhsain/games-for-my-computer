@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1821967961552316798}
   - component: {fileID: 4485246964660873649}
   m_Layer: 8
-  m_Name: Player
+  m_Name: PlayerController
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,8 +115,8 @@ MonoBehaviour:
   FishFlopHeight: 0.2
   walkSpeedTresholds:
   - 0
+  - 5
   - 7
-  - 15
 --- !u!114 &2620965951585494756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 1249745694519555906}
   - component: {fileID: 1659164577345701045}
   - component: {fileID: 6236352977945646857}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -18,6 +18,7 @@ public class DistanceBasedLayerSwitch : MonoBehaviour
         defaultLayer = LayerMask.NameToLayer("Default");
         outlinedLayer = LayerMask.NameToLayer("Highlighted");
         interactableLayer = LayerMask.NameToLayer("Interactable");
+        playerTransform = GameObject.FindGameObjectsWithTag("Player")[0].transform;
     }
 
     void Update()

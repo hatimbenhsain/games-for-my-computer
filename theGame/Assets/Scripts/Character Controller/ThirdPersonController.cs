@@ -1,6 +1,9 @@
-﻿ using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
+using Yarn.Unity.Example;
+using Yarn.Unity;
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
@@ -159,7 +162,7 @@ namespace StarterAssets
         public float[] walkSpeedTresholds={0f,0.5f,1f};
 
         private SpriteRenderer sprite;
-
+        public float interactionRadius = 3f;
         private bool IsCurrentDeviceMouse
         {
             get
@@ -218,12 +221,18 @@ namespace StarterAssets
                 ChangeState();
             }
 
+            if (Input.GetKeyUp(KeyCode.E)){
+                CheckForNearbyNPC();
+            }
+
             // Call state-specific logic
             HandleStateBehaviour();
 
             if(_hasAnimator){
                 Animate();
             }
+
+
         }
 
         private void LateUpdate()
@@ -698,6 +707,24 @@ namespace StarterAssets
                 }
             }
             _animator.SetInteger("walkSpeed",i);
+        }
+
+        public void CheckForNearbyNPC()
+        {
+            List<NPC> allParticipants = new List<NPC>(FindObjectsOfType<NPC>());
+            var target = allParticipants.Find(delegate (NPC p)
+            {
+                return string.IsNullOrEmpty(p.talkToNode) == false && // has a conversation node?
+                (p.transform.position - this.transform.position)// is in range?
+                .magnitude <= interactionRadius;
+            });
+            if (target != null)
+            {
+                // Kick off the dialogue at this node.
+                FindObjectOfType<DialogueRunner>().StartDialogue(target.talkToNode);
+                // reenabling the input on the dialogue
+                //dialogueInput.enabled = true;
+            }
         }
     }
 }
