@@ -1,0 +1,42 @@
+title: NPCTesterStart
+tags:
+position: -207,3
+---
+<<declare $positiveanswer = false as bool>>
+MC: Greetings my dude.
+    <<MoveBox1 GameManager>>
+    <<ChangeAvatartoCharacter GameManager>>
+NPC: Whoa. Dude.
+NPC: I’ve never seen someone flop like that before. 
+    <<MoveBox2 GameManager>>
+    <<ChangeAvatartoPlayer GameManager>>
+-> You think that I’m flopping??? Like a fish??
+-> It feels awesome!!!!!! You should try it!!!
+    <<set $positiveanswer to true>>
+<<if $positiveanswer>>
+MC: It feels awesome!!!!!! You should try it!!!
+    <<MoveBox1 GameManager>>
+    <<ChangeAvatartoCharacter GameManager>>
+NPC: I don’t think I’m up for it, I messed up my back eating watermelon.
+NPC: Or was it when I was trying to arm wrestle my feet?
+NPC: I can't remember.
+    <<MoveBox2 GameManager>>
+    <<ChangeAvatartoPlayer GameManager>>
+MC: Bummer...See ya later!    
+<<else>>
+MC: You think that I’m flopping??? Like a fish??
+    <<MoveBox1 GameManager>>
+    <<ChangeAvatartoCharacter GameManager>>
+NPC: Like the most beautiful fish to ever venture out of the ocean!
+    <<MoveBox2 GameManager>>
+    <<ChangeAvatartoPlayer GameManager>>
+-> Thank you 
+    <<MoveBox1 GameManager>>
+    <<ChangeAvatartoCharacter GameManager>>
+    NPC: No problem dude! Flop on!
+-> Okay...
+    <<MoveBox1 GameManager>>
+    <<ChangeAvatartoCharacter GameManager>>
+    NPC: Just trying to appreciate a good flop, my bad…
+<<endif>>
+===
