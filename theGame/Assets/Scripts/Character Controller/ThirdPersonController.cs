@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-#if ENABLE_INPUT_SYSTEM 
+#if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 using Yarn.Unity.Example;
 using Yarn.Unity;
@@ -24,13 +24,12 @@ namespace StarterAssets
         // Enum for character state machine
         public enum CharacterState
         {
-            Human,
             Fish,
             Leg,
-            Thigh,
-            Wing
+            Wing,
+            Rocket
         }
-        public CharacterState currentState = CharacterState.Human;
+        public CharacterState currentState = CharacterState.Fish;
 
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -112,6 +111,8 @@ namespace StarterAssets
 
         public float FishFlopHeight=0.2f;
 
+        public float WingsJumpHeight=1.2f;
+
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
@@ -154,6 +155,8 @@ namespace StarterAssets
         //true if _input.jump was true in the last frame
         private bool prevJumped=false;
         //true if _input.fly was true in the last frame
+        private bool isJumping=false;
+        private bool isFlying=false;
         private bool prevFly=false;
         //time since jump input pressed, used to store jump if pressed too early before landing
         private float timeSinceJump=0f;
@@ -161,8 +164,10 @@ namespace StarterAssets
         //tresholds for switching animation when walking
         public float[] walkSpeedTresholds={0f,0.5f,1f};
 
+        private SpriteRenderer sprite;
         public float interactionRadius = 3f;
 
+        public bool inDialogue=false;
         private bool IsCurrentDeviceMouse
         {
             get
@@ -203,6 +208,8 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+            sprite=GetComponentInChildren<SpriteRenderer>();
         }
 
         private void Update()
@@ -241,27 +248,24 @@ namespace StarterAssets
         // Switch Through States
         void ChangeState()
         {
-            currentState = (CharacterState)(((int)currentState + 1) % 5); // Cycle through states
+            currentState = (CharacterState)(((int)currentState + 1) % 4); // Cycle through states
         }
         // State Machine
         void HandleStateBehaviour()
         {
             switch (currentState)
             {
-                case CharacterState.Human:
-                    // Default behavior, no changes needed here
-                    break;
                 case CharacterState.Fish:
                     HandleFishState();
                     break;
                 case CharacterState.Leg:
                     HandleLegState();
                     break;
-                case CharacterState.Thigh:
-                    HandleThighState();
-                    break;
                 case CharacterState.Wing:
                     HandleWingState();
+                    break;
+                case CharacterState.Rocket:
+                    HandleRocketState();
                     break;
             }
         }
@@ -325,6 +329,7 @@ namespace StarterAssets
             _crouch = true;
             _moveLock = true;
             JumpHeight = FishFlopHeight;
+            _animator.SetInteger("metamorphosis",1);
         }
 
         void HandleLegState()
@@ -351,12 +356,12 @@ namespace StarterAssets
             MoveSpeed = LegMoveSpeed;
             Acceleration=LegAcceleration;
             Deceleration=LegDeceleration;
-            Debug.Log(_input.jump);
-            Debug.Log("Leg");
+            //Debug.Log("Leg");
             // Enable walk and run with slippery effect
+            _animator.SetInteger("metamorphosis",2);
         }
 
-        void HandleThighState()
+        void HandleWingState()
         {
             // if pressed fish button goes back to what fish mode does
             // if not can walk around and do normal jump
@@ -369,19 +374,22 @@ namespace StarterAssets
             else
             {
                 _moveLock = false;
-                JumpHeight = 1.2f;
+                JumpHeight = WingsJumpHeight;
                 if (Grounded)
                 {
                     _crouch = false;
                 }
             }
-            MoveSpeed = 4;
+            MoveSpeed = LegMoveSpeed;
+            Acceleration=LegAcceleration;
+            Deceleration=LegDeceleration;
             _jumpLock = false;
-            Debug.Log("Thigh");
+            //Debug.Log("Wing");
             // Similar to LegState but allow jumping
+            _animator.SetInteger("metamorphosis",3);
         }
 
-        void HandleWingState()
+        void HandleRocketState()
         {
             // if pressed fish button goes back to what fish mode does
             // if not can walk around and do super jump (placeholder)
@@ -394,16 +402,19 @@ namespace StarterAssets
             else
             {
                 _moveLock = false;
-                JumpHeight = 10; // Placeholder
+                JumpHeight = WingsJumpHeight; // Placeholder
                 if (Grounded)
                 {
                     _crouch = false;
                 }
             }
-            MoveSpeed = 4;
-            Debug.Log("Fly");
+            MoveSpeed = LegMoveSpeed;
+            Acceleration=LegAcceleration;
+            Deceleration=LegDeceleration;
+            _jumpLock = false;
+            //Debug.Log("Fly");
             // Fly
-
+            _animator.SetInteger("metamorphosis",4);
         }
 
         // make the movement slippery after sprint is pressed
@@ -424,6 +435,12 @@ namespace StarterAssets
             // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is no input, set the target speed to 0
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+
+            if((!_moveLock || (currentState==CharacterState.Fish && !inDialogue)) && _input.move.x<0){
+                sprite.flipX=true;
+            }else if((!_moveLock || (currentState==CharacterState.Fish && !inDialogue)) && _input.move.x>0){
+                sprite.flipX=false;
+            }
 
             if(currentState==CharacterState.Fish){
 
@@ -548,6 +565,7 @@ namespace StarterAssets
             
             if (Grounded)
             {
+                isJumping=false;
                 
                 // reset the fall timeout timer
                 _fallTimeoutDelta = FallTimeout;
@@ -576,6 +594,7 @@ namespace StarterAssets
                     {
                         //_animator.SetBool(_animIDJump, true);
                     }
+                    isJumping=true;
                 }
 
                 // jump timeout
@@ -607,7 +626,9 @@ namespace StarterAssets
                 //_input.jump = false;
             }
 
-            if(_input.fly){
+            //Handling rocketting/flying 
+            isFlying=false;
+            if(currentState==CharacterState.Rocket && _input.fly){
                 if(Grounded && _verticalVelocity<0){
                     _verticalVelocity=0f;
                 }
@@ -616,6 +637,7 @@ namespace StarterAssets
                      _verticalVelocity+=FlyBoost;
                 }
                 _verticalVelocity=Mathf.Min(_verticalVelocity,maxFlyPower);
+                isFlying=true;
             }
 
             //gravity modifier
@@ -686,9 +708,10 @@ namespace StarterAssets
             _animator.SetBool("grounded",Grounded);
             bool walking=!_moveLock && _input.move!=Vector2.zero && Grounded;
             _animator.SetBool("walking",walking);
+            float velocity=new Vector3(_controller.velocity.x,0f,_controller.velocity.z).magnitude;
             int i=0;
+            _animator.SetBool("skidding",false);
             if(walking){
-                float velocity=new Vector3(_controller.velocity.x,0f,_controller.velocity.z).magnitude;
                 Debug.Log(velocity);
                 foreach(float s in walkSpeedTresholds){
                     if(velocity>=s){
@@ -697,8 +720,12 @@ namespace StarterAssets
                         break;
                     }
                 }
+            }else if(Grounded && Mathf.Abs(velocity)>0.25f){
+                _animator.SetBool("skidding",true);
             }
             _animator.SetInteger("walkSpeed",i);
+            _animator.SetBool("jumping",isJumping);
+            _animator.SetBool("flying",isFlying);
         }
 
         public void CheckForNearbyNPC()
