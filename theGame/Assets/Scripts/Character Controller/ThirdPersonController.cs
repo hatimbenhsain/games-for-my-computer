@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-#if ENABLE_INPUT_SYSTEM 
+#if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 using Yarn.Unity.Example;
 using Yarn.Unity;
@@ -24,13 +24,12 @@ namespace StarterAssets
         // Enum for character state machine
         public enum CharacterState
         {
-            Human,
             Fish,
             Leg,
-            Thigh,
-            Wing
+            Wing,
+            Rocket
         }
-        public CharacterState currentState = CharacterState.Human;
+        public CharacterState currentState = CharacterState.Fish;
 
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -112,6 +111,8 @@ namespace StarterAssets
 
         public float FishFlopHeight=0.2f;
 
+        public float WingsJumpHeight=1.2f;
+
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
@@ -163,6 +164,8 @@ namespace StarterAssets
 
         private SpriteRenderer sprite;
         public float interactionRadius = 3f;
+
+        public bool inDialogue=false;
         private bool IsCurrentDeviceMouse
         {
             get
@@ -250,20 +253,17 @@ namespace StarterAssets
         {
             switch (currentState)
             {
-                case CharacterState.Human:
-                    // Default behavior, no changes needed here
-                    break;
                 case CharacterState.Fish:
                     HandleFishState();
                     break;
                 case CharacterState.Leg:
                     HandleLegState();
                     break;
-                case CharacterState.Thigh:
-                    HandleThighState();
-                    break;
                 case CharacterState.Wing:
                     HandleWingState();
+                    break;
+                case CharacterState.Rocket:
+                    HandleRocketState();
                     break;
             }
         }
@@ -353,12 +353,11 @@ namespace StarterAssets
             MoveSpeed = LegMoveSpeed;
             Acceleration=LegAcceleration;
             Deceleration=LegDeceleration;
-            Debug.Log(_input.jump);
-            Debug.Log("Leg");
+            //Debug.Log("Leg");
             // Enable walk and run with slippery effect
         }
 
-        void HandleThighState()
+        void HandleWingState()
         {
             // if pressed fish button goes back to what fish mode does
             // if not can walk around and do normal jump
@@ -371,19 +370,21 @@ namespace StarterAssets
             else
             {
                 _moveLock = false;
-                JumpHeight = 1.2f;
+                JumpHeight = WingsJumpHeight;
                 if (Grounded)
                 {
                     _crouch = false;
                 }
             }
-            MoveSpeed = 4;
+            MoveSpeed = LegMoveSpeed;
+            Acceleration=LegAcceleration;
+            Deceleration=LegDeceleration;
             _jumpLock = false;
-            Debug.Log("Thigh");
+            //Debug.Log("Wing");
             // Similar to LegState but allow jumping
         }
 
-        void HandleWingState()
+        void HandleRocketState()
         {
             // if pressed fish button goes back to what fish mode does
             // if not can walk around and do super jump (placeholder)
@@ -396,14 +397,17 @@ namespace StarterAssets
             else
             {
                 _moveLock = false;
-                JumpHeight = 10; // Placeholder
+                JumpHeight = WingsJumpHeight; // Placeholder
                 if (Grounded)
                 {
                     _crouch = false;
                 }
             }
-            MoveSpeed = 4;
-            Debug.Log("Fly");
+            MoveSpeed = LegMoveSpeed;
+            Acceleration=LegAcceleration;
+            Deceleration=LegDeceleration;
+            _jumpLock = false;
+            //Debug.Log("Fly");
             // Fly
 
         }
@@ -427,9 +431,9 @@ namespace StarterAssets
             // if there is no input, set the target speed to 0
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
-            if(!_moveLock && _input.move.x<0){
+            if((!_moveLock || (currentState==CharacterState.Fish && !inDialogue)) && _input.move.x<0){
                 sprite.flipX=true;
-            }else if(!_moveLock && _input.move.x>0){
+            }else if((!_moveLock || (currentState==CharacterState.Fish && !inDialogue)) && _input.move.x>0){
                 sprite.flipX=false;
             }
 
@@ -615,7 +619,7 @@ namespace StarterAssets
                 //_input.jump = false;
             }
 
-            if(_input.fly){
+            if(currentState==CharacterState.Rocket && _input.fly){
                 if(Grounded && _verticalVelocity<0){
                     _verticalVelocity=0f;
                 }
