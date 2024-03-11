@@ -155,6 +155,8 @@ namespace StarterAssets
         //true if _input.jump was true in the last frame
         private bool prevJumped=false;
         //true if _input.fly was true in the last frame
+        private bool isJumping=false;
+        private bool isFlying=false;
         private bool prevFly=false;
         //time since jump input pressed, used to store jump if pressed too early before landing
         private float timeSinceJump=0f;
@@ -246,7 +248,7 @@ namespace StarterAssets
         // Switch Through States
         void ChangeState()
         {
-            currentState = (CharacterState)(((int)currentState + 1) % 5); // Cycle through states
+            currentState = (CharacterState)(((int)currentState + 1) % 4); // Cycle through states
         }
         // State Machine
         void HandleStateBehaviour()
@@ -327,6 +329,7 @@ namespace StarterAssets
             _crouch = true;
             _moveLock = true;
             JumpHeight = FishFlopHeight;
+            _animator.SetInteger("metamorphosis",1);
         }
 
         void HandleLegState()
@@ -355,6 +358,7 @@ namespace StarterAssets
             Deceleration=LegDeceleration;
             //Debug.Log("Leg");
             // Enable walk and run with slippery effect
+            _animator.SetInteger("metamorphosis",2);
         }
 
         void HandleWingState()
@@ -382,6 +386,7 @@ namespace StarterAssets
             _jumpLock = false;
             //Debug.Log("Wing");
             // Similar to LegState but allow jumping
+            _animator.SetInteger("metamorphosis",3);
         }
 
         void HandleRocketState()
@@ -409,7 +414,7 @@ namespace StarterAssets
             _jumpLock = false;
             //Debug.Log("Fly");
             // Fly
-
+            _animator.SetInteger("metamorphosis",4);
         }
 
         // make the movement slippery after sprint is pressed
@@ -560,6 +565,7 @@ namespace StarterAssets
             
             if (Grounded)
             {
+                isJumping=false;
                 
                 // reset the fall timeout timer
                 _fallTimeoutDelta = FallTimeout;
@@ -588,6 +594,7 @@ namespace StarterAssets
                     {
                         //_animator.SetBool(_animIDJump, true);
                     }
+                    isJumping=true;
                 }
 
                 // jump timeout
@@ -619,6 +626,8 @@ namespace StarterAssets
                 //_input.jump = false;
             }
 
+            //Handling rocketting/flying 
+            isFlying=false;
             if(currentState==CharacterState.Rocket && _input.fly){
                 if(Grounded && _verticalVelocity<0){
                     _verticalVelocity=0f;
@@ -628,6 +637,7 @@ namespace StarterAssets
                      _verticalVelocity+=FlyBoost;
                 }
                 _verticalVelocity=Mathf.Min(_verticalVelocity,maxFlyPower);
+                isFlying=true;
             }
 
             //gravity modifier
@@ -698,9 +708,10 @@ namespace StarterAssets
             _animator.SetBool("grounded",Grounded);
             bool walking=!_moveLock && _input.move!=Vector2.zero && Grounded;
             _animator.SetBool("walking",walking);
+            float velocity=new Vector3(_controller.velocity.x,0f,_controller.velocity.z).magnitude;
             int i=0;
+            _animator.SetBool("skidding",false);
             if(walking){
-                float velocity=new Vector3(_controller.velocity.x,0f,_controller.velocity.z).magnitude;
                 Debug.Log(velocity);
                 foreach(float s in walkSpeedTresholds){
                     if(velocity>=s){
@@ -709,8 +720,12 @@ namespace StarterAssets
                         break;
                     }
                 }
+            }else if(Grounded && Mathf.Abs(velocity)>0.25f){
+                _animator.SetBool("skidding",true);
             }
             _animator.SetInteger("walkSpeed",i);
+            _animator.SetBool("jumping",isJumping);
+            _animator.SetBool("flying",isFlying);
         }
 
         public void CheckForNearbyNPC()
