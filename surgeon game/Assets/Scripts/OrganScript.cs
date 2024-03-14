@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+//Organs behavior script
 public class OrganScript : MonoBehaviour
 {
     public bool held;
@@ -21,7 +22,7 @@ public class OrganScript : MonoBehaviour
 
     private AudioSource audioSource;
     private ParticleSystem particleSystem;
-    // Start is called before the first frame update
+
     void Start()
     {
         held=false;
@@ -32,9 +33,10 @@ public class OrganScript : MonoBehaviour
         particleSystem=GetComponentInChildren<ParticleSystem>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
+        //What happens when the organ just started being held
         if(prevHeld!=held && held){
             body.useGravity=false;
             audioSource.clip=squish;
@@ -47,7 +49,9 @@ public class OrganScript : MonoBehaviour
             if(particleSystem!=null){
                 particleSystem.Play();
             }
-        }else if(prevHeld!=held){
+        }
+        //What happens when the organ just stopped being held
+        else if(prevHeld!=held){
             body.useGravity=true;
             if(animator!=null){
                 animator.SetBool("held",false);
@@ -58,6 +62,7 @@ public class OrganScript : MonoBehaviour
         }
 
         if(held){
+            //Moving organ to target (mouse) + resetting rotation
             transform.localPosition=Vector3.Lerp(transform.localPosition,targetPosition,lerpValue*Time.deltaTime);
             Quaternion targetRotation=Quaternion.Euler(0f,0f,0f);
             transform.rotation=Quaternion.Lerp(transform.rotation,targetRotation,lerpValue*Time.deltaTime);
@@ -75,6 +80,7 @@ public class OrganScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) {
         if(!held){
+            //Play a sound effect when organ collides with something with varying intensity depending on velocity
             float mag=body.velocity.magnitude;
             if(mag>0.5f){
                 audioSource.clip=thud;

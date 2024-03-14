@@ -15,7 +15,7 @@ public class LiverMover : MonoBehaviour
 
     //I'm so sorry for my sin of making unnescay scripts
 
-    // Update is called once per frame
+
     void Update()
     {
         if (ableToMove)
@@ -39,6 +39,8 @@ public class LiverMover : MonoBehaviour
             }
         }
     }
+
+    // This shouldn't be different for every organ
 
     // Called when the Collider other enters the trigger
     private void OnTriggerEnter(Collider other)
