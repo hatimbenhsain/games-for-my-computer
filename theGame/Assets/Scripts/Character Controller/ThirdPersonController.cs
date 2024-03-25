@@ -248,7 +248,12 @@ namespace StarterAssets
         // Switch Through States
         void ChangeState()
         {
-            currentState = (CharacterState)(((int)currentState + 1) % 4); // Cycle through states
+            //currentState = (CharacterState)(((int)currentState + 1) % 4); // Cycle through states
+            if(currentState==CharacterState.Fish){
+                currentState=CharacterState.Rocket;
+            }else{
+                currentState=CharacterState.Fish;
+            }
         }
         // State Machine
         void HandleStateBehaviour()
