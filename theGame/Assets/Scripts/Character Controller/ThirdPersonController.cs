@@ -7,8 +7,8 @@ using Yarn.Unity;
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
- * TODO: Add slippery dash
- * TODO: Fix Crouch stand up bug
+ * TODO: Fix/Add Crouch
+ * TODO: Add Transition Animations
  */
 
 namespace StarterAssets
