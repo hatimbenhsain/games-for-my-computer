@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<COLLADA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1.4.1" xmlns="http://www.collada.org/2005/11/COLLADASchema">
+  <asset>
+    <created>2020-02-06T16:46:28.9088167-05:00</created>
+    <modified>2020-02-06T16:46:28.9088167-05:00</modified>
+  </asset>
+  <library_images>
+    <image id="int_art_0">
+      <init_from>./int_art_0.png</init_from>
+    </image>
+    <image id="int_art_manet">
+      <init_from>./int_art_manet.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="df_0_m_mat_id" name="df_0_m_mat">
+      <instance_effect url="#df_0_m_eff_id" />
+    </material>
+    <material id="df_2_m_mat_id" name="df_2_m_mat">
+      <instance_effect url="#df_2_m_eff_id" />
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="df_0_m_eff_id" name="df_0_m_eff">
+      <profile_COMMON>
+        <newparam sid="df_0_m_surf">
+          <surface type="2D">
+            <init_from>int_art_0</init_from>
+            <format>PNG</format>
+          </surface>
+        </newparam>
+        <newparam sid="df_0_m_samp">
+          <sampler2D>
+            <source>df_0_m_surf</source>
+            <wrap_s>MIRROR</wrap_s>
+            <wrap_t>MIRROR</wrap_t>
+            <minfilter>LINEAR_MIPMAP_NEAREST</minfilter>
+            <magfilter>LINEAR</magfilter>
+            <mipfilter>LINEAR</mipfilter>
+          </sampler2D>
+        </newparam>
+        <technique sid="df_0_m_tech">
+          <phong>
+            <diffuse>
+              <texture texture="df_0_m_samp" texcoord="uv" />
+            </diffuse>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="df_2_m_eff_id" name="df_2_m_eff">
+      <profile_COMMON>
+        <newparam sid="df_2_m_surf">
+          <surface type="2D">
+            <init_from>int_art_manet</init_from>
+            <format>PNG</format>
+          </surface>
+        </newparam>
+        <newparam sid="df_2_m_samp">
+          <sampler2D>
+            <source>df_2_m_surf</source>
+            <wrap_s>CLAMP</wrap_s>
+            <wrap_t>CLAMP</wrap_t>
+            <minfilter>LINEAR_MIPMAP_NEAREST</minfilter>
+            <magfilter>LINEAR</magfilter>
+            <mipfilter>LINEAR</mipfilter>
+          </sampler2D>
+        </newparam>
+        <technique sid="df_2_m_tech">
+          <phong>
+            <diffuse>
+              <texture texture="df_2_m_samp" texcoord="uv" />
+            </diffuse>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="_0_0_geo_id" name="_0_0">
+      <mesh>
+        <source id="_0_0_Position_id" name="_0_0_Position">
+          <float_array id="_0_0_Position_array_id" count="12">10.4438 17.3147 0.8 -10.4438 17.3147 0.8 10.4438 -17.3147 0.8 -10.4437 -17.3147 0.8</float_array>
+          <technique_common>
+            <accessor source="#_0_0_Position_array_id" count="4" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="_0_0_TexCoord0_id" name="_0_0_TexCoord0">
+          <float_array id="_0_0_TexCoord0_array_id" count="8">0.999977 1 -2.31634E-05 1 1.00002 2.31862E-05 2.31862E-05 -2.31634E-05</float_array>
+          <technique_common>
+            <accessor source="#_0_0_TexCoord0_array_id" count="4" stride="2">
+              <param name="S" type="float" />
+              <param name="T" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="_0_0_Normal_id" name="_0_0_Normal">
+          <float_array id="_0_0_Normal_array_id" count="12">0.3474498 0.3474498 0.8724851 -0.1930277 0.1930277 0.9651384 0.1930277 0 0.9805806 -0.3706131 0 0.9265329</float_array>
+          <technique_common>
+            <accessor source="#_0_0_Normal_array_id" count="4" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="_0_0_vtx_id">
+          <input semantic="POSITION" source="#_0_0_Position_id" />
+          <input semantic="NORMAL" source="#_0_0_Normal_id" />
+        </vertices>
+        <triangles material="Mdl_0_Mtl_df_2_m" count="2">
+          <input semantic="VERTEX" source="#_0_0_vtx_id" offset="0" />
+          <input semantic="TEXCOORD" source="#_0_0_TexCoord0_id" offset="0" set="0" />
+          <p>1 2 0 1 3 2</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="_1_0_geo_id" name="_1_0">
+      <mesh>
+        <source id="_1_0_Position_id" name="_1_0_Position">
+          <float_array id="_1_0_Position_array_id" count="30">10.4438 17.3147 0.8 10.4438 -17.3147 0.8 10.4438 17.3147 0 10.4438 -17.3147 -7.6294E-07 -10.4438 -17.3147 -7.6294E-07 -10.4437 -17.3147 0.8 -10.4437 17.3147 0 -10.4438 17.3147 0.8 -10.4438 17.3147 0.8 -10.4437 17.3147 0</float_array>
+          <technique_common>
+            <accessor source="#_1_0_Position_array_id" count="10" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="_1_0_TexCoord0_id" name="_1_0_TexCoord0">
+          <float_array id="_1_0_TexCoord0_array_id" count="20">0.5 1.10812 0.5 1.0849 1 1.10811 1 1.0849 1 1.0849 0.5 1.0849 1 1.10811 0.5 1.1081 0.5 1.1313 1 1.1313</float_array>
+          <technique_common>
+            <accessor source="#_1_0_TexCoord0_array_id" count="10" stride="2">
+              <param name="S" type="float" />
+              <param name="T" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="_1_0_Normal_id" name="_1_0_Normal">
+          <float_array id="_1_0_Normal_array_id" count="30">0.3464567 0.3464567 0.8740157 0.1968504 0 0.984252 0.7086614 0.7086614 0 1 0 0 -1 0 0 -0.3700787 0 0.9291338 -0.7086614 0.7086614 0 -0.1889764 0.1889764 0.9606299 -0.1889764 0.1889764 0.9606299 -0.7086614 0.7086614 0</float_array>
+          <technique_common>
+            <accessor source="#_1_0_Normal_array_id" count="10" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="_1_0_vtx_id">
+          <input semantic="POSITION" source="#_1_0_Position_id" />
+          <input semantic="NORMAL" source="#_1_0_Normal_id" />
+        </vertices>
+        <triangles material="Mdl_0_Mtl_df_0_m" count="6">
+          <input semantic="VERTEX" source="#_1_0_vtx_id" offset="0" />
+          <input semantic="TEXCOORD" source="#_1_0_TexCoord0_id" offset="0" set="0" />
+          <p>0 1 2 0 2 9 0 9 8 1 3 2 5 6 4 5 7 6</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="int_art_manet_w_00_id" name="int_art_manet_w_00">
+      <node id="_0_0_node_id" name="_0_0_node" type="NODE">
+        <matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#_0_0_geo_id">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Mdl_0_Mtl_df_2_m" target="#df_2_m_mat_id" />
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="_1_0_node_id" name="_1_0_node" type="NODE">
+        <matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#_1_0_geo_id">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Mdl_0_Mtl_df_0_m" target="#df_0_m_mat_id" />
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#int_art_manet_w_00_id" />
+  </scene>
+</COLLADA>
