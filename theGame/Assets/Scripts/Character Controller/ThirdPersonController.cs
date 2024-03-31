@@ -433,7 +433,7 @@ namespace StarterAssets
             }
 
             // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+            float targetSpeed = (_input.sprint && !_moveLock) ? SprintSpeed : MoveSpeed;
 
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -717,7 +717,7 @@ namespace StarterAssets
             int i=0;
             _animator.SetBool("skidding",false);
             if(walking){
-                Debug.Log(velocity);
+                //Debug.Log(velocity);
                 foreach(float s in walkSpeedTresholds){
                     if(velocity>=s){
                         i++;
