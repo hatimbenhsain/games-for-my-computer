@@ -5463,6 +5463,7 @@ GameObject:
   - component: {fileID: 331575304}
   - component: {fileID: 331575303}
   - component: {fileID: 331575305}
+  - component: {fileID: 331575306}
   m_Layer: 0
   m_Name: Rain
   m_TagString: Untagged
@@ -5509,7 +5510,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -314761405, guid: 20d39ea81fc15c34692494fb387903ea, type: 3}
+  m_Sprite: {fileID: -223293901, guid: 20d39ea81fc15c34692494fb387903ea, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5548,6 +5549,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &331575306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331575301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23a3aaaf4d6b054c890d7c2a51edff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &334528643 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d84e2396884e46a1838d9a9b2026842, type: 3}
@@ -12720,11 +12733,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4010459885185204159, guid: 98bc468945ef6024db2f31a4fc2aa0b6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.560426
+      value: -2.060426
       objectReference: {fileID: 0}
     - target: {fileID: 4010459885185204159, guid: 98bc468945ef6024db2f31a4fc2aa0b6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.080196
+      value: -11.580196
       objectReference: {fileID: 0}
     - target: {fileID: 4010459885185204159, guid: 98bc468945ef6024db2f31a4fc2aa0b6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12750,9 +12763,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8570238525259583451, guid: 98bc468945ef6024db2f31a4fc2aa0b6, type: 3}
+      propertyPath: ShoulderOffset.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570238525259583451, guid: 98bc468945ef6024db2f31a4fc2aa0b6, type: 3}
+      propertyPath: ShoulderOffset.z
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570238525886152219, guid: 98bc468945ef6024db2f31a4fc2aa0b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.060426
+      objectReference: {fileID: 0}
     - target: {fileID: 8570238525886152219, guid: 98bc468945ef6024db2f31a4fc2aa0b6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.080196
+      value: -11.580196
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12814,7 +12839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1302042773
 RectTransform:
   m_ObjectHideFlags: 0
