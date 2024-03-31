@@ -14,8 +14,10 @@ public class RippleEnter : MonoBehaviour
     // variables for the camera transition
     public CinemachineVirtualCamera mainCamera;
     public Transform targetTransform; // The target position and rotation for the camera
+    public Transform followPlayer; // The target position and rotation for the player
     public float transitionSpeed = 1.0f;
     private bool isTransitioning = false;
+    private float dotProduct;
 
     private void Start()
     {
@@ -32,6 +34,20 @@ public class RippleEnter : MonoBehaviour
 
             // Interpolate camera's rotation
             mainCamera.transform.rotation = Quaternion.Lerp(mainCamera.transform.rotation, targetTransform.rotation, transitionSpeed * Time.deltaTime);
+
+            Vector3 planeNormal = transform.up;
+            // get the normal of the plane
+            Vector3 planeToPlayer = followPlayer.position - transform.position;
+            dotProduct = Vector3.Dot(planeNormal, planeToPlayer);
+            // calculate the dot product between the normal and player to plane
+            if (dotProduct > 0)
+            {
+                Debug.Log("Player is behind the plane");
+            }
+            else
+            {
+                Debug.Log("Player is in front of the plane");
+            }
 
         }
     }
@@ -62,8 +78,22 @@ public class RippleEnter : MonoBehaviour
             //mainCamera.LookAt = null;
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("Player exits trigger," + dotProduct);
+            if (dotProduct > 0)
+            {
 
-    private IEnumerator DoRipple(Material mat)
+                //isTransitioning = true;
+                mainCamera.Follow = followPlayer;
+            }
+
+        }
+    }
+
+        private IEnumerator DoRipple(Material mat)
     {
         // for ripple time, initiate the ripple and strength goes down
         for (float t = 0.0f; t < rippleTime; t += Time.deltaTime)
