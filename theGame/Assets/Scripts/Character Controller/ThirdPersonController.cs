@@ -7,8 +7,8 @@ using Yarn.Unity;
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
- * TODO: Add slippery dash
- * TODO: Fix Crouch stand up bug
+ * TODO: Fix/Add Crouch
+ * TODO: Add Transition Animations
  */
 
 namespace StarterAssets
@@ -248,7 +248,12 @@ namespace StarterAssets
         // Switch Through States
         void ChangeState()
         {
-            currentState = (CharacterState)(((int)currentState + 1) % 4); // Cycle through states
+            //currentState = (CharacterState)(((int)currentState + 1) % 4); // Cycle through states
+            if(currentState==CharacterState.Fish){
+                currentState=CharacterState.Rocket;
+            }else{
+                currentState=CharacterState.Fish;
+            }
         }
         // State Machine
         void HandleStateBehaviour()
@@ -428,7 +433,7 @@ namespace StarterAssets
             }
 
             // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+            float targetSpeed = (_input.sprint && !_moveLock) ? SprintSpeed : MoveSpeed;
 
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -712,7 +717,7 @@ namespace StarterAssets
             int i=0;
             _animator.SetBool("skidding",false);
             if(walking){
-                Debug.Log(velocity);
+                //Debug.Log(velocity);
                 foreach(float s in walkSpeedTresholds){
                     if(velocity>=s){
                         i++;
