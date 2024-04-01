@@ -9,7 +9,8 @@ public class WordTracker : MonoBehaviour
     private int currentIndex = 0;
 
     public GameObject[] slots = new GameObject[3];
-    private void OnCollisionEnter(Collision other)
+
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Word"))
         {
@@ -23,7 +24,7 @@ public class WordTracker : MonoBehaviour
             }
         }
     }
-
+    
     private void MoveWordToSlot()
     {
         for (int i = 0; i < currentIndex; i++)
