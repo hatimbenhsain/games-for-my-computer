@@ -7,9 +7,10 @@ using UnityEngine.Rendering;
 public class RainThatTalks : MonoBehaviour
 {
     public Animator _animator;
-    public Transform Player; // The target position and rotation for the player
+    private Transform Player; // The target position and rotation for the player
     public ParticleSystem Rain;
     private ColorAdjustments colorAdjustments;
+    public Color filterColor = Color.white; // Base target color
     private Color targetColor = Color.white; // Base target color
     private Color baseColor = Color.white; // Base color to lerp from
     private bool isLerping = false; // Flag to indicate if we're currently lerping
@@ -20,6 +21,15 @@ public class RainThatTalks : MonoBehaviour
     void Start()
     {
         Rain.Stop();
+        GameObject playerCameraRootObject = GameObject.Find("PlayerCameraRoot");
+        if (playerCameraRootObject != null)
+        {
+            Player = playerCameraRootObject.transform; 
+        }
+        else
+        {
+            Debug.LogError("PlayerCameraRoot not found in the scene.");
+        }
         // Find the Global Volume GameObject by name
         GameObject globalVolumeObject = GameObject.Find("Global Volume");
         if (globalVolumeObject)
@@ -46,16 +56,16 @@ public class RainThatTalks : MonoBehaviour
         Rain.transform.position = Player.transform.position;
         if ( _animator != null )
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R)) //PLACEHOLDER
             {
                 _animator.SetTrigger("Rain");
                 baseColor = colorAdjustments.colorFilter.value; // Update base color to current value
-                targetColor = new Color(0.45f, 0.45f, 0.5f); // New target color
+                targetColor = filterColor; 
                 isLerping = true;
                 lerpTimer = 0f; // Reset the timer
                 Rain.Play();
             }
-            if (Input.GetKeyDown(KeyCode.T))
+            if (Input.GetKeyDown(KeyCode.T)) //PLACEHOLDER
             {
                 _animator.SetTrigger("StopRain");
                 baseColor = colorAdjustments.colorFilter.value; // Update base color to current value

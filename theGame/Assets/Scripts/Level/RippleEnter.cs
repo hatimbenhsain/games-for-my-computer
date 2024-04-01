@@ -14,13 +14,22 @@ public class RippleEnter : MonoBehaviour
     // variables for the camera transition
     public CinemachineVirtualCamera mainCamera;
     public Transform targetTransform; // The target position and rotation for the camera
-    public Transform followPlayer; // The target position and rotation for the player
+    private Transform followPlayer; // The target position and rotation for the player
     public float transitionSpeed = 1.0f;
     private bool isTransitioning = false;
     private float dotProduct;
 
     private void Start()
     {
+        GameObject playerCameraRootObject = GameObject.Find("PlayerCameraRoot");
+        if (playerCameraRootObject != null)
+        {
+            followPlayer = playerCameraRootObject.transform;
+        }
+        else
+        {
+            Debug.LogError("PlayerCameraRoot not found in the scene.");
+        }
         var mat = GetComponent<Renderer>().material;
         mat.SetFloat("_RippleStrength", 0);
     }
