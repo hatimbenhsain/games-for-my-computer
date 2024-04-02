@@ -12264,7 +12264,6 @@ MonoBehaviour:
   maxRippleStrength: 0.3
   mainCamera: {fileID: 405512488}
   targetTransform: {fileID: 1687870217}
-  followPlayer: {fileID: 0}
   transitionSpeed: 1
 --- !u!64 &1118684347
 MeshCollider:
@@ -12571,11 +12570,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98bc468945ef6024db2f31a4fc2aa0b6, type: 3}
---- !u!4 &1268468427 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1330960492303200940, guid: 98bc468945ef6024db2f31a4fc2aa0b6, type: 3}
-  m_PrefabInstance: {fileID: 1268468426}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1273656310
 GameObject:
   m_ObjectHideFlags: 0
@@ -18486,7 +18480,6 @@ MonoBehaviour:
   maxRippleStrength: 0.3
   mainCamera: {fileID: 405512488}
   targetTransform: {fileID: 391515030}
-  followPlayer: {fileID: 0}
   transitionSpeed: 1
 --- !u!64 &1557824404
 MeshCollider:
@@ -19941,7 +19934,6 @@ MonoBehaviour:
   maxRippleStrength: 0.75
   mainCamera: {fileID: 405512488}
   targetTransform: {fileID: 3519537389353362331}
-  followPlayer: {fileID: 1268468427}
   transitionSpeed: 1
 --- !u!33 &1148887583021422570
 MeshFilter:
@@ -20456,22 +20448,6 @@ PrefabInstance:
     - target: {fileID: 2719164143212418834, guid: aaa1b63b01fda79428f9a9062cfbcb04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7542933697239577170, guid: aaa1b63b01fda79428f9a9062cfbcb04, type: 3}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 1268468427}
-    - target: {fileID: 7542933697239577170, guid: aaa1b63b01fda79428f9a9062cfbcb04, type: 3}
-      propertyPath: filterColor.b
-      value: 0.6226415
-      objectReference: {fileID: 0}
-    - target: {fileID: 7542933697239577170, guid: aaa1b63b01fda79428f9a9062cfbcb04, type: 3}
-      propertyPath: filterColor.g
-      value: 0.58786136
-      objectReference: {fileID: 0}
-    - target: {fileID: 7542933697239577170, guid: aaa1b63b01fda79428f9a9062cfbcb04, type: 3}
-      propertyPath: filterColor.r
-      value: 0.5492168
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

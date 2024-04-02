@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 using Yarn.Unity.Example;
@@ -104,6 +105,9 @@ namespace StarterAssets
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
 
+        // VFX
+        public VisualEffect Squirt; 
+
         [Header("State Values")]
         public float LegMoveSpeed=15f;
         public float LegAcceleration=1.5f;
@@ -113,9 +117,12 @@ namespace StarterAssets
 
         public float WingsJumpHeight=1.2f;
 
+
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
+
+
 
         // player
         private float _speed;
