@@ -1,0 +1,98 @@
+title: NPCTesterStart
+tags: 
+colorID: 0
+position: -207,3
+---
+<<declare $positiveanswer = false as bool>>
+    <<MoveBox2 YarnManager>>
+    <<ChangeAvatartoPlayer YarnManager>>
+MC: Greetings my dude.
+    <<MoveBox1 YarnManager>>
+    <<ChangeAvatartoCharacter YarnManager>>
+NPC: Whoa. Dude.
+NPC: I’ve never seen someone flop like that before. 
+    <<MoveBox2 YarnManager>>
+    <<ChangeAvatartoPlayer YarnManager>>
+-> You think that I’m flopping??? Like a fish??
+-> It feels awesome!!!!!! You should try it!!!
+    <<set $positiveanswer to true>>
+<<if $positiveanswer>>
+MC: It feels awesome!!!!!! You should try it!!!
+    <<MoveBox1 YarnManager>>
+    <<ChangeAvatartoCharacter YarnManager>>
+NPC: I don’t think I’m up for it, I messed up my back eating watermelon.
+NPC: Or was it when I was trying to arm wrestle my feet?
+NPC: I can't remember.
+    <<MoveBox2 YarnManager>>
+    <<ChangeAvatartoPlayer YarnManager>>
+MC: Bummer...See ya later!    
+<<else>>
+MC: You think that I’m flopping??? Like a fish??
+    <<MoveBox1 YarnManager>>
+    <<ChangeAvatartoCharacter YarnManager>>
+NPC: Like the most beautiful fish to ever venture out of the ocean!
+    <<MoveBox2 YarnManager>>
+    <<ChangeAvatartoPlayer YarnManager>>
+-> Thank you 
+    <<MoveBox1 YarnManager>>
+    <<ChangeAvatartoCharacter YarnManager>>
+    NPC: No problem dude! Flop on!
+-> Okay...
+    <<MoveBox1 YarnManager>>
+    <<ChangeAvatartoCharacter YarnManager>>
+    NPC: Just trying to appreciate a good flop, my bad…
+<<endif>>
+===
+title: Complimentee1part1
+tags: 
+colorID: 0
+position: -81,-315
+---
+<<MoveBox2 YarnManager>>
+    <<ChangeAvatartoPlayer YarnManager>>
+MC: Hi! How's it, uh.. hanging?
+    <<ChangeAvatartoCharacter YarnManager>>
+NPC: *Sigh*
+NPC: I've been better.
+NPC: Can I help you with anything?
+    <<ChangeAvatartoPlayer YarnManager>>
+MC: N-no! But maybe... I can help?
+-> Compliment them.
+    <<ChangeAvatartoPlayer YarnManager>>
+    MC: Do you mind if I... compliment you?
+    <<ChangeAvatartoCharacter YarnManager>>
+    NPC: Sure?
+    <<ChangeStartNode ArmGuy Complimentee1part2>>
+    <<declare $compliment="You're beautiful.">>
+    <<ComplimentStart GameManager>>
+-> Leave them alone.
+    <<ChangeAvatartoPlayer YarnManager>>
+    MC: Uuuh. Sorry. Nevermind, bye!!!
+<<stop>>
+===
+title: Complimentee1part2
+tags: 
+colorID: 0
+position: 146,-309
+---
+<<MoveBox2 YarnManager>>
+<<ChangeAvatartoPlayer YarnManager>>
+MC: {$compliment}
+<<ChangeAvatartoCharacter YarnManager>>
+NPC: Wh... woah. Thank you.
+<<ChangeAvatartoPlayer YarnManager>>
+MC: Hey, uuuh... Don't sweat it.
+<<ChangeStartNode ArmGuy Complimentee1part3>>
+===
+title: Complimentee1part3
+tags: 
+colorID: 0
+position: 386,-312
+---
+<<MoveBox2 YarnManager>>
+    <<ChangeAvatartoPlayer YarnManager>>
+MC: So umm... was that good?
+    <<ChangeAvatartoCharacter YarnManager>>
+NPC: Yeah! Thank you for everything :)
+<<stop>>
+===

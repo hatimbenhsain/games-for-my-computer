@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Unity.VisualScripting;
+
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 using Yarn.Unity.Example;
@@ -165,9 +167,11 @@ namespace StarterAssets
         public float[] walkSpeedTresholds={0f,0.5f,1f};
 
         private SpriteRenderer sprite;
+        private DialogueRunner dialogueRunner;
         public float interactionRadius = 3f;
 
         public bool inDialogue=false;
+        public NPC npcTalkingTo;
         private bool IsCurrentDeviceMouse
         {
             get
@@ -210,6 +214,7 @@ namespace StarterAssets
             _fallTimeoutDelta = FallTimeout;
 
             sprite=GetComponentInChildren<SpriteRenderer>();
+            dialogueRunner=FindObjectOfType<DialogueRunner>();
         }
 
         private void Update()
@@ -226,7 +231,7 @@ namespace StarterAssets
                 ChangeState();
             }
 
-            if (Input.GetKeyUp(KeyCode.E)){
+            if (Input.GetKeyUp(KeyCode.E) && !dialogueRunner.IsDialogueRunning){
                 CheckForNearbyNPC();
             }
 
@@ -322,7 +327,6 @@ namespace StarterAssets
 
         void HandleFishState()
         {
-            Debug.Log("Fish");
             if (Grounded)
             {
 
@@ -746,6 +750,7 @@ namespace StarterAssets
             {
                 // Kick off the dialogue at this node.
                 FindObjectOfType<DialogueRunner>().StartDialogue(target.talkToNode);
+                npcTalkingTo=target;
                 // reenabling the input on the dialogue
                 //dialogueInput.enabled = true;
             }
