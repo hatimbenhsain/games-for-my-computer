@@ -14,7 +14,7 @@ public class WordTracker : MonoBehaviour
     private ComplimentManager complimentManager;
 
     private void Start(){
-        complimentManager=GetComponent<ComplimentManager>();
+        complimentManager=FindObjectOfType<ComplimentManager>();
     }
 
     private void OnTriggerEnter(Collider other)
