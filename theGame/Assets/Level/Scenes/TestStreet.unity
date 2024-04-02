@@ -5470,7 +5470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &331575302
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5561,6 +5561,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23a3aaaf4d6b054c890d7c2a51edff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
+  Rain: {fileID: 0}
+  filterColor: {r: 1, g: 1, b: 1, a: 1}
+  lerpDuration: 2
 --- !u!1 &334528643 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d84e2396884e46a1838d9a9b2026842, type: 3}
@@ -12512,7 +12516,6 @@ MonoBehaviour:
   maxRippleStrength: 0.3
   mainCamera: {fileID: 405512488}
   targetTransform: {fileID: 1687870217}
-  followPlayer: {fileID: 0}
   transitionSpeed: 1
 --- !u!64 &1118684347
 MeshCollider:
@@ -12819,11 +12822,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98bc468945ef6024db2f31a4fc2aa0b6, type: 3}
---- !u!4 &1268468427 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1330960492303200940, guid: 98bc468945ef6024db2f31a4fc2aa0b6, type: 3}
-  m_PrefabInstance: {fileID: 1268468426}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1273656310
 GameObject:
   m_ObjectHideFlags: 0
@@ -18751,7 +18749,6 @@ MonoBehaviour:
   maxRippleStrength: 0.3
   mainCamera: {fileID: 405512488}
   targetTransform: {fileID: 391515030}
-  followPlayer: {fileID: 0}
   transitionSpeed: 1
 --- !u!64 &1557824404
 MeshCollider:
@@ -20215,7 +20212,6 @@ MonoBehaviour:
   maxRippleStrength: 0.75
   mainCamera: {fileID: 405512488}
   targetTransform: {fileID: 3519537389353362331}
-  followPlayer: {fileID: 1268468427}
   transitionSpeed: 1
 --- !u!33 &1148887583021422570
 MeshFilter:
