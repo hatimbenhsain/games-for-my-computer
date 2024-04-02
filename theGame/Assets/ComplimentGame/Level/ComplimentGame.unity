@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0.58
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 12d07a95362e44bfa9c7b8c869ae3383, type: 2}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311932, g: 0.38073996, b: 0.3587271, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -171,9 +171,105 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 670652274769658089, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 761542507100654943, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_Drag
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 761542507100654943, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4508455835691992448, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
       propertyPath: m_Name
       value: ComplimentMaze
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328730515142519811, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_Drag
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328730515142519811, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328730515142519811, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328730515142519811, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_Constraints
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328730515142519811, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_ImplicitCom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328730515142519811, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_ImplicitTensor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328730515142519811, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_InertiaTensor.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328730515142519811, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_InertiaTensor.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328730515142519811, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_InertiaTensor.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270095783894873704, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270095783894873704, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270095783894873704, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8346612956829985127, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.03466
+      objectReference: {fileID: 0}
+    - target: {fileID: 8346612956829985127, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 8346612956829985127, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.1573544
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720133778769187705, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: sensitivity
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720133778769187705, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: torqueAmount
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720133778769187705, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: verticalSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720133778769187705, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: horizontalSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999626519226877271, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126154615339811814, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

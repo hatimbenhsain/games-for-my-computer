@@ -25,6 +25,7 @@ SOFTWARE.
 */
 
 using UnityEngine;
+using Yarn.Unity;
 
 namespace Yarn.Unity.Example
 {
@@ -37,6 +38,12 @@ namespace Yarn.Unity.Example
         public string characterName = "";
 
         public string talkToNode = "";
+
+        [YarnCommand]
+        public void ChangeStartNode(string newNode){
+            talkToNode=newNode;
+        }
     }
+
 
 }
