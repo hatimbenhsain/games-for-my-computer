@@ -10,10 +10,10 @@ public class ComplimentManager : MonoBehaviour
     private string compliment;
     
     //UPDATE THESE LISTS to make sure every word is processed well
-    private string[] adjectives={"phenomenal","fabulous","lush"};
-    private string[] things={"smile","walk","spirit"};
-    private string[] qualities={"stench","beauty","curvature"};
-    private string[] comparedTo={"a tree","my mom","the Sun"};
+    private string[] adjectives={"phenomenal", "fabulous", "lively", "lush", "brilliant", "dazzling", "enchanting", "efficent", "exuberant", "fearless", "glimmering", "sparkling", "glowing", "inventive", "tantalizing", "kooky", "magnificent", "modest", "perfect", "powerful", "sleek", "splendid", "unique", "vibrant", "boundless", "colossal", "cosmopolitian", "far-flung", "fresh", "immaculate", "mysterious", "mystical", "prosperous", "superb", "enthusiastic", "lovely", "moldy", "grainy", "textured", "grim", "growing", "flickering", "twisting", "cloudy", "limp", "everlasting", "obscure", "niche", "kafkaesque", "avantgarde", "kind", "fragmented", "picturesque", "grandiose"};
+    private string[] things={"smile", "walk", "spirit", "shirt", "dress", "socks", "eyebrows", "toenails", "earlobes", "watch", "eyes", "dog", "heart", "wrinkles", "freckles", "mole", "nostrils", "veins", "hair follicles", "energy", "stench", "shoes", "pants", "headband", "jewelry", "love", "tongue", "kneecaps", "fingers", "thumbs", "chin", "brain", "outfit"};
+    private string[] qualities={"stench", "beauty", "wetness", "size", "curve", "appeal", "shape", "curvature", "intelligence", "resilience", "quality", "texture", "sound", "strength", "ambience", "Agon"};
+    private string[] comparedTo={"a tree", "a dog", "the sea", "the sky", "my Mom", "the police", "King Arthur", "Napoleon", "cherry oak", "a Kinder Surprise", "a cigarette", "the Earth", "my phone", "an old guy", "climate change", "a dragon", "a tiger", "Naruto", "Goku", "Lara Croft", "Super Mario", "Batman", "Western medicine", "the market", "Web2", "a gif", "the Sun", "Spring", "Winter", "rain", "a cockroach", "tentacles", "goats", "jet fuel", "the quadratic formula"};
 
     private List<string> words;
 
@@ -48,7 +48,7 @@ public class ComplimentManager : MonoBehaviour
     //Function for generating compliment text from words picked
     void GenerateCompliment(){
         //MAKE COMPLIMENT FROM TEMPLATES
-        compliment="Your stench is so beautiful it makes me want to cry.";
+        //compliment="Your stench is so beautiful it makes me want to cry.";
 
         List<string> qs=new List<string>(); //quality
         List<string> ts=new List<string>(); //things being complimented
@@ -160,5 +160,9 @@ public class ComplimentManager : MonoBehaviour
         if (random == 0) return a;
         if (random == 1) return b;
         return p[random - 2];
+    }
+
+    public void AddWord(string w){
+        words.Add(w);
     }
 }
