@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class WordTracker : MonoBehaviour
@@ -9,7 +10,14 @@ public class WordTracker : MonoBehaviour
     private int currentIndex = 0;
 
     public GameObject[] slots = new GameObject[3];
-    private void OnCollisionEnter(Collision other)
+
+    private ComplimentManager complimentManager;
+
+    private void Start(){
+        complimentManager=FindObjectOfType<ComplimentManager>();
+    }
+
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Word"))
         {
@@ -20,10 +28,13 @@ public class WordTracker : MonoBehaviour
 
                 MoveWordToSlot();
                 //CheckArrayFull();
+
+                //Adding Word to compliment array
+                complimentManager.AddWord(other.gameObject.GetComponent<WordScript>().word);
             }
         }
     }
-
+    
     private void MoveWordToSlot()
     {
         for (int i = 0; i < currentIndex; i++)
