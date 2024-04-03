@@ -96,3 +96,66 @@ MC: So umm... was that good?
 NPC: Yeah! Thank you for everything :)
 <<stop>>
 ===
+title: GreenHair1
+tags: 
+colorID: 0
+position: 9,-3
+---
+<<MoveBox2 YarnManager>>
+    <<ChangeAvatartoPlayer YarnManager>>
+MC: Hey... there.
+    <<ChangeAvatartoCharacter YarnManager>>
+Green Hair: What need you from me?
+    <<ChangeAvatartoPlayer YarnManager>>
+MC: What? Um, nothing! Why are you assuming I need something from you?
+    <<ChangeAvatartoCharacter YarnManager>>
+Green Hair: *Sigh* All people always to me come looking for help or service of sort.
+    <<ChangeAvatartoPlayer YarnManager>>
+MC: Well, I...
+-> Compliment them.
+    <<ChangeAvatartoPlayer YarnManager>>
+    MC: I just wanna compliment you! Would that be okay??
+    <<ChangeAvatartoCharacter YarnManager>>
+    Green Hair: Oh? Why not, suppose I.
+    <<ChangeStartNode GreenHair GreenHair2>>
+    <<ComplimentStart GameManager>>
+-> Something else.
+    <<ChangeAvatartoPlayer YarnManager>>
+    MC: Actually... Do you have 5 dollars?
+    <<ChangeAvatartoCharacter YarnManager>>
+    Green Hair: Of course... Here you go.
+    <<ChangeAvatartoPlayer YarnManager>>
+    MC: I have gained 5 dollars!
+<<stop>>
+===
+title: GreenHair2
+tags: 
+colorID: 0
+position: 235,-1
+---
+<<MoveBox2 YarnManager>>
+<<ChangeAvatartoPlayer YarnManager>>
+MC: {$compliment}
+<<ChangeAvatartoCharacter YarnManager>>
+Green Hair: ...!
+Green Hair: For ever no one has given me tender words such.
+<<AnimatorSetBool GreenHair complimented true>>
+Green Hair: Thank you my sweet. Keep you in my heart will I.
+<<ChangeAvatartoPlayer YarnManager>>
+MC: No worries...!
+<<ChangeStartNode GreenHair GreenHair3>>
+===
+title: GreenHair3
+tags: 
+colorID: 0
+position: 456,2
+---
+<<MoveBox2 YarnManager>>
+    <<ChangeAvatartoPlayer YarnManager>>
+MC: Anyone asked you for a service recently?
+    <<ChangeAvatartoCharacter YarnManager>>
+Green Hair: Yes... But I found newfound joy for the helping!
+Green Hair: And now, better boundaries... I have those!
+MC: That's really amazing.
+<<stop>>
+===
