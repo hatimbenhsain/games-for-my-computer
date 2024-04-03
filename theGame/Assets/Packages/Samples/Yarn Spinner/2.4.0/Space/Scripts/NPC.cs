@@ -39,9 +39,20 @@ namespace Yarn.Unity.Example
 
         public string talkToNode = "";
 
+        private Animator animator;
+
+        private void Start() {
+            animator=GetComponent<Animator>();
+        }
+
         [YarnCommand]
         public void ChangeStartNode(string newNode){
             talkToNode=newNode;
+        }
+
+        [YarnCommand]
+        public void AnimatorSetBool(string parameter, bool b){
+            animator.SetBool(parameter,b);
         }
     }
 
