@@ -123,6 +123,61 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &309624943 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2781499258997043620, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+  m_PrefabInstance: {fileID: 941912285567926647}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &309624948
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309624943}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
+--- !u!1 &1205258867 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6065351715451102079, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+  m_PrefabInstance: {fileID: 941912285567926647}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1217880906 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1132326724827777606, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+  m_PrefabInstance: {fileID: 941912285567926647}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1217880913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217880906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88599eb5a94cb40dc8eb42e80f75a376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mazePanel: {fileID: 1205258867}
 --- !u!1001 &941912285567926647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -181,11 +236,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 761542507100654943, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
       propertyPath: m_Mass
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 761542507100654943, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781499258997043620, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781499258997043620, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4508455835691992448, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
       propertyPath: m_Name
       value: ComplimentMaze
+      objectReference: {fileID: 0}
+    - target: {fileID: 6065351715451102079, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6328730515142519811, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
       propertyPath: m_Drag
@@ -193,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6328730515142519811, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
       propertyPath: m_Mass
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6328730515142519811, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
       propertyPath: m_AngularDrag
@@ -223,6 +294,10 @@ PrefabInstance:
       propertyPath: m_InertiaTensor.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6328730515142519811, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8270095783894873704, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -237,7 +312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8346612956829985127, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.03466
+      value: 13.27
       objectReference: {fileID: 0}
     - target: {fileID: 8346612956829985127, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -246,6 +321,10 @@ PrefabInstance:
     - target: {fileID: 8346612956829985127, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
       propertyPath: m_LocalPosition.z
       value: -5.1573544
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720133778769187705, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      propertyPath: speed
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8720133778769187705, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
       propertyPath: sensitivity
@@ -274,7 +353,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2781499258997043620, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 309624948}
+    - targetCorrespondingSourceObject: {fileID: 1132326724827777606, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1217880913}
   m_SourcePrefab: {fileID: 100100000, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
