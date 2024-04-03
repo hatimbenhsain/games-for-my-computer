@@ -5,10 +5,13 @@ position: -207,3
 <<declare $positiveanswer = false as bool>>
     <<MoveBox2 YarnManager>>
     <<ChangeAvatartoPlayer YarnManager>>
-MC: Greetings my dude.
+    <<ChangeSoundtoPlayer YarnManager>>
+MC: Greetings my dude. #line:bleep01
     <<MoveBox1 YarnManager>>
     <<ChangeAvatartoCharacter YarnManager>>
+    <<ChangeSoundtoCharacter YarnManager>>
 NPC: Whoa. Dude.
+<<ChangeSoundtoCharacter YarnManager>>
 NPC: I’ve never seen someone flop like that before. 
     <<MoveBox2 YarnManager>>
     <<ChangeAvatartoPlayer YarnManager>>
@@ -16,29 +19,38 @@ NPC: I’ve never seen someone flop like that before.
 -> It feels awesome!!!!!! You should try it!!!
     <<set $positiveanswer to true>>
 <<if $positiveanswer>>
+<<ChangeSoundtoPlayer YarnManager>>
 MC: It feels awesome!!!!!! You should try it!!!
     <<MoveBox1 YarnManager>>
     <<ChangeAvatartoCharacter YarnManager>>
+    <<ChangeSoundtoCharacter YarnManager>>
 NPC: I don’t think I’m up for it, I messed up my back eating watermelon.
+<<ChangeSoundtoCharacter YarnManager>>
 NPC: Or was it when I was trying to arm wrestle my feet?
+<<ChangeSoundtoCharacter YarnManager>>
 NPC: I can't remember.
     <<MoveBox2 YarnManager>>
     <<ChangeAvatartoPlayer YarnManager>>
+    <<ChangeSoundtoPlayer YarnManager>>
 MC: Bummer...See ya later!    
 <<else>>
+<<ChangeSoundtoPlayer YarnManager>>
 MC: You think that I’m flopping??? Like a fish??
     <<MoveBox1 YarnManager>>
     <<ChangeAvatartoCharacter YarnManager>>
+    <<ChangeSoundtoCharacter YarnManager>>
 NPC: Like the most beautiful fish to ever venture out of the ocean!
     <<MoveBox2 YarnManager>>
     <<ChangeAvatartoPlayer YarnManager>>
 -> Thank you 
     <<MoveBox1 YarnManager>>
     <<ChangeAvatartoCharacter YarnManager>>
+    <<ChangeSoundtoCharacter YarnManager>>
     NPC: No problem dude! Flop on!
 -> Okay...
     <<MoveBox1 YarnManager>>
     <<ChangeAvatartoCharacter YarnManager>>
+    <<ChangeSoundtoCharacter YarnManager>>
     NPC: Just trying to appreciate a good flop, my bad…
 <<endif>>
 ===
