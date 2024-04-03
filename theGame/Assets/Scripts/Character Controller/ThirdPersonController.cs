@@ -105,9 +105,12 @@ namespace StarterAssets
 
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
+        [HideInInspector] public bool flipped = false;
+        [HideInInspector] public bool isSkidding = false;
+        [HideInInspector] public float playerSpeed = 0.0f;
+        [HideInInspector] public float playerFallSpeed = 0.0f;
 
-        // VFX
-        public VisualEffect Squirt; 
+
 
         [Header("State Values")]
         public float LegMoveSpeed=15f;
@@ -453,8 +456,11 @@ namespace StarterAssets
 
             if((!_moveLock || (currentState==CharacterState.Fish && !inDialogue)) && _input.move.x<0){
                 sprite.flipX=true;
-            }else if((!_moveLock || (currentState==CharacterState.Fish && !inDialogue)) && _input.move.x>0){
+                flipped = true;
+            }
+            else if((!_moveLock || (currentState==CharacterState.Fish && !inDialogue)) && _input.move.x>0){
                 sprite.flipX=false;
+                flipped = false;
             }
 
             if(currentState==CharacterState.Fish){
@@ -726,6 +732,9 @@ namespace StarterAssets
             float velocity=new Vector3(_controller.velocity.x,0f,_controller.velocity.z).magnitude;
             int i=0;
             _animator.SetBool("skidding",false);
+            isSkidding = false;
+            playerSpeed = velocity;
+            playerFallSpeed = _verticalVelocity;
             if(walking){
                 //Debug.Log(velocity);
                 foreach(float s in walkSpeedTresholds){
@@ -736,6 +745,7 @@ namespace StarterAssets
                     }
                 }
             }else if(Grounded && Mathf.Abs(velocity)>0.25f){
+                isSkidding = true;
                 _animator.SetBool("skidding",true);
             }
             _animator.SetInteger("walkSpeed",i);
