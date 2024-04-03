@@ -9,6 +9,9 @@ public class BallSnapper : MonoBehaviour
     [SerializeField]
     private GameObject mazePanel;
 
+    public int maxDistance;
+        
+
     private bool isFixed;
     
     
@@ -17,7 +20,7 @@ public class BallSnapper : MonoBehaviour
     void Update()
     {
         var cast =Physics.
-            Raycast(transform.position, Vector3.down, 5,1 <<  LayerMask.NameToLayer("MazePanel"));
+            Raycast(transform.position, Vector3.down, maxDistance,1 <<  LayerMask.NameToLayer("MazePanel"));
 
         var rb = GetComponent<Rigidbody>();
         if (!cast)
@@ -27,7 +30,7 @@ public class BallSnapper : MonoBehaviour
             rb.velocity = Vector3.zero;
             
             var dist = transform.position - mazePanel.transform.position;
-            transform.position = new Vector3(transform.position.x, transform.position.y + dist.normalized.magnitude + 2,
+            transform.position = new Vector3(transform.position.x, transform.position.y + dist.normalized.magnitude + 1,
                 transform.position.z);
 
         }
