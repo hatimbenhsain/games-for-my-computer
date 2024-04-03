@@ -1,11 +1,12 @@
 title: NPCTesterStart
 tags: 
 colorID: 0
-position: -207,3
+position: -205,-2
 ---
 <<declare $positiveanswer = false as bool>>
     <<MoveBox2 YarnManager>>
     <<ChangeAvatartoPlayer YarnManager>>
+    <<ChangeSoundtoPlayer YarnManager>>
 MC: Greetings my dude.
     <<MoveBox1 YarnManager>>
     <<ChangeAvatartoCharacter YarnManager>>
@@ -50,8 +51,12 @@ position: -81,-315
 ---
 <<MoveBox2 YarnManager>>
     <<ChangeAvatartoPlayer YarnManager>>
+    <<ChangeSoundtoPlayer YarnManager>>
+
 MC: Hi! How's it, uh.. hanging?
     <<ChangeAvatartoCharacter YarnManager>>
+    <<ChangeSoundtoCharacter YarnManager>>
+
 NPC: *Sigh*
 NPC: I've been better.
 NPC: Can I help you with anything?
@@ -73,7 +78,7 @@ MC: N-no! But maybe... I can help?
 title: Complimentee1part2
 tags: 
 colorID: 0
-position: 146,-309
+position: 131,-316
 ---
 <<MoveBox2 YarnManager>>
 <<ChangeAvatartoPlayer YarnManager>>
@@ -87,7 +92,7 @@ MC: Hey, uuuh... Don't sweat it.
 title: Complimentee1part3
 tags: 
 colorID: 0
-position: 386,-312
+position: 340,-317
 ---
 <<MoveBox2 YarnManager>>
     <<ChangeAvatartoPlayer YarnManager>>
@@ -131,7 +136,7 @@ MC: Well, I...
 title: GreenHair2
 tags: 
 colorID: 0
-position: 235,-1
+position: 220,-2
 ---
 <<MoveBox2 YarnManager>>
 <<ChangeAvatartoPlayer YarnManager>>
@@ -148,7 +153,7 @@ MC: No worries...!
 title: GreenHair3
 tags: 
 colorID: 0
-position: 456,2
+position: 433,-1
 ---
 <<MoveBox2 YarnManager>>
     <<ChangeAvatartoPlayer YarnManager>>
