@@ -7,7 +7,16 @@ public class TiltScript : MonoBehaviour
 {
     public float sensitivity = 0.5f; // Adjust this value to change rotation sensitivity
     public float lockedYAxisRotation = 0f; // Set this to the desired Y-axis rotation value
+    
+    // Public variables to define max rotation angles for X and Z directions
+    public float maxRotationX = 45f; // Maximum allowed rotation in the X direction
+    public float maxRotationZ = 45f; // Maximum allowed rotation in the Z direction
 
+    // Keep track of the current rotation in X and Z to apply constraints
+    private float currentRotationX = 0f;
+    private float currentRotationZ = 0f;
+
+    public float rotationSpeed = 1f; // Speed at which the rotation lerps to the target value
 
     private void Start()
     {
@@ -21,12 +30,15 @@ public class TiltScript : MonoBehaviour
         // Get mouse input and apply sensitivity
         float mouseXValue = Input.GetAxis("Mouse X") * sensitivity;
         float mouseYValue = Input.GetAxis("Mouse Y") * sensitivity;
-        
-        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, lockedYAxisRotation, transform.rotation.eulerAngles.z);
 
+        // Update current rotation, applying sensitivity and clamping to specified limits
+        currentRotationX = Mathf.Clamp(currentRotationX - mouseYValue, -maxRotationX, maxRotationX);
+        currentRotationZ = Mathf.Clamp(currentRotationZ + mouseXValue, -maxRotationZ, maxRotationZ);
 
-        // Ensure sensitivity affects rotation in all directions by directly applying these values
-        // Rotate the object based on mouse movement, considering both axes
-        transform.Rotate(-mouseYValue, 0, mouseXValue, Space.World);
+        // Calculate the target rotation based on currentRotationX, Y, and Z
+        Quaternion targetRotation = Quaternion.Euler(currentRotationX, lockedYAxisRotation, currentRotationZ);
+
+        // Smoothly interpolate towards the target rotation
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 }
