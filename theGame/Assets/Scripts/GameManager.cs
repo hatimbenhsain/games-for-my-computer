@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public Transform complimentTransform;
     private GameObject complimentInstance;
 
-    private bool inComplimentGame;
+    public bool inComplimentGame;
 
     private DialogueRunner dialogueRunner;
 

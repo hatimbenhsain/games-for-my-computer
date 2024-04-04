@@ -181,6 +181,8 @@ namespace StarterAssets
 
         public bool inDialogue=false;
         public NPC npcTalkingTo;
+
+        private GameManager gameManager;
         private bool IsCurrentDeviceMouse
         {
             get
@@ -224,6 +226,7 @@ namespace StarterAssets
 
             sprite=GetComponentInChildren<SpriteRenderer>();
             dialogueRunner=FindObjectOfType<DialogueRunner>();
+            gameManager=FindObjectOfType<GameManager>();
         }
 
         private void Update()
@@ -240,12 +243,18 @@ namespace StarterAssets
                 ChangeState();
             }
 
-            if (Input.GetKeyUp(KeyCode.E) && !dialogueRunner.IsDialogueRunning){
+            if (Input.GetKeyUp(KeyCode.E) && !dialogueRunner.IsDialogueRunning && !gameManager.inComplimentGame){
                 CheckForNearbyNPC();
             }
 
+            _moveLock=false;
+
             // Call state-specific logic
             HandleStateBehaviour();
+
+            if(dialogueRunner.IsDialogueRunning || gameManager.inComplimentGame){
+                _moveLock=true;
+            }
 
             if(_hasAnimator){
                 Animate();
@@ -338,14 +347,14 @@ namespace StarterAssets
         {
             if (Grounded)
             {
-
+                MoveSpeed=0;
             }
             else
             {
                 MoveSpeed = 4;
             }
             _crouch = true;
-            _moveLock = true;
+            //_moveLock = true;
             JumpHeight = FishFlopHeight;
             _animator.SetInteger("metamorphosis",1);
         }
@@ -413,13 +422,13 @@ namespace StarterAssets
             // if not can walk around and do super jump (placeholder)
             if (_input.fish && Grounded)
             {
-                _moveLock = true;
+                //_moveLock = true;
                 JumpHeight = 0.2f;
                 _crouch = true;
             }
             else
             {
-                _moveLock = false;
+                //_moveLock = false;
                 JumpHeight = WingsJumpHeight; // Placeholder
                 if (Grounded)
                 {
@@ -440,7 +449,7 @@ namespace StarterAssets
         private void Move()
         {
             // Disable movement when movelock is on and grounded
-            if (_moveLock && Grounded)
+            if (_moveLock)
             {
                 MoveSpeed = 0; // Disable movement
             }
@@ -454,16 +463,20 @@ namespace StarterAssets
             // if there is no input, set the target speed to 0
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
-            if((!_moveLock || (currentState==CharacterState.Fish && !inDialogue)) && _input.move.x<0){
+            if((!_moveLock || (currentState==CharacterState.Fish && !dialogueRunner.IsDialogueRunning)) && _input.move.x<0){
                 sprite.flipX=true;
                 flipped = true;
             }
-            else if((!_moveLock || (currentState==CharacterState.Fish && !inDialogue)) && _input.move.x>0){
+            else if((!_moveLock || (currentState==CharacterState.Fish && !dialogueRunner.IsDialogueRunning)) && _input.move.x>0){
                 sprite.flipX=false;
                 flipped = false;
             }
 
             if(currentState==CharacterState.Fish){
+
+                if(Grounded){
+                    MoveSpeed=0;
+                }
 
                 // a reference to the players current horizontal velocity
                 float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -488,8 +501,6 @@ namespace StarterAssets
                     _speed = targetSpeed;
                 }
 
-                _animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
-                if (_animationBlend < 0.01f) _animationBlend = 0f;
 
                 // normalise input direction
                 Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
@@ -505,6 +516,7 @@ namespace StarterAssets
 
                     // rotate to face input direction relative to camera position
                     transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                    Debug.Log("rotate player");
                 }
 
 
@@ -535,6 +547,10 @@ namespace StarterAssets
 
                 Vector3 targetVelocity=targetDirection*targetSpeed;
 
+                if(_moveLock){
+                    targetVelocity=Vector3.zero;
+                }
+
                 Vector3 currentVelocity=new Vector3(_controller.velocity.x,0f,_controller.velocity.z);
 
                 Vector3 playerVelocity=currentVelocity;
@@ -548,7 +564,7 @@ namespace StarterAssets
                     playerVelocity=playerVelocity+targetVelocity*Time.deltaTime*Acceleration;
                 }else if(currentVelocity.magnitude>0f){
                     playerVelocity=currentVelocity-currentVelocity*Time.deltaTime*Deceleration;
-                    if(playerVelocity.magnitude>0f && playerVelocity.magnitude<1.5f){
+                    if(playerVelocity.magnitude>0f && (playerVelocity.magnitude<1.5f || _moveLock)){
                         playerVelocity=playerVelocity-currentVelocity*1.5f*Time.deltaTime*Deceleration;
                     }
                 }
@@ -608,7 +624,7 @@ namespace StarterAssets
                 }
 
                 // Jump
-                if (_input.jump && (prevJumped==false || timeSinceJump<JumpMaxTime) && !_jumpLock && _jumpTimeoutDelta <= 0.0f )
+                if (!_moveLock && _input.jump && (prevJumped==false || timeSinceJump<JumpMaxTime) && !_jumpLock && _jumpTimeoutDelta <= 0.0f )
                 {
                     Debug.Log("jumped");
                 _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
@@ -652,7 +668,7 @@ namespace StarterAssets
 
             //Handling rocketting/flying 
             isFlying=false;
-            if(currentState==CharacterState.Rocket && _input.fly){
+            if(!_moveLock && currentState==CharacterState.Rocket && _input.fly){
                 if(Grounded && _verticalVelocity<0){
                     _verticalVelocity=0f;
                 }
@@ -740,7 +756,7 @@ namespace StarterAssets
             }
             
             _animator.SetBool("grounded",Grounded);
-            bool walking=!_moveLock && _input.move!=Vector2.zero && Grounded;
+            bool walking=!_moveLock && _input.move!=Vector2.zero && Grounded && !(currentState==CharacterState.Fish);
             _animator.SetBool("walking",walking);
             float velocity=new Vector3(_controller.velocity.x,0f,_controller.velocity.z).magnitude;
             int i=0;
