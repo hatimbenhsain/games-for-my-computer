@@ -548,6 +548,10 @@ namespace StarterAssets
                     playerVelocity=playerVelocity+targetVelocity*Time.deltaTime*Acceleration;
                 }else if(currentVelocity.magnitude>0f){
                     playerVelocity=currentVelocity-currentVelocity*Time.deltaTime*Deceleration;
+                    if(playerVelocity.magnitude>0f && playerVelocity.magnitude<1.5f){
+                        playerVelocity=playerVelocity-currentVelocity*1.5f*Time.deltaTime*Deceleration;
+                        Debug.Log("extra friction");
+                    }
                 }
 
                 _controller.Move(playerVelocity * Time.deltaTime +
@@ -744,13 +748,25 @@ namespace StarterAssets
                         break;
                     }
                 }
-            }else if(Grounded && Mathf.Abs(velocity)>0.25f){
+            }else if(Grounded && Mathf.Abs(velocity)>0.3f){
                 isSkidding = true;
                 _animator.SetBool("skidding",true);
             }
             _animator.SetInteger("walkSpeed",i);
+            if(isJumping && !_animator.GetBool("jumping")){
+                _animator.SetTrigger("jump");
+            }
             _animator.SetBool("jumping",isJumping);
+            if(isFlying && !_animator.GetBool("flying")){
+                _animator.SetTrigger("fly");
+            }
             _animator.SetBool("flying",isFlying);
+
+            if(_verticalVelocity<0f){
+                _animator.SetBool("falling",true);
+            }else{
+                _animator.SetBool("falling",false);
+            }
         }
 
         public void CheckForNearbyNPC()
