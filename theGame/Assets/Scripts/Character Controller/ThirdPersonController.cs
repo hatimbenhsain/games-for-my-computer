@@ -550,7 +550,6 @@ namespace StarterAssets
                     playerVelocity=currentVelocity-currentVelocity*Time.deltaTime*Deceleration;
                     if(playerVelocity.magnitude>0f && playerVelocity.magnitude<1.5f){
                         playerVelocity=playerVelocity-currentVelocity*1.5f*Time.deltaTime*Deceleration;
-                        Debug.Log("extra friction");
                     }
                 }
 
@@ -730,6 +729,16 @@ namespace StarterAssets
         }
 
         void Animate(){
+            if(_animator.GetBool("landing") && (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime>=1 || !Grounded)){
+                _animator.SetBool("landing",false);
+                Debug.Log("landing false");
+            }
+            Debug.Log(_animator.GetCurrentAnimatorStateInfo(0).length);
+            Debug.Log(_animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+            if(Grounded && !_animator.GetBool("grounded")){
+                _animator.SetBool("landing",true);
+            }
+            
             _animator.SetBool("grounded",Grounded);
             bool walking=!_moveLock && _input.move!=Vector2.zero && Grounded;
             _animator.SetBool("walking",walking);
