@@ -21,7 +21,7 @@ public class DialogueAssets : MonoBehaviour
     public struct DialogueCharacter{
         public string name;
         public Sprite portraitSprite;
-        public AudioClip voiceClip;
+        public AudioClip[] voiceClip;
     }
 
     public DialogueCharacter[] dialogueCharacters;
@@ -50,7 +50,8 @@ public class DialogueAssets : MonoBehaviour
                 if(foundDC){
                     portraitRenderer1.sprite=dc.portraitSprite;
                     portraitRenderer2.sprite=dc.portraitSprite;
-                    voiceAudioSource.clip=dc.voiceClip;
+                    voiceAudioSource.clip=dc.voiceClip[Random.Range(0,dc.voiceClip.Length)];
+                    voiceAudioSource.pitch=Random.Range(0.9f,1.1f);
                     voiceAudioSource.Play();
                 }
             }
