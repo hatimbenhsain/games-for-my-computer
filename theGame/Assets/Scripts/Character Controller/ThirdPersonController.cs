@@ -749,8 +749,6 @@ namespace StarterAssets
                 _animator.SetBool("landing",false);
                 Debug.Log("landing false");
             }
-            Debug.Log(_animator.GetCurrentAnimatorStateInfo(0).length);
-            Debug.Log(_animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
             if(Grounded && !_animator.GetBool("grounded")){
                 _animator.SetBool("landing",true);
             }
