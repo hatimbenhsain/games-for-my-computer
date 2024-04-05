@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7301337830462454608}
+  - component: {fileID: 5987108726622656775}
   m_Layer: 0
   m_Name: DialogueSystem
   m_TagString: Untagged
@@ -34,6 +35,25 @@ Transform:
   - {fileID: 4669249811242041836}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5987108726622656775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650460149732033417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274ec6fcd2fc16e42a990f211d006b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueCharacters:
+  - name: MC
+    portraitSprite: {fileID: 21300000, guid: 721048e4e20654bee8f63e0f8a3b7b3a, type: 3}
+    voiceClip: {fileID: 8300000, guid: d98a106149a464b1c82a56f06d3eec12, type: 3}
+  - name: GreenHair
+    portraitSprite: {fileID: 21300000, guid: 7ba9167b17da442c6ac014eb984fc4bb, type: 3}
+    voiceClip: {fileID: 8300000, guid: bd3bf0d54bc1d40ada2ca48f3f6b031e, type: 3}
 --- !u!1 &1505204967566350237
 GameObject:
   m_ObjectHideFlags: 0
