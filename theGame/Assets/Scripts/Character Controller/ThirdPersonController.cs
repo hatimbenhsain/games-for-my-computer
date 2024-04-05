@@ -812,5 +812,12 @@ namespace StarterAssets
                 //dialogueInput.enabled = true;
             }
         }
+
+        void OnControllerColliderHit(ControllerColliderHit hit){
+            Rigidbody rb=hit.collider.attachedRigidbody;
+            if(rb!=null && !rb.isKinematic){
+                rb.velocity=_controller.velocity;
+            }
+        }
     }
 }
