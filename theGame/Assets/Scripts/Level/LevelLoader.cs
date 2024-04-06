@@ -11,6 +11,10 @@ public class LevelLoader : MonoBehaviour
 
     public Animator transition;
 
+    public bool setSpawnIndex = false;
+    public int spawnIndex = 0;
+    public StarterAssets.ThirdPersonController.CharacterState characterState;
+
     private void Start()
     {
         //transition.SetTrigger("Start");
@@ -18,6 +22,12 @@ public class LevelLoader : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (setSpawnIndex)
+        {
+            // set the location index
+            SpawnDataHolder.spawnLocationIndex = spawnIndex;
+            SpawnDataHolder.characterState = characterState;
+        }
         if (other.CompareTag("Player"))
         {
             Debug.Log("aaaa");
