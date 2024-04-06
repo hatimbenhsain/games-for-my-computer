@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class WordTracker : MonoBehaviour
 {
-    public string[] wordArray = new string[3];
+    public string[] wordArray = new string[26];
     private int currentIndex = 0;
 
-    public GameObject[] slots = new GameObject[3];
+    public GameObject[] slots = new GameObject[26];
 
     private ComplimentManager complimentManager;
 
@@ -43,6 +43,8 @@ public class WordTracker : MonoBehaviour
             if (wordObject != null && i < slots.Length)
             {
                 wordObject.transform.position = slots[i].transform.position;
+                wordObject.transform.rotation = Quaternion.identity; // Reset rotation to (0, 0, 0)
+
 
                 Rigidbody wordRigidbody = wordObject.GetComponent<Rigidbody>();
                 if (wordRigidbody != null)
