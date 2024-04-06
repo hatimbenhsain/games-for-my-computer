@@ -10,6 +10,9 @@ public class LevelSkip : MonoBehaviour
     public float transitionTime;
 
     public Animator transition;
+    public bool setSpawnIndex = false;
+    public int spawnIndex = 0;
+    public StarterAssets.ThirdPersonController.CharacterState characterState;
 
     private void Start()
     {
@@ -18,6 +21,12 @@ public class LevelSkip : MonoBehaviour
 
     void Update()
     {
+        if (setSpawnIndex)
+        {
+            // set the location index
+            SpawnDataHolder.spawnLocationIndex = spawnIndex;
+            SpawnDataHolder.characterState = characterState;
+        }
         if (Input.GetKeyDown(KeyCode.O))
         {
             Debug.Log("O pressed");
