@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour
     public float outDialogueTime = 4.0f;
     public CinemachineVirtualCamera playerCamera;
     public Transform playerCameraRoot; // The target position and rotation for the player
+    public Transform targetTransform; // The target position and rotation for the camera
+    public Vector3 targetShoulderOffset = Vector3.zero; // target shoulder offset for head zoom in
+    public float targetCameraDistance = 0f; // target camera dist for head zoom in
+    public bool isTransitioning = false;
+    public float transitionSpeed = 5.0f;
     private Vector3 previousPosition;
     private Quaternion previousRotation;
     private Vector3 initialMousePosition;
@@ -37,12 +42,23 @@ public class GameManager : MonoBehaviour
         playerScript=FindObjectOfType<ThirdPersonController>();
         dialogueRunner=FindObjectOfType<DialogueRunner>();
         animator = GetComponentInChildren<Animator>();
+        //isTransitioning = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isTransitioning)
+        {
+            playerCamera.Follow = null;
+            playerCamera.LookAt = null;
+            // Interpolate camera's position
+            playerCamera.transform.position = Vector3.Lerp(playerCamera.transform.position, targetTransform.position, transitionSpeed * Time.deltaTime);
 
+
+            // Interpolate camera's rotation
+            playerCamera.transform.rotation = Quaternion.Lerp(playerCamera.transform.rotation, targetTransform.rotation, transitionSpeed * Time.deltaTime);
+        }
     }
 
     [YarnCommand]
@@ -55,10 +71,9 @@ public class GameManager : MonoBehaviour
             inComplimentGame = true;
             dialogueRunner.Stop();
             animator.SetTrigger("ComplimentIn");
-            //playerCamera.Follow = null;
+
             //playerCamera.LookAt = null;
-            previousRotation = playerCamera.transform.rotation;
-            previousPosition = playerCamera.transform.position;
+            isTransitioning = true;
             initialMousePosition = Input.mousePosition;
             StartCoroutine(ComplimentStartCoroutine());
         }
@@ -85,6 +100,9 @@ public class GameManager : MonoBehaviour
         if (inComplimentGame)
         {
             animator.SetTrigger("ComplimentOut");
+            playerCamera.Follow = playerCameraRoot;
+            playerCamera.LookAt = playerCameraRoot;
+            isTransitioning = false;
             StartCoroutine(ComplimentEndCoroutine());
             StartCoroutine(ComplimentEndDialogueCoroutine());
 
