@@ -236,7 +236,7 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
-            Crouch();
+            
             //Change State when M(orph) is pressed
             if (Input.GetKeyDown(KeyCode.M))
             {
@@ -251,6 +251,8 @@ namespace StarterAssets
 
             // Call state-specific logic
             HandleStateBehaviour();
+
+            Crouch();
 
             if(dialogueRunner.IsDialogueRunning || gameManager.inComplimentGame){
                 _moveLock=true;
@@ -472,7 +474,7 @@ namespace StarterAssets
                 flipped = false;
             }
 
-            if(currentState==CharacterState.Fish){
+            if(currentState==CharacterState.Fish || _crouch){
 
                 if(Grounded){
                     MoveSpeed=0;
@@ -586,9 +588,10 @@ namespace StarterAssets
         }
 
         private void Crouch()
-        {
+        {   
             if (_crouch)
             {
+                if(currentState!=CharacterState.Fish) HandleFishState();
                 transform.localScale = new Vector3(1.0f, 0.5f, 1.0f);
             }
             else
@@ -814,8 +817,13 @@ namespace StarterAssets
         void OnControllerColliderHit(ControllerColliderHit hit){
             Rigidbody rb=hit.collider.attachedRigidbody;
             if(rb!=null && !rb.isKinematic){
-                rb.velocity=_controller.velocity;
+                //rb.velocity=_controller.velocity;
+                rb.AddForce(hit.moveDirection * _controller.velocity.magnitude, ForceMode.Impulse);
             }
+        }
+
+        public bool IsCrouching(){
+            return _crouch;
         }
     }
 }
