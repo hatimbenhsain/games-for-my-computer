@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public CinemachineVirtualCamera playerCamera;
     public Transform playerCameraRoot; // The target position and rotation for the player
     public Transform targetTransform; // The target position and rotation for the camera
+    public Transform transformCamera; // camera location for NPC
     public Vector3 targetShoulderOffset = Vector3.zero; // target shoulder offset for head zoom in
     public float targetCameraDistance = 0f; // target camera dist for head zoom in
     public bool isTransitioning = false;
