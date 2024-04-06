@@ -227,6 +227,7 @@ namespace StarterAssets
             sprite=GetComponentInChildren<SpriteRenderer>();
             dialogueRunner=FindObjectOfType<DialogueRunner>();
             gameManager=FindObjectOfType<GameManager>();
+            
         }
 
         private void Update()

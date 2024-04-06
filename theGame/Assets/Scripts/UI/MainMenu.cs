@@ -10,6 +10,9 @@ public class MainMenu : MonoBehaviour
     public float transitionTime;
 
     public Animator transition;
+    public bool setSpawnIndex = false;
+    public int spawnIndex = 0;
+    public StarterAssets.ThirdPersonController.CharacterState loaderCharacterState;
 
     // Start is called before the first frame update
     public void PlayGame()
@@ -25,6 +28,12 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator LoadLevel(string levelIndex)
     {
+        if (setSpawnIndex)
+        {
+            // set the location index
+            SpawnDataHolder.spawnLocationIndex = spawnIndex;
+            SpawnDataHolder.characterState = loaderCharacterState;
+        }
         transition.SetTrigger("Start");
 
         yield return new WaitForSeconds(transitionTime);
