@@ -749,8 +749,6 @@ namespace StarterAssets
                 _animator.SetBool("landing",false);
                 Debug.Log("landing false");
             }
-            Debug.Log(_animator.GetCurrentAnimatorStateInfo(0).length);
-            Debug.Log(_animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
             if(Grounded && !_animator.GetBool("grounded")){
                 _animator.SetBool("landing",true);
             }
@@ -810,6 +808,13 @@ namespace StarterAssets
                 npcTalkingTo=target;
                 // reenabling the input on the dialogue
                 //dialogueInput.enabled = true;
+            }
+        }
+
+        void OnControllerColliderHit(ControllerColliderHit hit){
+            Rigidbody rb=hit.collider.attachedRigidbody;
+            if(rb!=null && !rb.isKinematic){
+                rb.velocity=_controller.velocity;
             }
         }
     }
