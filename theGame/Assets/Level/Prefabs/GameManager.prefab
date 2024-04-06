@@ -48,11 +48,19 @@ MonoBehaviour:
   complimentPrefab: {fileID: 4508455835691992448, guid: 157769e75b48b0f41a91099dfbef817b, type: 3}
   complimentTransform: {fileID: 0}
   inComplimentGame: 0
-  inTime: 1.5
+  inTime: 2.5
   outTime: 1.5
+  outCameraTime: 1.4
   outDialogueTime: 3
   playerCamera: {fileID: 0}
   playerCameraRoot: {fileID: 0}
+  targetTransform: {fileID: 0}
+  targetShoulderOffset: {x: 0.37, y: 0.58, z: -2.5}
+  targetCameraDistance: -2.29
+  isTransitioning: 0
+  isEndTransitioning: 0
+  transitionSpeed: 2.5
+  outTransitionSpeed: 1
 --- !u!1 &2445306769840564982
 GameObject:
   m_ObjectHideFlags: 0
