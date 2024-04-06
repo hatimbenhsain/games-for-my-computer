@@ -60,3 +60,4 @@ public class TiltScript : MonoBehaviour
         // Smoothly interpolate towards the target rotation
         transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
+}
