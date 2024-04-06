@@ -63,7 +63,7 @@ public class PlayerVFX: MonoBehaviour
         {
             inAir = false;
             transform.position = followPlayer.position; // set transform to the player transform
-            if (thirdPersonController.currentState == ThirdPersonController.CharacterState.Fish)
+            if (thirdPersonController.currentState == ThirdPersonController.CharacterState.Fish || thirdPersonController.IsCrouching())
             {
                 SquirtFront.enabled = true;
                 //Debug.Log("Squirt");
