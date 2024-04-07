@@ -947,7 +947,6 @@ Transform:
   - {fileID: 3742639371126978038}
   - {fileID: 2236957181685602086}
   - {fileID: 5578581347050175617}
-  - {fileID: 3111884288055344149}
   - {fileID: 3946248203380943308}
   - {fileID: 4057162837370710998}
   - {fileID: 8553242854136219412}
@@ -2240,37 +2239,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4327279790933175866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3460410546044567002
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3111884288055344149}
-  m_Layer: 0
-  m_Name: Slot26
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3111884288055344149
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3460410546044567002}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6283334, y: 0, z: 0.36666667}
-  m_LocalScale: {x: 0.033333335, y: 1, z: 0.06666667}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4327279790933175866}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3592489946245280880
 GameObject:
   m_ObjectHideFlags: 0
@@ -2358,7 +2326,7 @@ Transform:
   m_GameObject: {fileID: 3707494874903831715}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6283334, y: 0, z: 0.16866666}
+  m_LocalPosition: {x: -0.6283334, y: 0, z: 0.3666667}
   m_LocalScale: {x: 0.033333335, y: 1, z: 0.06666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2831,7 +2799,7 @@ MonoBehaviour:
   - {fileID: 3415758827476780770}
   - {fileID: 8894520968683835392}
   - {fileID: 3707494874903831715}
-  - {fileID: 3460410546044567002}
+  - {fileID: 0}
 --- !u!114 &7336762871048359562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6219,6 +6187,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5663166431399063880, guid: bd3e0631eaf7a484299fc47225c6d100, type: 3}
+      propertyPath: m_text
+      value: 'grim
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663166431399063880, guid: bd3e0631eaf7a484299fc47225c6d100, type: 3}
       propertyPath: m_fontSize
       value: 16
       objectReference: {fileID: 0}
@@ -6995,6 +6969,14 @@ PrefabInstance:
     - target: {fileID: 5663166431399063880, guid: bd3e0631eaf7a484299fc47225c6d100, type: 3}
       propertyPath: m_text
       value: a dragon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663166431399063880, guid: bd3e0631eaf7a484299fc47225c6d100, type: 3}
+      propertyPath: m_fontSize
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663166431399063880, guid: bd3e0631eaf7a484299fc47225c6d100, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
