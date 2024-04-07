@@ -27645,6 +27645,10 @@ PrefabInstance:
       propertyPath: loaderCharacterState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 976073131409949330, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+      propertyPath: playTransformAnimation
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2308520012441589682, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -27729,11 +27733,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelSkipButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5113436062459828644, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+      propertyPath: m_text
+      value: 'Press O to
+
+        Skip'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5113436062459828644, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+      propertyPath: m_fontSize
+      value: 43.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4319314572734119578, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1301129187}
   m_SourcePrefab: {fileID: 100100000, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+--- !u!95 &1301129185 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1933547211315882849, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+  m_PrefabInstance: {fileID: 1301129184}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1301129186 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4319314572734119578, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+  m_PrefabInstance: {fileID: 1301129184}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1301129187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301129186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ef4098df6495c41be02d0a9a378aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destinationScene: TestStreet
+  transitionTime: 1
+  transition: {fileID: 1301129185}
+  setSpawnIndex: 1
+  spawnIndex: 3
+  characterState: 0
+  targetCharacterState: 1
+  playTransformAnimation: 1
 --- !u!1 &1312075545
 GameObject:
   m_ObjectHideFlags: 0

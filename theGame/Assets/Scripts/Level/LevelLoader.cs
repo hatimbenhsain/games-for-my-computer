@@ -14,6 +14,8 @@ public class LevelLoader : MonoBehaviour
     public bool setSpawnIndex = false;
     public int spawnIndex = 0;
     public StarterAssets.ThirdPersonController.CharacterState characterState;
+    public StarterAssets.ThirdPersonController.CharacterState targetCharacterState;
+    public bool playTransformAnimation = false;
 
     private void Start()
     {
@@ -27,7 +29,9 @@ public class LevelLoader : MonoBehaviour
             // set the location index
             SpawnDataHolder.spawnLocationIndex = spawnIndex;
             SpawnDataHolder.characterState = characterState;
+            SpawnDataHolder.targetCharacterState = targetCharacterState;
         }
+        SpawnDataHolder.playTransformAnimation = playTransformAnimation;
         if (other.CompareTag("Player"))
         {
             Debug.Log("aaaa");
