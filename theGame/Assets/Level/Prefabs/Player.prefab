@@ -137,6 +137,205 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1 &2994754754776361109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8885519576968116748}
+  - component: {fileID: 1774445802727888207}
+  - component: {fileID: 7397678922709022154}
+  m_Layer: 0
+  m_Name: MagicSmoke
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8885519576968116748
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2994754754776361109}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2319406618560356371}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!73398921 &1774445802727888207
+VFXRenderer:
+  serializedVersion: 1
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2994754754776361109}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!2083052967 &7397678922709022154
+VisualEffect:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2994754754776361109}
+  m_Enabled: 1
+  m_Asset: {fileID: 8926484042661614526, guid: 918802790920d024cb322640c1044e7e, type: 3}
+  m_InitialEventName: 
+  m_InitialEventNameOverriden: 1
+  m_StartSeed: 0
+  m_ResetSeedOnPlay: 1
+  m_AllowInstancing: 0
+  m_ResourceVersion: 1
+  m_PropertySheet:
+    m_Float:
+      m_Array:
+      - m_Value: 100
+        m_Name: Rate
+        m_Overridden: 1
+    m_Vector2f:
+      m_Array:
+      - m_Value: {x: 0.5, y: 1.5}
+        m_Name: Lifetime
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 2}
+        m_Name: SetSizeRandom
+        m_Overridden: 1
+    m_Vector3f:
+      m_Array:
+      - m_Value: {x: -1, y: -1, z: -1}
+        m_Name: VelocityMax
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 2, z: 1}
+        m_Name: VelocityMin
+        m_Overridden: 1
+      - m_Value: {x: -0.5, y: -0.5, z: -0.5}
+        m_Name: StarVelocityMin
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 1, z: 0.5}
+        m_Name: StarVelocityMax
+        m_Overridden: 1
+    m_Vector4f:
+      m_Array: []
+    m_Uint:
+      m_Array: []
+    m_Int:
+      m_Array: []
+    m_Matrix4x4f:
+      m_Array: []
+    m_AnimationCurve:
+      m_Array: []
+    m_Gradient:
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 0.990566, g: 0.06074228, b: 0.11587812, a: 1}
+          key1: {r: 0.08021983, g: 0.63075733, b: 0.13013652, a: 0.7921569}
+          key2: {r: 0.5210083, g: 0.02180491, b: 0.9245283, a: 0.654902}
+          key3: {r: 0.3467041, g: 0.46778384, b: 0.590619, a: 0.654902}
+          key4: {r: 1, g: 0.88714683, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 10794
+          ctime1: 33346
+          ctime2: 57247
+          ctime3: 50886
+          ctime4: 57825
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 386
+          atime1: 30647
+          atime2: 65535
+          atime3: 65535
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: 1
+          m_NumColorKeys: 3
+          m_NumAlphaKeys: 3
+        m_Name: SmokeColor
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 0.990566, g: 0.06074228, b: 0.11587812, a: 1}
+          key1: {r: 0.990566, g: 0.06074228, b: 0.11587812, a: 0.7921569}
+          key2: {r: 0.08021983, g: 0.63075733, b: 0.13013652, a: 0.654902}
+          key3: {r: 0.3467041, g: 0.46778384, b: 0.590619, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 10794
+          ctime1: 15613
+          ctime2: 33346
+          ctime3: 50886
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 386
+          atime1: 30647
+          atime2: 65535
+          atime3: 65535
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: 1
+          m_NumColorKeys: 4
+          m_NumAlphaKeys: 3
+        m_Name: StarColorOverTime
+        m_Overridden: 1
+    m_NamedObject:
+      m_Array: []
+    m_Bool:
+      m_Array:
+      - m_Value: 0
+        m_Name: Loop
+        m_Overridden: 1
 --- !u!1 &3721019937420254336
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +369,7 @@ Transform:
   - {fileID: 437540777962124494}
   - {fileID: 4635723717473490468}
   - {fileID: 5561008062165297241}
+  - {fileID: 8885519576968116748}
   m_Father: {fileID: 2617870837617111283}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7095267883970400540
@@ -188,6 +388,8 @@ MonoBehaviour:
   SquirtFront: {fileID: 277134590117627209}
   Smoke: {fileID: 4769415645545317086}
   landSmoke: {fileID: 790797801985866219}
+  magicSmoke: {fileID: 7397678922709022154}
+  playMCMagicSmoke: 0
 --- !u!1 &3967119816024896828
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,8 +763,8 @@ VisualEffect:
   m_GameObject: {fileID: 4560429363817180038}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: e08575070f145f749a8c146d1b519954, type: 3}
-  m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 0
+  m_InitialEventName: 
+  m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_AllowInstancing: 0
@@ -690,8 +892,8 @@ VisualEffect:
   m_GameObject: {fileID: 5575421382818103245}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: e08575070f145f749a8c146d1b519954, type: 3}
-  m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 0
+  m_InitialEventName: 
+  m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_AllowInstancing: 1
@@ -816,8 +1018,8 @@ VisualEffect:
   m_GameObject: {fileID: 6536296071680807769}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 09e3eb1a755516a4bb3a8c0c1ba5abf2, type: 3}
-  m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 0
+  m_InitialEventName: 
+  m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 0
   m_AllowInstancing: 0

@@ -13,6 +13,8 @@ public class LevelSkip : MonoBehaviour
     public bool setSpawnIndex = false;
     public int spawnIndex = 0;
     public StarterAssets.ThirdPersonController.CharacterState characterState;
+    public StarterAssets.ThirdPersonController.CharacterState targetCharacterState;
+    public bool playTransformAnimation = false;
 
     private void Start()
     {
@@ -26,7 +28,10 @@ public class LevelSkip : MonoBehaviour
             // set the location index
             SpawnDataHolder.spawnLocationIndex = spawnIndex;
             SpawnDataHolder.characterState = characterState;
+            SpawnDataHolder.targetCharacterState = targetCharacterState;
         }
+        SpawnDataHolder.playTransformAnimation = playTransformAnimation;
+
         if (Input.GetKeyDown(KeyCode.O))
         {
             Debug.Log("O pressed");

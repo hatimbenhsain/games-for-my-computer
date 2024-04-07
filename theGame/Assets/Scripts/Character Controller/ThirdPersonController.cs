@@ -136,8 +136,8 @@ namespace StarterAssets
         private float _verticalVelocity;
         private Vector2 _horizontalVelocity;
         private float _terminalVelocity = 53.0f;
-        private bool _jumpLock = false;
-        private bool _moveLock = false;
+        [HideInInspector] public bool _jumpLock = false;
+        [HideInInspector] public bool _moveLock = false;
         private bool _crouch = false;
 
         // timeout deltatime
@@ -281,6 +281,12 @@ namespace StarterAssets
                 currentState=CharacterState.Fish;
             }
         }
+
+        public void SetState(CharacterState targetState)
+        {
+            currentState = targetState;
+        }
+
         // State Machine
         void HandleStateBehaviour()
         {

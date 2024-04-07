@@ -15,7 +15,9 @@ public class PlayerVFX: MonoBehaviour
     [SerializeField] VisualEffect SquirtFront;
     [SerializeField] VisualEffect Smoke;
     [SerializeField] VisualEffect landSmoke;
+    [SerializeField] VisualEffect magicSmoke;
     private bool inAir;
+    public bool playMCMagicSmoke = false;
 
     // Start is called before the first frame update
 
@@ -25,6 +27,7 @@ public class PlayerVFX: MonoBehaviour
         landSmoke.enabled = false;
         SquirtFront.enabled = false;
         SquirtFront.enabled = false;
+        //magicSmoke.enabled = false;
         //StartCoroutine(EnableVFXWithDelay(3f));
         thirdPersonController = PlayerController.GetComponent<ThirdPersonController>(); // Get the third person controller script
         GameObject playerCameraRootObject = GameObject.Find("PlayerController"); // Get the player transform
@@ -54,7 +57,12 @@ public class PlayerVFX: MonoBehaviour
         cameraDir.y = 0;
 
         transform.rotation = Quaternion.LookRotation(cameraDir); // set rotation based on camera
-        
+        if (playMCMagicSmoke)
+        {
+            transform.position = followPlayer.position; // set transform to the player transform
+            magicSmoke.Play();
+            playMCMagicSmoke = false;
+        }
         if (!thirdPersonController.Grounded)
         {
             inAir = true;
@@ -104,6 +112,7 @@ public class PlayerVFX: MonoBehaviour
         {
             Smoke.SetBool("Loop", false);
         }
+        
     }
 
     IEnumerator EnableVFXWithDelay(float delay)
