@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CollisionHandler : MonoBehaviour
+public class LevelEnd : MonoBehaviour
 {
     public GameObject ball; // Assign the ball GameObject in the Unity Editor.
     public AudioClip collisionSound; // Assign this in the Unity Editor with your sound effect.
