@@ -80,7 +80,7 @@ public class PlayerVFX: MonoBehaviour
             }
             else
             {
-                landSmoke.SetVector2("SetSizeRandom", new Vector2((0.2f - 0.02f * thirdPersonController.playerFallSpeed), (0.3f - 0.05f * thirdPersonController.playerFallSpeed)));
+                landSmoke.SetVector2("SetSizeRandom", new Vector2((20f - 2f * thirdPersonController.playerFallSpeed), (30f - 4f * thirdPersonController.playerFallSpeed)));
                 landSmoke.SetVector3("VelocityMax", new Vector3((1f - 0.2f * thirdPersonController.playerFallSpeed), (0.5f - 0.05f * thirdPersonController.playerFallSpeed), (1f - 0.2f * thirdPersonController.playerFallSpeed)));
                 landSmoke.SetVector3("VelocityMin", new Vector3((-1f + 0.2f * thirdPersonController.playerFallSpeed), 0.1f, (-1f + 0.2f * thirdPersonController.playerFallSpeed)));
                 landSmoke.enabled = true;
@@ -94,7 +94,7 @@ public class PlayerVFX: MonoBehaviour
         {
             Smoke.enabled = true;
             Smoke.SetFloat("Rate", (14f + 0.5f * thirdPersonController.playerSpeed));
-            Smoke.SetVector2("SetSizeRandom", new Vector2((0.1f + 0.07f * thirdPersonController.playerSpeed), (0.15f + 0.11f * thirdPersonController.playerSpeed)));
+            Smoke.SetVector2("SetSizeRandom", new Vector2((6f + 2.2f * thirdPersonController.playerSpeed), (15f + 3.3f * thirdPersonController.playerSpeed)));
             Smoke.SetBool("Loop", true);
             if (thirdPersonController.flipped)
             {
