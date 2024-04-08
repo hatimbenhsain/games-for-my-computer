@@ -30,9 +30,7 @@ public class GameManager : MonoBehaviour
     public bool isEndTransitioning = false;
     public float transitionSpeed = 5.0f;
     public float outTransitionSpeed = 1.0f;
-    private Vector3 previousPosition;
-    private Quaternion previousRotation;
-    private Vector3 initialMousePosition;
+    public Light directionalLight;
 
     private DialogueRunner dialogueRunner;
 
@@ -104,7 +102,6 @@ public class GameManager : MonoBehaviour
 
             //playerCamera.LookAt = null;
             isTransitioning = true;
-            initialMousePosition = Input.mousePosition;
             StartCoroutine(ComplimentStartCoroutine());
         }
 
@@ -116,10 +113,11 @@ public class GameManager : MonoBehaviour
 
         //INSTANTIATE COMPLIMENT
         //SWITCH CAMERA
+        // Disable Directional Light
         //  CHANGE CURSOR SETTINGS
         //  SET COMPLIMENT WORDS/LEVEL
         //END DIALOGUE
-
+        directionalLight.enabled = false;
         mainCamera.enabled = false;
         complimentInstance = Instantiate(complimentPrefab[complimentValue%complimentPrefab.Length],
          complimentTransform);
@@ -173,6 +171,7 @@ public class GameManager : MonoBehaviour
     public void ComplimentEndCameraOperations()
     {
         //RESUME DIALOGUE
+        directionalLight.enabled = true;
         mainCamera.enabled = true;
         Destroy(complimentInstance);
 

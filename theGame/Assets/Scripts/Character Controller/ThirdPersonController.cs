@@ -136,8 +136,8 @@ namespace StarterAssets
         private float _verticalVelocity;
         private Vector2 _horizontalVelocity;
         private float _terminalVelocity = 53.0f;
-        [HideInInspector] public bool _jumpLock = false;
-        [HideInInspector] public bool _moveLock = false;
+        private bool _jumpLock = false;
+        private bool _moveLock = false;
         private bool _crouch = false;
 
         // timeout deltatime
@@ -180,6 +180,7 @@ namespace StarterAssets
         public float interactionRadius = 3f;
 
         public bool inDialogue=false;
+        public bool inTransform = false;
         public NPC npcTalkingTo;
 
         private GameManager gameManager;
@@ -257,6 +258,10 @@ namespace StarterAssets
 
             if(dialogueRunner.IsDialogueRunning || gameManager.inComplimentGame){
                 _moveLock=true;
+            }
+            if (inTransform)
+            {
+                _moveLock = true;
             }
 
             if(_hasAnimator){
