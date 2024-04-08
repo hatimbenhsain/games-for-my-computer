@@ -24,6 +24,7 @@ SOFTWARE.
 
 */
 
+using UnityEditor;
 using UnityEngine;
 using Yarn.Unity;
 
@@ -53,6 +54,25 @@ namespace Yarn.Unity.Example
         [YarnCommand]
         public void AnimatorSetBool(string parameter, bool b){
             animator.SetBool(parameter,b);
+        }
+
+        [YarnCommand]
+        public void TriggerVFX(string parameter){
+            if(parameter.ToLower()=="compliment"){
+                CharacterVFX characterVFX=GetComponentInChildren<CharacterVFX>();
+                if(characterVFX==null){
+                    GameObject prefab=(GameObject)AssetDatabase.LoadAssetAtPath("Assets/Level/Prefabs/NPCs/Transformation.prefab",typeof(GameObject));
+                    characterVFX=Instantiate(prefab,transform).GetComponent<CharacterVFX>();
+                    Debug.Log("instantiate new");
+                }
+                characterVFX.TriggerComplimentVFX();
+            }
+        }
+
+        [YarnCommand]
+        public void Complimented(){
+            animator.SetBool("complimented",true);
+            TriggerVFX("compliment");
         }
     }
 
