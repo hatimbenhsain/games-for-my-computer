@@ -8,9 +8,11 @@ using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject complimentPrefab;
+    public GameObject[] complimentPrefab;
     public Transform complimentTransform;
     private GameObject complimentInstance;
+
+    private int complimentValue;
 
     public bool inComplimentGame;
 
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
     private Quaternion endCameraRotation;
 
     private Camera mainCamera;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +53,8 @@ public class GameManager : MonoBehaviour
         dialogueRunner=FindObjectOfType<DialogueRunner>();
         animator = GetComponentInChildren<Animator>();
         //isTransitioning = true;
+
+        complimentValue=0;
     }
 
     // Update is called once per frame
@@ -116,7 +121,9 @@ public class GameManager : MonoBehaviour
         //END DIALOGUE
 
         mainCamera.enabled = false;
-        complimentInstance = Instantiate(complimentPrefab, complimentTransform);
+        complimentInstance = Instantiate(complimentPrefab[complimentValue%complimentPrefab.Length],
+         complimentTransform);
+        complimentValue+=1;
 
     }
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LevelEnd : MonoBehaviour
 {
-    public GameObject ball; // Assign the ball GameObject in the Unity Editor.
+    //public GameObject ball; // Assign the ball GameObject in the Unity Editor.
     public AudioClip collisionSound; // Assign this in the Unity Editor with your sound effect.
 
     private AudioSource audioSource;
@@ -20,16 +20,17 @@ public class LevelEnd : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == ball)
+        if (other.gameObject.tag == "ComplimentSphere")
         {
-            BallSnapper ballSnapper = ball.GetComponent<BallSnapper>();
+
+            BallSnapper ballSnapper = other.gameObject.GetComponent<BallSnapper>();
             if (ballSnapper != null)
             {
                 // Disable the BallSnapper script on the ball.
                 ballSnapper.enabled = false;
             }
 
-            Collider ballCollider = ball.GetComponent<Collider>();
+            Collider ballCollider = other.gameObject.GetComponent<Collider>();
             if (ballCollider != null)
             {
                 // Make the ball fall through the ground by disabling its collider.
@@ -41,6 +42,10 @@ public class LevelEnd : MonoBehaviour
             {
                 audioSource.PlayOneShot(collisionSound);
             }
+
+            FindObjectOfType<ComplimentManager>().ComplimentEnd();
+
+            //this.enabled=false;
         }
     }
 }
