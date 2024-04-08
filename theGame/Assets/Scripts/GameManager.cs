@@ -8,9 +8,11 @@ using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject complimentPrefab;
+    public GameObject[] complimentPrefab;
     public Transform complimentTransform;
     private GameObject complimentInstance;
+
+    private int complimentValue;
 
     public bool inComplimentGame;
 
@@ -28,9 +30,7 @@ public class GameManager : MonoBehaviour
     public bool isEndTransitioning = false;
     public float transitionSpeed = 5.0f;
     public float outTransitionSpeed = 1.0f;
-    private Vector3 previousPosition;
-    private Quaternion previousRotation;
-    private Vector3 initialMousePosition;
+    public Light directionalLight;
 
     private DialogueRunner dialogueRunner;
 
@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     private Quaternion endCameraRotation;
 
     private Camera mainCamera;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +51,8 @@ public class GameManager : MonoBehaviour
         dialogueRunner=FindObjectOfType<DialogueRunner>();
         animator = GetComponentInChildren<Animator>();
         //isTransitioning = true;
+
+        complimentValue=0;
     }
 
     // Update is called once per frame
@@ -99,7 +102,6 @@ public class GameManager : MonoBehaviour
 
             //playerCamera.LookAt = null;
             isTransitioning = true;
-            initialMousePosition = Input.mousePosition;
             StartCoroutine(ComplimentStartCoroutine());
         }
 
@@ -111,12 +113,15 @@ public class GameManager : MonoBehaviour
 
         //INSTANTIATE COMPLIMENT
         //SWITCH CAMERA
+        // Disable Directional Light
         //  CHANGE CURSOR SETTINGS
         //  SET COMPLIMENT WORDS/LEVEL
         //END DIALOGUE
-
+        directionalLight.enabled = false;
         mainCamera.enabled = false;
-        complimentInstance = Instantiate(complimentPrefab, complimentTransform);
+        complimentInstance = Instantiate(complimentPrefab[complimentValue%complimentPrefab.Length],
+         complimentTransform);
+        complimentValue+=1;
 
     }
 
@@ -166,6 +171,7 @@ public class GameManager : MonoBehaviour
     public void ComplimentEndCameraOperations()
     {
         //RESUME DIALOGUE
+        directionalLight.enabled = true;
         mainCamera.enabled = true;
         Destroy(complimentInstance);
 

@@ -7,7 +7,7 @@ public class TiltScript : MonoBehaviour
 {
     public float sensitivity = 0.5f; // Adjust this value to change rotation sensitivity
     public float lockedYAxisRotation = 0f; // Set this to the desired Y-axis rotation value
-    private float countDown = 4.5f; // the time for tilt locking and count down
+    private float countDown = 4f; // the time for tilt locking and count down
     
     // Public variables to define max rotation angles for X and Z directions
     public float maxRotationX = 45f; // Maximum allowed rotation in the X direction

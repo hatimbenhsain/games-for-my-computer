@@ -180,6 +180,7 @@ namespace StarterAssets
         public float interactionRadius = 3f;
 
         public bool inDialogue=false;
+        public bool inTransform = false;
         public NPC npcTalkingTo;
 
         private GameManager gameManager;
@@ -258,6 +259,10 @@ namespace StarterAssets
             if(dialogueRunner.IsDialogueRunning || gameManager.inComplimentGame){
                 _moveLock=true;
             }
+            if (inTransform)
+            {
+                _moveLock = true;
+            }
 
             if(_hasAnimator){
                 Animate();
@@ -281,6 +286,12 @@ namespace StarterAssets
                 currentState=CharacterState.Fish;
             }
         }
+
+        public void SetState(CharacterState targetState)
+        {
+            currentState = targetState;
+        }
+
         // State Machine
         void HandleStateBehaviour()
         {
@@ -458,7 +469,8 @@ namespace StarterAssets
             }
 
             // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = (_input.sprint && !_moveLock) ? SprintSpeed : MoveSpeed;
+            //float targetSpeed = (_input.sprint && !_moveLock) ? SprintSpeed : MoveSpeed;
+            float targetSpeed=MoveSpeed;
 
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 

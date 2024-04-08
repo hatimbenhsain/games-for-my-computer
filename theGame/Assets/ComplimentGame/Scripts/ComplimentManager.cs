@@ -9,8 +9,11 @@ public class ComplimentManager : MonoBehaviour
     private InMemoryVariableStorage variableStorage;
     private string compliment;
     
+    public GameObject ball;
+    public GameObject hole;
+    
     //UPDATE THESE LISTS to make sure every word is processed well
-    private string[] adjectives={"phenomenal", "fabulous", "lively", "lush", "brilliant", "dazzling", "enchanting", "efficent", "exuberant", "fearless", "glimmering", "sparkling", "glowing", "inventive", "tantalizing", "kooky", "magnificent", "modest", "perfect", "powerful", "sleek", "splendid", "unique", "vibrant", "boundless", "colossal", "cosmopolitian", "far-flung", "fresh", "immaculate", "mysterious", "mystical", "prosperous", "superb", "enthusiastic", "lovely", "moldy", "grainy", "textured", "grim", "growing", "flickering", "twisting", "cloudy", "limp", "everlasting", "obscure", "niche", "kafkaesque", "avantgarde", "kind", "fragmented", "picturesque", "grandiose"};
+    private string[] adjectives={"phenomenal", "fabulous", "lively", "lush", "brilliant", "dazzling", "enchanting", "efficent", "exuberant", "fearless", "glimmering", "sparkling", "glowing", "inventive", "tantalizing", "kooky", "magnificent", "modest", "perfect", "powerful", "sleek", "splendid", "unique", "vibrant", "boundless", "colossal", "cosmopolitian", "far-flung", "fresh", "immaculate", "mysterious", "mystical", "prosperous", "superb", "enthusiastic", "lovely", "moldy", "grainy", "textured", "grim", "growing", "flickering", "twisting", "cloudy", "limp", "everlasting", "obscure", "niche", "kafkaesque", "avantgarde", "kind", "fragmented", "picturesque", "grandiose", "sharp", "funky", "holographic", "sincere", "illicit", "complex", "firm", "gourmet", "unhinged", "photorealistic", "melancholic", "meaningful", "smooth", "sparkly ", "glow in the dark", "stylized ", "8-bit", "mournful ", "speedy", "brainy"};
     private string[] things={"smile", "walk", "spirit", "shirt", "dress", "socks", "eyebrows", "toenails", "earlobes", "watch", "eyes", "dog", "heart", "wrinkles", "freckles", "mole", "nostrils", "veins", "hair follicles", "energy", "stench", "shoes", "pants", "headband", "jewelry", "love", "tongue", "kneecaps", "fingers", "thumbs", "chin", "brain", "outfit", "vibes", "sentience", "backpack", "foot", "lamp", "Pet", "cuticles", "nostrils", "tummy", "shin", "appendix", "elbow", "inner ear ", "nose hair ", "feelings", "collar bone", "left calf "};
     private string[] qualities={"stench", "beauty", "wetness", "size", "curve", " ", "shape", "curvature", "intelligence", "resilience", "quality", "texture", "sound", "strength", "ambience", "Agon", "layers", "courage", "etherealness", "vision", "vibe", "smell", "wobbliness", "art style", "constitution", "aura", "thickness ", "flexibilty ", "pace", "length ", "value"};
     private string[] comparedTo={"a tree", "a dog", "the sea", "the sky", "my Mom", "the police", "King Arthur", "Napoleon", "cherry oak", "a Kinder Surprise", "a cigarette", "the Earth", "my phone", "an old guy", "climate change", "a dragon", "a tiger", "Naruto", "Goku", "Lara Croft", "Super Mario", "Batman", "Western medicine", "the market", "Web2", "a gif", "the Sun", "Spring", "Winter", "rain", "a cockroach", "tentacles", "goats", "jet fuel", "the quadratic formula", "chilly breeze", "butterfly wings", "untold secrets", "plucked flower", "midwest salad", "God", "watermelon", "fire", "a machete", "Willem Dafoe", "my neighbour's dog", "a comet ", "an eclipse ", "doors", "warm summer breeze ", "ocean mist"};
@@ -21,10 +24,10 @@ public class ComplimentManager : MonoBehaviour
     {
         variableStorage = GameObject.FindObjectOfType<InMemoryVariableStorage>();
         words=new List<string>();
-        words.Add("stench");
-        words.Add("walk");
-        words.Add("fabulous");
-        words.Add("the Sun");
+        // words.Add("stench");
+        // words.Add("walk");
+        // words.Add("fabulous");
+        // words.Add("the Sun");
         //words.Add("phenomenal");
         //words.Add("lush");
     }
@@ -32,6 +35,25 @@ public class ComplimentManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check if the ball and hole are colliding
+        // if (AreColliding(ball, hole))
+        // {
+        //     // Call the ComplimentEnd function when the collision is detected
+        //     ComplimentEnd();
+        // }
+        
+        // bool AreColliding(GameObject ball, GameObject hole)
+        // {
+        //     // This method assumes both objects have colliders and returns true if they are intersecting
+        //     Collider ballCollider = ball.GetComponent<Collider>();
+        //     Collider holeCollider = hole.GetComponent<Collider>();
+        //     if (ballCollider != null && holeCollider != null)
+        //     {
+        //         return ballCollider.bounds.Intersects(holeCollider.bounds);
+        //     }
+        //     return false;
+        // }
+        
         if(Input.GetKeyDown(KeyCode.Return)){
 
             ComplimentEnd();
@@ -39,7 +61,7 @@ public class ComplimentManager : MonoBehaviour
     }
 
 
-    void ComplimentEnd(){
+   public void ComplimentEnd(){
         GenerateCompliment();
         variableStorage.SetValue("$compliment",compliment);
         FindObjectOfType<GameManager>().ComplimentEnd();

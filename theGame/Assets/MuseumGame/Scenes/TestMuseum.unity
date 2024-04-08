@@ -438,6 +438,11 @@ Transform:
   - {fileID: 1808398863}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &90976349 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1933547211315882849, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+  m_PrefabInstance: {fileID: 1116605235}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &149172568
 GameObject:
   m_ObjectHideFlags: 0
@@ -4137,6 +4142,31 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 91614677110e645be91c483e16b3f3ef, type: 3}
   m_PrefabInstance: {fileID: 972699289}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &984144102 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4319314572734119578, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+  m_PrefabInstance: {fileID: 1116605235}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &984144105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984144102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ef4098df6495c41be02d0a9a378aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destinationScene: TestStreet
+  transitionTime: 1
+  transition: {fileID: 90976349}
+  setSpawnIndex: 1
+  spawnIndex: 4
+  characterState: 2
+  targetCharacterState: 3
+  playTransformAnimation: 1
 --- !u!1 &1004133973
 GameObject:
   m_ObjectHideFlags: 0
@@ -4523,7 +4553,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 976073131409949330, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
       propertyPath: loaderCharacterState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 976073131409949330, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+      propertyPath: targetCharacterState
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 976073131409949330, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+      propertyPath: playTransformAnimation
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2308520012441589682, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
       propertyPath: m_Pivot.x
@@ -4609,10 +4647,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelSkipButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5113436062459828644, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+      propertyPath: m_text
+      value: 'Press O to
+
+        Skip'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5113436062459828644, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+      propertyPath: m_fontSize
+      value: 43.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4319314572734119578, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 984144105}
   m_SourcePrefab: {fileID: 100100000, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
 --- !u!1 &1166707577
 GameObject:
