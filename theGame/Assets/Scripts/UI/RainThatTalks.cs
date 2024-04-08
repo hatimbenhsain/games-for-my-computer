@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
+using Yarn.Unity;
 
 public class RainThatTalks : MonoBehaviour
 {
@@ -58,21 +59,11 @@ public class RainThatTalks : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R)) //PLACEHOLDER
             {
-                _animator.SetTrigger("Rain");
-                baseColor = colorAdjustments.colorFilter.value; // Update base color to current value
-                targetColor = filterColor; 
-                isLerping = true;
-                lerpTimer = 0f; // Reset the timer
-                Rain.Play();
+                StartRain();
             }
             if (Input.GetKeyDown(KeyCode.T)) //PLACEHOLDER
             {
-                _animator.SetTrigger("StopRain");
-                baseColor = colorAdjustments.colorFilter.value; // Update base color to current value
-                targetColor = Color.white; // Original color
-                isLerping = true;
-                lerpTimer = 0f; // Reset the timer
-                Rain.Stop();
+                EndRain();
             }
         }
         if (isLerping)
@@ -90,5 +81,25 @@ public class RainThatTalks : MonoBehaviour
                 isLerping = false;
             }
         }
+    }
+
+    [YarnCommand]
+    public void StartRain(){
+        _animator.SetTrigger("Rain");
+        baseColor = colorAdjustments.colorFilter.value; // Update base color to current value
+        targetColor = filterColor; 
+        isLerping = true;
+        lerpTimer = 0f; // Reset the timer
+        Rain.Play();
+    }
+
+    [YarnCommand]
+    public void EndRain(){
+        _animator.SetTrigger("StopRain");
+        baseColor = colorAdjustments.colorFilter.value; // Update base color to current value
+        targetColor = Color.white; // Original color
+        isLerping = true;
+        lerpTimer = 0f; // Reset the timer
+        Rain.Stop();
     }
 }

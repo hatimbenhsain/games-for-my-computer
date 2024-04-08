@@ -22,4 +22,9 @@ public class CharacterVFX : MonoBehaviour
             complimentVFX = false;
         }
     }
+
+    public void TriggerComplimentVFX(){
+        complimentVFX=true;
+        Debug.Log("triggered");
+    }
 }
