@@ -38,8 +38,7 @@ public class SpawnManager : MonoBehaviour
         {
             StartCoroutine(PlayerTransformCoroutine());
             // lock movement
-            thirdPersonController._moveLock = true;
-            thirdPersonController._jumpLock = true;
+            thirdPersonController.inTransform = true;
         }
         //playerController.
         playerVFX = VFX.GetComponent<PlayerVFX>();
@@ -56,8 +55,7 @@ public class SpawnManager : MonoBehaviour
         // change state
         thirdPersonController.SetState(SpawnDataHolder.targetCharacterState);
         // allow movement
-        thirdPersonController._moveLock = false;
-        thirdPersonController._jumpLock = false;
+        thirdPersonController.inTransform = false;
     }
 
 
