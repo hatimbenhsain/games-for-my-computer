@@ -17,6 +17,8 @@ public class Missile : MonoBehaviour
     public float rotationSpeed=95f;
     public float speed=15f;
 
+    private float life=0f;
+
     [Header("PREDICTION")] 
     [SerializeField] private float _maxDistancePredict = 100;
     [SerializeField] private float _minDistancePredict = 5;
@@ -27,6 +29,8 @@ public class Missile : MonoBehaviour
     [SerializeField] private float _deviationAmount = 50;
     [SerializeField] private float _deviationSpeed = 2;
 
+    private CanvasScript canvasScript;
+
     void Start()
     {
         rb=GetComponent<Rigidbody>();
@@ -34,10 +38,12 @@ public class Missile : MonoBehaviour
         targetController=target.gameObject.GetComponent<CharacterController>();
         animator=GetComponent<Animator>();
         animator.speed=rocketClip.length/lifeSpan;
+        transform.LookAt(target);
+        canvasScript=FindObjectOfType<CanvasScript>();
     }
 
     void FixedUpdate(){
-        rb.velocity=transform.forward*speed;
+        rb.velocity=transform.forward*speed*(Mathf.Min(life,1f));
         float leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict, Vector3.Distance(
         transform.position,target.transform.position));
         PredictMovement(leadTimePercentage);
@@ -49,6 +55,7 @@ public class Missile : MonoBehaviour
         if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime>=1){
             Destroy(gameObject);
         }
+        life+=Time.deltaTime;
     }
 
     private void PredictMovement(float leadTimePercentage){
@@ -68,5 +75,14 @@ public class Missile : MonoBehaviour
         Vector3 heading=_deviatedPrediction-transform.position;
         var rotation=Quaternion.LookRotation(heading);
         rb.MoveRotation(Quaternion.RotateTowards(transform.rotation,rotation,rotationSpeed*Time.fixedDeltaTime));
+    }
+
+    private void OnCollide(Collider other) {
+        if(other.gameObject.tag=="Player"){
+            canvasScript.BlueScreen();
+            Debug.Log("blue screen");
+        }else{
+            Debug.Log(other.gameObject);
+        }
     }
 }

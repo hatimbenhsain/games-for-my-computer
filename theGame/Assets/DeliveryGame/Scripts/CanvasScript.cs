@@ -69,4 +69,8 @@ public class CanvasScript : MonoBehaviour
     public void RedScreen(){
         GetComponent<Animator>().SetTrigger("RedScreen");
     }
+
+    public void BlueScreen(){
+        
+    }
 }
