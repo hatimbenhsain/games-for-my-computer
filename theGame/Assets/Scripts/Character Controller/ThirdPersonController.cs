@@ -368,6 +368,7 @@ namespace StarterAssets
             {
                 MoveSpeed = 4;
             }
+            _jumpLock = false;
             _crouch = true;
             //_moveLock = true;
             JumpHeight = FishFlopHeight;
