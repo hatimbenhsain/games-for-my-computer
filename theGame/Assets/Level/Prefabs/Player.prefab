@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 825067167384145816}
   - component: {fileID: 2562766753635718680}
-  - component: {fileID: 6490654329691767468}
   - component: {fileID: 8404324688286950364}
   m_Layer: 0
   m_Name: LerpTargetCamera
@@ -18,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &825067167384145816
 Transform:
   m_ObjectHideFlags: 0
@@ -41,7 +40,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292884199545449598}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -85,14 +84,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &6490654329691767468
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 292884199545449598}
-  m_Enabled: 1
 --- !u!114 &8404324688286950364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +227,7 @@ VisualEffect:
       - m_Value: {x: 0.5, y: 1.5}
         m_Name: Lifetime
         m_Overridden: 1
-      - m_Value: {x: 0.5, y: 2}
+      - m_Value: {x: 15, y: 80}
         m_Name: SetSizeRandom
         m_Overridden: 1
     m_Vector3f:
@@ -347,7 +338,7 @@ GameObject:
   - component: {fileID: 2319406618560356371}
   - component: {fileID: 7095267883970400540}
   m_Layer: 0
-  m_Name: VFX
+  m_Name: PlayerVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -782,7 +773,7 @@ VisualEffect:
       - m_Value: {x: 0.5, y: 0.1}
         m_Name: Lifetime
         m_Overridden: 1
-      - m_Value: {x: 0.5, y: 0.7}
+      - m_Value: {x: 30, y: 40}
         m_Name: SetSizeRandom
         m_Overridden: 1
     m_Vector3f:
@@ -926,7 +917,7 @@ VisualEffect:
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: e08575070f145f749a8c146d1b519954, type: 3}
   m_InitialEventName: 
-  m_InitialEventNameOverriden: 1
+  m_InitialEventNameOverriden: 0
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_AllowInstancing: 1
@@ -941,6 +932,9 @@ VisualEffect:
       m_Array:
       - m_Value: {x: 0.6, y: 0.8}
         m_Name: Lifetime
+        m_Overridden: 1
+      - m_Value: {x: 5, y: 5}
+        m_Name: SetSizeRandom
         m_Overridden: 1
     m_Vector3f:
       m_Array:
@@ -1462,7 +1456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.5
+      value: -7.4999995
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1610,7 +1604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.5
+      value: -7.4999995
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_LocalRotation.w

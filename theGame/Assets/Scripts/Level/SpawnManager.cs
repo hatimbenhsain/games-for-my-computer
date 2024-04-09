@@ -10,23 +10,20 @@ public class SpawnManager : MonoBehaviour
     private ThirdPersonController thirdPersonController;
     public GameObject VFX;
     private PlayerVFX playerVFX;
+    public float moveTime = 0.1f;
     public float transformTime;
     public float vfxTime;
     void Start()
     {
+        playerPrefab = GameObject.Find("Player");
+        VFX = GameObject.Find("PlayerVFX");
+        thirdPersonController = FindObjectOfType<ThirdPersonController>();
         // name every spawnpoint like "SpawnPoint1"
         GameObject spawnPoint = GameObject.Find($"SpawnPoint{SpawnDataHolder.spawnLocationIndex}");
-
-
-        if (spawnPoint != null)
-        {
-            playerPrefab.transform.position = spawnPoint.transform.position;
-            playerPrefab.transform.rotation = spawnPoint.transform.rotation;
-        }
-        else
-        {
-            Debug.LogError("Spawn point not found.");
-        }
+        Debug.Log(SpawnDataHolder.spawnLocationIndex);
+        Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+            //playerPrefab.transform.position = spawnPoint.transform.position;
+            //playerPrefab.transform.rotation = spawnPoint.transform.rotation;
 
         thirdPersonController = playerController.GetComponent<ThirdPersonController>();
         if (thirdPersonController != null)
@@ -47,10 +44,6 @@ public class SpawnManager : MonoBehaviour
     private IEnumerator StartRain(){
         yield return new WaitForSeconds(vfxTime+transformTime+0.1f);
         FindObjectOfType<RainThatTalks>().StartRain();
-    }
-
-    public int GetSpawnIndex(){
-        return SpawnDataHolder.spawnLocationIndex;
     }
 
 }

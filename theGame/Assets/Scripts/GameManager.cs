@@ -48,7 +48,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainCamera=Camera.main;
+        playerCamera = GameObject.Find("PlayerFollowCamera")?.GetComponent<CinemachineVirtualCamera>();
+        playerCameraRoot = GameObject.Find("PlayerCameraRoot")?.GetComponent<Transform>();
+        targetTransform = GameObject.Find("LerpTargetCamera")?.GetComponent<Transform>();
+        mainCamera =Camera.main;
         inComplimentGame=false;
         playerScript=FindObjectOfType<ThirdPersonController>();
         dialogueRunner=FindObjectOfType<DialogueRunner>();
