@@ -4,8 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
-using UnityEditor;
-
 public class DialogueAssets : MonoBehaviour
 {
     public TMP_Text lineContainer;
@@ -18,6 +16,8 @@ public class DialogueAssets : MonoBehaviour
     public Image portraitRenderer2;
     public AudioSource voiceAudioSource;
 
+    public GameObject vfxPrefab;
+
     private GameObject interlocutor;
 
     [System.Serializable]    
@@ -25,6 +25,7 @@ public class DialogueAssets : MonoBehaviour
         public string name;
         public Sprite portraitSprite;
         public AudioClip[] voiceClip;
+        public GameObject prefab;
     }
 
     public DialogueCharacter[] dialogueCharacters;
@@ -78,9 +79,22 @@ public class DialogueAssets : MonoBehaviour
 
     [YarnCommand]
     public void PlaceInterlocutor(string s){
-        GameObject prefab=(GameObject)AssetDatabase.LoadAssetAtPath("Assets/Level/Prefabs/NPCs/"+s+".prefab",typeof(GameObject));
-        interlocutor=Instantiate(prefab,GameObject.Find("InterlocutorTransform").transform);
-        interlocutor.transform.parent=interlocutor.transform.parent.parent.parent.parent;
+        DialogueCharacter dc=new DialogueCharacter();
+        bool foundDC=false;
+        foreach(DialogueCharacter d in dialogueCharacters){
+            if(d.name.ToLower()==s.ToLower()){
+                dc=d;
+                foundDC=true;
+                break;
+            }
+        }
+        if(foundDC){
+            Debug.Log(dc.name);
+            Debug.Log(dc.prefab);
+            Debug.Log(GameObject.Find("InterlocutorTransform"));
+            interlocutor=Instantiate(dc.prefab,GameObject.Find("InterlocutorTransform").transform);
+            interlocutor.transform.parent=interlocutor.transform.parent.parent.parent.parent;
+        }
     }
 
     [YarnCommand]

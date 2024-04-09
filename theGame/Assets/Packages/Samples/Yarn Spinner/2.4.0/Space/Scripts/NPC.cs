@@ -25,7 +25,6 @@ SOFTWARE.
 */
 
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using Yarn.Unity;
 
@@ -43,8 +42,11 @@ namespace Yarn.Unity.Example
 
         private Animator animator;
 
+        private DialogueAssets dialogueAssets;
+
         private void Start() {
             animator=GetComponent<Animator>();
+            dialogueAssets=FindObjectOfType<DialogueAssets>();
         }
 
         [YarnCommand]
@@ -62,7 +64,7 @@ namespace Yarn.Unity.Example
             if(parameter.ToLower()=="compliment"){
                 CharacterVFX characterVFX=GetComponentInChildren<CharacterVFX>();
                 if(characterVFX==null){
-                    GameObject prefab=(GameObject)AssetDatabase.LoadAssetAtPath("Assets/Level/Prefabs/NPCs/Transformation.prefab",typeof(GameObject));
+                    GameObject prefab=dialogueAssets.vfxPrefab;
                     characterVFX=Instantiate(prefab,transform).GetComponent<CharacterVFX>();
                     Debug.Log("instantiate new");
                 }
