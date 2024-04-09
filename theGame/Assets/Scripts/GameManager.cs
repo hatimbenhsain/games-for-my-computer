@@ -171,7 +171,8 @@ public class GameManager : MonoBehaviour
         dialogueRunner.Stop();
         dialogueRunner.StartDialogue(playerScript.npcTalkingTo.talkToNode);
         inComplimentGame = false;
-       // UnityEngine.Cursor.lockState = CursorLockMode.None;
+        animator.SetTrigger("Reset");
+        // UnityEngine.Cursor.lockState = CursorLockMode.None;
 
 
 

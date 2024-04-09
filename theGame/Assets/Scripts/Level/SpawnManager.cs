@@ -21,6 +21,7 @@ public class SpawnManager : MonoBehaviour
         if (spawnPoint != null)
         {
             playerPrefab.transform.position = spawnPoint.transform.position;
+            playerPrefab.transform.rotation = spawnPoint.transform.rotation;
         }
         else
         {

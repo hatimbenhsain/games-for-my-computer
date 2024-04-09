@@ -693,11 +693,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelSkipButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5113436062459828644, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+      propertyPath: m_text
+      value: 'Press O to
+
+        Skip'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5113436062459828644, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+      propertyPath: m_fontSize
+      value: 43.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4319314572734119578, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 128765667}
   m_SourcePrefab: {fileID: 100100000, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+--- !u!95 &128765665 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1933547211315882849, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+  m_PrefabInstance: {fileID: 128765664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &128765666 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4319314572734119578, guid: 4761837305e8201478449f3e2cc397ae, type: 3}
+  m_PrefabInstance: {fileID: 128765664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &128765667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128765666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ef4098df6495c41be02d0a9a378aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destinationScene: TestStreet
+  transitionTime: 1
+  transition: {fileID: 128765665}
+  setSpawnIndex: 1
+  spawnIndex: 2
+  characterState: 1
+  targetCharacterState: 0
+  playTransformAnimation: 1
 --- !u!1 &128816465
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,7 +982,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172625737}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22943711, y: 0.05101233, z: -0.012042378, w: 0.9719112}
+  m_LocalRotation: {x: 0.22943714, y: 0.05101236, z: -0.0120423855, w: 0.9719112}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3077,7 +3120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831853751}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.05355167, y: 0.9104574, z: -0.39067155, w: 0.1248018}
+  m_LocalRotation: {x: 0.053551655, y: 0.9104574, z: -0.39067155, w: 0.12480177}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4846,7 +4889,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1341682401}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19398107, y: 0.051416073, z: -0.010181404, w: 0.97960407}
+  m_LocalRotation: {x: 0.19398107, y: 0.051416114, z: -0.010181411, w: 0.97960407}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -360,6 +360,7 @@ namespace StarterAssets
 
         void HandleFishState()
         {
+            Debug.Log("fish");
             if (Grounded)
             {
                 MoveSpeed=0;
@@ -368,6 +369,7 @@ namespace StarterAssets
             {
                 MoveSpeed = 4;
             }
+            _jumpLock = false;
             _crouch = true;
             //_moveLock = true;
             JumpHeight = FishFlopHeight;
@@ -380,7 +382,7 @@ namespace StarterAssets
             // if not can walk around but no jump
             if (_input.fish && Grounded)
             {
-                _moveLock = true;
+                //_moveLock = true;
                 _jumpLock = false;
                 _crouch = true;
             }
@@ -392,13 +394,11 @@ namespace StarterAssets
                 {
                     _crouch = false;
                 }
-
-
             }
             MoveSpeed = LegMoveSpeed;
             Acceleration=LegAcceleration;
             Deceleration=LegDeceleration;
-            //Debug.Log("Leg");
+            Debug.Log(_jumpLock) ;
             // Enable walk and run with slippery effect
             _animator.SetInteger("metamorphosis",2);
         }
