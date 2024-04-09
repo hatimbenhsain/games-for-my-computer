@@ -701,7 +701,7 @@ namespace StarterAssets
             //gravity modifier
             float gModifier=1f;
 
-            if(_input.jump && currentState==CharacterState.Fish){
+            if(_input.jump && (currentState==CharacterState.Fish || _crouch)){
                 gModifier=0.5f;
             }
 
