@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
+using UnityEditor;
 
 public class DialogueAssets : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class DialogueAssets : MonoBehaviour
     public Image portraitRenderer2;
     public AudioSource voiceAudioSource;
 
+    private GameObject interlocutor;
+
     [System.Serializable]    
     public struct DialogueCharacter{
         public string name;
@@ -29,6 +32,7 @@ public class DialogueAssets : MonoBehaviour
     void Start()
     {
         dialogueRunner=FindObjectOfType<DialogueRunner>();
+        interlocutor=null;
     }
 
     // Update is called once per frame
@@ -53,10 +57,34 @@ public class DialogueAssets : MonoBehaviour
                     voiceAudioSource.clip=dc.voiceClip[Random.Range(0,dc.voiceClip.Length)];
                     voiceAudioSource.pitch=Random.Range(0.9f,1.1f);
                     voiceAudioSource.Play();
+                    portraitRenderer1.color=Color.white;
+                    portraitRenderer2.color=Color.white;
+                }else{
+                    portraitRenderer1.sprite=null;
+                    portraitRenderer2.sprite=null;
+                    portraitRenderer1.color=new Color(0f,0f,0f,0f);
+                    portraitRenderer2.color=new Color(0f,0f,0f,0f);
                 }
             }
             prevTalker=talkerContainer.text;
             prevLine=lineContainer.text;
         }
+    }
+
+    [YarnCommand]
+    void RainView(){
+        //CODE TO CHANGE TO RAIN VIEW DIALOGUE
+    }
+
+    [YarnCommand]
+    public void PlaceInterlocutor(string s){
+        GameObject prefab=(GameObject)AssetDatabase.LoadAssetAtPath("Assets/Level/Prefabs/NPCs/"+s+".prefab",typeof(GameObject));
+        interlocutor=Instantiate(prefab,GameObject.Find("InterlocutorTransform").transform);
+        interlocutor.transform.parent=interlocutor.transform.parent.parent.parent.parent;
+    }
+
+    [YarnCommand]
+    public void DeleteInterlocutor(){
+        Destroy(interlocutor);
     }
 }

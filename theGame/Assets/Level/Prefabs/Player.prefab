@@ -427,6 +427,7 @@ Transform:
   m_Children:
   - {fileID: 1330960492303200940}
   - {fileID: 1249745694519555906}
+  - {fileID: 7970324699712242186}
   m_Father: {fileID: 2617870837617111283}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &5943611980172203708
@@ -514,6 +515,7 @@ MonoBehaviour:
   - 12
   interactionRadius: 3
   inDialogue: 0
+  inTransform: 0
   npcTalkingTo: {fileID: 0}
 --- !u!114 &2620965951585494756
 MonoBehaviour:
@@ -850,6 +852,37 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &4659499493333643331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7970324699712242186}
+  m_Layer: 0
+  m_Name: InterlocutorTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7970324699712242186
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4659499493333643331}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.3788908, z: -0, w: 0.92544144}
+  m_LocalPosition: {x: 0, y: 0, z: -2.146}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7598898202659591928}
+  m_LocalEulerAnglesHint: {x: 0, y: 44.53, z: 0}
 --- !u!1 &5575421382818103245
 GameObject:
   m_ObjectHideFlags: 0

@@ -121,4 +121,10 @@ public class PlayerVFX: MonoBehaviour
         yield return new WaitForSeconds(delay); 
 
     }
+
+    public void PlayMagicSmoke(){
+        playMCMagicSmoke=true;
+    }
+
+
 }

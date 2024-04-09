@@ -149,8 +149,71 @@ Green Hair: And now, better boundaries... I have those!
 MC: That's really amazing.
 <<stop>>
 ===
+title: Rain1
+position: -126,183
+---
+<<MoveBox2  YarnManager>>
+Rain: Hello little Cockroach...
+MC: Whu-- Who's talking?!
+Rain: We see you have found yourself in quite the predicament...
+MC: I... Yeah, I guess so.
+Rain: Do not worry. All you need to do is press *SPACE* and *WASD* and soon you will be able to reach your destination.
+MC: *SPACE* and *WASD*, huh?... I'll try that. Thanks.
+Rain: Flutter on.
+<<EndRain  RainThatTalksToYou>>
+===
+title: Rain2
+position: 85,183
+---
+<<MoveBox2  YarnManager>>
+Rain: And so the cockroach regains its legs -- yet they are changed.
+MC: This is... a goat leg?!
+Rain: They are Nour legs.
+MC: Are you... real?
+Rain: Do you not feel me in your fur and on your hoof and in your mouth and on your skin?
+MC: I guess but...
+Rain: Take heart. You will experience untold freedom. All you need to do is press *WASD*...
+Rain: And if you desire to return to your roots, you can always press *CTRL*.
+Rain: Gallop forth.
+MC: ...Thank you? I'll try that.
+MC: *WASD* and *CTRL*.... Okay.
+<<EndRain  RainThatTalksToYou>>
+===
+title: Rain3
+position: 299,183
+---
+<<MoveBox2  YarnManager>>
+<<StartRain  RainThatTalksToYou>>
+MC: I feel it again. Another change is coming, isn't it?
+Rain: You have raised these folks' spirits up. Now it is your turn to ascend.
+<<Metamorphosis PlayerController Wing>>
+Rain: And then, the cockroach found it had wings.
+MC: WOAH! I've always wanted wings!
+MC: ...Huh.
+MC: It's odd. This whole night I've been so stressed about this whole situation. But now... it feels like things are looking up?
+Rain: And they will continue on. Now, soar! 
+Rain: You may do so by pressing *SPACE*.
+MC: Ok... I'm ready. Here I go.
+<<EndRain  RainThatTalksToYou>>
+<<jump AgentPostCompliments>>
+===
+title: Rain4
+position: 504,181
+---
+<<MoveBox2  YarnManager>>
+Rain: And finally, the cockroach gained its antenna.
+MC: ...Cool? It's weird though. These usually do something.
+Rain: Everything has its purpose. But it's also okay to be purposeless.
+MC: I feel really close to you right now. Do you wanna hang out sometime?
+Rain: We will see each other again, but in a different form than this one.
+Rain: For now, you may press the *RIGHT MOUSE BUTTON*, and a new world will open to you.
+MC: Got it. *RIGHT MOUSE BUTTON*.
+MC: Umm... I'll.. miss you?
+Rain: Thank you. Rocket onwards.
+<<EndRain  RainThatTalksToYou>>
+===
 title: Tabitha1
-position: 6,203
+position: 785,252
 ---
 <<MoveBox2 YarnManager>>
 MC: Hello tall flower.
@@ -174,7 +237,7 @@ MC: Hmmm...
 <<stop>>
 ===
 title: Tabitha2
-position: 221,203
+position: 1005,255
 ---
 <<MoveBox2 YarnManager>>
 MC: {$compliment}
@@ -187,7 +250,7 @@ MC: Happy blossoming!
 <<stop>>
 ===
 title: Tabitha3
-position: 221,203
+position: 1224,257
 ---
 <<MoveBox2 YarnManager>>
 MC: Still blossoming?
@@ -196,7 +259,7 @@ MC: Keep up the good work!
 <<stop>>
 ===
 title: KissingCouple1
-position: 6,203
+position: 350,727
 ---
 <<MoveBox2 YarnManager>>
 MC: Whoa you are going at it!
@@ -211,7 +274,7 @@ Kissing Couple: We so are!
 <<stop>>
 ===
 title: KissingCouple2
-position: 221,203
+position: 561,726
 ---
 <<MoveBox2 YarnManager>>
 MC: {$compliment}
@@ -224,7 +287,7 @@ MC: I hope you set the world record.
 <<stop>>
 ===
 title: KissingCouple3
-position: 441,201
+position: 787,729
 ---
 <<MoveBox2 YarnManager>>
 Kissing Couple: *smack slurp smack slurp slurp slurp*
@@ -232,7 +295,7 @@ Kissing Couple: *smack slurp smack slurp slurp slurp*
 ===
 
 title: ShoeBaby1
-position: 6,203
+position: -503,697
 ---
 <<MoveBox2 YarnManager>>
 Shoe Baby: *ooomph*! Can you be a bit more careful...I'm sorta unnoticeable...
@@ -256,7 +319,7 @@ Shoe Baby: Unbelievable...so do you come...eh...around this area often?
 ===
 
 title: ShoeBaby2
-position: 6,203
+position: -279,697
 ---
 <<MoveBox2 YarnManager>>
 MC: {$compliment}
@@ -270,7 +333,7 @@ MC: Anytime.
 ===
 
 title: ShoeBaby3
-position: 6,203
+position: -61,695
 ---
 <<MoveBox2 YarnManager>>
 MC: Feeling noticeable?
@@ -280,7 +343,7 @@ MC: Yipee!
 <<stop>>
 ===
 title: Naut1
-position: 6,203
+position: -377,535
 ---
 <<MoveBox2 YarnManager>>
 MC: Cool shell... nice to meet you!
@@ -309,7 +372,7 @@ Naut: I used to be energetic like you...
 <<stop>>
 ===
 title: Naut2
-position: 6,203
+position: -158,526
 ---
 <<MoveBox2 YarnManager>>
 MC: {$compliment}
@@ -320,7 +383,7 @@ MC: You look it!
 <<stop>>
 ===
 title: Naut3
-position: 6,203
+position: 48,524
 ---
 <<MoveBox2 YarnManager>>
 Naut: I think I might go for a run!
@@ -329,7 +392,7 @@ MC: Sounds fun!
 ===
 
 title: Thwomp1
-position: 6,203
+position: -67,373
 ---
 <<MoveBox2 YarnManager>>
 Thwomp: I'm looking pretty flat huh?
@@ -347,26 +410,26 @@ Thwomp: I feel like I should be...
 ===
 
 title: Thwomp2
-position: 221,203
+position: 147,373
 ---
 <<MoveBox2 YarnManager>>
 MC: {$compliment}
 //<<Complimented  Thwomp>>
 Thwomp: WHOA!!! 
-MC: Wow I feel like I can really let loose and be myself now. 
-Thwomp: Looking good!
+Thwomp: Wow I feel like I can really let loose and be myself now. 
+MC: Looking good!
 <<ChangeStartNode HappyThwomp Thwomp3>>
 <<stop>>
 ===
 title: Thwomp3
-position: 441,201
+position: 358,380
 ---
 <<MoveBox2 YarnManager>>
 Thwomp: Taking up space! 
 <<stop>>
 ===
 title: Farez
-position: 441,201
+position: 534,544
 ---
 <<MoveBox2 YarnManager>>
 MC: How's your day so far?
@@ -385,5 +448,24 @@ Farez: Some kind of a feeling. Correct.
 MC: Feelings so happen.
 <<stop>>
 ===
-
-
+title: AgentPostCompliments
+position: 831,-31
+---
+<<PlaceInterlocutor DialogueSystem Agent>>
+Agent: Whoa there champ! What is going on with your body?
+MC: I’m not sure! It’s just what’s been happening today!
+Agent: Wow champ, your wings look pretty groovy.
+MC: My name is actually Nour, but yeah I guess it’s pretty cool.
+Agent: You might be able to ascend the stairs to that big building over there with the UFO…
+MC: Probably?
+Agent: Can I be honest with you champ? I love what you got going on here.
+Agent: Might I interest you in the opportunity of a lifetime?
+MC: Perhaps…
+Agent: You may not know this, as being covert is one of my strengths, but I’m a secret agent.
+MC: I had no idea! What kind of secret agent?
+Agent: I work for BRAG, Big Righteous Agency Galatic. They’re undergoing a corporate rebrand, but I’m sure you’ve heard of them.
+MC: I definitely have not.
+Agent: You're hired! Use those wings to head up the stairs and there should be a package waiting for you.
+Agent: I'll be in touch!
+<<DeleteInterlocutor DialogueSystem>>
+===
