@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     private GameObject complimentInstance;
 
     private int complimentValue;
-    private int maxComplimentValue=6;
+    public int maxComplimentValue=6;
 
     public bool inComplimentGame;
 
@@ -222,6 +222,9 @@ public class GameManager : MonoBehaviour
     //Co-routine for metamorphosis and rain that takes place after every compliment has been paid
     private IEnumerator PostComplimentEvent(){
         yield return new WaitForSeconds(2f);
+        while(dialogueRunner.IsDialogueRunning){
+            yield return new WaitForSeconds(2f);
+        }
         dialogueRunner.StartDialogue("Rain3");
     }
 }
