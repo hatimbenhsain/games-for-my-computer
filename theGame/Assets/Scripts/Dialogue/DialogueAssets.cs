@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
+using UnityEditor;
 
 public class DialogueAssets : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class DialogueAssets : MonoBehaviour
     public Image portraitRenderer2;
     public AudioSource voiceAudioSource;
 
+    private GameObject interlocutor;
+
     [System.Serializable]    
     public struct DialogueCharacter{
         public string name;
@@ -29,6 +32,7 @@ public class DialogueAssets : MonoBehaviour
     void Start()
     {
         dialogueRunner=FindObjectOfType<DialogueRunner>();
+        interlocutor=null;
     }
 
     // Update is called once per frame
@@ -70,5 +74,17 @@ public class DialogueAssets : MonoBehaviour
     [YarnCommand]
     void RainView(){
         //CODE TO CHANGE TO RAIN VIEW DIALOGUE
+    }
+
+    [YarnCommand]
+    public void PlaceInterlocutor(string s){
+        GameObject prefab=(GameObject)AssetDatabase.LoadAssetAtPath("Assets/Level/Prefabs/NPCs/"+s+".prefab",typeof(GameObject));
+        interlocutor=Instantiate(prefab,GameObject.Find("InterlocutorTransform").transform);
+        interlocutor.transform.parent=interlocutor.transform.parent.parent.parent.parent;
+    }
+
+    [YarnCommand]
+    public void DeleteInterlocutor(){
+        Destroy(interlocutor);
     }
 }

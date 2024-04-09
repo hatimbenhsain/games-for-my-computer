@@ -31,31 +31,20 @@ public class SpawnManager : MonoBehaviour
         if (thirdPersonController != null)
         {
             Debug.Log(SpawnDataHolder.characterState);
-            thirdPersonController.currentState = SpawnDataHolder.characterState;
+            thirdPersonController.SetState(SpawnDataHolder.characterState);
         }
         // if playTransformAnimation is set to true
         if (SpawnDataHolder.playTransformAnimation)
         {
-            StartCoroutine(PlayerTransformCoroutine());
-            // lock movement
-            thirdPersonController.inTransform = true;
+            thirdPersonController.Metamorphosis(SpawnDataHolder.targetCharacterState,vfxTime,transformTime);
+            StartCoroutine("StartRain");
         }
         //playerController.
         playerVFX = VFX.GetComponent<PlayerVFX>();
     }
 
-    private IEnumerator PlayerTransformCoroutine()
-    {
-        // wait
-        yield return new WaitForSeconds(vfxTime);
-        // play smoke
-        playerVFX.PlayMagicSmoke();
-        // wait until the smoke happen
-        yield return new WaitForSeconds(transformTime);
-        // change state
-        thirdPersonController.SetState(SpawnDataHolder.targetCharacterState);
-        // allow movement
-        thirdPersonController.inTransform = false;
+    private IEnumerator StartRain(){
+        yield return new WaitForSeconds(vfxTime+transformTime+0.1f);
         FindObjectOfType<RainThatTalks>().StartRain();
     }
 
