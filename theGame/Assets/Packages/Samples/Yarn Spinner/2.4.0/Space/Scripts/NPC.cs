@@ -24,6 +24,7 @@ SOFTWARE.
 
 */
 
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using Yarn.Unity;
@@ -71,8 +72,14 @@ namespace Yarn.Unity.Example
 
         [YarnCommand]
         public void Complimented(){
-            animator.SetBool("complimented",true);
             TriggerVFX("compliment");
+            StartCoroutine("ComplimentAnimation");
+        }
+
+        private IEnumerator ComplimentAnimation(){
+            yield return new WaitForSeconds(0.5f);
+            animator.SetBool("complimented",true);
+
         }
     }
 
