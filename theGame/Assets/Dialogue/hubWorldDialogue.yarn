@@ -104,7 +104,7 @@ NPC: Yeah! Thank you for everything :)
 title: GreenHair1
 tags: 
 colorID: 0
-position: 9,-3
+position: 7,-5
 ---
 <<MoveBox2 YarnManager>>
 MC: Hey... there.
@@ -126,7 +126,7 @@ MC: Well, I...
 title: GreenHair2
 tags: 
 colorID: 0
-position: 220,-2
+position: 218,-5
 ---
 <<MoveBox2 YarnManager>>
 MC: {$compliment}
@@ -149,3 +149,241 @@ Green Hair: And now, better boundaries... I have those!
 MC: That's really amazing.
 <<stop>>
 ===
+title: Tabitha1
+position: 6,203
+---
+<<MoveBox2 YarnManager>>
+MC: Hello tall flower.
+Tabitha: ...Don't tell me...
+MC: Oh? I dunnu I...
+Tabitha: You're here to take one of my flowers?
+MC: I definitely wasn't thinking that.
+Tabitha: That's what they all say...
+MC: Do people take from you often?
+Tabitha: Actually all of the time, and I only bloom so often.
+MC: Hmmm...
+-> Compliment them.
+    MC: I just wanna compliment you! Would that be okay??
+    Tabitha: Sure okay!
+    <<ChangeStartNode Tabitha Tabitha2>>
+    <<ComplimentStart GameManager>>
+-> Something else.
+    MC: Can I just stare at your flowers for a second?
+    Tabitha: That's strange.
+    MC: Okay....nevermind....
+<<stop>>
+===
+title: Tabitha2
+position: 221,203
+---
+<<MoveBox2 YarnManager>>
+MC: {$compliment}
+Tabitha: ...!
+Tabitha: ...feeling something...eep!!
+<<Complimented  Tabitha>>
+Tabitha: I'm blossoming~! Thank you, this is so rare.
+MC: Happy blossoming!
+<<ChangeStartNode Tabitha Tabitha3>>
+<<stop>>
+===
+title: Tabitha3
+position: 221,203
+---
+<<MoveBox2 YarnManager>>
+MC: Still blossoming?
+Tabitha: Yeah..*ahem*...this is awkward to do in public...but I'm so grateful!
+MC: Keep up the good work!
+<<stop>>
+===
+title: KissingCouple1
+position: 6,203
+---
+<<MoveBox2 YarnManager>>
+MC: Whoa you are going at it!
+Kissing Couple: We so are!
+-> Compliment them.
+    MC: I wanna tell you both some nice things!
+    <<ChangeStartNode KissingCouple KissingCouple2>>
+    <<ComplimentStart GameManager>>
+-> Something else.
+    Kissing Couple: I hope one day you'll find a love as pure as ours!
+    MC: See ya later love birds.
+<<stop>>
+===
+title: KissingCouple2
+position: 221,203
+---
+<<MoveBox2 YarnManager>>
+MC: {$compliment}
+//<<Complimented  Kissing Couple>>
+Kissing Couple: Whoa!!! 
+MC: I didn't know human bodies could do that! 
+Kissing Couple: We're gonna stay like this forever.
+MC: I hope you set the world record.
+<<ChangeStartNode KissingCouple KissingCouple3>>
+<<stop>>
+===
+title: KissingCouple3
+position: 441,201
+---
+<<MoveBox2 YarnManager>>
+Kissing Couple: *smack slurp smack slurp slurp slurp*
+<<stop>>
+===
+
+title: ShoeBaby1
+position: 6,203
+---
+<<MoveBox2 YarnManager>>
+Shoe Baby: *ooomph*! Can you be a bit more careful...I'm sorta unnoticeable...
+MC: No, I meant to say hello. So, Hi!
+Shoe Baby: Unbelievable...so do you come...eh...around this area often?
+-> Yeah, just to say hi to you! 
+    MC: Yeah, just to say hi to you! 
+    -> Compliment them!
+        MC: Compliment incoming!!
+        <<ChangeStartNode ShoeBaby ShoeBaby2>>
+        <<ComplimentStart GameManager>>
+    -> I didn't...I just noticed you from *this* close.
+        Shoe Baby: I don't really go anywhere different.
+        MC: Is it because of your size?
+        Shoe Baby: ...
+        MC:...
+-> This is my first time.
+    Shoe Baby: saying hi is pretty cool still.
+    MC: talk to you later!
+<<stop>>
+===
+
+title: ShoeBaby2
+position: 6,203
+---
+<<MoveBox2 YarnManager>>
+MC: {$compliment}
+Shoe Baby: ...!
+Shoe Baby: Hahahaha that's tickly!!
+<<Complimented  ShoeBaby>>
+Shoe Baby: Thank you so for even noticing me in the first place! Wowie.
+MC: Anytime.
+<<ChangeStartNode ShoeBaby ShoeBaby3>>
+<<stop>>
+===
+
+title: ShoeBaby3
+position: 6,203
+---
+<<MoveBox2 YarnManager>>
+MC: Feeling noticeable?
+Shoe Baby: Yipee!
+MC:...
+MC: Yipee!
+<<stop>>
+===
+title: Naut1
+position: 6,203
+---
+<<MoveBox2 YarnManager>>
+MC: Cool shell... nice to meet you!
+Naut: I used to be energetic like you...
+-> What happened?
+    MC: What happened?
+    Naut: It has completely destroyed the skyline's feng shui.
+    MC: That's no reason to lose sleep!
+    Naut: Oh yeah?
+    -> Compliment them!
+        MC: Thinking up an awesome compliment for you!
+        <<ChangeStartNode Naut Naut2>>
+        <<ComplimentStart GameManager>>
+    -> Nah
+        MC: Hope you get some sleep dude.
+        Naut: Me too...
+-> You still can be!
+    Naut: Am I supposed to just decide not to be tired?
+        -> Compliment them!
+            MC: Thinking up an awesome compliment for you!
+            <<ChangeStartNode Naut Naut2>>
+            <<ComplimentStart GameManager>>
+        -> Nah
+            MC: Hope you get some sleep dude.
+            Naut: Me too...
+<<stop>>
+===
+title: Naut2
+position: 6,203
+---
+<<MoveBox2 YarnManager>>
+MC: {$compliment}
+<<Complimented  Naut>>
+Naut: Wow! I'm feeling a little energized! 
+MC: You look it!
+<<ChangeStartNode Naut Naut3>>
+<<stop>>
+===
+title: Naut3
+position: 6,203
+---
+<<MoveBox2 YarnManager>>
+Naut: I think I might go for a run!
+MC: Sounds fun!
+<<stop>>
+===
+
+title: Thwomp1
+position: 6,203
+---
+<<MoveBox2 YarnManager>>
+Thwomp: I'm looking pretty flat huh?
+MC: I guess?
+Thwomp: As flat as you right?
+MC: Do you want to be?
+Thwomp: I feel like I should be...
+-> Compliment them.
+    MC: I'm thinking up some real nice things to say!
+    <<ChangeStartNode HappyThwomp Thwomp2>>
+    <<ComplimentStart GameManager>>
+-> Nah.
+    MC: See you around dude.    
+<<stop>>
+===
+
+title: Thwomp2
+position: 221,203
+---
+<<MoveBox2 YarnManager>>
+MC: {$compliment}
+//<<Complimented  Thwomp>>
+Thwomp: WHOA!!! 
+MC: Wow I feel like I can really let loose and be myself now. 
+Thwomp: Looking good!
+<<ChangeStartNode HappyThwomp Thwomp3>>
+<<stop>>
+===
+title: Thwomp3
+position: 441,201
+---
+<<MoveBox2 YarnManager>>
+Thwomp: Taking up space! 
+<<stop>>
+===
+title: Farez
+position: 441,201
+---
+<<MoveBox2 YarnManager>>
+MC: How's your day so far?
+Farez: Hello! Well...first I went to the grocery store. Then I wrote in my novel. Then I...
+MC: Sounds like a lot!
+Farez: Yes. So much has happened. Then my grandma needed a new lightbulb. Then...
+MC: Maybe you can tell me how you're doing instead?
+Farez: How I'm doing?? Ok, well...It all started when I was 6. That was when I first started feeling...
+MC: You don't remember feeling before 6?
+Farez: ...I remember specifically noting in my journal that at the age of 6 was the first time I fully felt sorrow...
+Farez: which is the first kind of feeling that really counts. Then when I was 20 I...
+MC: You have a lot to say...
+Farez: Well some people do seem to say that about me...and then when I hear that I start to feel...
+MC: ...Some kind of a feeling?
+Farez: Some kind of a feeling. Correct.
+MC: Feelings so happen.
+<<stop>>
+===
+
+
