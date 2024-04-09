@@ -49,14 +49,18 @@ public class SpawnManager : MonoBehaviour
         // wait
         yield return new WaitForSeconds(vfxTime);
         // play smoke
-        playerVFX.playMCMagicSmoke = true;
+        playerVFX.PlayMagicSmoke();
         // wait until the smoke happen
         yield return new WaitForSeconds(transformTime);
         // change state
         thirdPersonController.SetState(SpawnDataHolder.targetCharacterState);
         // allow movement
         thirdPersonController.inTransform = false;
+        FindObjectOfType<RainThatTalks>().StartRain();
     }
 
+    public int GetSpawnIndex(){
+        return SpawnDataHolder.spawnLocationIndex;
+    }
 
 }

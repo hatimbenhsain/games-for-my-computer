@@ -53,10 +53,22 @@ public class DialogueAssets : MonoBehaviour
                     voiceAudioSource.clip=dc.voiceClip[Random.Range(0,dc.voiceClip.Length)];
                     voiceAudioSource.pitch=Random.Range(0.9f,1.1f);
                     voiceAudioSource.Play();
+                    portraitRenderer1.color=Color.white;
+                    portraitRenderer2.color=Color.white;
+                }else{
+                    portraitRenderer1.sprite=null;
+                    portraitRenderer2.sprite=null;
+                    portraitRenderer1.color=new Color(0f,0f,0f,0f);
+                    portraitRenderer2.color=new Color(0f,0f,0f,0f);
                 }
             }
             prevTalker=talkerContainer.text;
             prevLine=lineContainer.text;
         }
+    }
+
+    [YarnCommand]
+    void RainView(){
+        //CODE TO CHANGE TO RAIN VIEW DIALOGUE
     }
 }
