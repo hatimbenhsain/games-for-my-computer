@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private GameObject complimentInstance;
 
     private int complimentValue;
+    public int maxComplimentValue=6;
 
     public bool inComplimentGame;
 
@@ -41,6 +42,8 @@ public class GameManager : MonoBehaviour
     private Quaternion endCameraRotation;
 
     private Camera mainCamera;
+
+    private bool complimentMetamorphosisHappened=false;
 
     // Start is called before the first frame update
     void Start()
@@ -86,6 +89,12 @@ public class GameManager : MonoBehaviour
                 playerCamera.LookAt = playerCameraRoot;
                 isEndTransitioning = false;
             }
+        }
+
+        if(!complimentMetamorphosisHappened && !inComplimentGame && !dialogueRunner.IsDialogueRunning && !isTransitioning && complimentValue>=maxComplimentValue){
+            StartCoroutine("PostComplimentEvent");
+            complimentMetamorphosisHappened=true;
+            Debug.Log("post");
         }
     }
 
@@ -162,7 +171,8 @@ public class GameManager : MonoBehaviour
         dialogueRunner.Stop();
         dialogueRunner.StartDialogue(playerScript.npcTalkingTo.talkToNode);
         inComplimentGame = false;
-       // UnityEngine.Cursor.lockState = CursorLockMode.None;
+        animator.SetTrigger("Reset");
+        // UnityEngine.Cursor.lockState = CursorLockMode.None;
 
 
 
@@ -207,5 +217,14 @@ public class GameManager : MonoBehaviour
         // wait
         yield return new WaitForSeconds(outDialogueTime);
         ComplimentEndDialogueOperations();
+    }
+
+    //Co-routine for metamorphosis and rain that takes place after every compliment has been paid
+    private IEnumerator PostComplimentEvent(){
+        yield return new WaitForSeconds(2f);
+        while(dialogueRunner.IsDialogueRunning){
+            yield return new WaitForSeconds(2f);
+        }
+        dialogueRunner.StartDialogue("Rain3");
     }
 }

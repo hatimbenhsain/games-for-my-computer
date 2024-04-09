@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
 using Yarn.Unity;
+using StarterAssets;
 
 public class RainThatTalks : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class RainThatTalks : MonoBehaviour
     private bool isLerping = false; // Flag to indicate if we're currently lerping
     public float lerpDuration = 2.0f; // Duration of the lerp in seconds
     private float lerpTimer = 0.0f; // Timer for the lerp
+
+    private bool isRaining=false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -84,22 +88,49 @@ public class RainThatTalks : MonoBehaviour
     }
 
     [YarnCommand]
-    public void StartRain(){
-        _animator.SetTrigger("Rain");
-        baseColor = colorAdjustments.colorFilter.value; // Update base color to current value
-        targetColor = filterColor; 
-        isLerping = true;
-        lerpTimer = 0f; // Reset the timer
-        Rain.Play();
+    public void StartRain(string rainNode=""){
+        Debug.Log("start rain?");
+        if(!isRaining){
+            Debug.Log("start rain");
+            _animator.SetTrigger("Rain");
+            baseColor = colorAdjustments.colorFilter.value; // Update base color to current value
+            targetColor = filterColor; 
+            isLerping = true;
+            lerpTimer = 0f; // Reset the timer
+            Rain.Play();
+            if(rainNode==""){       
+                ThirdPersonController.CharacterState st=FindObjectOfType<ThirdPersonController>().currentState;
+                rainNode="Rain1";
+                switch(st){
+                    case ThirdPersonController.CharacterState.Fish:
+                        rainNode="Rain1";
+                        break;
+                    case ThirdPersonController.CharacterState.Leg:
+                        rainNode="Rain2";
+                        break;
+                    case ThirdPersonController.CharacterState.Wing:
+                        rainNode="Rain3";
+                        break;
+                    case ThirdPersonController.CharacterState.Rocket:
+                        rainNode="Rain4";
+                        break;
+                }
+            }
+            FindObjectOfType<DialogueRunner>().StartDialogue(rainNode);
+            isRaining=true;
+        }
     }
 
     [YarnCommand]
     public void EndRain(){
-        _animator.SetTrigger("StopRain");
-        baseColor = colorAdjustments.colorFilter.value; // Update base color to current value
-        targetColor = Color.white; // Original color
-        isLerping = true;
-        lerpTimer = 0f; // Reset the timer
-        Rain.Stop();
+        if(isRaining){
+            _animator.SetTrigger("StopRain");
+            baseColor = colorAdjustments.colorFilter.value; // Update base color to current value
+            targetColor = Color.white; // Original color
+            isLerping = true;
+            lerpTimer = 0f; // Reset the timer
+            Rain.Stop();
+            isRaining=false;
+        }
     }
 }

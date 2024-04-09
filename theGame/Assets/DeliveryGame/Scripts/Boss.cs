@@ -169,8 +169,11 @@ public class Boss : MonoBehaviour
             GetComponent<AudioSource>().pitch=1f;
             GetComponent<AudioSource>().Play();
         }else if(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name!="attack1"){
+            Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
             currentState=State.Patroling;
             patrolTime=0f;
+        }else{
+            transform.LookAt(player);
         }
         sphereTime+=Time.deltaTime;
     }

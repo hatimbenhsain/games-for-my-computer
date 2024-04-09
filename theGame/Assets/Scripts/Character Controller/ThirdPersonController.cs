@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections; 
 using UnityEngine;
 using UnityEngine.VFX;
 using Unity.VisualScripting;
@@ -359,6 +360,7 @@ namespace StarterAssets
 
         void HandleFishState()
         {
+            Debug.Log("fish");
             if (Grounded)
             {
                 MoveSpeed=0;
@@ -367,6 +369,7 @@ namespace StarterAssets
             {
                 MoveSpeed = 4;
             }
+            _jumpLock = false;
             _crouch = true;
             //_moveLock = true;
             JumpHeight = FishFlopHeight;
@@ -379,7 +382,7 @@ namespace StarterAssets
             // if not can walk around but no jump
             if (_input.fish && Grounded)
             {
-                _moveLock = true;
+                //_moveLock = true;
                 _jumpLock = false;
                 _crouch = true;
             }
@@ -391,13 +394,11 @@ namespace StarterAssets
                 {
                     _crouch = false;
                 }
-
-
             }
             MoveSpeed = LegMoveSpeed;
             Acceleration=LegAcceleration;
             Deceleration=LegDeceleration;
-            //Debug.Log("Leg");
+            Debug.Log(_jumpLock) ;
             // Enable walk and run with slippery effect
             _animator.SetInteger("metamorphosis",2);
         }
@@ -699,7 +700,7 @@ namespace StarterAssets
             //gravity modifier
             float gModifier=1f;
 
-            if(_input.jump && currentState==CharacterState.Fish){
+            if(_input.jump && (currentState==CharacterState.Fish || _crouch)){
                 gModifier=0.5f;
             }
 
@@ -837,6 +838,44 @@ namespace StarterAssets
 
         public bool IsCrouching(){
             return _crouch;
+        }
+
+        public void Metamorphosis(CharacterState cs, float time1=2f, float time2=0.5f){
+            StartCoroutine(PlayerTransformCoroutine(cs,time1,time2));
+        }
+
+        private IEnumerator PlayerTransformCoroutine(CharacterState cs, float time1=2f, float time2=0.5f){
+            inTransform=true;
+            // wait
+            yield return new WaitForSeconds(time1);
+            // play smoke
+            FindObjectOfType<PlayerVFX>().PlayMagicSmoke();
+            // wait until the smoke happen
+            yield return new WaitForSeconds(time2);
+            // change state
+            SetState(cs);
+            // allow movement
+            inTransform = false;
+        }
+
+        [YarnCommand]
+        public void Metamorphosis(string cState){
+            CharacterState cs=CharacterState.Rocket;
+            switch(cState.ToLower()){
+                case "fish":
+                    cs=CharacterState.Fish;
+                    break;
+                case "leg":
+                    cs=CharacterState.Leg;
+                    break;
+                case "wing":
+                    cs=CharacterState.Wing;
+                    break;
+                case "rocket":
+                    cs=CharacterState.Rocket;
+                    break;
+            }
+            StartCoroutine(PlayerTransformCoroutine(cs,0f,0.5f));
         }
     }
 }
