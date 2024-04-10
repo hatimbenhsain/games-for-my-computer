@@ -278,7 +278,7 @@ position: 561,726
 ---
 <<MoveBox2 YarnManager>>
 MC: {$compliment}
-//<<Complimented  Kissing Couple>>
+<<Complimented  KissingCouple>>
 Kissing Couple: Whoa!!! 
 MC: I didn't know human bodies could do that! 
 Kissing Couple: We're gonna stay like this forever.
@@ -402,7 +402,7 @@ MC: Do you want to be?
 Thwomp: I feel like I should be...
 -> Compliment them.
     MC: I'm thinking up some real nice things to say!
-    <<ChangeStartNode HappyThwomp Thwomp2>>
+    <<ChangeStartNode Thwomp Thwomp2>>
     <<ComplimentStart GameManager>>
 -> Nah.
     MC: See you around dude.    
@@ -414,11 +414,11 @@ position: 147,373
 ---
 <<MoveBox2 YarnManager>>
 MC: {$compliment}
-//<<Complimented  Thwomp>>
+<<Complimented  Thwomp>>
 Thwomp: WHOA!!! 
 Thwomp: Wow I feel like I can really let loose and be myself now. 
 MC: Looking good!
-<<ChangeStartNode HappyThwomp Thwomp3>>
+<<ChangeStartNode Thwomp Thwomp3>>
 <<stop>>
 ===
 title: Thwomp3
