@@ -7,28 +7,26 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject playerPrefab;
     public GameObject playerController;
-    private ThirdPersonController thirdPersonController;
+    public ThirdPersonController thirdPersonController;
     public GameObject VFX;
     private PlayerVFX playerVFX;
+    public float moveTime = 0.1f;
     public float transformTime;
     public float vfxTime;
     void Start()
     {
-        // name every spawnpoint like "SpawnPoint1"
+        playerVFX = GameObject.Find("PlayerVFX")?.GetComponent<PlayerVFX>();
         GameObject spawnPoint = GameObject.Find($"SpawnPoint{SpawnDataHolder.spawnLocationIndex}");
+        Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+        thirdPersonController = GameObject.Find("PlayerController")?.GetComponent<ThirdPersonController>();
+        // name every spawnpoint like "SpawnPoint1"
 
+        Debug.Log(SpawnDataHolder.spawnLocationIndex);
 
-        if (spawnPoint != null)
-        {
-            playerPrefab.transform.position = spawnPoint.transform.position;
-            playerPrefab.transform.rotation = spawnPoint.transform.rotation;
-        }
-        else
-        {
-            Debug.LogError("Spawn point not found.");
-        }
+            //playerPrefab.transform.position = spawnPoint.transform.position;
+            //playerPrefab.transform.rotation = spawnPoint.transform.rotation;
 
-        thirdPersonController = playerController.GetComponent<ThirdPersonController>();
+        //thirdPersonController = playerController.GetComponent<ThirdPersonController>();
         if (thirdPersonController != null)
         {
             Debug.Log(SpawnDataHolder.characterState);
@@ -41,16 +39,12 @@ public class SpawnManager : MonoBehaviour
             StartCoroutine("StartRain");
         }
         //playerController.
-        playerVFX = VFX.GetComponent<PlayerVFX>();
+        //playerVFX = VFX.GetComponent<PlayerVFX>();
     }
 
     private IEnumerator StartRain(){
         yield return new WaitForSeconds(vfxTime+transformTime+0.1f);
         FindObjectOfType<RainThatTalks>().StartRain();
-    }
-
-    public int GetSpawnIndex(){
-        return SpawnDataHolder.spawnLocationIndex;
     }
 
 }

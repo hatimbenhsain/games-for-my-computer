@@ -39,7 +39,7 @@ public class SurgeryController : MonoBehaviour
         targetPlane=targetPlaneObject.GetComponent<MeshCollider>();
         skinDetached=false;
         audioSource=GetComponent<AudioSource>();
-
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible=true;
 
         tool=null;

@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     private GameObject complimentInstance;
 
     private int complimentValue;
-    private int maxComplimentValue=6;
+    public int maxComplimentValue=6;
 
     public bool inComplimentGame;
 
@@ -48,7 +48,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainCamera=Camera.main;
+        playerCamera = GameObject.Find("PlayerFollowCamera")?.GetComponent<CinemachineVirtualCamera>();
+        playerCameraRoot = GameObject.Find("PlayerCameraRoot")?.GetComponent<Transform>();
+        targetTransform = GameObject.Find("LerpTargetCamera")?.GetComponent<Transform>();
+        mainCamera =Camera.main;
         inComplimentGame=false;
         playerScript=FindObjectOfType<ThirdPersonController>();
         dialogueRunner=FindObjectOfType<DialogueRunner>();
@@ -222,6 +225,9 @@ public class GameManager : MonoBehaviour
     //Co-routine for metamorphosis and rain that takes place after every compliment has been paid
     private IEnumerator PostComplimentEvent(){
         yield return new WaitForSeconds(2f);
+        while(dialogueRunner.IsDialogueRunning){
+            yield return new WaitForSeconds(2f);
+        }
         dialogueRunner.StartDialogue("Rain3");
     }
 }
