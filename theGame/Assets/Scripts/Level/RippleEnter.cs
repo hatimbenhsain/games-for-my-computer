@@ -21,6 +21,7 @@ public class RippleEnter : MonoBehaviour
 
     private void Start()
     {
+        mainCamera = GameObject.Find("PlayerFollowCamera")?.GetComponent<CinemachineVirtualCamera>();
         GameObject playerCameraRootObject = GameObject.Find("PlayerCameraRoot");
         if (playerCameraRootObject != null)
         {
