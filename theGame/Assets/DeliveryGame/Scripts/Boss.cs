@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using StarterAssets;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,7 +9,7 @@ using UnityEngine.AI;
 
 public class Boss : MonoBehaviour
 {
-    public enum State {Idle,Patroling,Charging,Sphering}
+    public enum State {Idle,Patroling,Charging,Sphering,Missiling}
     private NavMeshAgent agent;
     private Transform player;
     public Transform[] patrolPoints;
@@ -23,7 +24,7 @@ public class Boss : MonoBehaviour
     public float chargeTime=0f;
     private float prevChargeTime=0f;
     //probably wouold be more efficient to have one "time" value for every state
-    private float sphereTime=0f;
+    private float attackTime=0f;
 
     private float minRunSpeed=3f;
     public float walkSpeed=1.5f;
@@ -34,6 +35,11 @@ public class Boss : MonoBehaviour
     private Animator animator;
 
     public GameObject spheresPrefab;
+    public GameObject missilePrefab;
+
+    private ThirdPersonController playerScript;
+
+    private CanvasScript canvasScript;
 
     void Start()
     {
@@ -50,6 +56,9 @@ public class Boss : MonoBehaviour
         animator=GetComponent<Animator>();
         agent.speed=walkSpeed;
         agent.acceleration=walkAcceleration;
+        playerScript=FindObjectOfType<ThirdPersonController>();
+
+        canvasScript=FindObjectOfType<CanvasScript>();
     }
 
     // Update is called once per frame
@@ -66,6 +75,9 @@ public class Boss : MonoBehaviour
                 break;
             case State.Sphering:
                 Sphere();
+                break;
+            case State.Missiling:
+                Missile();
                 break;
         }
 
@@ -126,13 +138,19 @@ public class Boss : MonoBehaviour
         agent.speed=walkSpeed;
         agent.acceleration=walkAcceleration;
         if(patrolTime>patrolLength){
-            float r=Random.Range(0f,1f);
-            if(r<=0.5f){
-                currentState=State.Charging;
-            }else{
-                currentState=State.Sphering;
-                sphereTime=0f;
+            if(playerScript.IsFlying()){
                 animator.SetTrigger("attacking");
+                currentState=State.Missiling;
+                attackTime=0f;
+            }else{
+                float r=Random.Range(0f,1f);
+                if(r<=0.5f){
+                    currentState=State.Charging;
+                }else{
+                    currentState=State.Sphering;
+                    attackTime=0f;
+                    animator.SetTrigger("attacking");
+                }
             }
             patrolTime=0f;
             return;
@@ -162,10 +180,18 @@ public class Boss : MonoBehaviour
 
     //throwing out spheres
     void Sphere(){
-        if(sphereTime==0f){
-            Instantiate(spheresPrefab,transform);
+        ShootProjectile(spheresPrefab);
+    }
+
+    void Missile(){
+        ShootProjectile(missilePrefab);
+    }
+
+    void ShootProjectile(GameObject prefab){
+        if(attackTime==0f){
             transform.LookAt(player);
             agent.SetDestination(transform.position);
+            Instantiate(prefab.transform,transform.position,transform.rotation);
             GetComponent<AudioSource>().pitch=1f;
             GetComponent<AudioSource>().Play();
         }else if(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name!="attack1"){
@@ -175,6 +201,14 @@ public class Boss : MonoBehaviour
         }else{
             transform.LookAt(player);
         }
-        sphereTime+=Time.deltaTime;
+        attackTime+=Time.deltaTime;
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if(other.gameObject.tag=="Player" && currentState==State.Charging){
+            canvasScript.RedScreen();
+        }
     }
 }
+
+

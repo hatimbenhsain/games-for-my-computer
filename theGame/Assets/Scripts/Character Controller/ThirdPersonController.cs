@@ -840,6 +840,10 @@ namespace StarterAssets
             return _crouch;
         }
 
+        public bool IsFlying(){
+            return isFlying;
+        }
+
         public void Metamorphosis(CharacterState cs, float time1=2f, float time2=0.5f){
             StartCoroutine(PlayerTransformCoroutine(cs,time1,time2));
         }
