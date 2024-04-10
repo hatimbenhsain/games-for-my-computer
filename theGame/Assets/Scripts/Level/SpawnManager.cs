@@ -7,7 +7,7 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject playerPrefab;
     public GameObject playerController;
-    private ThirdPersonController thirdPersonController;
+    public ThirdPersonController thirdPersonController;
     public GameObject VFX;
     private PlayerVFX playerVFX;
     public float moveTime = 0.1f;
@@ -15,17 +15,18 @@ public class SpawnManager : MonoBehaviour
     public float vfxTime;
     void Start()
     {
-        playerPrefab = GameObject.Find("Player");
-        VFX = GameObject.Find("PlayerVFX");
-        thirdPersonController = FindObjectOfType<ThirdPersonController>();
-        // name every spawnpoint like "SpawnPoint1"
+        playerVFX = GameObject.Find("PlayerVFX")?.GetComponent<PlayerVFX>();
         GameObject spawnPoint = GameObject.Find($"SpawnPoint{SpawnDataHolder.spawnLocationIndex}");
-        Debug.Log(SpawnDataHolder.spawnLocationIndex);
         Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+        thirdPersonController = GameObject.Find("PlayerController")?.GetComponent<ThirdPersonController>();
+        // name every spawnpoint like "SpawnPoint1"
+
+        Debug.Log(SpawnDataHolder.spawnLocationIndex);
+
             //playerPrefab.transform.position = spawnPoint.transform.position;
             //playerPrefab.transform.rotation = spawnPoint.transform.rotation;
 
-        thirdPersonController = playerController.GetComponent<ThirdPersonController>();
+        //thirdPersonController = playerController.GetComponent<ThirdPersonController>();
         if (thirdPersonController != null)
         {
             Debug.Log(SpawnDataHolder.characterState);
@@ -38,7 +39,7 @@ public class SpawnManager : MonoBehaviour
             StartCoroutine("StartRain");
         }
         //playerController.
-        playerVFX = VFX.GetComponent<PlayerVFX>();
+        //playerVFX = VFX.GetComponent<PlayerVFX>();
     }
 
     private IEnumerator StartRain(){
