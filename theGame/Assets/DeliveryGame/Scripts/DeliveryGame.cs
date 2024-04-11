@@ -14,6 +14,7 @@ public class DeliveryGame : MonoBehaviour
     void Start()
     {
         Cursor.visible=true;
+        Cursor.lockState=CursorLockMode.None;
         mainCamera=Camera.main;
         canvas=FindObjectOfType<Canvas>();
         package=null;
@@ -23,6 +24,7 @@ public class DeliveryGame : MonoBehaviour
     void Update()
     {
         Cursor.visible=true;
+        Cursor.lockState=CursorLockMode.None;
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * 0.4f);
         if(package!=null && package.GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name=="cardboardBoxIdle"){
             Destroy(package.GetComponentInChildren<Camera>().gameObject);
