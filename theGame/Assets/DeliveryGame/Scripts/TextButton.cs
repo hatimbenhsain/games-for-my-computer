@@ -1,30 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using TMPro; // Ensure this namespace is included
 
 public class TextButton : MonoBehaviour
 {
     public string character;
-    public TMP_InputField textField;
-    public bool erase=false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool erase = false;
 
-    // Update is called once per frame
-    void Update()
+    public void Clicked()
     {
-        
-    }
-
-    public void Clicked(){
-        if(!erase){
-            textField.text=textField.text+character;
-        }else if(textField.text.Length>0){
-            textField.text=textField.text.Substring(0,textField.text.Length-1);
+        TMP_InputField activeTextField = InputFieldManager.Instance.GetActiveField();
+        if (activeTextField != null)
+        {
+            if (!erase)
+            {
+                activeTextField.text += character;
+            }
+            else if (activeTextField.text.Length > 0)
+            {
+                activeTextField.text = activeTextField.text.Substring(0, activeTextField.text.Length - 1);
+            }
         }
     }
 }
