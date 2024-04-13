@@ -19,7 +19,7 @@ public class Package : MonoBehaviour
         
     }
 
-    void OnTriggerEnter(Collider other){
+    private void OnCollisionEnter(Collision other) {
         Debug.Log("collision");
         //Open cardboard box and replace with random item
         if(other.gameObject.tag=="Player"){
