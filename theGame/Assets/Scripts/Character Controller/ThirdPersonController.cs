@@ -360,7 +360,6 @@ namespace StarterAssets
 
         void HandleFishState()
         {
-            Debug.Log("fish");
             if (Grounded)
             {
                 MoveSpeed=0;
@@ -398,7 +397,6 @@ namespace StarterAssets
             MoveSpeed = LegMoveSpeed;
             Acceleration=LegAcceleration;
             Deceleration=LegDeceleration;
-            Debug.Log(_jumpLock) ;
             // Enable walk and run with slippery effect
             _animator.SetInteger("metamorphosis",2);
         }
@@ -532,7 +530,7 @@ namespace StarterAssets
 
                     // rotate to face input direction relative to camera position
                     transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
-                    Debug.Log("rotate player");
+                    //Debug.Log("rotate player");
                 }
 
 
