@@ -79,11 +79,15 @@ public class Missile : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) {
         if(other.gameObject.tag=="Player"){
-            canvasScript.BlueScreen();
-            Debug.Log("blue screen");
-            Destroy(gameObject);
+            CollidePlayer();
         }else{
             Debug.Log(other.gameObject);
         }
+    }
+
+    public void CollidePlayer(){
+        canvasScript.BlueScreen();
+        Debug.Log("blue screen");
+        Destroy(gameObject);
     }
 }

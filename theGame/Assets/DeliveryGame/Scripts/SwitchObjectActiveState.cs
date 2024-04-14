@@ -6,6 +6,7 @@ public class SwitchObjectActiveStateWithBool : MonoBehaviour
     public GameObject objectToActivate; // GameObject to activate
     public Button buttonToPress; // Button that triggers the switch
     public bool keepParentActive; // Public bool to control the parent object's state
+    public string nodeToCall="";
 
     private void Start()
     {
@@ -27,18 +28,22 @@ public class SwitchObjectActiveStateWithBool : MonoBehaviour
             // Activate the specified object
             objectToActivate.SetActive(true);
             
-            // (try to) Activate the first input field if there's one
-            FieldSelector fs=objectToActivate.GetComponentInChildren<FieldSelector>();
-            if(fs!=null){
-                Debug.Log("found fs");
-                fs.Activate();
-            }else{
-                Debug.Log("not found fs");
-            }
+            // // (try to) Activate the first input field if there's one
+            // FieldSelector fs=objectToActivate.GetComponentInChildren<FieldSelector>();
+            // if(fs!=null){
+            //     Debug.Log("found fs");
+            //     fs.Activate();
+            // }else{
+            //     Debug.Log("not found fs");
+            // }
         }
         else
         {
             Debug.LogWarning("ObjectToActivate is not assigned in the Inspector.", this);
+        }
+
+        if(nodeToCall!=""){
+            CallNode();
         }
 
         // Check the boolean to decide on parent GameObject's active state
@@ -52,5 +57,11 @@ public class SwitchObjectActiveStateWithBool : MonoBehaviour
         {
             Debug.LogError("This GameObject has no parent.", this);
         }
+
+
+    }
+
+    public void CallNode(){
+        FindObjectOfType<DeliveryGame>().Bark(nodeToCall);
     }
 }
