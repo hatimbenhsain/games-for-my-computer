@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.VFX;
 using Unity.VisualScripting;
+
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 using Yarn.Unity.Example;
@@ -185,6 +186,16 @@ namespace StarterAssets
         public NPC npcTalkingTo;
 
         private GameManager gameManager;
+
+        public bool canMoveInDialogue=false;
+        public bool limitedFuel=false;
+
+        public float fuelLossRate=0.2f;
+        public float fuelReplenishRate=0.2f;
+        public float fuel=1f;
+
+        public float maxHeight=-1f;
+
         private bool IsCurrentDeviceMouse
         {
             get
@@ -257,7 +268,7 @@ namespace StarterAssets
 
             Crouch();
 
-            if(dialogueRunner.IsDialogueRunning || gameManager.inComplimentGame){
+            if((dialogueRunner.IsDialogueRunning && !canMoveInDialogue) || gameManager.inComplimentGame){
                 _moveLock=true;
             }
             if (inTransform)
@@ -581,6 +592,9 @@ namespace StarterAssets
                     if(playerVelocity.magnitude>0f && (playerVelocity.magnitude<1.5f || _moveLock)){
                         playerVelocity=playerVelocity-currentVelocity*1.5f*Time.deltaTime*Deceleration;
                     }
+                    if(playerVelocity.magnitude>0f && _moveLock){
+                        playerVelocity=playerVelocity-currentVelocity*1.5f*Time.deltaTime*Deceleration;
+                    }
                 }
 
                 _controller.Move(playerVelocity * Time.deltaTime +
@@ -684,16 +698,25 @@ namespace StarterAssets
             //Handling rocketting/flying 
             isFlying=false;
             if(!_moveLock && currentState==CharacterState.Rocket && _input.fly){
-                if(Grounded && _verticalVelocity<0){
-                    _verticalVelocity=0f;
+                if((!limitedFuel || fuel>0) && (transform.position.y<maxHeight || maxHeight==-1)){
+                    if(Grounded && _verticalVelocity<0){
+                        _verticalVelocity=0f;
+                    }
+                    _verticalVelocity+=FlyPower*Time.deltaTime;
+                    if(!prevFly){
+                        _verticalVelocity+=FlyBoost;
+                    }
+                    _verticalVelocity=Mathf.Min(_verticalVelocity,maxFlyPower);
+                    isFlying=true;
+                    if(limitedFuel){
+                        fuel-=fuelLossRate*Time.deltaTime;
+                    }
                 }
-                _verticalVelocity+=FlyPower*Time.deltaTime;
-                if(!prevFly){
-                     _verticalVelocity+=FlyBoost;
-                }
-                _verticalVelocity=Mathf.Min(_verticalVelocity,maxFlyPower);
-                isFlying=true;
+            }else if(!_input.fly){
+                fuel+=fuelReplenishRate*Time.deltaTime;
             }
+
+            fuel=Mathf.Clamp(fuel,0f,1f);
 
             //gravity modifier
             float gModifier=1f;
@@ -831,6 +854,11 @@ namespace StarterAssets
             if(rb!=null && !rb.isKinematic){
                 //rb.velocity=_controller.velocity;
                 rb.AddForce(hit.moveDirection * _controller.velocity.magnitude, ForceMode.Impulse);
+            }
+            if(hit.gameObject.tag=="Package"){
+                hit.gameObject.GetComponent<Package>().PlayerCollide();
+            }else if(hit.gameObject.tag=="Missile"){
+                hit.gameObject.GetComponent<Missile>().CollidePlayer();
             }
         }
 
