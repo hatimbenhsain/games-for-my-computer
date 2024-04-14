@@ -1,0 +1,30 @@
+﻿title: deliveryDialogue
+tags:
+---
+
+===
+title: ThwompBoss1
+position: 0,0
+---
+<<MoveBox2 YarnManager>>
+Thwomp: Kinda miss my favorite spot in the park…but this is an interesting change of scenery. 
+Thwomp: Things are feeling very 3D here. Reminds me of home! 
+Thwomp: Can’t thank you enough for showing me that it’s ok to take up space on the z axis. 
+MC: It's chill!
+===
+title: Bark1
+position: 0,-200
+---
+<<MoveBox2 YarnManager>>
+<<if visited("Bark1") is false>>
+Final Agent: WHAT -- ARE YOU SERIOUSLY ON YOUR PHONE RIGHT NOW??
+MC: Give me a sec!!
+<<endif>>
+===
+title: Bark2
+position: 0,-200
+---
+<<MoveBox2 YarnManager>>
+Final Agent: I WILL BE BRINGING THIS UP AT YOUR PERFORMANCE REVIEW!
+MC: There wasn't even a contract!!!
+===

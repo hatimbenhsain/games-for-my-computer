@@ -38,8 +38,9 @@ public class DraggableWindow : MonoBehaviour, IPointerDownHandler, IDragHandler
     }
 
     private void Update() {
-        if(Input.GetKey(KeyCode.R) && Input.GetKey(KeyCode.KeypadEnter)){
+        if(Input.GetKey(KeyCode.R) && Input.GetKey(KeyCode.LeftControl)){
             ResetPosition();
+            Debug.Log("reset position");
         }
     }
 

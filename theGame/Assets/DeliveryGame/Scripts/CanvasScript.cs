@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class CanvasScript : MonoBehaviour
     private bool shaking=false;
 
     public List<GameObject> windows;
+    public DraggableWindow[] draggableWindows;
 
     public float shakeIntensity=10f;
 
@@ -116,6 +118,11 @@ public class CanvasScript : MonoBehaviour
     public void WhiteScreen(){
         shaking=true;
         shakeTime=shakeLength;
+        draggableWindows=FindObjectsOfType<DraggableWindow>();
+        windows=new List<GameObject>();
+        foreach(DraggableWindow dw in draggableWindows){
+            windows.Add(dw.gameObject);
+        }        
         foreach(GameObject w in windows){
             DraggableWindow dw=w.GetComponent<DraggableWindow>();
             if(dw!=null){
@@ -135,6 +142,11 @@ public class CanvasScript : MonoBehaviour
 
     public void BlueScreen(){
         scatterTime=0f;
+        draggableWindows=FindObjectsOfType<DraggableWindow>();
+        windows=new List<GameObject>();
+        foreach(DraggableWindow dw in draggableWindows){
+            windows.Add(dw.gameObject);
+        }        
         foreach(GameObject w in windows){
             DraggableWindow dw=w.GetComponent<DraggableWindow>();
             if(dw!=null){

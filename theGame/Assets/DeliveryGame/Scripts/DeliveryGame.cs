@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using StarterAssets;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
+using Yarn.Unity;
 
 public class DeliveryGame : MonoBehaviour
 {
@@ -9,6 +12,12 @@ public class DeliveryGame : MonoBehaviour
     private Camera mainCamera;
     private Canvas canvas;
     public GameObject package;
+    private int packageIndex;
+
+    private int packageNumber;  //how many packages can exist?
+
+    private bool limitedPackages=true; //do we stop delivering packages at a certain point?
+              // maybe the answer should be no but at some point it's just pizza or whatever
 
 
     void Start()
@@ -18,6 +27,10 @@ public class DeliveryGame : MonoBehaviour
         mainCamera=Camera.main;
         canvas=FindObjectOfType<Canvas>();
         package=null;
+        FindObjectOfType<ThirdPersonController>().canMoveInDialogue=true;
+        FindObjectOfType<ThirdPersonController>().maxHeight=50f;
+        packageIndex=0;
+        packageNumber=1000;
     }
 
     // Update is called once per frame
@@ -39,11 +52,22 @@ public class DeliveryGame : MonoBehaviour
     }
 
     void DropPackage(){
-        package=Instantiate(cardboardBoxPrefab);
-        Vector3 pos=new Vector3(Random.Range(-5f,5f),package.transform.position.y,Random.Range(-5f,5f));
-        package.transform.position=pos;
-        mainCamera.gameObject.SetActive(false);
-        canvas.gameObject.SetActive(false);
-        package.GetComponentInChildren<Rigidbody>().isKinematic=true;
+        if(!limitedPackages || packageIndex<packageNumber){
+            package=Instantiate(cardboardBoxPrefab);
+            Vector3 pos=new Vector3(Random.Range(-5f,5f),package.transform.position.y,Random.Range(-5f,5f));
+            package.transform.position=pos;
+            mainCamera.gameObject.SetActive(false);
+            canvas.gameObject.SetActive(false);
+            package.GetComponentInChildren<Rigidbody>().isKinematic=true;
+            package.GetComponentInChildren<Package>().index=packageIndex;
+            packageIndex++;
+            packageNumber=package.GetComponentInChildren<Package>().items.Length;
+        }
+    }
+
+    public void Bark(string node="Bark1"){
+        DialogueRunner dr=FindObjectOfType<DialogueRunner>();
+        dr.Stop();
+        FindObjectOfType<DialogueRunner>().StartDialogue(node);
     }
 }
