@@ -77,12 +77,17 @@ public class Missile : MonoBehaviour
         rb.MoveRotation(Quaternion.RotateTowards(transform.rotation,rotation,rotationSpeed*Time.fixedDeltaTime));
     }
 
-    private void OnCollide(Collider other) {
+    private void OnCollisionEnter(Collision other) {
         if(other.gameObject.tag=="Player"){
-            canvasScript.BlueScreen();
-            Debug.Log("blue screen");
+            CollidePlayer();
         }else{
             Debug.Log(other.gameObject);
         }
+    }
+
+    public void CollidePlayer(){
+        canvasScript.BlueScreen();
+        Debug.Log("blue screen");
+        Destroy(gameObject);
     }
 }

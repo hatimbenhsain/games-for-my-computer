@@ -18,6 +18,15 @@ public class ToggleObjectActiveState : MonoBehaviour
         if (objectToToggle != null)
         {
             objectToToggle.SetActive(!objectToToggle.activeSelf);
+
+            //(try to) activate input field
+            FieldSelector fs=objectToToggle.GetComponentInChildren<FieldSelector>();
+            if(fs!=null){
+                Debug.Log("found fs");
+                fs.Activate();
+            }else{
+                Debug.Log("not found fs");
+            }
         }
     }
 

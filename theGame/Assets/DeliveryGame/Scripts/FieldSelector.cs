@@ -7,6 +7,8 @@ public class FieldSelector : MonoBehaviour, IPointerClickHandler
 {
     private TMP_InputField myField;
 
+
+
     private void Start()
     {
         myField = GetComponent<TMP_InputField>();
@@ -15,6 +17,11 @@ public class FieldSelector : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        Activate();
+    }
+
+    public void Activate(){
         InputFieldManager.Instance.SetActiveField(myField);
     }
+
 }
