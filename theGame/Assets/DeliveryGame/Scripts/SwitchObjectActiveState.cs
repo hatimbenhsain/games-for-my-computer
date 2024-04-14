@@ -26,6 +26,15 @@ public class SwitchObjectActiveStateWithBool : MonoBehaviour
         {
             // Activate the specified object
             objectToActivate.SetActive(true);
+            
+            // (try to) Activate the first input field if there's one
+            FieldSelector fs=objectToActivate.GetComponentInChildren<FieldSelector>();
+            if(fs!=null){
+                Debug.Log("found fs");
+                fs.Activate();
+            }else{
+                Debug.Log("not found fs");
+            }
         }
         else
         {
