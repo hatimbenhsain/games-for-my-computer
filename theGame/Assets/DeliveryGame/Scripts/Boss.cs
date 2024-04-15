@@ -206,6 +206,7 @@ public class Boss : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag=="Player" && currentState==State.Charging){
+            Debug.Log("send red screen");
             canvasScript.RedScreen();
         }
     }

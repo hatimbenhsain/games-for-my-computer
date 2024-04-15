@@ -33,7 +33,6 @@ public class BossSphere : MonoBehaviour
             canvasScript.WhiteScreen();
             Debug.Log("white screen");
         }else{
-            Debug.Log(other.gameObject);
         }
     }
 }
