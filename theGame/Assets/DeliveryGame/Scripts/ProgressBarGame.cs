@@ -75,15 +75,9 @@ public class ProgressBarGame : MonoBehaviour
     private void OnCompletion()
     {
         audioSource.PlayOneShot(completionSound);
-        DeliveryManager.DropPackage(); // Static call to DropPackage method
+        FindObjectOfType<DeliveryGame>().DropPackage(); // Static call to DropPackage method
         gameObject.SetActive(false);
     }
 
-    public static class DeliveryManager
-    {
-        public static void DropPackage()
-        {
-            Debug.Log("Package dropped successfully!");
-        }
-    }
+    
 }
