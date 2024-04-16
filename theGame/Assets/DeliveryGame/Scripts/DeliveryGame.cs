@@ -51,7 +51,7 @@ public class DeliveryGame : MonoBehaviour
         }
     }
 
-    void DropPackage(){
+   public void DropPackage(){
         if(!limitedPackages || packageIndex<packageNumber){
             package=Instantiate(cardboardBoxPrefab);
             Vector3 pos=new Vector3(Random.Range(-5f,5f),package.transform.position.y,Random.Range(-5f,5f));
