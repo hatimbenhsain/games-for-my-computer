@@ -1,0 +1,30 @@
+﻿title: surgeryDialogue
+tags:
+position: 0,0
+---
+
+===
+title: Patient1Intro
+position: 0,0
+---
+<<wait 1>>
+<<MoveBox2 YarnManager>>
+Doctor: Today we have six patients that need to have their organs switched out. 
+Doctor: Unfortunately I have to multitask a little, but I'm here to guide you through this.
+Nour: I'm not sure I can do this.
+Doctor: I felt the same way on my first day, but you just need to push through and trust yourself.
+<<OpenCurtains gameController>>
+===
+title: Patient2Intro
+position: 0,0
+---
+<<wait 1>>
+Doctor: Beautiful work stitching them up! Moving on…
+Doctor: This patient got all twisted up playing twister and needs their “organ name” replaced.
+Nour: I'll try my best!
+Doctor: I need to check in with the receptionist, will you excuse me…
+Doctor: What is it?
+Receptionist: I can't stop thinking about you…
+Doctor: Don't do this here. Please. I have a surgery to attend to. 
+<<OpenCurtains gameController>>
+===

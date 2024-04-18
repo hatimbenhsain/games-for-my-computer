@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using Yarn.Unity;
 
 public class SurgeryController : MonoBehaviour
 {
@@ -53,6 +54,14 @@ public class SurgeryController : MonoBehaviour
     public GameObject[] patientSetList;
     public int patientIndex=0;
 
+    private bool curtainsOpen;
+
+    public GameObject curtains;
+    public AudioClip curtainOpenClip;
+    public AudioClip curtainCloseClip;
+
+    private SurgeryMusic surgeryMusic;
+    private DialogueRunner dialogueRunner;
 
     void Start()
     {
@@ -65,6 +74,16 @@ public class SurgeryController : MonoBehaviour
         Cursor.visible=false;
 
         tool=null;
+
+        curtainsOpen=false;
+
+        //OpenCurtains();
+
+        surgeryMusic=FindObjectOfType<SurgeryMusic>();
+        dialogueRunner=FindObjectOfType<DialogueRunner>();
+        songs=surgeryMusic.songs;
+
+        dialogueRunner.StartDialogue("Patient"+(patientIndex+1).ToString()+"Intro");
     }
 
     void Update()
@@ -197,12 +216,12 @@ public class SurgeryController : MonoBehaviour
                 }
 
                 patientIndex+=1;
+                //OpenCurtains();
             }
         }
 
         if(Input.GetKeyDown(KeyCode.Return)){
-            MovePatientOut();
-            MovePatientIn();
+            SwitchPatients();
         }
 
     }
@@ -220,9 +239,11 @@ public class SurgeryController : MonoBehaviour
         }else{
             mood=(m)%songs.Length;
         }
-        musicPlayer.Stop();
-        musicPlayer.clip=songs[mood];
-        musicPlayer.Play();
+        // musicPlayer.Stop();
+        // musicPlayer.clip=songs[mood];
+        // musicPlayer.Play();
+
+        surgeryMusic.CrossFade(mood);
 
         //Change the camera zoom speed
         if(mood==3){
@@ -326,5 +347,27 @@ public class SurgeryController : MonoBehaviour
 
     float easeInOutSine(float x){
         return -(Mathf.Cos(Mathf.PI*x)-1)/2;
+    }
+
+    [YarnCommand]
+    public void OpenCurtains(){
+        curtains.GetComponent<Animator>().SetTrigger("curtainsOpen");
+        curtains.GetComponent<AudioSource>().clip=curtainOpenClip;
+        curtains.GetComponent<AudioSource>().Play();
+    }
+
+    [YarnCommand]
+    public void CloseCurtains(){
+        curtains.GetComponent<Animator>().SetTrigger("curtainsClose");
+        curtains.GetComponent<AudioSource>().clip=curtainCloseClip;
+        curtains.GetComponent<AudioSource>().Play();
+    }
+
+    public void SwitchPatients(){
+        CloseCurtains();
+        MovePatientOut();
+        MovePatientIn();
+        dialogueRunner.Stop();
+        dialogueRunner.StartDialogue("Patient"+(patientIndex+2).ToString()+"Intro");
     }
 }
