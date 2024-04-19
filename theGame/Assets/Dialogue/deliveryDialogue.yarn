@@ -1,17 +1,18 @@
 ﻿title: deliveryDialogue
 tags:
 ---
-
 ===
 title: ThwompBoss1
 position: 0,0
 ---
 <<MoveBox2 YarnManager>>
+<<set $FriendTalkCount = 0>> // Initialize FriendTalkCount to 0, I was trying to implement a yarncommand to trigger captchareorder1 but i was failing
 Thwomp: Kinda miss my favorite spot in the park…but this is an interesting change of scenery. 
 Thwomp: Things are feeling very 3D here. Reminds me of home! 
 Thwomp: Can’t thank you enough for showing me that it’s ok to take up space on the z axis. 
 Nour: Oh...uhh...hi? You don't look like the sword that I ordered, but happy to see you again!
 Nour: Better try again...
+<<set $FriendTalkCount = $FriendTalkCount + 1>> // Increment FriendTalkCount after dialogue ends
 ===
 title: DoctorBoss1
 position: 0,0
