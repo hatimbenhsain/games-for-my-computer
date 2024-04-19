@@ -4,6 +4,7 @@ using System.IO.Compression;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
@@ -28,6 +29,7 @@ public class SurgeryController : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip zipping;
     public AudioClip[] stitchSounds;
+    public AudioClip[] tableWheelSounds;
 
     public GameObject hand;
     public GameObject tool;
@@ -62,6 +64,8 @@ public class SurgeryController : MonoBehaviour
 
     private SurgeryMusic surgeryMusic;
     private DialogueRunner dialogueRunner;
+
+    public GameObject beeperButton;
 
     void Start()
     {
@@ -205,14 +209,21 @@ public class SurgeryController : MonoBehaviour
                 if(movingPatientsIn){
                     foreach(GameObject g in thingsToMoveIn){
                         foreach(OrganScript o in g.GetComponentsInChildren<OrganScript>()){
-                            o.GetComponent<Rigidbody>().isKinematic=false;
-                            o.GetComponent<Rigidbody>().useGravity=true;
+                            if(o.gameObject.tag!="Patient Skin"){
+                                o.GetComponent<Rigidbody>().isKinematic=false;
+                                o.GetComponent<Rigidbody>().useGravity=true;
+                            }
                         }
                         foreach(Collider c in g.GetComponentsInChildren<Collider>()){
                             c.enabled=true;
                         }
                     }
                     movingPatientsIn=false;
+                    skinDetached=false;
+                    stitchType=-1;
+                    audioSource.clip=tableWheelSounds[Random.Range(0,tableWheelSounds.Length)];
+                    audioSource.loop=false;
+                    audioSource.Play();
                 }
 
                 patientIndex+=1;
@@ -305,7 +316,6 @@ public class SurgeryController : MonoBehaviour
             }
             //The stitch is validated once it has crossed between the skin and the body     
             if(stitchType!=prevStitchType && prevStitchType!=-1 && stitchType!=-1){
-                Debug.Log("valid stitch");
                 FindObjectOfType<PatientSkin>().Stitch();
             }
         }
@@ -335,13 +345,18 @@ public class SurgeryController : MonoBehaviour
             foreach(GameObject g in thingsToMoveIn){
                 g.SetActive(true);
                 foreach(OrganScript o in g.GetComponentsInChildren<OrganScript>()){
-                    o.GetComponent<Rigidbody>().isKinematic=true;
-                    o.GetComponent<Rigidbody>().useGravity=false;
+                    if(o.gameObject.tag!="Patient Skin"){
+                        o.GetComponent<Rigidbody>().isKinematic=true;
+                        o.GetComponent<Rigidbody>().useGravity=false;
+                    }
                 }
                 foreach(Collider c in g.GetComponentsInChildren<Collider>()){
                     c.enabled=false;
                 }
             }
+            audioSource.clip=tableWheelSounds[Random.Range(0,tableWheelSounds.Length)];
+            audioSource.loop=false;
+            audioSource.Play();
         }
     }
 
@@ -364,10 +379,14 @@ public class SurgeryController : MonoBehaviour
     }
 
     public void SwitchPatients(){
-        CloseCurtains();
-        MovePatientOut();
-        MovePatientIn();
-        dialogueRunner.Stop();
-        dialogueRunner.StartDialogue("Patient"+(patientIndex+2).ToString()+"Intro");
+        if(!movingPatients && !movingPatientsIn){
+            CloseCurtains();
+            MovePatientOut();
+            MovePatientIn();
+            dialogueRunner.Stop();
+            dialogueRunner.StartDialogue("Patient"+(patientIndex+2).ToString()+"Intro");
+            beeperButton.GetComponent<Animator>().SetTrigger("out");
+            EventSystem.current.SetSelectedGameObject(null); 
+        }
     }
 }
