@@ -149,6 +149,8 @@ public class PatientSkin : MonoBehaviour
         organScript.enabled=false;
         transform.parent=FindObjectOfType<Patient>().transform;
         surgeryController.ChangeMood();
+        surgeryController.beeperButton.GetComponent<Animator>().SetTrigger("in");
+        Debug.Log("set trigger");
     }
 
     public void IsCutting(){
