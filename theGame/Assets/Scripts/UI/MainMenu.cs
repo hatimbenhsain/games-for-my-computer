@@ -16,9 +16,21 @@ public class MainMenu : MonoBehaviour
     public StarterAssets.ThirdPersonController.CharacterState loaderCharacterState;
     public StarterAssets.ThirdPersonController.CharacterState targetCharacterState;
 
+    private void Start()
+    {
+        transition.Play("New State", 0, 0f);
+        if (Time.timeScale == 0)
+        {
+            Debug.LogWarning("Time.timeScale is 0, setting it to 1.");
+            Time.timeScale = 1;
+        }
+    }
+
+    // TODO: Load location, transformation, can enter building or not, npc state
     // Start is called before the first frame update
     public void PlayGame()
     {
+        Debug.Log("PlayCoroutine");
         StartCoroutine(LoadLevel(destinationScene));
     }
 
@@ -40,8 +52,9 @@ public class MainMenu : MonoBehaviour
         SpawnDataHolder.playTransformAnimation = playTransformAnimation;
         transition.SetTrigger("Start");
 
-        yield return new WaitForSeconds(transitionTime);
 
+        yield return new WaitForSeconds(transitionTime);
+        Debug.Log("Load Level");
         SceneManager.LoadScene(levelIndex);
 
     }

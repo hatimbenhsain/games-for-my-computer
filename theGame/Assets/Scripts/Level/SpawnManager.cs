@@ -6,9 +6,9 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject playerPrefab;
-    public GameObject playerController;
-    public ThirdPersonController thirdPersonController;
-    public GameObject VFX;
+    private GameObject playerController;
+    private ThirdPersonController thirdPersonController;
+    private GameObject VFX;
     private PlayerVFX playerVFX;
     public float moveTime = 0.1f;
     public float transformTime;
@@ -22,11 +22,6 @@ public class SpawnManager : MonoBehaviour
         // name every spawnpoint like "SpawnPoint1"
 
         Debug.Log(SpawnDataHolder.spawnLocationIndex);
-
-            //playerPrefab.transform.position = spawnPoint.transform.position;
-            //playerPrefab.transform.rotation = spawnPoint.transform.rotation;
-
-        //thirdPersonController = playerController.GetComponent<ThirdPersonController>();
         if (thirdPersonController != null)
         {
             Debug.Log(SpawnDataHolder.characterState);
@@ -38,8 +33,6 @@ public class SpawnManager : MonoBehaviour
             thirdPersonController.Metamorphosis(SpawnDataHolder.targetCharacterState,vfxTime,transformTime);
             StartCoroutine("StartRain");
         }
-        //playerController.
-        //playerVFX = VFX.GetComponent<PlayerVFX>();
     }
 
     private IEnumerator StartRain(){
