@@ -67,6 +67,8 @@ public class SurgeryController : MonoBehaviour
 
     public GameObject beeperButton;
 
+    public GameObject feedbackMessagePrefab;
+
     void Start()
     {
         cam=FindObjectOfType<Camera>();
@@ -392,5 +394,10 @@ public class SurgeryController : MonoBehaviour
             beeperButton.GetComponent<Animator>().SetTrigger("out");
             EventSystem.current.SetSelectedGameObject(null); 
         }
+    }
+
+    public void TriggerFeedbackMessage(int type){   //0: after cutting 1: after organs 2: after stitching
+        GameObject fm=Instantiate(feedbackMessagePrefab);
+        fm.GetComponent<FeedbackMessage>().SetSprite(type);
     }
 }

@@ -90,4 +90,16 @@ public class OrganScript : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other){
+        if(other.gameObject.name=="InsideContainerTrigger"){
+            FindObjectOfType<Patient>().AddOrgan(gameObject);
+        }
+    }
+
+    private void OnTriggerExit(Collider other){
+        if(other.gameObject.name=="InsideContainerTrigger"){
+            FindObjectOfType<Patient>().RemoveOrgan(gameObject);
+        }
+    }
 }

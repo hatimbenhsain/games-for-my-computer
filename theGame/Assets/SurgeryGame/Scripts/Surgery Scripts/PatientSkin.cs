@@ -136,7 +136,7 @@ public class PatientSkin : MonoBehaviour
 
         GetComponentInChildren<Renderer>().material=detachedMaterial;
         
-
+        surgeryController.TriggerFeedbackMessage(0);
     }
 
     void Reattach(){
@@ -150,6 +150,8 @@ public class PatientSkin : MonoBehaviour
         surgeryController.ChangeMood();
         surgeryController.beeperButton.GetComponent<Animator>().SetTrigger("in");
         Debug.Log("set trigger");
+
+        surgeryController.TriggerFeedbackMessage(2);
     }
 
     public void IsCutting(){
