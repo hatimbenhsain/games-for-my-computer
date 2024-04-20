@@ -60,6 +60,7 @@ public class Patient : MonoBehaviour
             SurgeryController sc=FindObjectOfType<SurgeryController>();
             sc.TriggerFeedbackMessage(1);
             sc.ChangeMood();            
+            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("SurgeryTuto3");
         }
         organsReplaced=true;
         return true;

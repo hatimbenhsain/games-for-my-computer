@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Yarn.Unity;
 
 //Behavior for the detachable patient skin
 public class PatientSkin : MonoBehaviour
@@ -137,6 +138,8 @@ public class PatientSkin : MonoBehaviour
         GetComponentInChildren<Renderer>().material=detachedMaterial;
         
         surgeryController.TriggerFeedbackMessage(0);
+
+        FindObjectOfType<DialogueRunner>().StartDialogue("SurgeryTuto2");
     }
 
     void Reattach(){
@@ -152,6 +155,8 @@ public class PatientSkin : MonoBehaviour
         Debug.Log("set trigger");
 
         surgeryController.TriggerFeedbackMessage(2);
+
+        FindObjectOfType<DialogueRunner>().StartDialogue("SurgeryTuto4");
     }
 
     public void IsCutting(){
