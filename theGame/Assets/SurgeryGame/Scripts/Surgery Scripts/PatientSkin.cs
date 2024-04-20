@@ -134,14 +134,13 @@ public class PatientSkin : MonoBehaviour
             Destroy(cuts[i].GetComponent<Rigidbody>());
         }
 
-        GetComponentInChildren<SpriteRenderer>().material=detachedMaterial;
-
+        GetComponentInChildren<Renderer>().material=detachedMaterial;
         
 
     }
 
     void Reattach(){
-        GetComponentInChildren<SpriteRenderer>().material=normalMaterial;
+        GetComponentInChildren<Renderer>().material=normalMaterial;
         reattached=true;
         GetComponent<Rigidbody>().isKinematic=true;
         GetComponent<Rigidbody>().useGravity=false;
