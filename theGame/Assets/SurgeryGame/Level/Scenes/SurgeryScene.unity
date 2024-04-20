@@ -55774,6 +55774,45 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &774897700 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6552909051675749691, guid: 5218d4feca1914398914665f47bc335d, type: 3}
+  m_PrefabInstance: {fileID: 1943848345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &774897703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774897700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 097b95c9f69f04f2d8c08a817e7786af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueView: {fileID: 0}
+  continueActionType: 1
+  continueActionKeyCode: 323
+  continueActionReference: {fileID: 0}
+  continueAction:
+    m_Name: Skip
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 79ae5e2d-ca0b-457d-b905-0af11701a941
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 00d49c36-c0d5-449a-8f56-43243298cef9
+      m_Path: Submit
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Skip
+      m_Flags: 0
+    m_Flags: 0
+  enableActionOnStart: 1
 --- !u!1 &790962080
 GameObject:
   m_ObjectHideFlags: 0
@@ -127122,7 +127161,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6552909051675749691, guid: 5218d4feca1914398914665f47bc335d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 774897703}
   m_SourcePrefab: {fileID: 100100000, guid: 5218d4feca1914398914665f47bc335d, type: 3}
 --- !u!1 &1952360226
 GameObject:
