@@ -57,7 +57,9 @@ public class Patient : MonoBehaviour
             return false;
         }
         if(!organsReplaced){
-            FindObjectOfType<SurgeryController>().TriggerFeedbackMessage(1);
+            SurgeryController sc=FindObjectOfType<SurgeryController>();
+            sc.TriggerFeedbackMessage(1);
+            sc.ChangeMood();            
         }
         organsReplaced=true;
         return true;
