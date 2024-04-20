@@ -8,6 +8,8 @@ public class Patient : MonoBehaviour
 
     public GameObject[] colliders;
 
+    public float cutOffset=0.05f; //y value for cut gameobject so that it looks above the skin
+
     void Start()
     {
         surgeryController=FindObjectOfType<SurgeryController>();

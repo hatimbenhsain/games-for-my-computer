@@ -276,7 +276,8 @@ public class SurgeryController : MonoBehaviour
         Collider skin=hitData.transform.gameObject.GetComponent<Collider>();
         //Creating cut marks
         GameObject cut=Instantiate(cutPrefab,hitData.point,cutPrefab.transform.rotation,skin.transform);
-        cut.transform.localPosition=new Vector3(cut.transform.localPosition.x,0.05f,cut.transform.localPosition.z);
+        float cutOffset=FindObjectOfType<Patient>().cutOffset;
+        cut.transform.localPosition=new Vector3(cut.transform.localPosition.x,cutOffset,cut.transform.localPosition.z);
         if(!audioSource.isPlaying){
             audioSource.clip=zipping;
             audioSource.loop=true;
@@ -303,11 +304,14 @@ public class SurgeryController : MonoBehaviour
                     isStitching=true;
                 }
             }
+            Debug.Log(stitchType);
+            Debug.Log(hitData.transform.gameObject);
             if(isStitching){
                 GameObject stitch=Instantiate(stitchPrefab,hitData.point,stitchPrefab.transform.rotation,
                 par);
+                float cutOffset=FindObjectOfType<Patient>().cutOffset;
                 stitch.transform.position=new Vector3(stitch.transform.position.x,
-                0.07f,stitch.transform.position.z);
+                cutOffset+0.01f,stitch.transform.position.z);
                 if(!audioSource.isPlaying){
                     audioSource.clip=stitchSounds[Random.Range(0,stitchSounds.Length)];
                     audioSource.loop=true;
