@@ -67,6 +67,8 @@ public class SurgeryController : MonoBehaviour
 
     public GameObject beeperButton;
 
+    public GameObject feedbackMessagePrefab;
+
     void Start()
     {
         cam=FindObjectOfType<Camera>();
@@ -125,7 +127,7 @@ public class SurgeryController : MonoBehaviour
                 if(heldOrgan==null && hoveredOrgan!=null){
                     hoveredOrgan.held=true;
                     heldOrgan=hoveredOrgan;
-                    ChangeMood();
+                    //ChangeMood();
                 }
                 //Dropping organ
                 else if(heldOrgan!=null){
@@ -257,14 +259,20 @@ public class SurgeryController : MonoBehaviour
         surgeryMusic.CrossFade(mood);
 
         //Change the camera zoom speed
-        if(mood==3){
-            cam.GetComponent<Animator>().speed=104f*0.25f/60f;
-        }else if(mood==0){
+        if(mood==0){
             cam.GetComponent<Animator>().speed=114f*0.5f/60f;
         }else if(mood==1){
             cam.GetComponent<Animator>().speed=170*0.5f/60f;
         }else if(mood==2){
-            cam.GetComponent<Animator>().speed=120*0.5f/60f;
+            cam.GetComponent<Animator>().speed=75*0.5f/60f;
+        }else if(mood==3){
+            cam.GetComponent<Animator>().speed=120*0.25f/60f;
+        }else if(mood==4){
+            cam.GetComponent<Animator>().speed=104*0.5f/60f;
+        }else if(mood==5){
+            cam.GetComponent<Animator>().speed=126*0.5f/60f;
+        }else if(mood==6){
+            cam.GetComponent<Animator>().speed=141*0.5f/60f;
         }
 
         //Activate new lights
@@ -392,5 +400,10 @@ public class SurgeryController : MonoBehaviour
             beeperButton.GetComponent<Animator>().SetTrigger("out");
             EventSystem.current.SetSelectedGameObject(null); 
         }
+    }
+
+    public void TriggerFeedbackMessage(int type){   //0: after cutting 1: after organs 2: after stitching
+        GameObject fm=Instantiate(feedbackMessagePrefab);
+        fm.GetComponent<FeedbackMessage>().SetSprite(type);
     }
 }

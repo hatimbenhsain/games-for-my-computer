@@ -14,6 +14,7 @@ Doctor: Unfortunately I have to multitask a little, but I'm here to guide you th
 Nour: I'm not sure I can do this.
 Doctor: I felt the same way on my first day, but you just need to push through and trust yourself.
 <<OpenCurtains gameController>>
+<<jump SurgeryTuto1>>
 ===
 title: Patient2Intro
 position: 0,0
@@ -27,4 +28,45 @@ Doctor: What is it?
 Receptionist: I can't stop thinking about you…
 Doctor: Don't do this here. Please. I have a surgery to attend to. 
 <<OpenCurtains gameController>>
+===
+title: Patient3Intro
+position: 0,0
+---
+<<wait 0.5>>
+<<OpenCurtains gameController>>
+===
+title: SurgeryTuto1
+position: 0,0
+---
+<<if visited("SurgeryTuto1") is false>>
+<<wait 0.25>>
+Doctor: I hope they're still teaching you to use the SCALPEL in medical school... 
+Doctor: Use it to CUT OPEN the patient's skin!
+<<endif>>
+===
+title: SurgeryTuto2
+position: 0,0
+---
+<<if visited("SurgeryTuto2") is false>>
+<<wait 0.25>>
+Doctor: At this hospital we use our proprietary checklist system to see which organs need to go in and out.
+Doctor: Remove the patient's skin, then take OUT the DISEASED organs and put IN the HEALTHY organs.
+Doctor: You can access the CHECKLIST on the TOP LEFT!
+<<endif>>
+===
+title: SurgeryTuto3
+position: 0,0
+---
+<<if visited("SurgeryTuto3") is false>>
+<<wait 0.25>>
+Doctor: I'm sure I don't have to remind you to SUTURE your patient back together before sending them out.
+<<endif>>
+===
+title: SurgeryTuto4
+position: 0,0
+---
+<<if visited("SurgeryTuto4") is false>>
+<<wait 0.25>>
+Doctor: Excellent work! Now use the BEEPER on the BOTTOM RIGHT `to call the next patient!
+<<endif>>
 ===
