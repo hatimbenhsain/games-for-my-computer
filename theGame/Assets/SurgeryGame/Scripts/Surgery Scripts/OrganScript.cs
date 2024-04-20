@@ -23,6 +23,8 @@ public class OrganScript : MonoBehaviour
     private AudioSource audioSource;
     private ParticleSystem particleSystem;
 
+    public float meshOffset=0.05f;
+
     void Start()
     {
         held=false;
@@ -63,6 +65,9 @@ public class OrganScript : MonoBehaviour
 
         if(held){
             //Moving organ to target (mouse) + resetting rotation
+            if(GetComponentInChildren<MeshRenderer>()!=null){
+                targetPosition=new Vector3(targetPosition.x,targetPosition.y-meshOffset,targetPosition.z);
+            }
             transform.localPosition=Vector3.Lerp(transform.localPosition,targetPosition,lerpValue*Time.deltaTime);
             Quaternion targetRotation=Quaternion.Euler(0f,0f,0f);
             transform.rotation=Quaternion.Lerp(transform.rotation,targetRotation,lerpValue*Time.deltaTime);

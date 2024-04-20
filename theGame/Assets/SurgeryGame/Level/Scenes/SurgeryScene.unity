@@ -750,8 +750,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4.9604235, y: 2.702297, z: 1}
+  m_Center: {x: -1.9802117, y: 0.8511485, z: 0}
 --- !u!23 &39893402
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1656,8 +1656,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4.0374823, y: 3.6153584, z: 1}
+  m_Center: {x: 1.5187411, y: 1.3076792, z: 0}
 --- !u!23 &110973692
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1955,6 +1955,7 @@ MonoBehaviour:
   movingDistance: 5
   patientSetList:
   - {fileID: 1497149871}
+  - {fileID: 1399345257}
   - {fileID: 2042221399}
   patientIndex: 0
   curtains: {fileID: 1672054819}
@@ -7943,6 +7944,7 @@ MonoBehaviour:
   squish: {fileID: 8300000, guid: da9afc2fa44a4d24782908e6dd21ebc3, type: 3}
   longSquish: {fileID: 8300000, guid: d6f84eb4d851bd0408b046906026b241, type: 3}
   thud: {fileID: 8300000, guid: 246b7d7f9acbc9f469200ea8205166ab, type: 3}
+  meshOffset: 0.05
 --- !u!136 &264371333
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8318,6 +8320,7 @@ MonoBehaviour:
   squish: {fileID: 8300000, guid: da9afc2fa44a4d24782908e6dd21ebc3, type: 3}
   longSquish: {fileID: 8300000, guid: d6f84eb4d851bd0408b046906026b241, type: 3}
   thud: {fileID: 8300000, guid: 246b7d7f9acbc9f469200ea8205166ab, type: 3}
+  meshOffset: 0.05
 --- !u!82 &311486240
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14942,6 +14945,71 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.081095695, y: 0.9104421, z: 0.030000001}
   m_Center: {x: 0.40464005, y: 0.010178123, z: 0.027723221}
+--- !u!1001 &481155844
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1080059948633858674, guid: 4b5f6802dcf06e44ba2c2c1648543412, type: 3}
+      propertyPath: m_Name
+      value: PatientSet3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080059948633858674, guid: 4b5f6802dcf06e44ba2c2c1648543412, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401754034128729365, guid: 4b5f6802dcf06e44ba2c2c1648543412, type: 3}
+      propertyPath: meshOffset
+      value: 0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923086247561120455, guid: 4b5f6802dcf06e44ba2c2c1648543412, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923086247561120455, guid: 4b5f6802dcf06e44ba2c2c1648543412, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923086247561120455, guid: 4b5f6802dcf06e44ba2c2c1648543412, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923086247561120455, guid: 4b5f6802dcf06e44ba2c2c1648543412, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923086247561120455, guid: 4b5f6802dcf06e44ba2c2c1648543412, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923086247561120455, guid: 4b5f6802dcf06e44ba2c2c1648543412, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923086247561120455, guid: 4b5f6802dcf06e44ba2c2c1648543412, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923086247561120455, guid: 4b5f6802dcf06e44ba2c2c1648543412, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923086247561120455, guid: 4b5f6802dcf06e44ba2c2c1648543412, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923086247561120455, guid: 4b5f6802dcf06e44ba2c2c1648543412, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4b5f6802dcf06e44ba2c2c1648543412, type: 3}
 --- !u!1 &491151828
 GameObject:
   m_ObjectHideFlags: 0
@@ -20561,6 +20629,7 @@ MonoBehaviour:
   squish: {fileID: 8300000, guid: da9afc2fa44a4d24782908e6dd21ebc3, type: 3}
   longSquish: {fileID: 8300000, guid: d6f84eb4d851bd0408b046906026b241, type: 3}
   thud: {fileID: 8300000, guid: 246b7d7f9acbc9f469200ea8205166ab, type: 3}
+  meshOffset: 0.05
 --- !u!136 &552044689
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -26967,6 +27036,7 @@ MonoBehaviour:
   squish: {fileID: 8300000, guid: da9afc2fa44a4d24782908e6dd21ebc3, type: 3}
   longSquish: {fileID: 8300000, guid: d6f84eb4d851bd0408b046906026b241, type: 3}
   thud: {fileID: 8300000, guid: 246b7d7f9acbc9f469200ea8205166ab, type: 3}
+  meshOffset: 0.05
 --- !u!136 &635915362
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -33269,6 +33339,7 @@ MonoBehaviour:
   squish: {fileID: 8300000, guid: da9afc2fa44a4d24782908e6dd21ebc3, type: 3}
   longSquish: {fileID: 8300000, guid: d6f84eb4d851bd0408b046906026b241, type: 3}
   thud: {fileID: 8300000, guid: 246b7d7f9acbc9f469200ea8205166ab, type: 3}
+  meshOffset: 0.05
 --- !u!136 &694405904
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -40708,6 +40779,7 @@ MonoBehaviour:
   squish: {fileID: 8300000, guid: da9afc2fa44a4d24782908e6dd21ebc3, type: 3}
   longSquish: {fileID: 8300000, guid: d6f84eb4d851bd0408b046906026b241, type: 3}
   thud: {fileID: 8300000, guid: 246b7d7f9acbc9f469200ea8205166ab, type: 3}
+  meshOffset: 0.05
 --- !u!136 &1001072247
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -48919,6 +48991,7 @@ MonoBehaviour:
   squish: {fileID: 8300000, guid: da9afc2fa44a4d24782908e6dd21ebc3, type: 3}
   longSquish: {fileID: 8300000, guid: d6f84eb4d851bd0408b046906026b241, type: 3}
   thud: {fileID: 8300000, guid: 246b7d7f9acbc9f469200ea8205166ab, type: 3}
+  meshOffset: 0.05
 --- !u!136 &1333126233
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -49518,6 +49591,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30dfcfcc003ac304c9b995dbc15c5cdd, type: 3}
+--- !u!1 &1399345257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1080059948633858674, guid: 4b5f6802dcf06e44ba2c2c1648543412, type: 3}
+  m_PrefabInstance: {fileID: 481155844}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1402169705
 GameObject:
   m_ObjectHideFlags: 0
@@ -55361,6 +55439,7 @@ MonoBehaviour:
   squish: {fileID: 8300000, guid: da9afc2fa44a4d24782908e6dd21ebc3, type: 3}
   longSquish: {fileID: 8300000, guid: d6f84eb4d851bd0408b046906026b241, type: 3}
   thud: {fileID: 8300000, guid: 246b7d7f9acbc9f469200ea8205166ab, type: 3}
+  meshOffset: 0.05
 --- !u!136 &1544023527
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -56058,8 +56137,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 3.8338878, z: 4.0682573}
+  m_Center: {x: 0, y: 1.4169439, z: -1.5341291}
 --- !u!23 &1631594472
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -57048,6 +57127,7 @@ MonoBehaviour:
   squish: {fileID: 8300000, guid: da9afc2fa44a4d24782908e6dd21ebc3, type: 3}
   longSquish: {fileID: 8300000, guid: d6f84eb4d851bd0408b046906026b241, type: 3}
   thud: {fileID: 8300000, guid: a4c8146e844da3546b4ff54234d43a9d, type: 3}
+  meshOffset: 0.05
 --- !u!54 &1661557382
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -57504,7 +57584,7 @@ Transform:
   m_GameObject: {fileID: 1672054819}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -1.911}
+  m_LocalPosition: {x: 0, y: 0.22, z: -1.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -58563,8 +58643,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 3.3534017, z: 5.5943966}
+  m_Center: {x: 0, y: 1.1767008, z: 2.2971983}
 --- !u!23 &1717138984
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -64651,6 +64731,7 @@ MonoBehaviour:
   squish: {fileID: 8300000, guid: da9afc2fa44a4d24782908e6dd21ebc3, type: 3}
   longSquish: {fileID: 8300000, guid: d6f84eb4d851bd0408b046906026b241, type: 3}
   thud: {fileID: 8300000, guid: 246b7d7f9acbc9f469200ea8205166ab, type: 3}
+  meshOffset: 0.05
 --- !u!136 &1808869763
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -65182,6 +65263,7 @@ MonoBehaviour:
   squish: {fileID: 8300000, guid: da9afc2fa44a4d24782908e6dd21ebc3, type: 3}
   longSquish: {fileID: 8300000, guid: d6f84eb4d851bd0408b046906026b241, type: 3}
   thud: {fileID: 8300000, guid: a4c8146e844da3546b4ff54234d43a9d, type: 3}
+  meshOffset: 0.05
 --- !u!114 &1829694496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72022,6 +72104,7 @@ MonoBehaviour:
   squish: {fileID: 8300000, guid: da9afc2fa44a4d24782908e6dd21ebc3, type: 3}
   longSquish: {fileID: 8300000, guid: d6f84eb4d851bd0408b046906026b241, type: 3}
   thud: {fileID: 8300000, guid: 246b7d7f9acbc9f469200ea8205166ab, type: 3}
+  meshOffset: 0.05
 --- !u!136 &1967738508
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -78396,6 +78479,7 @@ MonoBehaviour:
   squish: {fileID: 8300000, guid: da9afc2fa44a4d24782908e6dd21ebc3, type: 3}
   longSquish: {fileID: 8300000, guid: d6f84eb4d851bd0408b046906026b241, type: 3}
   thud: {fileID: 8300000, guid: 246b7d7f9acbc9f469200ea8205166ab, type: 3}
+  meshOffset: 0.05
 --- !u!136 &2076367930
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -83725,6 +83809,7 @@ MonoBehaviour:
   squish: {fileID: 8300000, guid: da9afc2fa44a4d24782908e6dd21ebc3, type: 3}
   longSquish: {fileID: 8300000, guid: d6f84eb4d851bd0408b046906026b241, type: 3}
   thud: {fileID: 8300000, guid: 246b7d7f9acbc9f469200ea8205166ab, type: 3}
+  meshOffset: 0.05
 --- !u!136 &2102459718
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -84612,6 +84697,7 @@ SceneRoots:
   - {fileID: 361808713}
   - {fileID: 1497149872}
   - {fileID: 2042221400}
+  - {fileID: 481155844}
   - {fileID: 1943848345}
   - {fileID: 125130479}
   - {fileID: 1703654911}
