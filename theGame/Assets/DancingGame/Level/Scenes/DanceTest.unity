@@ -601,7 +601,7 @@ MonoBehaviour:
   transitionTime: 1
   transition: {fileID: 1933547211220772225}
   setSpawnIndex: 1
-  spawnIndex: 2
+  spawnIndex: 1
   characterState: 1
   targetCharacterState: 0
   playTransformAnimation: 1
@@ -2230,7 +2230,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 544167759}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.055812873, y: 0.9032006, z: -0.40716767, w: 0.12380704}
+  m_LocalRotation: {x: 0.05581289, y: 0.9032005, z: -0.40716764, w: 0.12380707}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2984,7 +2984,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831853751}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.053551655, y: 0.9104574, z: -0.39067155, w: 0.12480177}
+  m_LocalRotation: {x: 0.053551674, y: 0.9104574, z: -0.39067155, w: 0.124801815}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3718,6 +3718,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1018587489
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6744787039225116547, guid: ec8f77bfcccbcd94d907e3c7e73835bd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.8270187
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744787039225116547, guid: ec8f77bfcccbcd94d907e3c7e73835bd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.4138093
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744787039225116547, guid: ec8f77bfcccbcd94d907e3c7e73835bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.8641825
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744787039225116547, guid: ec8f77bfcccbcd94d907e3c7e73835bd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744787039225116547, guid: ec8f77bfcccbcd94d907e3c7e73835bd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744787039225116547, guid: ec8f77bfcccbcd94d907e3c7e73835bd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744787039225116547, guid: ec8f77bfcccbcd94d907e3c7e73835bd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744787039225116547, guid: ec8f77bfcccbcd94d907e3c7e73835bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744787039225116547, guid: ec8f77bfcccbcd94d907e3c7e73835bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744787039225116547, guid: ec8f77bfcccbcd94d907e3c7e73835bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997505678338982837, guid: ec8f77bfcccbcd94d907e3c7e73835bd, type: 3}
+      propertyPath: m_Name
+      value: PauseMenu
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec8f77bfcccbcd94d907e3c7e73835bd, type: 3}
 --- !u!1 &1094015176
 GameObject:
   m_ObjectHideFlags: 0
@@ -4753,7 +4810,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1341682401}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19398107, y: 0.051416114, z: -0.010181411, w: 0.97960407}
+  m_LocalRotation: {x: 0.19398107, y: 0.051416073, z: -0.010181404, w: 0.97960407}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9563,3 +9620,4 @@ SceneRoots:
   - {fileID: 1623952695}
   - {fileID: 2120674693}
   - {fileID: 2308520012498524498}
+  - {fileID: 1018587489}
