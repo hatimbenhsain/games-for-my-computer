@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Yarn.Unity;
 
 //Behavior for the detachable patient skin
 public class PatientSkin : MonoBehaviour
@@ -134,14 +135,15 @@ public class PatientSkin : MonoBehaviour
             Destroy(cuts[i].GetComponent<Rigidbody>());
         }
 
-        GetComponentInChildren<SpriteRenderer>().material=detachedMaterial;
-
+        GetComponentInChildren<Renderer>().material=detachedMaterial;
         
+        surgeryController.TriggerFeedbackMessage(0);
 
+        FindObjectOfType<DialogueRunner>().StartDialogue("SurgeryTuto2");
     }
 
     void Reattach(){
-        GetComponentInChildren<SpriteRenderer>().material=normalMaterial;
+        GetComponentInChildren<Renderer>().material=normalMaterial;
         reattached=true;
         GetComponent<Rigidbody>().isKinematic=true;
         GetComponent<Rigidbody>().useGravity=false;
@@ -151,6 +153,10 @@ public class PatientSkin : MonoBehaviour
         surgeryController.ChangeMood();
         surgeryController.beeperButton.GetComponent<Animator>().SetTrigger("in");
         Debug.Log("set trigger");
+
+        surgeryController.TriggerFeedbackMessage(2);
+
+        FindObjectOfType<DialogueRunner>().StartDialogue("SurgeryTuto4");
     }
 
     public void IsCutting(){
