@@ -21,10 +21,10 @@ public class GameManager : MonoBehaviour
     public float outTime = 4.0f;
     public float outCameraTime = 0.1f;
     public float outDialogueTime = 4.0f;
-    public CinemachineVirtualCamera playerCamera;
-    public Transform playerCameraRoot; // The target position and rotation for the player
-    public Transform targetTransform; // The target position and rotation for the camera
-    public Transform transformCamera; // camera location for NPC
+    private CinemachineVirtualCamera playerCamera;
+    private Transform playerCameraRoot; // The target position and rotation for the player
+    private Transform targetTransform; // The target position and rotation for the camera
+    private Transform transformCamera; // camera location for NPC
     public Vector3 targetShoulderOffset = Vector3.zero; // target shoulder offset for head zoom in
     public float targetCameraDistance = 0f; // target camera dist for head zoom in
     public bool isTransitioning = false;
