@@ -4,8 +4,10 @@ using System.IO.Compression;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using Yarn.Unity;
 
 public class SurgeryController : MonoBehaviour
 {
@@ -27,6 +29,7 @@ public class SurgeryController : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip zipping;
     public AudioClip[] stitchSounds;
+    public AudioClip[] tableWheelSounds;
 
     public GameObject hand;
     public GameObject tool;
@@ -53,6 +56,18 @@ public class SurgeryController : MonoBehaviour
     public GameObject[] patientSetList;
     public int patientIndex=0;
 
+    private bool curtainsOpen;
+
+    public GameObject curtains;
+    public AudioClip curtainOpenClip;
+    public AudioClip curtainCloseClip;
+
+    private SurgeryMusic surgeryMusic;
+    private DialogueRunner dialogueRunner;
+
+    public GameObject beeperButton;
+
+    public GameObject feedbackMessagePrefab;
 
     void Start()
     {
@@ -65,6 +80,16 @@ public class SurgeryController : MonoBehaviour
         Cursor.visible=false;
 
         tool=null;
+
+        curtainsOpen=false;
+
+        //OpenCurtains();
+
+        surgeryMusic=FindObjectOfType<SurgeryMusic>();
+        dialogueRunner=FindObjectOfType<DialogueRunner>();
+        songs=surgeryMusic.songs;
+
+        dialogueRunner.StartDialogue("Patient"+(patientIndex+1).ToString()+"Intro");
     }
 
     void Update()
@@ -102,7 +127,7 @@ public class SurgeryController : MonoBehaviour
                 if(heldOrgan==null && hoveredOrgan!=null){
                     hoveredOrgan.held=true;
                     heldOrgan=hoveredOrgan;
-                    ChangeMood();
+                    //ChangeMood();
                 }
                 //Dropping organ
                 else if(heldOrgan!=null){
@@ -186,23 +211,30 @@ public class SurgeryController : MonoBehaviour
                 if(movingPatientsIn){
                     foreach(GameObject g in thingsToMoveIn){
                         foreach(OrganScript o in g.GetComponentsInChildren<OrganScript>()){
-                            o.GetComponent<Rigidbody>().isKinematic=false;
-                            o.GetComponent<Rigidbody>().useGravity=true;
+                            if(o.gameObject.tag!="Patient Skin"){
+                                o.GetComponent<Rigidbody>().isKinematic=false;
+                                o.GetComponent<Rigidbody>().useGravity=true;
+                            }
                         }
                         foreach(Collider c in g.GetComponentsInChildren<Collider>()){
                             c.enabled=true;
                         }
                     }
                     movingPatientsIn=false;
+                    skinDetached=false;
+                    stitchType=-1;
+                    audioSource.clip=tableWheelSounds[Random.Range(0,tableWheelSounds.Length)];
+                    audioSource.loop=false;
+                    audioSource.Play();
                 }
 
                 patientIndex+=1;
+                //OpenCurtains();
             }
         }
 
         if(Input.GetKeyDown(KeyCode.Return)){
-            MovePatientOut();
-            MovePatientIn();
+            SwitchPatients();
         }
 
     }
@@ -220,19 +252,27 @@ public class SurgeryController : MonoBehaviour
         }else{
             mood=(m)%songs.Length;
         }
-        musicPlayer.Stop();
-        musicPlayer.clip=songs[mood];
-        musicPlayer.Play();
+        // musicPlayer.Stop();
+        // musicPlayer.clip=songs[mood];
+        // musicPlayer.Play();
+
+        surgeryMusic.CrossFade(mood);
 
         //Change the camera zoom speed
-        if(mood==3){
-            cam.GetComponent<Animator>().speed=104f*0.25f/60f;
-        }else if(mood==0){
+        if(mood==0){
             cam.GetComponent<Animator>().speed=114f*0.5f/60f;
         }else if(mood==1){
             cam.GetComponent<Animator>().speed=170*0.5f/60f;
         }else if(mood==2){
-            cam.GetComponent<Animator>().speed=120*0.5f/60f;
+            cam.GetComponent<Animator>().speed=75*0.5f/60f;
+        }else if(mood==3){
+            cam.GetComponent<Animator>().speed=120*0.25f/60f;
+        }else if(mood==4){
+            cam.GetComponent<Animator>().speed=104*0.5f/60f;
+        }else if(mood==5){
+            cam.GetComponent<Animator>().speed=126*0.5f/60f;
+        }else if(mood==6){
+            cam.GetComponent<Animator>().speed=141*0.5f/60f;
         }
 
         //Activate new lights
@@ -244,7 +284,8 @@ public class SurgeryController : MonoBehaviour
         Collider skin=hitData.transform.gameObject.GetComponent<Collider>();
         //Creating cut marks
         GameObject cut=Instantiate(cutPrefab,hitData.point,cutPrefab.transform.rotation,skin.transform);
-        cut.transform.localPosition=new Vector3(cut.transform.localPosition.x,0.05f,cut.transform.localPosition.z);
+        float cutOffset=FindObjectOfType<Patient>().cutOffset;
+        cut.transform.localPosition=new Vector3(cut.transform.localPosition.x,cutOffset,cut.transform.localPosition.z);
         if(!audioSource.isPlaying){
             audioSource.clip=zipping;
             audioSource.loop=true;
@@ -271,11 +312,14 @@ public class SurgeryController : MonoBehaviour
                     isStitching=true;
                 }
             }
+            Debug.Log(stitchType);
+            Debug.Log(hitData.transform.gameObject);
             if(isStitching){
                 GameObject stitch=Instantiate(stitchPrefab,hitData.point,stitchPrefab.transform.rotation,
                 par);
+                float cutOffset=FindObjectOfType<Patient>().cutOffset;
                 stitch.transform.position=new Vector3(stitch.transform.position.x,
-                0.07f,stitch.transform.position.z);
+                cutOffset+0.01f,stitch.transform.position.z);
                 if(!audioSource.isPlaying){
                     audioSource.clip=stitchSounds[Random.Range(0,stitchSounds.Length)];
                     audioSource.loop=true;
@@ -284,7 +328,6 @@ public class SurgeryController : MonoBehaviour
             }
             //The stitch is validated once it has crossed between the skin and the body     
             if(stitchType!=prevStitchType && prevStitchType!=-1 && stitchType!=-1){
-                Debug.Log("valid stitch");
                 FindObjectOfType<PatientSkin>().Stitch();
             }
         }
@@ -314,17 +357,53 @@ public class SurgeryController : MonoBehaviour
             foreach(GameObject g in thingsToMoveIn){
                 g.SetActive(true);
                 foreach(OrganScript o in g.GetComponentsInChildren<OrganScript>()){
-                    o.GetComponent<Rigidbody>().isKinematic=true;
-                    o.GetComponent<Rigidbody>().useGravity=false;
+                    if(o.gameObject.tag!="Patient Skin"){
+                        o.GetComponent<Rigidbody>().isKinematic=true;
+                        o.GetComponent<Rigidbody>().useGravity=false;
+                    }
                 }
                 foreach(Collider c in g.GetComponentsInChildren<Collider>()){
                     c.enabled=false;
                 }
             }
+            audioSource.clip=tableWheelSounds[Random.Range(0,tableWheelSounds.Length)];
+            audioSource.loop=false;
+            audioSource.Play();
         }
     }
 
     float easeInOutSine(float x){
         return -(Mathf.Cos(Mathf.PI*x)-1)/2;
+    }
+
+    [YarnCommand]
+    public void OpenCurtains(){
+        curtains.GetComponent<Animator>().SetTrigger("curtainsOpen");
+        curtains.GetComponent<AudioSource>().clip=curtainOpenClip;
+        curtains.GetComponent<AudioSource>().Play();
+    }
+
+    [YarnCommand]
+    public void CloseCurtains(){
+        curtains.GetComponent<Animator>().SetTrigger("curtainsClose");
+        curtains.GetComponent<AudioSource>().clip=curtainCloseClip;
+        curtains.GetComponent<AudioSource>().Play();
+    }
+
+    public void SwitchPatients(){
+        if(!movingPatients && !movingPatientsIn){
+            CloseCurtains();
+            MovePatientOut();
+            MovePatientIn();
+            dialogueRunner.Stop();
+            dialogueRunner.StartDialogue("Patient"+(patientIndex+2).ToString()+"Intro");
+            beeperButton.GetComponent<Animator>().SetTrigger("out");
+            EventSystem.current.SetSelectedGameObject(null); 
+        }
+    }
+
+    public void TriggerFeedbackMessage(int type){   //0: after cutting 1: after organs 2: after stitching
+        GameObject fm=Instantiate(feedbackMessagePrefab);
+        fm.GetComponent<FeedbackMessage>().SetSprite(type);
     }
 }
