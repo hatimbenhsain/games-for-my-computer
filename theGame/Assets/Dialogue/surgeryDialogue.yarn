@@ -4,6 +4,19 @@ position: 0,0
 ---
 
 ===
+title: SurgeryIntroCutscene
+position: 0,0
+---
+<<wait 1>>
+<<MoveBox2 YarnManager>>// not sure if these are needed for this one? 
+Doctor: Finally! You're here!
+Nour: Um..
+Doctor: We're absolutely swamped! You have a lot of work to do.
+Nour: Wait I --
+Doctor: Sorry no time for water cooler gossipping people are dying! 
+Nour: Oh no...
+<<OpenCurtains gameController>>//Not sure what the background will be for this section
+===
 title: Patient1Intro
 position: 0,0
 ---
@@ -13,6 +26,7 @@ Doctor: Today we have six patients that need to have their organs switched out.
 Doctor: Unfortunately I have to multitask a little, but I'm here to guide you through this.
 Nour: I'm not sure I can do this.
 Doctor: I felt the same way on my first day, but you just need to push through and trust yourself.
+Doctor: This patient sustained injuries while jello wrestling.
 <<OpenCurtains gameController>>
 ===
 title: Patient2Intro
@@ -20,11 +34,121 @@ position: 0,0
 ---
 <<wait 1>>
 Doctor: Beautiful work stitching them up! Moving on…
-Doctor: This patient got all twisted up playing twister and needs their “organ name” replaced.
-Nour: I'll try my best!
-Doctor: I need to check in with the receptionist, will you excuse me…
+Doctor: This patient got all twisted up playing twister.
+Nour: How is that even possible?
+Doctor: The receptionist is paging me, will you give me a moment…
 Doctor: What is it?
 Receptionist: I can't stop thinking about you…
-Doctor: Don't do this here. Please. I have a surgery to attend to. 
+Doctor: Don't do this here. Please. 
+Doctor: I have a surgery to attend to, we can talk later.
+Receptionist: You're always doing surgery! You're impossible!
 <<OpenCurtains gameController>>
 ===
+title: Patient3Intro
+position: 0,0
+---
+<<wait 1>>
+Doctor: Alright, let’s keep things moving.
+Doctor: Apparently something this patient ate didn’t agree with them?
+<<OpenCurtains gameController>>
+===
+title: Patient3MysteriousArchitecture
+position: 0,0
+---
+<<wait 1>>
+//This dialogue is triggered by the chest cavity of patient 3 being opened
+Doctor: Fascinating…Is that a piece of the mysterious architecture from the sky?
+Doctor: Looks crunchy...
+===
+title: Patient4Intro
+position: 0,0
+---
+<<wait 1>>
+Doctor: We’re moving through at a great pace, 3 more to go!
+Doctor: This patient fainted at a Mitney Clears concert from pure excitement.
+Doctor: Excuse me…I have to speak to a patient’s family.
+Doctor: We did everything we could…
+Patient's Family: Oh god...no...
+Doctor: And he’s alive and will make a full recovery!
+Patient's Family: What is wrong with you?!
+Doctor: What's wrong with you? We should celebrate!
+<<OpenCurtains gameController>>
+===
+title: Patient5Intro
+position: 0,0
+---
+<<wait 1>>
+Doctor: This patient tripped and fell while playing olympic level mini golf.
+Doctor: A little birdie told me this patient has a hole in one... of their organs.
+Doctor: My intern is paging me AGAIN. Will you please excuse me?
+Doctor: I know that Phillip and Kris are not on speaking terms and Khloe and James have all that sexual tension and Kendall and John will not stop sneaking off to the on call room but I will not be taking you off your ER rotation!
+<<OpenCurtains gameController>>
+===
+title: Patient6Intro
+position: 0,0
+---
+<<wait 1>>
+Doctor: Last one! This poor soul drank a glow stick. 
+Doctor: What are you doing in here?
+Receptionist: I needed to be close to you.
+Doctor: They can’t find out about us…I was counting on your discretion.
+Receptionist: But I believe that our love is stronger than that!
+Doctor: I do too…
+Doctor: And it’s been fun sneaking around with you…
+Doctor: Screw the rules!!!
+Receptionist: I’ve been dreaming of you saying that!
+Doctor: I have to wrap up this surgery but let’s do a dramatic kiss later.
+<<OpenCurtains gameController>>
+===
+title: Patient6Outro
+position: 0,0
+---
+<<wait 1>> //This dialogue is triggered by patient 6 being sewn back up
+Doctor: Great work! Now I think you're ready to perform brain surgery! 
+Nour: W-wait! I still need to talk to you about my fish legs!
+===
+title: SurgeryOutroCutscene
+position: 0,0
+---
+Nour: This isn't why I came in today! I'm not even a doctor!
+Doctor: Wait you're a middleschooler? oh I um... Wow! I really have an eye for talent. I'm glad to see you really blossomed into the role!
+Nour: Um actually I just graduated so...
+Doctor: Oh! Then this will look great on your resume.
+Nour: But that's not the point! Look at me! I feel like a mess!
+Doctor: Let's see what's up with you. This check up is on the house.
+Nour: I'm feeling frazzled and a little unwanted... 
+Doctor: Why is that?
+Nour: I danced for my crush, I danced so well and I thought it would impress them! But they already have a partner...
+Doctor: That's hard my friend. You seem to have a classic case of knockedoffyourrhythmitus.
+Nour: I don't know if I can pronounce that.
+Doctor: You just need to remember how great you are, I'm going to prescribe you a pep talk! what's your favorite thing about yourself?
+-> My confidence!
+    Nour: My confidence!
+-> My kindness!
+    Nour: My kindness!
+Doctor: This is just what the doctor ordered! I can already see you're perking up! 
+Nour: I still want to be friends with my crush I think they're a really cool person....
+Doctor: This isn't about them! Tell me about your proudest moment.  
+-> Bravely busting sick moves on the dance floor. 
+    Nour: Bravely busting sick moves on the dance floor. 
+-> Swiftly swapping out those organs. 
+    Nour: Swiftly swapping out those organs. 
+Doctor: Good! Woah something is happening!
+//yarncommand for Nour to transform
+Nour: Hey nice... wait! What's going on!?
+Doctor: Spiffy legs! Do you see the medicinal power of being kind to yourself! 
+Nour: I'm still not myself though... these aren't my legs. They look like goat legs!
+Doctor: You seem fine to me but maybe this case requires more drastic measures...
+Nour: Anything doc I just want to feel like myself again.
+Doctor: Have you heard of compliment therapy? 
+Nour: No, do you think it will fix me?
+Doctor: They don't give these medical degrees out for free friend!
+Nour: Ok what do I need to do?
+Doctor: Find some folks that are looking to chat and help them feel good about what's already there!
+Nour: Ok... I can try that. Where do I find people like that though?
+Doctor: You wouldn't know this but the first thing they tell you when you grow up is that if you're at the park it means you're down for a chat!
+Nour: Ok doc thank you for your help! I just have to find a park now...
+//cutscene ends and transitions back to hubworld
+===
+
+
