@@ -67,6 +67,8 @@ public class SurgeryController : MonoBehaviour
 
     public GameObject beeperButton;
 
+    public GameObject feedbackMessagePrefab;
+
     void Start()
     {
         cam=FindObjectOfType<Camera>();
@@ -125,7 +127,7 @@ public class SurgeryController : MonoBehaviour
                 if(heldOrgan==null && hoveredOrgan!=null){
                     hoveredOrgan.held=true;
                     heldOrgan=hoveredOrgan;
-                    ChangeMood();
+                    //ChangeMood();
                 }
                 //Dropping organ
                 else if(heldOrgan!=null){
@@ -257,14 +259,20 @@ public class SurgeryController : MonoBehaviour
         surgeryMusic.CrossFade(mood);
 
         //Change the camera zoom speed
-        if(mood==3){
-            cam.GetComponent<Animator>().speed=104f*0.25f/60f;
-        }else if(mood==0){
+        if(mood==0){
             cam.GetComponent<Animator>().speed=114f*0.5f/60f;
         }else if(mood==1){
             cam.GetComponent<Animator>().speed=170*0.5f/60f;
         }else if(mood==2){
-            cam.GetComponent<Animator>().speed=120*0.5f/60f;
+            cam.GetComponent<Animator>().speed=75*0.5f/60f;
+        }else if(mood==3){
+            cam.GetComponent<Animator>().speed=120*0.25f/60f;
+        }else if(mood==4){
+            cam.GetComponent<Animator>().speed=104*0.5f/60f;
+        }else if(mood==5){
+            cam.GetComponent<Animator>().speed=126*0.5f/60f;
+        }else if(mood==6){
+            cam.GetComponent<Animator>().speed=141*0.5f/60f;
         }
 
         //Activate new lights
@@ -276,7 +284,8 @@ public class SurgeryController : MonoBehaviour
         Collider skin=hitData.transform.gameObject.GetComponent<Collider>();
         //Creating cut marks
         GameObject cut=Instantiate(cutPrefab,hitData.point,cutPrefab.transform.rotation,skin.transform);
-        cut.transform.localPosition=new Vector3(cut.transform.localPosition.x,0.05f,cut.transform.localPosition.z);
+        float cutOffset=FindObjectOfType<Patient>().cutOffset;
+        cut.transform.localPosition=new Vector3(cut.transform.localPosition.x,cutOffset,cut.transform.localPosition.z);
         if(!audioSource.isPlaying){
             audioSource.clip=zipping;
             audioSource.loop=true;
@@ -303,11 +312,14 @@ public class SurgeryController : MonoBehaviour
                     isStitching=true;
                 }
             }
+            Debug.Log(stitchType);
+            Debug.Log(hitData.transform.gameObject);
             if(isStitching){
                 GameObject stitch=Instantiate(stitchPrefab,hitData.point,stitchPrefab.transform.rotation,
                 par);
+                float cutOffset=FindObjectOfType<Patient>().cutOffset;
                 stitch.transform.position=new Vector3(stitch.transform.position.x,
-                0.07f,stitch.transform.position.z);
+                cutOffset+0.01f,stitch.transform.position.z);
                 if(!audioSource.isPlaying){
                     audioSource.clip=stitchSounds[Random.Range(0,stitchSounds.Length)];
                     audioSource.loop=true;
@@ -388,5 +400,10 @@ public class SurgeryController : MonoBehaviour
             beeperButton.GetComponent<Animator>().SetTrigger("out");
             EventSystem.current.SetSelectedGameObject(null); 
         }
+    }
+
+    public void TriggerFeedbackMessage(int type){   //0: after cutting 1: after organs 2: after stitching
+        GameObject fm=Instantiate(feedbackMessagePrefab);
+        fm.GetComponent<FeedbackMessage>().SetSprite(type);
     }
 }

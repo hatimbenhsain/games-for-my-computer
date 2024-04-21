@@ -28,7 +28,7 @@ public class SurgeryMusic : MonoBehaviour
         }
         songToFadeFrom=-1;
         audioSources[songToFadeTo].Play();
-        audioSources[songToFadeTo].volume=1;
+        audioSources[songToFadeTo].volume=maxVolume;
     }
 
     // Update is called once per frame
