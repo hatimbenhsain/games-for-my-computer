@@ -42,6 +42,10 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator LoadLevel(string levelIndex)
     {
+        if (Time.timeScale == 0f)
+        {
+            Time.timeScale = 1f;
+        }
         if (setSpawnIndex)
         {
             // set the location index
