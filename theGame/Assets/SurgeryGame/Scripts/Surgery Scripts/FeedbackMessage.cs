@@ -14,12 +14,15 @@ public class FeedbackMessage : MonoBehaviour
     void Start()
     {
         timer=0f;
+        GetComponent<Animator>().speed=1;
     }
 
     // Update is called once per frame
     void Update()
     {
+        GetComponent<Animator>().speed=1;
         if(timer>=lifeSpan){
+            Debug.Log("destroy at "+timer);
             Destroy(gameObject);
         }
         timer+=Time.deltaTime;

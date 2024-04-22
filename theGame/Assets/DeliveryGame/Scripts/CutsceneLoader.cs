@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Yarn.Unity;
 
 public class CutsceneLoader : MonoBehaviour
 {
@@ -17,13 +18,18 @@ public class CutsceneLoader : MonoBehaviour
         //transition.SetTrigger("Start");
     }
 
-    public void LoadLevel()
+    [YarnCommand]
+    public void LoadLevel(string destination="")
     {
-        StartCoroutine(LoadLevel(destinationScene));
+        if(destination==""){
+            destination=destinationScene;
+        }
+        StartCoroutine(LoadLevelCoroutine(destination));
     }
 
 
-    IEnumerator LoadLevel(string levelIndex)
+  
+    IEnumerator LoadLevelCoroutine(string levelIndex)
     {
         transition.SetTrigger("Start");
 
