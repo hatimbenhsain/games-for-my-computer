@@ -581,7 +581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc651debacaa6424695c912fb86eaf4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
+  playerController: {fileID: 1613117252}
 --- !u!114 &45531223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5203,6 +5203,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377290033}
   m_CullTransparentMesh: 1
+--- !u!1 &404232551 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 805152075840669095, guid: 6db44d53a8f2a1f45bd2ffae425df662, type: 3}
+  m_PrefabInstance: {fileID: 2017596379}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &404232555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404232551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a37a41b84c56d48b6923280a836f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 1613117256}
+  outlinedDistance: 6
+  interactableDistance: 3
 --- !u!1 &406902523
 GameObject:
   m_ObjectHideFlags: 0
@@ -31795,6 +31815,26 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1492732958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7566661474360386456, guid: 6db44d53a8f2a1f45bd2ffae425df662, type: 3}
+  m_PrefabInstance: {fileID: 2017596379}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1492732962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492732958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a37a41b84c56d48b6923280a836f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 1613117256}
+  outlinedDistance: 6
+  interactableDistance: 3
 --- !u!1 &1546586555
 GameObject:
   m_ObjectHideFlags: 0
@@ -32717,6 +32757,11 @@ MonoBehaviour:
   microbeDetector: {fileID: 777353036}
   microbeImage: {fileID: 21300000, guid: 36be72e6ff76c47d0b1229ffc3ac72a1, type: 3}
   microbeAlienImage: {fileID: 21300000, guid: f6b09006f49e24a459d000a7845ab278, type: 3}
+--- !u!4 &1613117256 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4459864850019384738, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+  m_PrefabInstance: {fileID: 1613117251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1614157743
 GameObject:
   m_ObjectHideFlags: 0
@@ -59982,6 +60027,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6db44d53a8f2a1f45bd2ffae425df662, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2017596382}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6db44d53a8f2a1f45bd2ffae425df662, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2017596386}
+    - targetCorrespondingSourceObject: {fileID: 220168551992375693, guid: 6db44d53a8f2a1f45bd2ffae425df662, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2068466101}
+    - targetCorrespondingSourceObject: {fileID: -7566661474360386456, guid: 6db44d53a8f2a1f45bd2ffae425df662, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1492732962}
+    - targetCorrespondingSourceObject: {fileID: 805152075840669095, guid: 6db44d53a8f2a1f45bd2ffae425df662, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 404232555}
   m_SourcePrefab: {fileID: 100100000, guid: 6db44d53a8f2a1f45bd2ffae425df662, type: 3}
 --- !u!4 &2017596380 stripped
 Transform:
@@ -60071,6 +60128,21 @@ MonoBehaviour:
   alienText: {fileID: 121382988}
   artMove: {fileID: 2017596383}
   artMoveName: manetJumpDance
+--- !u!114 &2017596386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017596381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a37a41b84c56d48b6923280a836f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 1613117256}
+  outlinedDistance: 6
+  interactableDistance: 3
 --- !u!43 &2037857197
 Mesh:
   m_ObjectHideFlags: 0
@@ -60670,6 +60742,26 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &2068466097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 220168551992375693, guid: 6db44d53a8f2a1f45bd2ffae425df662, type: 3}
+  m_PrefabInstance: {fileID: 2017596379}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2068466101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068466097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a37a41b84c56d48b6923280a836f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 1613117256}
+  outlinedDistance: 6
+  interactableDistance: 3
 --- !u!1001 &2080186380
 PrefabInstance:
   m_ObjectHideFlags: 0
