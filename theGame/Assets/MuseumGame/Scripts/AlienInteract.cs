@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Yarn.Unity;
+using Yarn.Unity.Example;
 
 
 public class AlienInteract : MonoBehaviour
@@ -17,11 +19,15 @@ public class AlienInteract : MonoBehaviour
     public Sprite microbeAlienImage;
 
     private bool microbeOn = false;
+
+    private DialogueRunner dialogueRunner;
+    public float interactionRadius=3f;
     private void Start()
     {
         // Get a reference to the first-person camera.
         playerCamera = GetComponentInChildren<Camera>();
         microbeDetector.GetComponent<Image>().sprite = microbeImage;
+        dialogueRunner=FindObjectOfType<DialogueRunner>();
     }
 
     private void Update()
@@ -48,7 +54,7 @@ public class AlienInteract : MonoBehaviour
                 if (alien != null)
                 {
                     // Call the interaction function on the object.
-                    alien.Interact();
+                    //alien.Interact();
                 }
             }
         }
@@ -64,5 +70,28 @@ public class AlienInteract : MonoBehaviour
             microbeDetector.SetActive(true);
         }
 
+        if (Input.GetKeyUp(KeyCode.E) && !dialogueRunner.IsDialogueRunning){
+            CheckForNearbyNPC();
+        }
+
+    }
+
+    public void CheckForNearbyNPC()
+    {
+        List<NPC> allParticipants = new List<NPC>(FindObjectsOfType<NPC>());
+        var target = allParticipants.Find(delegate (NPC p)
+        {
+            return string.IsNullOrEmpty(p.talkToNode) == false && // has a conversation node?
+            (p.transform.position - this.transform.position)// is in range?
+            .magnitude <= interactionRadius;
+        });
+        if (target != null)
+        {
+            // Kick off the dialogue at this node.
+            FindObjectOfType<DialogueRunner>().StartDialogue(target.talkToNode);
+            //npcTalkingTo=target;
+            // reenabling the input on the dialogue
+            //dialogueInput.enabled = true;
+        }
     }
 }
