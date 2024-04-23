@@ -1,0 +1,24 @@
+﻿title: museumDialogue
+tags:
+---
+
+===
+title: Alien1
+position: 0,0
+---
+<<if visited("Alien1") is false>>
+<<ChangeLineView DialogueSystem default>>
+Nour: Hey...
+<<ChangeLineView DialogueSystem alien>>
+<<Animate Alien1 manetJumpDance>>
+Alien: Ouch!
+Alien: You really got me there!
+<<ChangeLineView DialogueSystem default>>
+Nour: You're valid.
+Nour: Don't forget that.
+<<ChangeLineView DialogueSystem alien>>
+Alien: Now I'm feeling strange...
+<<ChangeLineView DialogueSystem default>>
+<<ActivateAlien Alien1>>
+<<endif>>
+===
