@@ -7,7 +7,7 @@ position: 0,0
 title: SurgeryIntroCutscene
 position: 0,0
 ---
-<<wait 1>>
+<<if visited("SurgeryIntroCutscene") is false>>
 <<MoveBox2 YarnManager>>// not sure if these are needed for this one? 
 Doctor: Finally! You're here!
 Nour: Um..
@@ -15,7 +15,8 @@ Doctor: We're absolutely swamped! You have a lot of work to do.
 Nour: Wait I --
 Doctor: Sorry no time for water cooler gossipping people are dying! 
 Nour: Oh no...
-<<OpenCurtains gameController>>//Not sure what the background will be for this section
+<<LoadLevel CutsceneLoader SurgeryScene>>
+<<endif>>
 ===
 title: Patient1Intro
 position: 0,0

@@ -65,7 +65,7 @@ public class OrganScript : MonoBehaviour
 
         if(held){
             //Moving organ to target (mouse) + resetting rotation
-            if(GetComponentInChildren<MeshRenderer>()!=null){
+            if(GetComponentInChildren<MeshRenderer>()!=null || GetComponentInChildren<SkinnedMeshRenderer>()!=null){
                 targetPosition=new Vector3(targetPosition.x,targetPosition.y-meshOffset,targetPosition.z);
             }
             transform.localPosition=Vector3.Lerp(transform.localPosition,targetPosition,lerpValue*Time.deltaTime);
