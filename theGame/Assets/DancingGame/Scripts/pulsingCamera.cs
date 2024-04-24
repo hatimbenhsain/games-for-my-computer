@@ -11,6 +11,8 @@ public class pulsingCamera : MonoBehaviour
     public CinemachineFreeLook cam2;
 
     public CinemachineFreeLook cam3;
+    
+    public CinemachineFreeLook cam4;
 
     public Boolean pulse;
 
@@ -32,6 +34,7 @@ public class pulsingCamera : MonoBehaviour
             cam1.m_Lens.FieldOfView = Mathf.Lerp(cam1.m_Lens.FieldOfView, zoom, Time.deltaTime*smooth); 
             cam2.m_Lens.FieldOfView = Mathf.Lerp(cam2.m_Lens.FieldOfView, zoom, Time.deltaTime*smooth);
             cam3.m_Lens.FieldOfView = Mathf.Lerp(cam3.m_Lens.FieldOfView, zoom, Time.deltaTime*smooth);
+            cam4.m_Lens.FieldOfView = Mathf.Lerp(cam3.m_Lens.FieldOfView, zoom, Time.deltaTime*smooth);
         }
         else
         {
@@ -39,6 +42,7 @@ public class pulsingCamera : MonoBehaviour
             cam1.m_Lens.FieldOfView = Mathf.Lerp(cam1.m_Lens.FieldOfView, normal, Time.deltaTime*smooth);
             cam2.m_Lens.FieldOfView = Mathf.Lerp(cam2.m_Lens.FieldOfView, normal, Time.deltaTime*smooth);
             cam3.m_Lens.FieldOfView = Mathf.Lerp(cam3.m_Lens.FieldOfView, normal, Time.deltaTime*smooth);
+            cam4.m_Lens.FieldOfView = Mathf.Lerp(cam3.m_Lens.FieldOfView, normal, Time.deltaTime*smooth);
         }
     }
 
