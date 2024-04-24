@@ -97,8 +97,8 @@ add(color, float4(hsv2rgb(tile_hsv), pow(1.0 - sdBox(tile - tile_coord, float2(t
 
 fixed4 frag(v2f i) : SV_Target
 {
-    float2 R = _ScreenParams.xy; // Unity's built-in variable for screen dimensions
-    float2 U = ((2.0 * i.uv) - R) / min(R.x, R.y); // Adjust zoom is used properly
+    float2 R = 1/_ScreenParams.xy; // Unity's built-in variable for screen dimensions
+    float2 U = ((2.0 * i.uv) - R) / min(R.x, R.y) * zoom; // Adjust zoom is used properly
     float2 FU = frac(U); // 'fract' in GLSL is 'frac' in HLSL
 
     // unique ID for the tile
