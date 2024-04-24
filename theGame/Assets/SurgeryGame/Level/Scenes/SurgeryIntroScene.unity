@@ -241,6 +241,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 650460149732033417, guid: 5218d4feca1914398914665f47bc335d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1409276188915197151, guid: 5218d4feca1914398914665f47bc335d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -325,6 +329,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7663294869246323293, guid: 5218d4feca1914398914665f47bc335d, type: 3}
+      propertyPath: yarnProject
+      value: 
+      objectReference: {fileID: 7545569452688597077, guid: ad7a6d34374085541ba2e78fd13c8ab9, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -523,7 +531,7 @@ Transform:
   m_GameObject: {fileID: 580585989}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.92, z: -10.505}
+  m_LocalPosition: {x: -0.13, y: 0.72, z: -10.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -848,7 +856,7 @@ Transform:
   m_GameObject: {fileID: 1061358375}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -4.07, y: -0.51, z: -5.97}
+  m_LocalPosition: {x: -4.87, y: -0.51, z: -5.97}
   m_LocalScale: {x: 5.6846, y: 5.6846, z: 9.675189}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1021,8 +1029,8 @@ Transform:
   m_GameObject: {fileID: 1369631823}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -0.2276229, y: 1.94, z: 15.46}
-  m_LocalScale: {x: 53.488876, y: 32.042328, z: 1}
+  m_LocalPosition: {x: 1.37, y: 6.26, z: 15.46}
+  m_LocalScale: {x: 68.96505, y: 41.31328, z: 1.2893344}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1127,7 +1135,7 @@ Transform:
   m_GameObject: {fileID: 1683797184}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -0.96, y: -0.51, z: -5.97}
+  m_LocalPosition: {x: -1.1, y: -0.51, z: -5.97}
   m_LocalScale: {x: 5.6846, y: 5.6846, z: 9.675189}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1315,7 +1323,7 @@ GameObject:
   - component: {fileID: 5432927436380975109}
   - component: {fileID: 4188082268037235972}
   m_Layer: 0
-  m_Name: CutSceneLoader
+  m_Name: CutsceneLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1435,6 +1443,79 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8063073397250431797, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
   m_PrefabInstance: {fileID: 752334339584158050}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &860230569905301616
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 504784346144556944, guid: a9df4551d5570554ebedac29f3105c15, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423293616476252335, guid: a9df4551d5570554ebedac29f3105c15, type: 3}
+      propertyPath: nodeToCall
+      value: SurgeryIntroCutscene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2329911851826643881, guid: a9df4551d5570554ebedac29f3105c15, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7875217843693835222, guid: a9df4551d5570554ebedac29f3105c15, type: 3}
+      propertyPath: m_Name
+      value: DialogueTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003710754221874300, guid: a9df4551d5570554ebedac29f3105c15, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 12.141
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003710754221874300, guid: a9df4551d5570554ebedac29f3105c15, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.70600003
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003710754221874300, guid: a9df4551d5570554ebedac29f3105c15, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.567
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003710754221874300, guid: a9df4551d5570554ebedac29f3105c15, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.227
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003710754221874300, guid: a9df4551d5570554ebedac29f3105c15, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003710754221874300, guid: a9df4551d5570554ebedac29f3105c15, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003710754221874300, guid: a9df4551d5570554ebedac29f3105c15, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003710754221874300, guid: a9df4551d5570554ebedac29f3105c15, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003710754221874300, guid: a9df4551d5570554ebedac29f3105c15, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003710754221874300, guid: a9df4551d5570554ebedac29f3105c15, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003710754221874300, guid: a9df4551d5570554ebedac29f3105c15, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a9df4551d5570554ebedac29f3105c15, type: 3}
 --- !u!1 &937107269055005036
 GameObject:
   m_ObjectHideFlags: 0
@@ -2096,7 +2177,7 @@ Transform:
   m_GameObject: {fileID: 8727351260639907446}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.859, y: 0, z: -7.31}
+  m_LocalPosition: {x: 2.39, y: -0.15, z: -7.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2614,7 +2695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Doctor
-  talkToNode: 
+  talkToNode: SurgeryIntroCutscene
 --- !u!1 &6648772581793257391
 GameObject:
   m_ObjectHideFlags: 0
@@ -3009,7 +3090,7 @@ Transform:
   m_GameObject: {fileID: 651833368687540505}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.49, y: -0.51, z: -7.18}
+  m_LocalPosition: {x: -4.29, y: -0.51, z: -7.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3182,3 +3263,4 @@ SceneRoots:
   - {fileID: 3749398625234417928}
   - {fileID: 305941632}
   - {fileID: 756375340}
+  - {fileID: 860230569905301616}

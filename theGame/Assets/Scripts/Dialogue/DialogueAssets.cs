@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Yarn;
 using Yarn.Unity;
 public class DialogueAssets : MonoBehaviour
 {
@@ -29,7 +30,10 @@ public class DialogueAssets : MonoBehaviour
     }
 
     public DialogueCharacter[] dialogueCharacters;
-    // Start is called before the first frame update
+
+    public GameObject defaultLineView;
+    public GameObject alienLineView;
+    
     void Start()
     {
         dialogueRunner=FindObjectOfType<DialogueRunner>();
@@ -44,6 +48,7 @@ public class DialogueAssets : MonoBehaviour
                 Debug.Log("diff talker");
                 DialogueCharacter dc=new DialogueCharacter();
                 bool foundDC=false;
+
                 foreach(DialogueCharacter d in dialogueCharacters){
                     if(d.name.ToLower()==talkerContainer.text.ToLower()){
                         dc=d;
@@ -69,6 +74,8 @@ public class DialogueAssets : MonoBehaviour
             }
             prevTalker=talkerContainer.text;
             prevLine=lineContainer.text;
+        }else{
+            voiceAudioSource.Stop();
         }
     }
 
@@ -100,5 +107,23 @@ public class DialogueAssets : MonoBehaviour
     [YarnCommand]
     public void DeleteInterlocutor(){
         Destroy(interlocutor);
+    }
+
+    [YarnCommand]
+    public void ChangeLineView(string lineView="default"){
+        defaultLineView.SetActive(false);
+        alienLineView.SetActive(false);
+        GameObject currentLineView=defaultLineView;
+        switch(lineView){
+            case "alien":
+                currentLineView=alienLineView;
+                break;
+            case "default":
+                currentLineView=defaultLineView;
+                break;
+        }
+        currentLineView.SetActive(true);
+        dialogueRunner.SetDialogueViews(new DialogueViewBase[]{currentLineView.GetComponent<LineView>(),dialogueRunner.dialogueViews[1]});
+        talkerContainer=currentLineView.transform.Find("Character Name").GetComponent<TMP_Text>();
     }
 }
