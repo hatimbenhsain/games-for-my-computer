@@ -9,10 +9,11 @@ public class ChangingCameras : MonoBehaviour
    // private IEnumerator coroutine; //
     
     public CinemachineFreeLook cam1;
-
     public CinemachineFreeLook cam2;
-
     public CinemachineFreeLook cam3;
+    public CinemachineFreeLook cam4;
+
+    public GameObject OutsideCoupleUI;
    
     void Start()
     {
@@ -35,6 +36,16 @@ public class ChangingCameras : MonoBehaviour
             yield return new WaitForSeconds(10);
 
             cam3.Priority = 8;
+            cam4.Priority = 10;
+            
+            yield return new WaitForSeconds(5);
+            OutsideCoupleUI.SetActive(true);
+            
+            yield return new WaitForSeconds(10);
+            OutsideCoupleUI.SetActive(false);
+            
+            yield return new WaitForSeconds(1);
+            cam4.Priority = 8;
             cam1.Priority = 10;
         }
     }
