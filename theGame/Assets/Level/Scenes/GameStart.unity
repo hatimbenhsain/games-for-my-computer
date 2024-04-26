@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 323, y: 705}
+  m_AnchoredPosition: {x: 323, y: 399}
   m_SizeDelta: {x: 144.4396, y: -244.2733}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &24550490
@@ -291,8 +291,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1, y: 294}
-  m_SizeDelta: {x: 1542.1316, y: 738.2514}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &42510329
 MonoBehaviour:
@@ -765,7 +765,7 @@ RectTransform:
   m_GameObject: {fileID: 351111590}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.68284816, y: 0.68284816, z: 0.68284816}
+  m_LocalScale: {x: 0.54057676, y: 0.49505126, z: 0.68284816}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 760595347}
@@ -773,7 +773,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -638, y: 616.14}
+  m_AnchoredPosition: {x: -571, y: 571.3}
   m_SizeDelta: {x: 762.692, y: 103.9265}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &351111592
@@ -822,7 +822,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1255220614}
         m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
-        m_MethodName: LoacCheckPoint3
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1160,7 +1160,7 @@ RectTransform:
   m_GameObject: {fileID: 772207778}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.68284816, y: 0.68284816, z: 0.68284816}
+  m_LocalScale: {x: 0.54057676, y: 0.49505126, z: 0.68284816}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1411432916}
@@ -1168,7 +1168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -639, y: 720.06995}
+  m_AnchoredPosition: {x: -571.80005, y: 646.64996}
   m_SizeDelta: {x: 762.692, y: 103.9265}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &772207780
@@ -1217,11 +1217,23 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1255220614}
         m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
-        m_MethodName: LoacCheckPoint2
+        m_MethodName: LoacPostDance
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1679,7 +1691,7 @@ RectTransform:
   m_GameObject: {fileID: 1148330522}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.68284816, y: 0.68284816, z: 0.68284816}
+  m_LocalScale: {x: 0.54057676, y: 0.49505126, z: 0.68284816}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1679140940}
@@ -1687,7 +1699,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -638, y: 405}
+  m_AnchoredPosition: {x: -571, y: 418.23004}
   m_SizeDelta: {x: 762.692, y: 103.9265}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1148330524
@@ -1736,7 +1748,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1255220614}
         m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
-        m_MethodName: LoacCheckPoint1
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1824,7 +1836,7 @@ RectTransform:
   m_GameObject: {fileID: 1162279828}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.68284816, y: 0.68284816, z: 0.68284816}
+  m_LocalScale: {x: 0.54057676, y: 0.49505126, z: 0.68284816}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1684411733}
@@ -1832,7 +1844,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -639, y: -10}
+  m_AnchoredPosition: {x: -571.80005, y: 117.359985}
   m_SizeDelta: {x: 762.692, y: 103.9265}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1162279830
@@ -1881,7 +1893,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1255220614}
         m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
-        m_MethodName: LoadCheckPoint4
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1974,7 +1986,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -77, y: -32}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1255220614
@@ -2288,7 +2300,7 @@ RectTransform:
   m_GameObject: {fileID: 1488675631}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.68284816, y: 0.68284816, z: 0.68284816}
+  m_LocalScale: {x: 0.54057676, y: 0.49505126, z: 0.68284816}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1514860593}
@@ -2296,7 +2308,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -639, y: 93.20998}
+  m_AnchoredPosition: {x: -571.80005, y: 192.19}
   m_SizeDelta: {x: 762.692, y: 103.9265}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1488675633
@@ -2345,7 +2357,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1255220614}
         m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
-        m_MethodName: LoadCheckPoint4
+        m_MethodName: LoadPostMuseum
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3032,7 +3044,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -771, y: 919}
+  m_AnchoredPosition: {x: -636, y: 857}
   m_SizeDelta: {x: 377.8683, y: 91.7486}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1759126464
@@ -3169,7 +3181,7 @@ RectTransform:
   m_GameObject: {fileID: 1890374238}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.68284816, y: 0.68284816, z: 0.68284816}
+  m_LocalScale: {x: 0.54057676, y: 0.49505126, z: 0.68284816}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1938650396}
@@ -3177,7 +3189,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -639, y: 301.06998}
+  m_AnchoredPosition: {x: -571.80005, y: 342.88}
   m_SizeDelta: {x: 762.692, y: 103.9265}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1890374240
@@ -3226,7 +3238,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1255220614}
         m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
-        m_MethodName: LoacCheckPoint2
+        m_MethodName: LoacPostCompliment
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3511,7 +3523,7 @@ RectTransform:
   m_GameObject: {fileID: 2017477510}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.68284816, y: 0.68284816, z: 0.68284816}
+  m_LocalScale: {x: 0.54057676, y: 0.49505126, z: 0.68284816}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1106263984}
@@ -3519,7 +3531,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -639, y: 512.21}
+  m_AnchoredPosition: {x: -571.80005, y: 495.96002}
   m_SizeDelta: {x: 762.692, y: 103.9265}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2017477512
@@ -3568,7 +3580,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1255220614}
         m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
-        m_MethodName: LoadCheckPoint4
+        m_MethodName: LoacPostSurgery
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3644,7 +3656,7 @@ RectTransform:
   m_GameObject: {fileID: 2099184295}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.68284816, y: 0.68284816, z: 0.68284816}
+  m_LocalScale: {x: 0.54057676, y: 0.49505126, z: 0.68284816}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1140495127}
@@ -3652,7 +3664,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -638, y: 824}
+  m_AnchoredPosition: {x: -571, y: 722}
   m_SizeDelta: {x: 762.692, y: 103.9265}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2099184297
@@ -3701,7 +3713,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1255220614}
         m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
-        m_MethodName: LoacCheckPoint1
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3713,8 +3725,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 3788177718923298048}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3789,7 +3801,7 @@ RectTransform:
   m_GameObject: {fileID: 2118898066}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.68284816, y: 0.68284816, z: 0.68284816}
+  m_LocalScale: {x: 0.54057676, y: 0.49505126, z: 0.68284816}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 203624922}
@@ -3797,7 +3809,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -638, y: 197.13998}
+  m_AnchoredPosition: {x: -571, y: 267.53998}
   m_SizeDelta: {x: 762.692, y: 103.9265}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2118898068
@@ -3846,7 +3858,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1255220614}
         m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
-        m_MethodName: LoacCheckPoint3
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
