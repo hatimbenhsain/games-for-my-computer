@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2035339492461326267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 12952755116817610}
+  - component: {fileID: 2602872089339082640}
+  m_Layer: 0
+  m_Name: LightManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &12952755116817610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035339492461326267}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -58.56645, y: -44.715775, z: 43.511597}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2602872089339082640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035339492461326267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc8cd17fc07cbfe4a9f1424958f4c039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fogColors:
+  - {r: 0.627451, g: 0.11764706, b: 0.5411765, a: 0}
+  - {r: 0.41960785, g: 0.07843137, b: 0.12726031, a: 0}
+  - {r: 0.07464095, g: 0.08244419, b: 0.46540874, a: 0}
+  ambientColors:
+  - {r: 0.7610062, g: 0.007179185, b: 0.59611297, a: 0}
+  - {r: 0.26415092, g: 0.042363785, b: 0.10545834, a: 0}
+  - {r: 0.023529405, g: 0.08230667, b: 0.34117648, a: 0}
+  rotationSpeed: 0.4
+  lerpSpeed: 0.5
