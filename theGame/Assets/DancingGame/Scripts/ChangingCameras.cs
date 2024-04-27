@@ -17,10 +17,13 @@ public class ChangingCameras : MonoBehaviour
 
     private int cameraIndex=0;
     private CinemachineFreeLook[] cameras;
+
+    private CinemachineBrain camBrain;
     void Start()
     {
         cameras=new CinemachineFreeLook[]{cam1,cam2,cam3,cam4};
         //StartCoroutine(changeCameras()); //co routine for smooth wait time
+        camBrain=FindObjectOfType<CinemachineBrain>();
     }
 
     void Update(){
@@ -69,5 +72,38 @@ public class ChangingCameras : MonoBehaviour
             cam.Priority=8;
         }
         cameras[cameraIndex%cameras.Length].Priority=10;
+        if(cameraIndex%cameras.Length==3){
+            StartCoroutine("activateCouple",5);
+        }else{
+            StartCoroutine("deActivateCouple",1);
+        }
+        camBrain.m_DefaultBlend.m_Time=5;
+    }
+
+    public void ChangeCameraFast(int index=-1){
+        if(index==-1){
+            index=cameraIndex+1;
+        }
+        cameraIndex=index%cameras.Length;
+        foreach(CinemachineFreeLook cam in cameras){
+            cam.Priority=8;
+        }
+        cameras[cameraIndex%cameras.Length].Priority=10;
+        if(cameraIndex%cameras.Length==3){
+            StartCoroutine("activateCouple",1);
+        }else{
+            StartCoroutine("deActivateCouple",1);
+        }
+        camBrain.m_DefaultBlend.m_Time=1;
+    }
+
+    IEnumerator activateCouple(float seconds){
+        yield return new WaitForSeconds(seconds);
+        OutsideCoupleUI.SetActive(true);
+    }
+
+    IEnumerator deActivateCouple(float seconds){
+        yield return new WaitForSeconds(seconds);
+        OutsideCoupleUI.SetActive(false);
     }
 }
