@@ -1,13 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DanceInput : MonoBehaviour
 {
     public Animator dancingBoy; //Dancing Boy is attached to player, in the Animator are Layers, all layers set to 1 for overlapping
 
-    public AudioSource Clap; //everytime you press a key "clap" happens, but it's too quiet
+    public Image Q;
+    public Image W;
+    public Image A;
+    public Image S;
+    public Image D;
+    public Image E;
+    public Image Space;
 
+    [SerializeField] private Color QColor;
+    [SerializeField] private Color WColor;
+    [SerializeField] private Color AColor;
+    [SerializeField] private Color SColor;
+    [SerializeField] private Color DColor;
+    [SerializeField] private Color EColor;
+    [SerializeField] private Color SPACEColor;
+    
+    [SerializeField] private Color pressColor;
+    
 
     // Update is called once per frame
     void Update()
@@ -16,43 +34,105 @@ public class DanceInput : MonoBehaviour
         {
             //left arm wiggle is the isolated animation, same as all the rest, but all layers are at 1
             dancingBoy.Play("LeftArmWiggle");
-            Clap.Play();
+            if (A.color == AColor)
+            {
+                A.color = pressColor;
+            }else
+            {
+                A.color = AColor;
+            }
         }
-        
+        if (Input.GetKey(KeyCode.A))
+        {
+                A.color = pressColor;
+        }
+        else
+        {
+            A.color = AColor;
+        }
+        //------------------------------
         if (Input.GetKeyDown(KeyCode.D))
         {
             dancingBoy.Play("RightArmWiggle");
-            Clap.Play();
+        }        
+        
+        if (Input.GetKey(KeyCode.D))
+        {
+            D.color = pressColor;
         }
+        else
+        {
+            D.color = DColor;
+        }
+        //--------------------------------
         
         if (Input.GetKeyDown(KeyCode.S))
         {
             dancingBoy.Play("leftlegwiggle");
-            Clap.Play();
+        }        
+        if (Input.GetKey(KeyCode.S))
+        {
+            S.color = pressColor;
         }
+        else
+        {
+            S.color = SColor;
+        }
+        //------------------------------
         
         if (Input.GetKeyDown(KeyCode.W))
         {
             dancingBoy.Play("Rightlegwiggle");
-            Clap.Play();
+        }        
+        if (Input.GetKey(KeyCode.W))
+        {
+            W.color = pressColor;
         }
+        else
+        {
+            W.color = WColor;
+        }
+        //------------------------------
         
         if (Input.GetKeyDown(KeyCode.Q))
         {
             dancingBoy.Play("MiddleWiggle");
-            Clap.Play();
+        }        
+        if (Input.GetKey(KeyCode.Q))
+        {
+            Q.color = pressColor;
         }
+        else
+        {
+            Q.color = QColor;
+        }
+        //----------------------------
         
         if (Input.GetKeyDown(KeyCode.E))
         {
             dancingBoy.Play("dropit");
-            Clap.Play();
+        }        
+        if (Input.GetKey(KeyCode.E))
+        {
+            E.color = pressColor;
         }
+        else
+        {
+            E.color = EColor;
+        }
+        //----------------------------
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
             dancingBoy.Play("wiggleit");
-            Clap.Play();
+        }        
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Space.color = pressColor;
+        }
+        else
+        {
+            Space.color = SPACEColor;
         }
     }
     
