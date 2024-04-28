@@ -22,7 +22,7 @@ public class LevelSelect : MonoBehaviour
 
 
 
-    public void LoacCheckPoint1()
+    public void LoacPostDance()
     {
         // Post dancing game
         menuLoader.destinationScene = destinationScene;
@@ -35,7 +35,7 @@ public class LevelSelect : MonoBehaviour
         menuLoader.PlayGame();
     }
 
-    public void LoacCheckPoint2()
+    public void LoacPostSurgery()
     {
         // Post surgery
         menuLoader.destinationScene = destinationScene;
@@ -48,7 +48,7 @@ public class LevelSelect : MonoBehaviour
         menuLoader.PlayGame();
     }
 
-    public void LoacCheckPoint3()
+    public void LoacPostCompliment()
     {
         // Post Compliment
         // TODO: 
@@ -62,7 +62,7 @@ public class LevelSelect : MonoBehaviour
         menuLoader.PlayGame();
     }
 
-    public void LoadCheckPoint4()
+    public void LoadPostMuseum()
     {
         // Post Museum
         menuLoader.destinationScene = destinationScene;

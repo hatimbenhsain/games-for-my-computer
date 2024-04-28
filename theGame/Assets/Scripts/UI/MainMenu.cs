@@ -34,6 +34,12 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(LoadLevel(destinationScene));
     }
 
+    public void JumpToLevel(string destination)
+    {
+        Debug.Log("PlayCoroutine");
+        StartCoroutine(LoadLevel(destination));
+    }
+
     public void QuitGame()
     {
         Debug.Log("Quit");
