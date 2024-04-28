@@ -49,5 +49,6 @@ public class HideUI : MonoBehaviour
         {
             UI0Space.SetActive(false);
         }
+        
     }
 }
