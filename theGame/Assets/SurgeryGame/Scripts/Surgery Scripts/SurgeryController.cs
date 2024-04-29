@@ -69,6 +69,9 @@ public class SurgeryController : MonoBehaviour
 
     public GameObject feedbackMessagePrefab;
 
+    private int changeMoodNumber=0;
+    public int[] moodIndexArray;
+
     void Start()
     {
         cam=FindObjectOfType<Camera>();
@@ -243,8 +246,11 @@ public class SurgeryController : MonoBehaviour
     public void ChangeMood(int m=-1){
 
         //Deactivate the current lights
-        lights[mood].SetActive(false);
-        
+        if(changeMoodNumber>=songs.Length){
+            lights[moodIndexArray[mood]].SetActive(false);
+        }else{
+            lights[mood].SetActive(false);
+        }
 
         //Change music
         if(m==-1){
@@ -256,27 +262,47 @@ public class SurgeryController : MonoBehaviour
         // musicPlayer.clip=songs[mood];
         // musicPlayer.Play();
 
-        surgeryMusic.CrossFade(mood);
+        //m=mood;
+
+        if(m==-1){
+            changeMoodNumber++;
+            if(changeMoodNumber%songs.Length==0){
+                moodIndexArray=new int[songs.Length];
+                for(int i=0;i<songs.Length;i++){
+                    moodIndexArray[i]=i;
+                }
+                Shuffle(moodIndexArray);
+            }
+            if(changeMoodNumber>=songs.Length){
+                m=moodIndexArray[mood];
+            }else{
+                m=mood;
+            }
+        }else{
+            m=mood;
+        }
+
+        surgeryMusic.CrossFade(m);
 
         //Change the camera zoom speed
-        if(mood==0){
+        if(m==0){
             cam.GetComponent<Animator>().speed=114f*0.5f/60f;
-        }else if(mood==1){
+        }else if(m==1){
             cam.GetComponent<Animator>().speed=170*0.5f/60f;
-        }else if(mood==2){
+        }else if(m==2){
             cam.GetComponent<Animator>().speed=75*0.5f/60f;
-        }else if(mood==3){
+        }else if(m==3){
             cam.GetComponent<Animator>().speed=120*0.25f/60f;
-        }else if(mood==4){
+        }else if(m==4){
             cam.GetComponent<Animator>().speed=104*0.5f/60f;
-        }else if(mood==5){
+        }else if(m==5){
             cam.GetComponent<Animator>().speed=126*0.5f/60f;
-        }else if(mood==6){
+        }else if(m==6){
             cam.GetComponent<Animator>().speed=141*0.5f/60f;
         }
 
         //Activate new lights
-        lights[mood].SetActive(true);
+        lights[m].SetActive(true);
         
     }
 
@@ -302,7 +328,7 @@ public class SurgeryController : MonoBehaviour
             if(Physics.Raycast(ray, out hitData, 1000) && hitData.transform.gameObject.name=="patientSkin"){
                 stitchType=1;
                 par=hitData.transform;
-            }else if(hitData.transform.gameObject.tag=="Patient Body"){
+            }else if(hitData.transform.gameObject.tag=="Patient Body" || hitData.transform.parent.gameObject.name=="insideContainer"){
                 stitchType=0;
             }else{
                 stitchType=-1;
@@ -396,7 +422,11 @@ public class SurgeryController : MonoBehaviour
             MovePatientOut();
             MovePatientIn();
             dialogueRunner.Stop();
-            dialogueRunner.StartDialogue("Patient"+(patientIndex+2).ToString()+"Intro");
+            if(!movingPatientsIn){
+                dialogueRunner.StartDialogue("PatientOutro");
+            }else{
+                dialogueRunner.StartDialogue("Patient"+(patientIndex+2).ToString()+"Intro");
+            }
             beeperButton.GetComponent<Animator>().SetTrigger("out");
             EventSystem.current.SetSelectedGameObject(null); 
         }
@@ -405,5 +435,17 @@ public class SurgeryController : MonoBehaviour
     public void TriggerFeedbackMessage(int type){   //0: after cutting 1: after organs 2: after stitching
         GameObject fm=Instantiate(feedbackMessagePrefab);
         fm.GetComponent<FeedbackMessage>().SetSprite(type);
+    }
+
+    void Shuffle(int[] array){
+        System.Random _random = new System.Random();
+        int p = array.Length;
+        for (int n = p-1; n > 0 ; n--)
+        {
+            int r = _random.Next(1, n);
+            int t = array[r];
+            array[r] = array[n];
+            array[n] = t;
+        }
     }
 }
