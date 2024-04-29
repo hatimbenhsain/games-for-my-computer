@@ -102,16 +102,19 @@ Receptionist: I’ve been dreaming of you saying that!
 Doctor: I have to wrap up this surgery but let’s do a dramatic kiss later.
 <<OpenCurtains gameController>>
 ===
-title: Patient6Outro
+title: PatientOutro
 position: 0,0
 ---
 <<wait 1>> //This dialogue is triggered by patient 6 being sewn back up
 Doctor: Great work! Now I think you're ready to perform brain surgery! 
+<<LoadLevel CutsceneLoader SurgeryEndScene>>
 Nour: W-wait! I still need to talk to you about my fish legs!
 ===
 title: SurgeryOutroCutscene
 position: 0,0
 ---
+<<if visited("SurgeryOutroCutscene") is false>>
+<<wait  1>>
 Nour: This isn't why I came in today! I'm not even a doctor!
 Doctor: Wait you're a middleschooler? oh I um... Wow! I really have an eye for talent. I'm glad to see you really blossomed into the role!
 Nour: Um actually I just graduated so...
@@ -136,12 +139,13 @@ Doctor: This isn't about them! Tell me about your proudest moment.
 -> Swiftly swapping out those organs. 
     Nour: Swiftly swapping out those organs. 
 Doctor: Good! Woah something is happening!
-//yarncommand for Nour to transform
+<<Metamorphosis PlayerController Leg>>
+<<wait  2>>
 Nour: Hey nice... wait! What's going on!?
 Doctor: Spiffy legs! Do you see the medicinal power of being kind to yourself! 
 Nour: I'm still not myself though... these aren't my legs. They look like goat legs!
 Doctor: You seem fine to me but maybe this case requires more drastic measures...
-Nour: Anything doc I just want to feel like myself again.
+Nour: Anything doc, I just want to feel like myself again!
 Doctor: Have you heard of compliment therapy? 
 Nour: No, do you think it will fix me?
 Doctor: They don't give these medical degrees out for free friend!
@@ -151,6 +155,7 @@ Nour: Ok... I can try that. Where do I find people like that though?
 Doctor: You wouldn't know this but the first thing they tell you when you grow up is that if you're at the park it means you're down for a chat!
 Nour: Ok doc thank you for your help! I just have to find a park now...
 //cutscene ends and transitions back to hubworld
+<<endif>>
 ===
 title: SurgeryTuto1
 position: 0,0
