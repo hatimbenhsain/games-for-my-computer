@@ -21,6 +21,7 @@ public class LevelSkip : MonoBehaviour
         //transition.SetTrigger("Start");
     }
 
+    // 1 is post dancing game, 2 post surgery game, 3 post compliment, 4 post museum
     void Update()
     {
         if (setSpawnIndex)

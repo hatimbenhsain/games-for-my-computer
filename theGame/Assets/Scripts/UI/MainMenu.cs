@@ -34,12 +34,19 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(LoadLevel(destinationScene));
     }
 
+    public void JumpToLevel(string destination)
+    {
+        Debug.Log("PlayCoroutine");
+        StartCoroutine(LoadLevel(destination));
+    }
+
     public void QuitGame()
     {
         Debug.Log("Quit");
         Application.Quit();
     }
 
+    // 1 is post dancing game, 2 post surgery game, 3 post compliment, 4 post museum
     IEnumerator LoadLevel(string levelIndex)
     {
         if (Time.timeScale == 0f)
