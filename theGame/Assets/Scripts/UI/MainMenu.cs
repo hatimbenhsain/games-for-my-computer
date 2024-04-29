@@ -46,6 +46,7 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    // 1 is post dancing game, 2 post surgery game, 3 post compliment, 4 post museum
     IEnumerator LoadLevel(string levelIndex)
     {
         if (Time.timeScale == 0f)
