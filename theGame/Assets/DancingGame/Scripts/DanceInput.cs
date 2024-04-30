@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class DanceInput : MonoBehaviour
 {
     public Animator dancingBoy; //Dancing Boy is attached to player, in the Animator are Layers, all layers set to 1 for overlapping
-
+    public Animator dancingBoy2;
     public Image Q;
     public Image W;
     public Image A;
@@ -34,6 +34,7 @@ public class DanceInput : MonoBehaviour
         {
             //left arm wiggle is the isolated animation, same as all the rest, but all layers are at 1
             dancingBoy.Play("LeftArmWiggle");
+            dancingBoy2.Play("LeftArmWiggle");
             if (A.color == AColor)
             {
                 A.color = pressColor;
@@ -54,6 +55,7 @@ public class DanceInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D))
         {
             dancingBoy.Play("RightArmWiggle");
+            dancingBoy2.Play("RightArmWiggle");
         }        
         
         if (Input.GetKey(KeyCode.D))
@@ -69,6 +71,7 @@ public class DanceInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             dancingBoy.Play("leftlegwiggle");
+            dancingBoy2.Play("RightArmWiggle");
         }        
         if (Input.GetKey(KeyCode.S))
         {
@@ -83,6 +86,7 @@ public class DanceInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             dancingBoy.Play("Rightlegwiggle");
+            dancingBoy2.Play("RightArmWiggle");
         }        
         if (Input.GetKey(KeyCode.W))
         {
@@ -97,6 +101,7 @@ public class DanceInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             dancingBoy.Play("MiddleWiggle");
+            dancingBoy2.Play("RightArmWiggle");
         }        
         if (Input.GetKey(KeyCode.Q))
         {
@@ -111,6 +116,7 @@ public class DanceInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             dancingBoy.Play("dropit");
+            dancingBoy2.Play("RightArmWiggle");
         }        
         if (Input.GetKey(KeyCode.E))
         {
@@ -125,6 +131,7 @@ public class DanceInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             dancingBoy.Play("wiggleit");
+            dancingBoy2.Play("RightArmWiggle");
         }        
         if (Input.GetKey(KeyCode.Space))
         {
