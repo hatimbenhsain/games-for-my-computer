@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
 
@@ -11,6 +12,8 @@ public class CutsceneLoader : MonoBehaviour
     public float transitionTime;
 
     public Animator transition;
+
+    public PlayableDirector[] playableDirectors;
 
 
     private void Start()
@@ -37,5 +40,14 @@ public class CutsceneLoader : MonoBehaviour
 
         SceneManager.LoadScene(levelIndex);
 
+    }
+
+    [YarnCommand]
+    public void TriggerCutscene(int i){
+        Debug.Log("triggering cutscene");
+        if(i>0){
+            playableDirectors[i-1].Stop();
+        }
+        playableDirectors[i].Play();
     }
 }

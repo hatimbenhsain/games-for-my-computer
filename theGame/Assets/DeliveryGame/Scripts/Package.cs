@@ -44,8 +44,11 @@ public class Package : MonoBehaviour
             int k=index%(items.Length);
             Debug.Log(k);
             Debug.Log(items[k]);
-            Instantiate(items[index%(items.Length)],transform.position,Quaternion.identity);
+            GameObject g=Instantiate(items[index%(items.Length)],transform.position,transform.rotation);
             index++;
+            Vector3 v=g.transform.position;
+            v=new Vector3(v.x,0f,v.z);
+            g.transform.position=v;
             Destroy(transform.parent.parent.gameObject);
         }
     }

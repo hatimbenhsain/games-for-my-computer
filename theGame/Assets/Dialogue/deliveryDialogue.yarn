@@ -6,13 +6,16 @@ title: ThwompBoss1
 position: 0,0
 ---
 <<MoveBox2 YarnManager>>
-<<set $FriendTalkCount = 0>> // Initialize FriendTalkCount to 0, I was trying to implement a yarncommand to trigger captchareorder1 but i was failing
+//<<set $FriendTalkCount = 0>> // Initialize FriendTalkCount to 0, I was trying to implement a yarncommand to trigger captchareorder1 but i was failing
 Thwomp: Kinda miss my favorite spot in the park…but this is an interesting change of scenery. 
 Thwomp: Things are feeling very 3D here. Reminds me of home! 
 Thwomp: Can’t thank you enough for showing me that it’s ok to take up space on the z axis. 
 Nour: Oh...uhh...hi? You don't look like the sword that I ordered, but happy to see you again!
+<<if visited("ThwompBoss1") is false>>
 Nour: Better try again...
-<<set $FriendTalkCount = $FriendTalkCount + 1>> // Increment FriendTalkCount after dialogue ends
+//<<set $FriendTalkCount = $FriendTalkCount + 1>> // Increment FriendTalkCount after dialogue ends
+<<Reorder DeliveryGameManager>>
+<<endif>>
 ===
 title: DoctorBoss1
 position: 0,0
@@ -22,24 +25,33 @@ Doctor: I’m so happy to see that the potential I saw in you has grown exponent
 Doctor: The lessons you’ve learned at the surgical table have transcended beyond your care practice. 
 Doctor: Well done Dr. Nour!
 Nour: Hello surgical doctor! Thanks for getting delivered...although you're not what I expected.
+<<if visited("DoctorBoss1") is false>>
 Nour: Where's my sword...?
+<<Reorder DeliveryGameManager>>
+<<endif>>
 ===
 title: AlienBoss1
 position: 0,0
 ---
 <<MoveBox2 YarnManager>>
-Aliens: Hi Nour!! 
-Aliens: Your affirmations have inspired us to explore the rest of the orb called Earth~
-Aliens: We wanted to find you and let you know our gratitude.
-Aliens: In the words of Nour “You’re Valid”.
-Aliens: We’re always here to help in your time of need! 
+<<ChangeLineView DialogueSystem alien>>
+UFO: Hi Nour!! 
+UFO: Your affirmations have inspired us to explore the rest of the orb called Earth~
+UFO: We wanted to find you and let you know our gratitude.
+UFO: In the words of Nour “You’re Valid”.
+UFO: We’re always here to help in your time of need! 
+<<ChangeLineView DialogueSystem default>>
 Nour: Thanks! I love how y'all helped me transcend gravity. You're another surprise order~
+<<if visited("AlienBoss1") is false>>
 Nour: ...But I'm still missing that sword....
+<<Reorder DeliveryGameManager>>
+<<endif>>
 ===
 title: CrushBoss1
 position: 0,0
 ---
 <<MoveBox2 YarnManager>>
+<<if visited("CrushBoss1") is false>>
 Crush: Hello Nour!! Miss seeing you groovin’, but really love the vibe you’re giving off now… rocket style!!  
 Fedora: Yeah now you’ll have so many new moves to explore on the dance floor. Actually…is this a dance floor…?
 Nour: Ermmm....maybe? No one's saying it isn't...
@@ -49,7 +61,9 @@ Nour: Feeling so inspired by all of you right now.
 Nour: I should introduce you all to each other….
 Nour: ....This is Crush, who I went to middle school with....
 Nour: ....And this is the doctor I subbed for a few surgeries....
+<<LoadLevel CutsceneLoader BossCutScene2>>
 Nour: ...These are my alien friends from the museum, they're works of art.....
+<<endif>>
 ===
 title: Bark1
 position: 0,-200
@@ -94,22 +108,21 @@ Nour: There wasn't even a contract!!!
 title: BossIntroCutsceneDialogue
 position: 0,-200
 ---
-<<MoveBox2 YarnManager>>
-Final Agent: Hello again Champ. Thanks for finally joining me for our scheduled meeting.
-Final Agent: Those aliens are not classified within our earth ecosystem database. They shouldn’t exist!!
+Agent: Hello again Champ. Thanks for finally joining me for our scheduled meeting.
+Agent: Those aliens are not classified within our earth ecosystem database. They shouldn’t exist!!
 Nour: Existing isn't up to you.
-Final Agent: Your unorthodox methods go against company policy…
-Final Agent: The blatant disregard you have for procedure cannot go unpunished.
-Final Agent: As per line 437 of the BRAG freelance contract... 
-Final Agent: When a job is not performed the subordinate is taught a lesson through a duel!
-Final Agent: Wait, where's the weapon I left for you in the Musuem?
+Agent: Your unorthodox methods go against company policy…
+Agent: The blatant disregard you have for procedure cannot go unpunished.
+Agent: As per line 437 of the BRAG freelance contract... 
+Agent: When a job is not performed the subordinate is taught a lesson through a duel!
+Agent: Wait, where's the weapon I left for you in the Musuem?
 Nour: You left me a weapon...? To fight? 
 Nour: ...I guess I should order a weapon...
-Final Agent: I cannot fathom that you would put me in this kind of position...
-Final Agent: ….After I gave you such a….*ARGHGHGHGH*…GOVERNMENT SANCTIONED HIGH-PAYING OPPORTUNITY!!!!!!!!!!!!!
-//agent transforms into boss monster
+Agent: I cannot fathom that you would put me in this kind of position...
+Agent: ….After I gave you such a….*ARGHGHGHGH*…GOVERNMENT SANCTIONED HIGH-PAYING OPPORTUNITY!!!!!!!!!!!!!
+<<TriggerCutscene CutsceneLoader 1>>
 ===
-title: BossEndingCutsceneDialogue
+title: BossEndingCutsceneDialogue1
 position: 0,-200
 ---
 <<MoveBox2 YarnManager>>
@@ -121,7 +134,11 @@ Final Agent: So maybe…maybe I need to leave that place behind. I’ve always h
 Final Agent: ...
 Final Agent: Oh my god...
 Final Agent: That felt wonderful to say.
-//agent morphs
+<<TriggerCutscene CutsceneLoader 1>>
+===
+title: BossEndingCutsceneDialogue2
+position: 0,-200
+---
 Final Agent: What is happening to me???
 Nour: Just go with it dude. You´re being sent on an awesome journey.
 Final Agent: Will I ever get my legs back?
