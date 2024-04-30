@@ -1,6 +1,7 @@
 using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -40,6 +41,8 @@ public class SpawnManager : MonoBehaviour
         if (SpawnDataHolder.playTransformAnimation)
         {
             thirdPersonController.Metamorphosis(SpawnDataHolder.targetCharacterState,vfxTime,transformTime);
+            StartCoroutine("StartRain");
+        }else if(SpawnDataHolder.playRain){
             StartCoroutine("StartRain");
         }
         switch (SpawnDataHolder.spawnLocationIndex)

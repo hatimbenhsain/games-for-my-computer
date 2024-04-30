@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Yarn.Unity;
 
 public class LevelSkip : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class LevelSkip : MonoBehaviour
     public StarterAssets.ThirdPersonController.CharacterState characterState;
     public StarterAssets.ThirdPersonController.CharacterState targetCharacterState;
     public bool playTransformAnimation = false;
+
+    public bool playRain=false;
 
     private void Start()
     {
@@ -32,16 +35,27 @@ public class LevelSkip : MonoBehaviour
             SpawnDataHolder.targetCharacterState = targetCharacterState;
         }
         SpawnDataHolder.playTransformAnimation = playTransformAnimation;
+        SpawnDataHolder.playRain = playRain;
 
         if (Input.GetKeyDown(KeyCode.O))
         {
             Debug.Log("O pressed");
-            StartCoroutine(LoadLevel(destinationScene));
+            StartCoroutine(LoadLevelCoroutine(destinationScene));
         }
     }
 
+    [YarnCommand]
+    public void LoadLevel(string destination="")
+    {
+        if(destination==""){
+            destination=destinationScene;
+        }
+        StartCoroutine(LoadLevelCoroutine(destination));
+    }
 
-    IEnumerator LoadLevel(string levelIndex)
+
+
+    IEnumerator LoadLevelCoroutine(string levelIndex)
     {
         transition.SetTrigger("Start");
 

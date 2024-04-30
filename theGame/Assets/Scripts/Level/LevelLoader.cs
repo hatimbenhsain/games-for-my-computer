@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Yarn.Unity;
 
 public class LevelLoader : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class LevelLoader : MonoBehaviour
     public StarterAssets.ThirdPersonController.CharacterState characterState;
     public StarterAssets.ThirdPersonController.CharacterState targetCharacterState;
     public bool playTransformAnimation = false;
+    public bool playRain=false;
 
     private void Start()
     {
@@ -23,6 +25,15 @@ public class LevelLoader : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            LoadLevel();
+        }
+    }
+
+    [YarnCommand]
+    public void LoadLevel(string destination="")
     {
         if (setSpawnIndex)
         {
@@ -32,14 +43,14 @@ public class LevelLoader : MonoBehaviour
             SpawnDataHolder.targetCharacterState = targetCharacterState;
         }
         SpawnDataHolder.playTransformAnimation = playTransformAnimation;
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("aaaa");
-            StartCoroutine(LoadLevel(destinationScene));
+        SpawnDataHolder.playRain = playRain;
+        if(destination==""){
+            destination=destinationScene;
         }
+        StartCoroutine(LoadLevelCoroutine(destination));
     }
 
-    IEnumerator LoadLevel(string levelIndex)
+    IEnumerator LoadLevelCoroutine(string levelIndex)
     {
         transition.SetTrigger("Start");
 
