@@ -19,6 +19,12 @@ public class DeliveryGame : MonoBehaviour
     private bool limitedPackages=true; //do we stop delivering packages at a certain point?
               // maybe the answer should be no but at some point it's just pizza or whatever
 
+    public GameObject[] reorderWindows;
+
+    public float newFillSpeed=0.2f;
+    public ProgressBarGame progressBarGame;
+
+    public Transform[] packagePositions;
 
     void Start()
     {
@@ -47,15 +53,18 @@ public class DeliveryGame : MonoBehaviour
             package=null;
         }
         if(package==null && Input.GetKeyDown(KeyCode.P)){
-            DropPackage();
+            //DropPackage();
         }
     }
 
    public void DropPackage(){
         if(!limitedPackages || packageIndex<packageNumber){
             package=Instantiate(cardboardBoxPrefab);
-            Vector3 pos=new Vector3(Random.Range(-5f,5f),package.transform.position.y,Random.Range(-5f,5f));
+            Vector3 pos=packagePositions[packageIndex].position;
+            //pos=new Vector3(Random.Range(-5f,5f),package.transform.position.y,Random.Range(-5f,5f));
+            pos=new Vector3(pos.x,package.transform.position.y,pos.z);
             package.transform.position=pos;
+            package.transform.rotation=packagePositions[packageIndex].rotation;
             mainCamera.gameObject.SetActive(false);
             canvas.gameObject.SetActive(false);
             package.GetComponentInChildren<Rigidbody>().isKinematic=true;
@@ -69,5 +78,13 @@ public class DeliveryGame : MonoBehaviour
         DialogueRunner dr=FindObjectOfType<DialogueRunner>();
         dr.Stop();
         FindObjectOfType<DialogueRunner>().StartDialogue(node);
+    }
+
+    [YarnCommand]
+    public void Reorder(){
+        if(packageIndex<packageNumber && packageIndex-1<reorderWindows.Length){
+            reorderWindows[packageIndex-1].SetActive(true);
+            progressBarGame.fillSpeed=newFillSpeed;
+        }
     }
 }
