@@ -1786,6 +1786,7 @@ MonoBehaviour:
   microbeDetector: {fileID: 1262885436}
   microbeImage: {fileID: 21300000, guid: 36be72e6ff76c47d0b1229ffc3ac72a1, type: 3}
   microbeAlienImage: {fileID: 21300000, guid: f6b09006f49e24a459d000a7845ab278, type: 3}
+  interactionRadius: 3
 --- !u!4 &410619633 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4459864850019384738, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
@@ -3143,6 +3144,7 @@ MonoBehaviour:
   alienText: {fileID: 0}
   artMove: {fileID: 0}
   artMoveName: 
+  alienElements: {fileID: 0}
 --- !u!1 &658792435 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6db44d53a8f2a1f45bd2ffae425df662, type: 3}
@@ -3184,6 +3186,7 @@ MonoBehaviour:
   alienText: {fileID: 241300728}
   artMove: {fileID: 658792440}
   artMoveName: manetJumpDance
+  alienElements: {fileID: 0}
 --- !u!4 &658792439 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6db44d53a8f2a1f45bd2ffae425df662, type: 3}
@@ -4156,7 +4159,8 @@ MonoBehaviour:
   spawnIndex: 4
   characterState: 2
   targetCharacterState: 3
-  playTransformAnimation: 1
+  playTransformAnimation: 0
+  playRain: 1
 --- !u!1 &1004133973
 GameObject:
   m_ObjectHideFlags: 0
@@ -5905,6 +5909,7 @@ MonoBehaviour:
   alienText: {fileID: 241300728}
   artMove: {fileID: 0}
   artMoveName: 
+  alienElements: {fileID: 0}
 --- !u!1 &1673053834
 GameObject:
   m_ObjectHideFlags: 0
@@ -7577,6 +7582,7 @@ MonoBehaviour:
   alienText: {fileID: 241300728}
   artMove: {fileID: 0}
   artMoveName: 
+  alienElements: {fileID: 0}
 --- !u!1 &2064938848
 GameObject:
   m_ObjectHideFlags: 0
@@ -14702,6 +14708,7 @@ MonoBehaviour:
   alienText: {fileID: 1419488769}
   artMove: {fileID: 919132148063975037}
   artMoveName: nekoDance
+  alienElements: {fileID: 0}
 --- !u!114 &919132148063975039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34410,6 +34417,7 @@ MonoBehaviour:
   alienText: {fileID: 1048958900}
   artMove: {fileID: 3469287838199250428}
   artMoveName: radiospin
+  alienElements: {fileID: 0}
 --- !u!135 &3469287838199250430
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -53755,6 +53763,7 @@ MonoBehaviour:
   alienText: {fileID: 241300728}
   artMove: {fileID: 0}
   artMoveName: 
+  alienElements: {fileID: 0}
 --- !u!65 &6200203045295396962
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -56751,6 +56760,7 @@ MonoBehaviour:
   alienText: {fileID: 241300728}
   artMove: {fileID: 0}
   artMoveName: 
+  alienElements: {fileID: 0}
 --- !u!65 &6607407840069884041
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -101,12 +101,94 @@ Nour: So umm... was that good?
 NPC: Yeah! Thank you for everything :)
 <<stop>>
 ===
+title: Rain1
+position: -126,183
+---
+<<MoveBox2  YarnManager>>
+Rain: Hello little Cockroach...
+Nour: Whu-- Cockroach? Is that what I look like? I don't-- who's talking?!
+Rain: We see you have found yourself in quite the predicament.
+Nour: I... Yeah!!! Like, who was that kid? Do they even go here?
+Nour: And why was she kissing them?? What do they have that I don't have??? Why do I look like a fish???? Was that a remix?
+Rain: Worry not. All you need to do is press *SPACE* and *WASD* and soon you will be able to reach your destination.
+Nour: *SPACE* and *WASD*? What does that even mean???
+Rain: And talk to people with E.
+Rain: Flounder on.
+<<EndRain  RainThatTalksToYou>>
+Nour: Wh-- Wait! Who are you? What is going on??? I...
+Nour: I guess I'lll. AGGHHH!!
+Nour: I should probably head to the hospital. Maybe they can fix me up...
+Nour: It's that red building at the end of the street. I guess... Let's see if I can reach it.
+Nour: *SPACE* and *WASD*. Ok. And E to talk.
+===
+title: Rain2
+position: 85,183
+---
+<<MoveBox2  YarnManager>>
+Rain: And so the cockroach regains its legs -- yet they are changed.
+Nour: This is... a goat leg?!
+Rain: They are Nour legs.
+Nour: Are you... real?
+Rain: Do you not feel me in your fur and on your hoof and in your mouth and on your skin?
+Nour: I guess but...
+Rain: Take heart. You will experience untold freedom. All you need to do is press *WASD*...
+Rain: And if you desire to return to your roots, you can always press *CTRL*.
+Rain: Gallop forth.
+<<EndRain  RainThatTalksToYou>>
+Nour: ...Thank you? I'll try that.
+Nour: *WASD* and *CTRL*.... Okay.
+Nour: The doctor said I should go to a "park"... I think there should be one behind that bridge over there.
+Nour: And he said I should try complimenting some people - whatever that means... Let's try that I guess.
+===
+title: Rain3
+position: 299,183
+---
+<<MoveBox2  YarnManager>>
+<<StartRain  RainThatTalksToYou>>
+Nour: I feel it again. Another change is coming, isn't it?
+Rain: You have raised these folks' spirits up. Now it is your turn to ascend.
+<<Metamorphosis PlayerController Wing>>
+<<wait 2>>
+Rain: And then, the cockroach found it had wings.
+Nour: WOAH! I've always wanted wings!
+Nour: ...Huh.
+Nour: It's odd. I've always been scared of telling people how I really feel. And complimenting felt so strange because I thought I would be seen as disingenuous.
+Nour: But it genuinely felt so good. And no one was mad or freaked out! In a way I kind of... impacted their lives in a little way?
+Nour: This whole night I've been so stressed about this whole situation. But now it feels like things are looking up.
+Rain: And they will continue on. Now, soar! 
+Rain: You may do so by pressing *SPACE*.
+<<EndRain  RainThatTalksToYou>>
+Nour: Ok... I'm ready. Here I go.
+<<wait  1>>
+<<jump AgentPostCompliments>>
+===
+title: Rain4
+position: 504,181
+---
+<<MoveBox2  YarnManager>>
+Nour: I know what has to be done.
+<<Metamorphosis PlayerController Rocket>>
+<<wait 2>>
+Rain: And finally, the cockroach gained its antenna.
+Nour: ...Cool? It's weird though. These usually do something.
+Rain: Everything has its purpose. But it's also okay to be purposeless.
+Nour: I feel really close to you right now. Do you wanna hang out sometime?
+Rain: We will see each other again, but in a different form than this one.
+Nour: Oh okay I mean we don't have to if you don't wanna--
+Rain: For now, you may press the *RIGHT MOUSE BUTTON*, and a new world will open to you.
+Nour: Okay. Got it. *RIGHT MOUSE BUTTON*.
+Nour: Umm... I'll.. miss you?
+Rain: We will always be with you. Rocket onwards.
+<<EndRain  RainThatTalksToYou>>
+Nour: Rocket onwards... Huh. Maybe I can reach that big thing in the sky now.
+===
 title: GreenHair1
 tags: 
 colorID: 0
 position: 7,-5
 ---
 <<MoveBox2 YarnManager>>
+<<if $mcState is "Leg">> // AKA if nour can compliment right now //character states: Fish, Leg, Wing, Rocket
 Nour: Hey... there.
 Green Hair: What need you from me?
 Nour: What? Um, nothing! Why are you assuming I need something from you?
@@ -122,6 +204,28 @@ Nour: Well, I...
     Green Hair: Of course... Here you go.
     Nour: I have gained 5 dollars!
 <<stop>>
+<<else>>
+    //PUT ONE LINER HERE
+Green Hair: Isn't park this wonderful?
+Nour: I guess?
+Green Hair: Want you hear more about it?
+->  Sure?
+    Green Hair: It was built in 1424 by a great woman known as Purple Hair...
+    Nour: And this was your ancestor?
+    Green Hair: What? No?
+    Nour: Sorry please go on.
+    Green Hair: Yes... As was being said built it was after generous donation from Committee of Green-ish Spaces and Fountain Promotion of 1 gazillion simoleons!
+    Nour: Wow... that's a pretty big number.
+    Green Hair: Actually fairly insiginificant was at the time. Deflation, inflation, stagflation, etc. into account, it would today 4 bucks be.
+    Nour: That's my monthly allowance!
+    Green Hair: Yes... Anyregardless. Purple Hair decided build it with in mind those who enjoy seeing and being seen...
+    Green Hair: ...as a safe space to each other come up and nice things say to each other!
+    Nour: What a noble premise.
+    Green Hair: Indeed!
+->  No?
+    Nour: Maybe another time?
+    Green Hair: Very well.
+<<endif>>
 ===
 title: GreenHair2
 tags: 
@@ -136,6 +240,7 @@ Green Hair: For ever no one has given me tender words such.
 Green Hair: Thank you my sweet. Keep you in my heart will I.
 Nour: No worries...!
 <<ChangeStartNode GreenHair GreenHair3>>
+<<jump PostCompliment>>
 ===
 title: GreenHair3
 tags: 
@@ -149,97 +254,39 @@ Green Hair: And now, better boundaries... I have those!
 Nour: That's really amazing.
 <<stop>>
 ===
-title: Rain1
-position: -126,183
----
-<<MoveBox2  YarnManager>>
-Rain: Hello little Cockroach...
-Nour: Whu-- Who's talking?!
-Rain: We see you have found yourself in quite the predicament...
-Nour: I... Yeah, I guess so.
-Rain: Do not worry. All you need to do is press *SPACE* and *WASD* and soon you will be able to reach your destination.
-Nour: *SPACE* and *WASD*, huh?... I'll try that. Thanks.
-Rain: Flutter on.
-<<EndRain  RainThatTalksToYou>>
-Nour: I... still worry. Ok, whatever. I should probably head to the hospital. Maybe they can fix me up.
-Nour: It's that red building at the end of the street. Alright... Let's see if I can reach it.
-===
-title: Rain2
-position: 85,183
----
-<<MoveBox2  YarnManager>>
-Rain: And so the cockroach regains its legs -- yet they are changed.
-Nour: This is... a goat leg?!
-Rain: They are Nour legs.
-Nour: Are you... real?
-Rain: Do you not feel me in your fur and on your hoof and in your mouth and on your skin?
-Nour: I guess but...
-Rain: Take heart. You will experience untold freedom. All you need to do is press *WASD*...
-Rain: And if you desire to return to your roots, you can always press *CTRL*.
-Rain: Gallop forth.
-Nour: ...Thank you? I'll try that.
-Nour: *WASD* and *CTRL*.... Okay.
-<<EndRain  RainThatTalksToYou>>
-Nour: The doctor said I should head to that... "park" over there behind the hospital--
-Nour: and try complimenting some people - whatever that means... Let's try that I guess.
-===
-title: Rain3
-position: 299,183
----
-<<MoveBox2  YarnManager>>
-<<StartRain  RainThatTalksToYou>>
-Nour: I feel it again. Another change is coming, isn't it?
-Rain: You have raised these folks' spirits up. Now it is your turn to ascend.
-<<Metamorphosis PlayerController Wing>>
-Rain: And then, the cockroach found it had wings.
-Nour: WOAH! I've always wanted wings!
-Nour: ...Huh.
-Nour: It's odd. This whole night I've been so stressed about this whole situation. But now... it feels like things are looking up?
-Rain: And they will continue on. Now, soar! 
-Rain: You may do so by pressing *SPACE*.
-Nour: Ok... I'm ready. Here I go.
-<<EndRain  RainThatTalksToYou>>
-<<jump AgentPostCompliments>>
-===
-title: Rain4
-position: 504,181
----
-<<MoveBox2  YarnManager>>
-Rain: And finally, the cockroach gained its antenna.
-Nour: ...Cool? It's weird though. These usually do something.
-Rain: Everything has its purpose. But it's also okay to be purposeless.
-Nour: I feel really close to you right now. Do you wanna hang out sometime?
-Rain: We will see each other again, but in a different form than this one.
-Rain: For now, you may press the *RIGHT MOUSE BUTTON*, and a new world will open to you.
-Nour: Got it. *RIGHT MOUSE BUTTON*.
-Nour: Umm... I'll.. miss you?
-Rain: Thank you. Rocket onwards.
-<<EndRain  RainThatTalksToYou>>
-Nour: Rocket onwards... Huh. Maybe I can reach that big thing in the sky now.
-===
 title: Tabitha1
 position: 785,252
 ---
 <<MoveBox2 YarnManager>>
-Nour: Hello tall flower.
-Tabitha: ...Don't tell me...
-Nour: Oh? I dunnu I...
-Tabitha: You're here to take one of my flowers?
-Nour: I definitely wasn't thinking that.
-Tabitha: That's what they all say...
-Nour: Do people take from you often?
-Tabitha: Actually all of the time, and I only bloom so often.
-Nour: Hmmm...
--> Compliment them.
-    Nour: I just wanna compliment you! Would that be okay??
-    Tabitha: Sure okay!
-    <<ChangeStartNode Tabitha Tabitha2>>
-    <<ComplimentStart GameManager>>
--> Something else.
-    Nour: Can I just stare at your flowers for a second?
-    Tabitha: That's strange.
-    Nour: Okay....nevermind....
-<<stop>>
+<<if $TabithaComplimented is true>>
+    // This part is meant for what happens if you talk to Tabitha after museum game after she's been previously complimented
+    // This does NOT currently work because variables aren't saved between scenes and IDT it will be implemented but maybe
+    <<Complimented  Tabitha>>
+    <<ChangeStartNode Tabitha Tabitha3>>
+    <<jump Tabitha3>>
+<<elseif $mcState is "Leg">> // AKA if nour can compliment right now //character states: Fish, Leg, Wing, Rocket
+    Nour: Hello tall flower.
+    Tabitha: ...Don't tell me...
+    Nour: Oh? I dunnu I...
+    Tabitha: You're here to take one of my flowers?
+    Nour: I definitely wasn't thinking that.
+    Tabitha: That's what they all say...
+    Nour: Do people take from you often?
+    Tabitha: Actually all of the time, and I only bloom so often.
+    Nour: Hmmm...
+    -> Compliment them.
+        Nour: I just wanna compliment you! Would that be okay??
+        Tabitha: Sure okay!
+        <<ChangeStartNode Tabitha Tabitha2>>
+        <<ComplimentStart GameManager>>
+    -> Something else.
+        Nour: Can I just stare at your flowers for a second?
+        Tabitha: That's strange.
+        Nour: Okay....nevermind....
+    <<stop>>
+<<else>>
+    //PUT ONE LINER HERE
+<<endif>>
 ===
 title: Tabitha2
 position: 1005,255
@@ -251,8 +298,9 @@ Tabitha: ...feeling something...eep!!
 <<Complimented  Tabitha>>
 Tabitha: I'm blossoming~! Thank you, this is so rare.
 Nour: Happy blossoming!
+<<set $TabithaComplimented = true>>
 <<ChangeStartNode Tabitha Tabitha3>>
-<<stop>>
+<<jump PostCompliment>>
 ===
 title: Tabitha3
 position: 1224,257
@@ -267,16 +315,20 @@ title: KissingCouple1
 position: 350,727
 ---
 <<MoveBox2 YarnManager>>
-Nour: Whoa you are going at it!
-Kissing Couple: We so are!
--> Compliment them.
-    Nour: I wanna tell you both some nice things!
-    <<ChangeStartNode KissingCouple KissingCouple2>>
-    <<ComplimentStart GameManager>>
--> Something else.
-    Kissing Couple: I hope one day you'll find a love as pure as ours!
-    Nour: See ya later love birds.
-<<stop>>
+<<if $mcState is "Leg">> // AKA if nour can compliment right now //character states: Fish, Leg, Wing, Rocket
+    Nour: Whoa you are going at it!
+    Kissing Couple: We so are!
+    -> Compliment them.
+        Nour: I wanna tell you both some nice things!
+        <<ChangeStartNode KissingCouple KissingCouple2>>
+        <<ComplimentStart GameManager>>
+    -> Something else.
+        Kissing Couple: I hope one day you'll find a love as pure as ours!
+        Nour: See ya later love birds.
+    <<stop>>
+<<else>>
+    //PUT ONE LINER HERE
+<<endif>>
 ===
 title: KissingCouple2
 position: 561,726
@@ -289,7 +341,7 @@ Nour: I didn't know human bodies could do that!
 Kissing Couple: We're gonna stay like this forever.
 Nour: I hope you set the world record.
 <<ChangeStartNode KissingCouple KissingCouple3>>
-<<stop>>
+<<jump PostCompliment>>
 ===
 title: KissingCouple3
 position: 787,729
@@ -303,24 +355,28 @@ title: ShoeBaby1
 position: -503,697
 ---
 <<MoveBox2 YarnManager>>
-Shoe Baby: *ooomph*! Can you be a bit more careful...I'm sorta unnoticeable...
-Nour: No, I meant to say hello. So, Hi!
-Shoe Baby: Unbelievable...so do you come...eh...around this area often?
--> Yeah, just to say hi to you! 
-    Nour: Yeah, just to say hi to you! 
-    -> Compliment them!
-        Nour: Compliment incoming!!
-        <<ChangeStartNode ShoeBaby ShoeBaby2>>
-        <<ComplimentStart GameManager>>
-    -> I didn't...I just noticed you from *this* close.
-        Shoe Baby: I don't really go anywhere different.
-        Nour: Is it because of your size?
-        Shoe Baby: ...
-        Nour:...
--> This is my first time.
-    Shoe Baby: saying hi is pretty cool still.
-    Nour: talk to you later!
-<<stop>>
+<<if $mcState is "Leg">> // AKA if nour can compliment right now //character states: Fish, Leg, Wing, Rocket
+    Shoe Baby: *ooomph*! Can you be a bit more careful...I'm sorta unnoticeable...
+    Nour: No, I meant to say hello. So, Hi!
+    Shoe Baby: Unbelievable...so do you come...eh...around this area often?
+    -> Yeah, just to say hi to you! 
+        Nour: Yeah, just to say hi to you! 
+        -> Compliment them!
+            Nour: Compliment incoming!!
+            <<ChangeStartNode ShoeBaby ShoeBaby2>>
+            <<ComplimentStart GameManager>>
+        -> I didn't...I just noticed you from *this* close.
+            Shoe Baby: I don't really go anywhere different.
+            Nour: Is it because of your size?
+            Shoe Baby: ...
+            Nour:...
+    -> This is my first time.
+        Shoe Baby: saying hi is pretty cool still.
+        Nour: talk to you later!
+    <<stop>>
+<<else>>
+    //PUT ONE LINER HERE
+<<endif>>
 ===
 
 title: ShoeBaby2
@@ -334,7 +390,7 @@ Shoe Baby: Hahahaha that's tickly!!
 Shoe Baby: Thank you so for even noticing me in the first place! Wowie.
 Nour: Anytime.
 <<ChangeStartNode ShoeBaby ShoeBaby3>>
-<<stop>>
+<<jump PostCompliment>>
 ===
 
 title: ShoeBaby3
@@ -351,24 +407,16 @@ title: Naut1
 position: -377,535
 ---
 <<MoveBox2 YarnManager>>
-Nour: Cool shell... nice to meet you!
-Naut: I used to be energetic like you...
--> What happened?
-    Nour: What happened?
-    Naut: Ever since that mysterious archecture when up in the sky I haven't been able to get a lick of sleep.
-    Nour: Why not?
-    Naut: It has completely destroyed the skyline's feng shui.
-    Nour: That's no reason to lose sleep!
-    Naut: Oh yeah?
-    -> Compliment them!
-        Nour: Thinking up an awesome compliment for you!
-        <<ChangeStartNode Naut Naut2>>
-        <<ComplimentStart GameManager>>
-    -> Nah
-        Nour: Hope you get some sleep dude.
-        Naut: Me too...
--> You still can be!
-    Naut: Am I supposed to just decide not to be tired?
+<<if $mcState is "Leg">> // AKA if nour can compliment right now //character states: Fish, Leg, Wing, Rocket
+    Nour: Cool shell... nice to meet you!
+    Naut: I used to be energetic like you...
+    -> What happened?
+        Nour: What happened?
+        Naut: Ever since that mysterious archecture when up in the sky I haven't been able to get a lick of sleep.
+        Nour: Why not?
+        Naut: It has completely destroyed the skyline's feng shui.
+        Nour: That's no reason to lose sleep!
+        Naut: Oh yeah?
         -> Compliment them!
             Nour: Thinking up an awesome compliment for you!
             <<ChangeStartNode Naut Naut2>>
@@ -376,7 +424,19 @@ Naut: I used to be energetic like you...
         -> Nah
             Nour: Hope you get some sleep dude.
             Naut: Me too...
-<<stop>>
+    -> You still can be!
+        Naut: Am I supposed to just decide not to be tired?
+            -> Compliment them!
+                Nour: Thinking up an awesome compliment for you!
+                <<ChangeStartNode Naut Naut2>>
+                <<ComplimentStart GameManager>>
+            -> Nah
+                Nour: Hope you get some sleep dude.
+                Naut: Me too...
+    <<stop>>
+<<else>>
+    //PUT ONE LINER HERE
+<<endif>>
 ===
 title: Naut2
 position: -158,526
@@ -387,7 +447,7 @@ Nour: {$compliment}
 Naut: Wow! I'm feeling a little energized! 
 Nour: You look it!
 <<ChangeStartNode Naut Naut3>>
-<<stop>>
+<<jump PostCompliment>>
 ===
 title: Naut3
 position: 48,524
@@ -402,18 +462,22 @@ title: Thwomp1
 position: -67,373
 ---
 <<MoveBox2 YarnManager>>
-Thwomp: I'm looking pretty flat huh?
-Nour: I guess?
-Thwomp: As flat as you right?
-Nour: Do you want to be?
-Thwomp: I feel like I should be...
--> Compliment them.
-    Nour: I'm thinking up some real nice things to say!
-    <<ChangeStartNode Thwomp Thwomp2>>
-    <<ComplimentStart GameManager>>
--> Nah.
-    Nour: See you around dude.    
-<<stop>>
+<<if $mcState is "Leg">> // AKA if nour can compliment right now //character states: Fish, Leg, Wing, Rocket
+    Thwomp: I'm looking pretty flat huh?
+    Nour: I guess?
+    Thwomp: As flat as you right?
+    Nour: Do you want to be?
+    Thwomp: I feel like I should be...
+    -> Compliment them.
+        Nour: I'm thinking up some real nice things to say!
+        <<ChangeStartNode Thwomp Thwomp2>>
+        <<ComplimentStart GameManager>>
+    -> Nah.
+        Nour: See you around dude.    
+    <<stop>>
+<<else>>
+    //PUT ONE LINER HERE
+<<endif>>
 ===
 
 title: Thwomp2
@@ -426,7 +490,7 @@ Thwomp: WHOA!!!
 Thwomp: Wow I feel like I can really let loose and be myself now. 
 Nour: Looking good!
 <<ChangeStartNode Thwomp Thwomp3>>
-<<stop>>
+<<jump PostCompliment>>
 ===
 title: Thwomp3
 position: 358,380
@@ -475,4 +539,34 @@ Nour: I definitely have not.
 Agent: You're hired! Use those wings to head up the stairs and there should be a package waiting for you.
 Agent: I'll be in touch!
 <<DeleteInterlocutor DialogueSystem>>
+===
+title: PostCompliment
+position: 831,-31
+---
+<<wait 0.5>>
+<<if $complimentValue is 1>>
+    <<jump PostCompliment1>>
+<<elseif $complimentValue is 2>>
+    <<jump PostCompliment2>>
+<<elseif $complimentValue is 3>>
+    <<jump PostCompliment3>>
+<<endif>>
+===
+title: PostCompliment1
+position: 831,-31
+---
+Nour: Huh... That felt odd. But also nice?
+Nour: I wonder if anything will happen if I compliment more people.
+===
+title: PostCompliment2
+position: 831,-31
+---
+Nour: Wow, I'm feeling like the words are just cascading out of my mouth!
+Nour: Is this what the flow state is like?
+===
+title: PostCompliment3
+position: 831,-31
+---
+Nour: This feels so great!!
+Nour: I feel like something amazing will happen if I compliment just one more person...!
 ===

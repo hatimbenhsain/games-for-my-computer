@@ -109,7 +109,7 @@ public class RainThatTalks : MonoBehaviour
                         rainNode="Rain2";
                         break;
                     case ThirdPersonController.CharacterState.Wing:
-                        rainNode="Rain3";
+                        rainNode="Rain4";
                         break;
                     case ThirdPersonController.CharacterState.Rocket:
                         rainNode="Rain4";
