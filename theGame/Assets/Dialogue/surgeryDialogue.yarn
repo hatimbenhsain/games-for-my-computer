@@ -23,11 +23,13 @@ position: 0,0
 ---
 <<wait 1>>
 <<MoveBox2 YarnManager>>
-Doctor: Today we have six patients that need to have their organs switched out. 
-Doctor: Unfortunately I have to multitask a little, but I'm here to guide you through this.
+Doctor: Today we have four patients that need to have organ transplants. 
+Doctor: First, you need to cut them open and remove their yucky dieased organs, and then replace them with fresh ones.
+Doctor: When you're done, just stitch them back up!
+Doctor: Unfortunately I have to multitask a little, but I'm here to guide you through.
 Nour: I'm not sure I can do this.
 Doctor: I felt the same way on my first day, but you just need to push through and trust yourself.
-Doctor: This patient sustained injuries while jello wrestling.
+Doctor: Our first patient sustained injuries while jello wrestling.
 <<OpenCurtains gameController>>
 <<jump SurgeryTuto1>>
 ===
@@ -50,49 +52,26 @@ title: Patient3Intro
 position: 0,0
 ---
 <<wait 1>>
-Doctor: Alright, let’s keep things moving.
-Doctor: Apparently something this patient ate didn’t agree with them?
-<<OpenCurtains gameController>>
-===
-title: Patient3MysteriousArchitecture
-position: 0,0
----
-<<wait 1>>
-//This dialogue is triggered by the chest cavity of patient 3 being opened
-Doctor: Fascinating…Is that a piece of the mysterious architecture from the sky?
-Doctor: Looks crunchy...
-===
-title: Patient4Intro
-position: 0,0
----
-<<wait 1>>
-Doctor: We’re moving through at a great pace, 3 more to go!
-Doctor: This patient fainted at a Mitney Clears concert from pure excitement.
+Doctor: We’re moving through at a great pace, two more to go!
 Doctor: Excuse me…I have to speak to a patient’s family.
 Doctor: We did everything we could…
 Patient's Family: Oh god...no...
 Doctor: And he’s alive and will make a full recovery!
 Patient's Family: What is wrong with you?!
 Doctor: What's wrong with you? We should celebrate!
+Doctor: Alright, let’s keep things moving.
+Doctor: Apparently something this patient ate didn’t agree with them?
 <<OpenCurtains gameController>>
 ===
-title: Patient5Intro
+title: Patient4Intro
 position: 0,0
 ---
 <<wait 1>>
-Doctor: This patient tripped and fell while playing olympic level mini golf.
-Doctor: A little birdie told me this patient has a hole in one... of their organs.
-Doctor: My intern is paging me AGAIN. Will you please excuse me?
-Doctor: I know that Phillip and Kris are not on speaking terms and Khloe and James have all that sexual tension and Kendall and John will not stop sneaking off to the on call room but I will not be taking you off your ER rotation!
-<<OpenCurtains gameController>>
-===
-title: Patient6Intro
-position: 0,0
----
-<<wait 1>>
-Doctor: Last one! This poor soul drank a glow stick. 
+Doctor: The biopsy just came back for the contents of our last patient's stomach!
+Doctor: Turns out they ate a piece of the mysterious architecture from the sky. 
+Nour: I bet it was crunchy... 
+Receptionist: I need to talk to you!
 Doctor: What are you doing in here?
-Receptionist: I needed to be close to you.
 Doctor: They can’t find out about us…I was counting on your discretion.
 Receptionist: But I believe that our love is stronger than that!
 Doctor: I do too…
@@ -100,6 +79,7 @@ Doctor: And it’s been fun sneaking around with you…
 Doctor: Screw the rules!!!
 Receptionist: I’ve been dreaming of you saying that!
 Doctor: I have to wrap up this surgery but let’s do a dramatic kiss later.
+Doctor: Last one! This poor soul drank a glow stick. 
 <<OpenCurtains gameController>>
 ===
 title: PatientOutro
