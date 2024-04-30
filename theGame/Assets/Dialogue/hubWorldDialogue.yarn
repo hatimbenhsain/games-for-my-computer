@@ -7,7 +7,7 @@ position: -205,-2
     <<MoveBox2 YarnManager>>
     <<ChangeAvatartoPlayer YarnManager>>
     <<ChangeSoundtoPlayer YarnManager>>
-MC: Greetings my dude.
+Nour: Greetings my dude.
     <<MoveBox1 YarnManager>>
     <<ChangeAvatartoCharacter YarnManager>>
 NPC: Whoa. Dude.
@@ -18,7 +18,7 @@ NPC: I’ve never seen someone flop like that before.
 -> It feels awesome!!!!!! You should try it!!!
     <<set $positiveanswer to true>>
 <<if $positiveanswer>>
-MC: It feels awesome!!!!!! You should try it!!!
+Nour: It feels awesome!!!!!! You should try it!!!
     <<MoveBox1 YarnManager>>
     <<ChangeAvatartoCharacter YarnManager>>
 NPC: I don’t think I’m up for it, I messed up my back eating watermelon.
@@ -26,9 +26,9 @@ NPC: Or was it when I was trying to arm wrestle my feet?
 NPC: I can't remember.
     <<MoveBox2 YarnManager>>
     <<ChangeAvatartoPlayer YarnManager>>
-MC: Bummer...See ya later!    
+Nour: Bummer...See ya later!    
 <<else>>
-MC: You think that I’m flopping??? Like a fish??
+Nour: You think that I’m flopping??? Like a fish??
     <<MoveBox1 YarnManager>>
     <<ChangeAvatartoCharacter YarnManager>>
 NPC: Like the most beautiful fish to ever venture out of the ocean!
@@ -53,7 +53,7 @@ position: -81,-315
     <<ChangeAvatartoPlayer YarnManager>>
     <<ChangeSoundtoPlayer YarnManager>>
 
-MC: Hi! How's it, uh.. hanging?
+Nour: Hi! How's it, uh.. hanging?
     <<ChangeAvatartoCharacter YarnManager>>
     <<ChangeSoundtoCharacter YarnManager>>
 
@@ -61,10 +61,10 @@ NPC: *Sigh*
 NPC: I've been better.
 NPC: Can I help you with anything?
     <<ChangeAvatartoPlayer YarnManager>>
-MC: N-no! But maybe... I can help?
+Nour: N-no! But maybe... I can help?
 -> Compliment them.
     <<ChangeAvatartoPlayer YarnManager>>
-    MC: Do you mind if I... compliment you?
+    Nour: Do you mind if I... compliment you?
     <<ChangeAvatartoCharacter YarnManager>>
     NPC: Sure?
     <<ChangeStartNode ArmGuy Complimentee1part2>>
@@ -72,7 +72,7 @@ MC: N-no! But maybe... I can help?
     <<ComplimentStart GameManager>>
 -> Leave them alone.
     <<ChangeAvatartoPlayer YarnManager>>
-    MC: Uuuh. Sorry. Nevermind, bye!!!
+    Nour: Uuuh. Sorry. Nevermind, bye!!!
 <<stop>>
 ===
 title: Complimentee1part2
@@ -82,11 +82,11 @@ position: 131,-316
 ---
 <<MoveBox2 YarnManager>>
 <<ChangeAvatartoPlayer YarnManager>>
-MC: {$compliment}
+Nour: {$compliment}
 <<ChangeAvatartoCharacter YarnManager>>
 NPC: Wh... woah. Thank you.
 <<ChangeAvatartoPlayer YarnManager>>
-MC: Hey, uuuh... Don't sweat it.
+Nour: Hey, uuuh... Don't sweat it.
 <<ChangeStartNode ArmGuy Complimentee1part3>>
 ===
 title: Complimentee1part3
@@ -96,7 +96,7 @@ position: 340,-317
 ---
 <<MoveBox2 YarnManager>>
     <<ChangeAvatartoPlayer YarnManager>>
-MC: So umm... was that good?
+Nour: So umm... was that good?
     <<ChangeAvatartoCharacter YarnManager>>
 NPC: Yeah! Thank you for everything :)
 <<stop>>
@@ -107,20 +107,20 @@ colorID: 0
 position: 7,-5
 ---
 <<MoveBox2 YarnManager>>
-MC: Hey... there.
+Nour: Hey... there.
 Green Hair: What need you from me?
-MC: What? Um, nothing! Why are you assuming I need something from you?
+Nour: What? Um, nothing! Why are you assuming I need something from you?
 Green Hair: *Sigh* All people always to me come looking for help or service of sort.
-MC: Well, I...
+Nour: Well, I...
 -> Compliment them.
-    MC: I just wanna compliment you! Would that be okay??
+    Nour: I just wanna compliment you! Would that be okay??
     Green Hair: Oh? Why not, suppose I.
     <<ChangeStartNode GreenHair GreenHair2>>
     <<ComplimentStart GameManager>>
 -> Something else.
-    MC: Actually... Do you have 5 dollars?
+    Nour: Actually... Do you have 5 dollars?
     Green Hair: Of course... Here you go.
-    MC: I have gained 5 dollars!
+    Nour: I have gained 5 dollars!
 <<stop>>
 ===
 title: GreenHair2
@@ -129,12 +129,12 @@ colorID: 0
 position: 218,-5
 ---
 <<MoveBox2 YarnManager>>
-MC: {$compliment}
+Nour: {$compliment}
 Green Hair: ...!
 Green Hair: For ever no one has given me tender words such.
 <<Complimented  GreenHair>>
 Green Hair: Thank you my sweet. Keep you in my heart will I.
-MC: No worries...!
+Nour: No worries...!
 <<ChangeStartNode GreenHair GreenHair3>>
 ===
 title: GreenHair3
@@ -143,10 +143,10 @@ colorID: 0
 position: 433,-1
 ---
 <<MoveBox2 YarnManager>>
-MC: Anyone asked you for a service recently?
+Nour: Anyone asked you for a service recently?
 Green Hair: Yes... But I found newfound joy for the helping!
 Green Hair: And now, better boundaries... I have those!
-MC: That's really amazing.
+Nour: That's really amazing.
 <<stop>>
 ===
 title: Rain1
@@ -154,50 +154,50 @@ position: -126,183
 ---
 <<MoveBox2  YarnManager>>
 Rain: Hello little Cockroach...
-MC: Whu-- Who's talking?!
+Nour: Whu-- Who's talking?!
 Rain: We see you have found yourself in quite the predicament...
-MC: I... Yeah, I guess so.
+Nour: I... Yeah, I guess so.
 Rain: Do not worry. All you need to do is press *SPACE* and *WASD* and soon you will be able to reach your destination.
-MC: *SPACE* and *WASD*, huh?... I'll try that. Thanks.
+Nour: *SPACE* and *WASD*, huh?... I'll try that. Thanks.
 Rain: Flutter on.
 <<EndRain  RainThatTalksToYou>>
-MC: I... still worry. Ok, whatever. I should probably head to the hospital. Maybe they can fix me up.
-MC: It's that red building at the end of the street. Alright... Let's see if I can reach it.
+Nour: I... still worry. Ok, whatever. I should probably head to the hospital. Maybe they can fix me up.
+Nour: It's that red building at the end of the street. Alright... Let's see if I can reach it.
 ===
 title: Rain2
 position: 85,183
 ---
 <<MoveBox2  YarnManager>>
 Rain: And so the cockroach regains its legs -- yet they are changed.
-MC: This is... a goat leg?!
+Nour: This is... a goat leg?!
 Rain: They are Nour legs.
-MC: Are you... real?
+Nour: Are you... real?
 Rain: Do you not feel me in your fur and on your hoof and in your mouth and on your skin?
-MC: I guess but...
+Nour: I guess but...
 Rain: Take heart. You will experience untold freedom. All you need to do is press *WASD*...
 Rain: And if you desire to return to your roots, you can always press *CTRL*.
 Rain: Gallop forth.
-MC: ...Thank you? I'll try that.
-MC: *WASD* and *CTRL*.... Okay.
+Nour: ...Thank you? I'll try that.
+Nour: *WASD* and *CTRL*.... Okay.
 <<EndRain  RainThatTalksToYou>>
-MC: The doctor said I should head to that... "park" over there behind the hospital--
-MC: and try complimenting some people - whatever that means... Let's try that I guess.
+Nour: The doctor said I should head to that... "park" over there behind the hospital--
+Nour: and try complimenting some people - whatever that means... Let's try that I guess.
 ===
 title: Rain3
 position: 299,183
 ---
 <<MoveBox2  YarnManager>>
 <<StartRain  RainThatTalksToYou>>
-MC: I feel it again. Another change is coming, isn't it?
+Nour: I feel it again. Another change is coming, isn't it?
 Rain: You have raised these folks' spirits up. Now it is your turn to ascend.
 <<Metamorphosis PlayerController Wing>>
 Rain: And then, the cockroach found it had wings.
-MC: WOAH! I've always wanted wings!
-MC: ...Huh.
-MC: It's odd. This whole night I've been so stressed about this whole situation. But now... it feels like things are looking up?
+Nour: WOAH! I've always wanted wings!
+Nour: ...Huh.
+Nour: It's odd. This whole night I've been so stressed about this whole situation. But now... it feels like things are looking up?
 Rain: And they will continue on. Now, soar! 
 Rain: You may do so by pressing *SPACE*.
-MC: Ok... I'm ready. Here I go.
+Nour: Ok... I'm ready. Here I go.
 <<EndRain  RainThatTalksToYou>>
 <<jump AgentPostCompliments>>
 ===
@@ -206,51 +206,51 @@ position: 504,181
 ---
 <<MoveBox2  YarnManager>>
 Rain: And finally, the cockroach gained its antenna.
-MC: ...Cool? It's weird though. These usually do something.
+Nour: ...Cool? It's weird though. These usually do something.
 Rain: Everything has its purpose. But it's also okay to be purposeless.
-MC: I feel really close to you right now. Do you wanna hang out sometime?
+Nour: I feel really close to you right now. Do you wanna hang out sometime?
 Rain: We will see each other again, but in a different form than this one.
 Rain: For now, you may press the *RIGHT MOUSE BUTTON*, and a new world will open to you.
-MC: Got it. *RIGHT MOUSE BUTTON*.
-MC: Umm... I'll.. miss you?
+Nour: Got it. *RIGHT MOUSE BUTTON*.
+Nour: Umm... I'll.. miss you?
 Rain: Thank you. Rocket onwards.
 <<EndRain  RainThatTalksToYou>>
-MC: Rocket onwards... Huh. Maybe I can reach that big thing in the sky now.
+Nour: Rocket onwards... Huh. Maybe I can reach that big thing in the sky now.
 ===
 title: Tabitha1
 position: 785,252
 ---
 <<MoveBox2 YarnManager>>
-MC: Hello tall flower.
+Nour: Hello tall flower.
 Tabitha: ...Don't tell me...
-MC: Oh? I dunnu I...
+Nour: Oh? I dunnu I...
 Tabitha: You're here to take one of my flowers?
-MC: I definitely wasn't thinking that.
+Nour: I definitely wasn't thinking that.
 Tabitha: That's what they all say...
-MC: Do people take from you often?
+Nour: Do people take from you often?
 Tabitha: Actually all of the time, and I only bloom so often.
-MC: Hmmm...
+Nour: Hmmm...
 -> Compliment them.
-    MC: I just wanna compliment you! Would that be okay??
+    Nour: I just wanna compliment you! Would that be okay??
     Tabitha: Sure okay!
     <<ChangeStartNode Tabitha Tabitha2>>
     <<ComplimentStart GameManager>>
 -> Something else.
-    MC: Can I just stare at your flowers for a second?
+    Nour: Can I just stare at your flowers for a second?
     Tabitha: That's strange.
-    MC: Okay....nevermind....
+    Nour: Okay....nevermind....
 <<stop>>
 ===
 title: Tabitha2
 position: 1005,255
 ---
 <<MoveBox2 YarnManager>>
-MC: {$compliment}
+Nour: {$compliment}
 Tabitha: ...!
 Tabitha: ...feeling something...eep!!
 <<Complimented  Tabitha>>
 Tabitha: I'm blossoming~! Thank you, this is so rare.
-MC: Happy blossoming!
+Nour: Happy blossoming!
 <<ChangeStartNode Tabitha Tabitha3>>
 <<stop>>
 ===
@@ -258,36 +258,36 @@ title: Tabitha3
 position: 1224,257
 ---
 <<MoveBox2 YarnManager>>
-MC: Still blossoming?
+Nour: Still blossoming?
 Tabitha: Yeah..*ahem*...this is awkward to do in public...but I'm so grateful!
-MC: Keep up the good work!
+Nour: Keep up the good work!
 <<stop>>
 ===
 title: KissingCouple1
 position: 350,727
 ---
 <<MoveBox2 YarnManager>>
-MC: Whoa you are going at it!
+Nour: Whoa you are going at it!
 Kissing Couple: We so are!
 -> Compliment them.
-    MC: I wanna tell you both some nice things!
+    Nour: I wanna tell you both some nice things!
     <<ChangeStartNode KissingCouple KissingCouple2>>
     <<ComplimentStart GameManager>>
 -> Something else.
     Kissing Couple: I hope one day you'll find a love as pure as ours!
-    MC: See ya later love birds.
+    Nour: See ya later love birds.
 <<stop>>
 ===
 title: KissingCouple2
 position: 561,726
 ---
 <<MoveBox2 YarnManager>>
-MC: {$compliment}
+Nour: {$compliment}
 <<Complimented  KissingCouple>>
 Kissing Couple: Whoa!!! 
-MC: I didn't know human bodies could do that! 
+Nour: I didn't know human bodies could do that! 
 Kissing Couple: We're gonna stay like this forever.
-MC: I hope you set the world record.
+Nour: I hope you set the world record.
 <<ChangeStartNode KissingCouple KissingCouple3>>
 <<stop>>
 ===
@@ -304,22 +304,22 @@ position: -503,697
 ---
 <<MoveBox2 YarnManager>>
 Shoe Baby: *ooomph*! Can you be a bit more careful...I'm sorta unnoticeable...
-MC: No, I meant to say hello. So, Hi!
+Nour: No, I meant to say hello. So, Hi!
 Shoe Baby: Unbelievable...so do you come...eh...around this area often?
 -> Yeah, just to say hi to you! 
-    MC: Yeah, just to say hi to you! 
+    Nour: Yeah, just to say hi to you! 
     -> Compliment them!
-        MC: Compliment incoming!!
+        Nour: Compliment incoming!!
         <<ChangeStartNode ShoeBaby ShoeBaby2>>
         <<ComplimentStart GameManager>>
     -> I didn't...I just noticed you from *this* close.
         Shoe Baby: I don't really go anywhere different.
-        MC: Is it because of your size?
+        Nour: Is it because of your size?
         Shoe Baby: ...
-        MC:...
+        Nour:...
 -> This is my first time.
     Shoe Baby: saying hi is pretty cool still.
-    MC: talk to you later!
+    Nour: talk to you later!
 <<stop>>
 ===
 
@@ -327,12 +327,12 @@ title: ShoeBaby2
 position: -279,697
 ---
 <<MoveBox2 YarnManager>>
-MC: {$compliment}
+Nour: {$compliment}
 Shoe Baby: ...!
 Shoe Baby: Hahahaha that's tickly!!
 <<Complimented  ShoeBaby>>
 Shoe Baby: Thank you so for even noticing me in the first place! Wowie.
-MC: Anytime.
+Nour: Anytime.
 <<ChangeStartNode ShoeBaby ShoeBaby3>>
 <<stop>>
 ===
@@ -341,40 +341,40 @@ title: ShoeBaby3
 position: -61,695
 ---
 <<MoveBox2 YarnManager>>
-MC: Feeling noticeable?
+Nour: Feeling noticeable?
 Shoe Baby: Yipee!
-MC:...
-MC: Yipee!
+Nour:...
+Nour: Yipee!
 <<stop>>
 ===
 title: Naut1
 position: -377,535
 ---
 <<MoveBox2 YarnManager>>
-MC: Cool shell... nice to meet you!
+Nour: Cool shell... nice to meet you!
 Naut: I used to be energetic like you...
 -> What happened?
-    MC: What happened?
+    Nour: What happened?
     Naut: Ever since that mysterious archecture when up in the sky I haven't been able to get a lick of sleep.
-    MC: Why not?
+    Nour: Why not?
     Naut: It has completely destroyed the skyline's feng shui.
-    MC: That's no reason to lose sleep!
+    Nour: That's no reason to lose sleep!
     Naut: Oh yeah?
     -> Compliment them!
-        MC: Thinking up an awesome compliment for you!
+        Nour: Thinking up an awesome compliment for you!
         <<ChangeStartNode Naut Naut2>>
         <<ComplimentStart GameManager>>
     -> Nah
-        MC: Hope you get some sleep dude.
+        Nour: Hope you get some sleep dude.
         Naut: Me too...
 -> You still can be!
     Naut: Am I supposed to just decide not to be tired?
         -> Compliment them!
-            MC: Thinking up an awesome compliment for you!
+            Nour: Thinking up an awesome compliment for you!
             <<ChangeStartNode Naut Naut2>>
             <<ComplimentStart GameManager>>
         -> Nah
-            MC: Hope you get some sleep dude.
+            Nour: Hope you get some sleep dude.
             Naut: Me too...
 <<stop>>
 ===
@@ -382,10 +382,10 @@ title: Naut2
 position: -158,526
 ---
 <<MoveBox2 YarnManager>>
-MC: {$compliment}
+Nour: {$compliment}
 <<Complimented  Naut>>
 Naut: Wow! I'm feeling a little energized! 
-MC: You look it!
+Nour: You look it!
 <<ChangeStartNode Naut Naut3>>
 <<stop>>
 ===
@@ -394,7 +394,7 @@ position: 48,524
 ---
 <<MoveBox2 YarnManager>>
 Naut: I think I might go for a run!
-MC: Sounds fun!
+Nour: Sounds fun!
 <<stop>>
 ===
 
@@ -403,16 +403,16 @@ position: -67,373
 ---
 <<MoveBox2 YarnManager>>
 Thwomp: I'm looking pretty flat huh?
-MC: I guess?
+Nour: I guess?
 Thwomp: As flat as you right?
-MC: Do you want to be?
+Nour: Do you want to be?
 Thwomp: I feel like I should be...
 -> Compliment them.
-    MC: I'm thinking up some real nice things to say!
+    Nour: I'm thinking up some real nice things to say!
     <<ChangeStartNode Thwomp Thwomp2>>
     <<ComplimentStart GameManager>>
 -> Nah.
-    MC: See you around dude.    
+    Nour: See you around dude.    
 <<stop>>
 ===
 
@@ -420,11 +420,11 @@ title: Thwomp2
 position: 147,373
 ---
 <<MoveBox2 YarnManager>>
-MC: {$compliment}
+Nour: {$compliment}
 <<Complimented  Thwomp>>
 Thwomp: WHOA!!! 
 Thwomp: Wow I feel like I can really let loose and be myself now. 
-MC: Looking good!
+Nour: Looking good!
 <<ChangeStartNode Thwomp Thwomp3>>
 <<stop>>
 ===
@@ -439,20 +439,20 @@ title: Farez
 position: 534,544
 ---
 <<MoveBox2 YarnManager>>
-MC: How's your day so far?
+Nour: How's your day so far?
 Farez: Hello! Well...first I went to the grocery store. Then I wrote in my novel. Then I...
-MC: Sounds like a lot!
+Nour: Sounds like a lot!
 Farez: Yes. So much has happened. Then my grandma needed a new lightbulb. Then...
-MC: Maybe you can tell me how you're doing instead?
+Nour: Maybe you can tell me how you're doing instead?
 Farez: How I'm doing?? Ok, well...It all started when I was 6. That was when I first started feeling...
-MC: You don't remember feeling before 6?
+Nour: You don't remember feeling before 6?
 Farez: ...I remember specifically noting in my journal that at the age of 6 was the first time I fully felt sorrow...
 Farez: which is the first kind of feeling that really counts. Then when I was 20 I...
-MC: You have a lot to say...
+Nour: You have a lot to say...
 Farez: Well some people do seem to say that about me...and then when I hear that I start to feel...
-MC: ...Some kind of a feeling?
+Nour: ...Some kind of a feeling?
 Farez: Some kind of a feeling. Correct.
-MC: Feelings so happen.
+Nour: Feelings so happen.
 <<stop>>
 ===
 title: AgentPostCompliments
@@ -460,18 +460,18 @@ position: 831,-31
 ---
 <<PlaceInterlocutor DialogueSystem Agent>>
 Agent: Whoa there champ! What is going on with your body?
-MC: I’m not sure! It’s just what’s been happening today!
+Nour: I’m not sure! It’s just what’s been happening today!
 Agent: Wow champ, your wings look pretty groovy.
-MC: My name is actually Nour, but yeah I guess it’s pretty cool.
+Nour: My name is actually Nour, but yeah I guess it’s pretty cool.
 Agent: You might be able to ascend the stairs to that big building over there with the UFO…
-MC: Probably?
+Nour: Probably?
 Agent: Can I be honest with you champ? I love what you got going on here.
 Agent: Might I interest you in the opportunity of a lifetime?
-MC: Perhaps…
+Nour: Perhaps…
 Agent: You may not know this, as being covert is one of my strengths, but I’m a secret agent.
-MC: I had no idea! What kind of secret agent?
+Nour: I had no idea! What kind of secret agent?
 Agent: I work for BRAG, Big Righteous Agency Galatic. They’re undergoing a corporate rebrand, but I’m sure you’ve heard of them.
-MC: I definitely have not.
+Nour: I definitely have not.
 Agent: You're hired! Use those wings to head up the stairs and there should be a package waiting for you.
 Agent: I'll be in touch!
 <<DeleteInterlocutor DialogueSystem>>
