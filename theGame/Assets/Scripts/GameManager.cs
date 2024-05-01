@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
         complimentInstance = Instantiate(complimentPrefab[complimentValue%complimentPrefab.Length],
          complimentTransform);
         complimentValue+=1;
-
+        GameObject.FindObjectOfType<InMemoryVariableStorage>().SetValue("$complimentValue",complimentValue.ToString());
     }
 
 

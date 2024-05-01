@@ -291,17 +291,18 @@ namespace StarterAssets
         // Switch Through States
         void ChangeState()
         {
-            //currentState = (CharacterState)(((int)currentState + 1) % 4); // Cycle through states
-            if(currentState==CharacterState.Fish){
-                currentState=CharacterState.Rocket;
-            }else{
-                currentState=CharacterState.Fish;
-            }
+            SetState((CharacterState)(((int)currentState + 1) % 4)); // Cycle through states
+            // if(currentState==CharacterState.Fish){
+            //     currentState=CharacterState.Rocket;
+            // }else{
+            //     currentState=CharacterState.Fish;
+            // }
         }
 
         public void SetState(CharacterState targetState)
         {
             currentState = targetState;
+            GameObject.FindObjectOfType<InMemoryVariableStorage>().SetValue("$mcState",targetState.ToString());
         }
 
         // State Machine
