@@ -14,7 +14,7 @@ public class AlienInteract : MonoBehaviour
 
     private Camera playerCamera;
 
-    public GameObject microbeDetector;
+    public Sprite microbeAlienImage;
     private MuseumGameManager museumGameManager;
 
     private DialogueRunner dialogueRunner;
@@ -51,13 +51,7 @@ public class AlienInteract : MonoBehaviour
         {
             museumGameManager.isAlien = false;
         }
-        
-        microbeDetector.SetActive(false);
-        
-        if (Input.GetMouseButton(1))
-        {
-            microbeDetector.SetActive(true);
-        }
+       
 
         if (Input.GetKeyUp(KeyCode.E) && !dialogueRunner.IsDialogueRunning){
             CheckForNearbyNPC();
