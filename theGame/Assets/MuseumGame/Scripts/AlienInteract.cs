@@ -15,10 +15,7 @@ public class AlienInteract : MonoBehaviour
     private Camera playerCamera;
 
     public GameObject microbeDetector;
-    public Sprite microbeImage;
-    public Sprite microbeAlienImage;
-
-    private bool microbeOn = false;
+    private MuseumGameManager museumGameManager;
 
     private DialogueRunner dialogueRunner;
     public float interactionRadius=3f;
@@ -26,27 +23,19 @@ public class AlienInteract : MonoBehaviour
     {
         // Get a reference to the first-person camera.
         playerCamera = GetComponentInChildren<Camera>();
-        microbeDetector.GetComponent<Image>().sprite = microbeImage;
         dialogueRunner=FindObjectOfType<DialogueRunner>();
+        museumGameManager = FindObjectOfType<MuseumGameManager>();
     }
 
     private void Update()
     {
-        if (microbeOn)
-        {
-            microbeDetector.GetComponent<Image>().sprite = microbeAlienImage;
-        }
-        else
-        {
-            microbeDetector.GetComponent<Image>().sprite = microbeImage;
-        }
         // Perform a ray cast from the camera's position and direction.
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance, interactableLayer))
         {
             // Check if the hit object has a script or component that allows interaction.
             Alien alien = hit.collider.GetComponent<Alien>();
-            microbeOn = true;
+            museumGameManager.isAlien = true;
             
             // Check for player input to interact.
             if (Input.GetKeyDown(KeyCode.E))
@@ -60,7 +49,7 @@ public class AlienInteract : MonoBehaviour
         }
         else
         {
-            microbeOn = false;
+            museumGameManager.isAlien = false;
         }
         
         microbeDetector.SetActive(false);
