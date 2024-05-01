@@ -14,6 +14,8 @@ Shader"Unlit/CellShader"
     {
         Tags { "RenderType"="Opaque" }
         LOD 100
+Blend
+SrcAlpha OneMinusSrcAlpha
 
         Pass
         {
@@ -131,8 +133,17 @@ Shader"Unlit/CellShader"
                 float3 h = max(0.5 - float3(dot(a, a), dot(b, b), dot(c, c)), 0.0); 
                 float3 n = h * h * h * h * float3(dot(a, hash(i + 0.0)), dot(b, hash(i + o)), dot(c, hash(i + 1.0)));
     return dot(n, float3(70.0, 70.0, 70.0));
+    
+
 } 
- 
+float circle(in float2 _st, in float _radius)
+{
+    float2 dist = _st - float2(0.5, 0.5);
+    return 1. - smoothstep(_radius - (_radius * 0.01),
+                         _radius + (_radius * 0.01),
+                         dot(dist, dist) * 4.0);
+}
+  
             fixed4 frag(v2f i) : SV_Target
             {
 
@@ -169,11 +180,13 @@ Shader"Unlit/CellShader"
                 baseColor = lerp(baseColor, float3(.8, .8, 1.), smoothstep(-.2, 2.9, R));
 
                 baseColor = lerp(baseColor, float3(0., 0., 0.), smoothstep(.45, .55, (max(abs(ouv.y), abs(ouv.x)))));
+    float3 circleShape = circle(i.uv, 0.8);
+    float alpha = circle(i.uv, 0.8);
 
-                return float4(smoothstep(.0, 1., baseColor), 1.);
-            }
+    return float4(smoothstep(.0, 1., baseColor) * circleShape, alpha);
+}
 
-            
+             
             ENDCG
         }
     }
