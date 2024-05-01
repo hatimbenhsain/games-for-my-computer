@@ -10,13 +10,16 @@ public class InputFieldCheck : MonoBehaviour
 
     private void Start()
     {
+        correctString = correctString.ToLower();
         UpdateButtonState(); // Initial check in case you need the button to be disabled from the start
         inputField.onValueChanged.AddListener(delegate { UpdateButtonState(); }); // Add listener for input field changes
     }
 
     void UpdateButtonState()
     {
-        if (inputField.text == correctString)
+        var inputTxt = inputField.text.ToLower();
+        
+        if (inputTxt == correctString)
         {
             inputField.image.color = Color.green; // Change input field color to green
             submitButton.interactable = true; // Make the button pressable
