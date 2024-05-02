@@ -44,7 +44,7 @@ position: 0,0
 ---
 <<if visited("IntroAlien") is false>>
 <<ChangeLineView DialogueSystem alien>>
-//<<Animate Alien1 manetJumpDance>>
+<<ActivateAlien IntroAlien>>
 Alien: Woah! Hey! Put that thing away!
 <<ChangeLineView DialogueSystem default>>
 Nour: Huh?! You're an alien!
@@ -80,6 +80,7 @@ Alien: ...
 <<ChangeLineView DialogueSystem default>>
 Nour: Hello? Alien?
 <<ChangeLineView DialogueSystem alien>>
+<<Animate IntroAlien AlienAppear>>
 Alien: I... I really needed to hear that... thank you.
 <<ChangeLineView DialogueSystem default>>
 Nour: Of course... Sorry again for scanning you. 
@@ -93,7 +94,6 @@ Alien: You should go enjoy the museum it really is beautiful... see if you can f
 <<ChangeLineView DialogueSystem default>>
 Nour: I love museums! I'll take a look around. 
 <<UpdateAlienCount MuseumGameManager>>
-<<ActivateAlien IntroAlien>>
 <<endif>>
 ===
 title: ScreamAlien
