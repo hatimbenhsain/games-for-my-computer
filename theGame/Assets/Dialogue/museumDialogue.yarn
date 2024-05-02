@@ -92,6 +92,7 @@ Nour: Hmmm ok.
 Alien: You should go enjoy the museum it really is beautiful... see if you can find my friends, I think they would love to hear from you.
 <<ChangeLineView DialogueSystem default>>
 Nour: I love museums! I'll take a look around. 
+<<UpdateAlienCount MuseumGameManager>>
 <<ActivateAlien IntroAlien>>
 <<endif>>
 ===
