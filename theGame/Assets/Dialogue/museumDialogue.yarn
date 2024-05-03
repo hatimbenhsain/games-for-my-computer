@@ -22,3 +22,283 @@ Alien: Now I'm feeling strange...
 <<ActivateAlien Alien1>>
 <<endif>>
 ===
+title: Package
+position: 0,0
+---
+<<if visited("Package") is false>>
+Nour: This must be the package that agent guy told me to look for.
+Nour: Geez a lot of packaging... who needs this much tissue paper?? TAPE?! Who packed this...
+Nour: OH! 
+Nour: A... a sword? Don't think I'll need that... [CLANK CLANK]
+Nour: What's this thing? A scanner? Not really my style but it could be useful. [AQUIRE SCANNER]
+Nour: And a sheet of paper? Hmm..! Finally, some info on the mission! 
+<<ShowLetter ListManager>>
+Nour: Not super helpful! But I appreciate the artistry of those descriptions!
+Nour: And if I want to look again, I can press *Tab* to see the list.
+<<HideLetter ListManager>>
+Nour: Ok I think that's everything guess I should take a look around and start finding these aliens...
+<<endif>>
+===
+title: IntroAlien
+position: 0,0
+---
+<<if visited("IntroAlien") is false>>
+<<ChangeLineView DialogueSystem alien>>
+<<ActivateAlien IntroAlien>>
+Alien: Woah! Hey! Put that thing away!
+<<ChangeLineView DialogueSystem default>>
+Nour: Huh?! You're an alien!
+<<ChangeLineView DialogueSystem alien>>
+Alien: Maybe to you... why are you going around scanning people?
+<<ChangeLineView DialogueSystem default>>
+Nour: I'm sorry that's what I thought I was supposed to do... why are you hiding?
+<<ChangeLineView DialogueSystem alien>>
+Alien: I'm having trouble being myself. We came here to see your planet's beautiful art but we crashed and then got a little overwhelmed and unsure about ourselves. 
+<<ChangeLineView DialogueSystem default>>
+Nour: We? Are there more of you? 
+<<ChangeLineView DialogueSystem alien>>
+Alien: Yeah we all came here together...
+<<ChangeLineView DialogueSystem default>>
+Nour: Why are you unsure of yourself?
+<<ChangeLineView DialogueSystem alien>>
+Alien: I love art... I love beauty... I love love... I'm worried I'll never be able to contribute to any of it...
+<<ChangeLineView DialogueSystem default>>
+-> I feel like everyone feels like that at one point or another.
+    Nour: I feel like everyone feels like that at one point or another.
+    <<ChangeLineView DialogueSystem alien>>
+    Alien: You think so?
+    <<ChangeLineView DialogueSystem default>>
+    Nour: Yeah I think it's so valid to be overwhelmed by the bigness of the universe and urge to create beauty! 
+-> Of course you will. You're alive! You can't help but effect the universe around you.
+    Nour: Of course you will. You're alive! You can't help but effect the universe around you.
+    <<ChangeLineView DialogueSystem alien>> 
+    Alien: Really?
+    <<ChangeLineView DialogueSystem default>>
+    Nour: Totally, look at you you're livening up this dusty old museum and brightening my day.
+<<ChangeLineView DialogueSystem alien>>
+Alien: ...
+<<ChangeLineView DialogueSystem default>>
+Nour: Hello? Alien?
+<<ChangeLineView DialogueSystem alien>>
+<<Animate IntroAlien AlienAppear>>
+Alien: I... I really needed to hear that... thank you.
+<<ChangeLineView DialogueSystem default>>
+Nour: Of course... Sorry again for scanning you. 
+<<ChangeLineView DialogueSystem alien>>
+Alien: That's ok but get rid of that thing... just talk to us.
+<<ChangeLineView DialogueSystem default>>
+Nour: Hmmm ok. 
+//yarncommand for getting rid of scanner UI 
+<<ChangeLineView DialogueSystem alien>>
+Alien: You should go enjoy the museum it really is beautiful... see if you can find my friends, I think they would love to hear from you.
+<<ChangeLineView DialogueSystem default>>
+Nour: I love museums! I'll take a look around. 
+<<UpdateAlienCount MuseumGameManager>>
+<<endif>>
+===
+title: ScreamAlien
+position: 0,0
+---
+<<if visited("ScreamAlien") is false>>
+<<ChangeLineView DialogueSystem default>>
+Nour: Whoa! Texture alert!
+<<ChangeLineView DialogueSystem alien>>
+Alien: Ahhhhhhhhhhhh someone is talking to me!!!!
+<<ChangeLineView DialogueSystem default>>
+Nour: Is that a good ahhhhhhhhh or a bad ahhhhhhhhh?
+<<ChangeLineView DialogueSystem alien>>
+Alien: I’m not sure. I’m feeling pretty unsure right now.
+Alien: After our space ship crashed we all decided to try being art for a while. 
+Alien: But it feels very vulnerable! 
+<<ChangeLineView DialogueSystem default>>
+Nour: I think that you’re very beautiful!
+<<ChangeLineView DialogueSystem alien>>
+Alien: We don’t care about things like beauty…
+<<ChangeLineView DialogueSystem default>>
+Nour: Then what do you care about?
+<<ChangeLineView DialogueSystem alien>>
+Alien: I care about people…I want them to witness me…and find meaning.
+<<ChangeLineView DialogueSystem default>>
+-> I find so much meaning in your panicked face and curves.
+    Nour: I find so much meaning in your panicked face and curves.
+    <<ChangeLineView DialogueSystem alien>>
+    Alien: I was thinking about how the aesthetic choice to include so many curved lines speaks to the very nature of fear.
+    <<ChangeLineView DialogueSystem default>>
+    Nour: Wow, your analysis is bringing even more depth to my interpretation.  
+-> Your presence brings so much meaning to everyone who has freaked out ever.
+    Nour: Your presence brings so much meaning to everyone who has freaked out ever.
+    Nour: Today I have lost my cool so many times.
+    Nour: Like when I found out my crush already has a partner or when my legs transformed into tentacles or when I had to do surgery...
+    Nour: But seeing you here in a static state of panic makes me feel less alone.
+    <<ChangeLineView DialogueSystem alien>> 
+    Alien: And that makes you feel better?
+    <<ChangeLineView DialogueSystem default>>
+    Nour: It so does.
+<<ChangeLineView DialogueSystem alien>>
+Alien: ~Thank you~
+<<ChangeLineView DialogueSystem default>>
+Nour: That conversation felt so much deeper than just complimenting…It feels good to affirm!
+<<ActivateAlien ScreamAlien>>
+<<endif>>
+===
+title: ChairAlien
+position: 0,0
+---
+<<if visited("ChairAlien") is false>>
+<<ChangeLineView DialogueSystem default>>
+Nour: This chair seems like it has an attitude!
+<<ChangeLineView DialogueSystem alien>>
+Alien: Hey! What are you trying to say? That I'm annoying?
+<<ChangeLineView DialogueSystem default>>
+Nour: No I just met you.
+<<ChangeLineView DialogueSystem alien>>
+Alien: Everyone says that I squeak and make too much noise.
+<<ChangeLineView DialogueSystem default>>
+Nour: Squeaking is so valid.
+<<ChangeLineView DialogueSystem alien>>
+Alien: Really?
+<<ChangeLineView DialogueSystem default>>
+-> Yes! You're here on this weird rock now everyone loves noises! The louder and crazier the better!
+    Nour: Yes! You're here on this weird rock now everyone loves noises! The louder and crazier the better!
+    <<ChangeLineView DialogueSystem alien>>
+    Alien: SQUEAK SQUEAK CREEEEEEK SQUEEEEEEEAK CREEK ERRRRR SQUEEAK
+-> Of course some sounds aren't for everyone but, that doesn't mean they aren't valid.
+    Nour: Of course some sounds aren't for everyone but, that doesn't mean they aren't valid.
+    <<ChangeLineView DialogueSystem alien>> 
+    Alien: I'm going to make every sound I can from now on... Even the weirdest ones. 
+<<ChangeLineView DialogueSystem default>>
+Nour: Yeah! Awesome!
+<<ActivateAlien ChairAlien>>
+<<endif>>
+===
+title: SinkAlien
+position: 0,0
+---
+<<if visited("SinkAlien") is false>>
+<<ChangeLineView DialogueSystem default>>
+Nour: Wow you’re so out of place!
+<<ChangeLineView DialogueSystem alien>>
+Alien: I know! Do you get me?
+<<ChangeLineView DialogueSystem default>>
+Nour: You’re a sink!
+<<ChangeLineView DialogueSystem alien>>
+Alien: I am! I’m also a Readymade!
+<<ChangeLineView DialogueSystem default>>
+Nour: Cool! What’s that?
+<<ChangeLineView DialogueSystem alien>>
+Alien: It’s art made of manufactured objects.
+<<ChangeLineView DialogueSystem default>>
+Nour: Hmmm...
+<<ChangeLineView DialogueSystem alien>>
+Alien: I know!!!!
+Alien: It makes no sense and I love it...I think??
+Alien: Am I even allowed to say I love it??
+Alien: Because intellectually I do not understand!
+Alien: How can a sink be a piece of art????
+<<ChangeLineView DialogueSystem default>>
+-> There is so much beauty in all of these questions and unknowns.
+    Nour: There is so much beauty in all of these questions and unknowns.
+    Nour: Maybe the artistry is in the questions themselves!
+    <<ChangeLineView DialogueSystem alien>>
+-> Your love for this type of art is so valid and felt by many.
+    Nour: Your love for this type of art is so valid and felt by many.
+    Nour: Art is just something someone made one time.
+    <<ChangeLineView DialogueSystem alien>> 
+    Alien: That's so easy to forget when tons of people have written academic papers on it.
+    <<ChangeLineView DialogueSystem default>>
+    Nour: The love the people writing those papers have is just as valid as yours.
+    Nour: You don't need to understand things to love them. 
+    <<ChangeLineView DialogueSystem alien>>
+    Alien: I’ve never thought of it that way before.
+Alien: I’ve never thought of it that way before.
+Alien: Wow I…
+Alien: I feel free in my nonsensical love.
+<<ActivateAlien SinkAlien>>
+<<endif>>
+===
+title: MobileAlien
+position: 0,0
+---
+<<if visited("MobileAlien") is false>>
+<<ChangeLineView DialogueSystem default>>
+Nour: How is it able to balance so well?
+<<ChangeLineView DialogueSystem alien>>
+Alien: I'm trying really hard but I'm always worried some part of me isn't perfect it's been even harder since the crash...
+<<ChangeLineView DialogueSystem default>>
+Nour: Why do you need to be perfect?
+<<ChangeLineView DialogueSystem alien>>
+Alien: Well if I'm not perfect someone might not like the thing about me that isn't perfect...
+<<ChangeLineView DialogueSystem default>>
+Nour: Imperfections are part of being alive 
+<<ChangeLineView DialogueSystem alien>>
+Alien: Even mine?
+<<ChangeLineView DialogueSystem default>>
+-> Totally! No one can be perfect all the time!
+    Nour: Totally! No one can be perfect all the time!
+-> Of course. Your imperfections are so valid.
+    Nour: Of course. Your imperfections are so valid.
+<<ChangeLineView DialogueSystem alien>>
+Alien: Maybe I should make a schedule... I think that might help me build a healthier relationship with my perfectionism.
+<<ChangeLineView DialogueSystem default>>
+Nour: Schedules can be such a useful tool to ensure you have time to be free!
+//yarncommand for strings loosening or mobile animation 
+<<ChangeLineView DialogueSystem alien>>
+Alien: *HUFF* *SIGH* ahhhhhhh I feel so much better now that I'm able to cut loose.
+<<ChangeLineView DialogueSystem default>>
+Nour: Oh yeah! You look so much more relaxed and free! 
+<<ActivateAlien MobileAlien>>
+<<endif>>
+===
+title: UFOAlien
+position: 0,0
+---
+<<if visited("UFOAlien") is false>>
+<<ChangeLineView DialogueSystem alien>>
+Alien: If you’re here to hurt me please just get it over with!
+<<ChangeLineView DialogueSystem default>>
+Nour: I’m just here to chat!
+<<ChangeLineView DialogueSystem alien>>
+Alien: Why would anyone want to chat with me…
+Alien: I ruined everything!!!!
+<<ChangeLineView DialogueSystem default>>
+Nour: I’m sorry about your crash! That doesn’t sound fun at all.
+<<ChangeLineView DialogueSystem alien>>
+Alien: If I had regained control after they shot fireballs at us…
+<<ChangeLineView DialogueSystem default>>
+Nour: Someone was shooting fireballs at you???
+<<ChangeLineView DialogueSystem alien>>
+Alien: It was those good for nothing BRAG Agents!!!
+Alien: After we crash landed…I thought we’d be safe here.
+<<ChangeLineView DialogueSystem default>>
+Nour: That totally makes sense. This museum has safe vibes.
+<<ChangeLineView DialogueSystem alien>>
+Alien: All of my buddies took the form of artwork, but I…
+Alien: I don’t have it in me right now…
+<<ChangeLineView DialogueSystem default>>
+-> It's totally okay to feel that way. You were able to keep your friends safe in a stressful moment.
+    Nour: It's totally okay to feel that way. You were able to keep your friends safe in a stressful moment.
+-> You endured fireballs! It's so valid to feel a little burnt out.
+    Nour: You endured fireballs! It's so valid to feel a little burnt out.
+<<ChangeLineView DialogueSystem alien>>
+Alien: Do you really think that?
+<<ChangeLineView DialogueSystem default>>
+Nour: I do!
+<<ChangeLineView DialogueSystem alien>>
+Alien: But I’ve trapped us in here!
+Alien: And we’re ruining the museum!!!!
+<<ChangeLineView DialogueSystem default>>
+Nour: Honestly, this is the best time I’ve ever had at this museum.
+Nour: The highlight of my Middle School's field trip here was when someone licked a painting. 
+Nour: This was so much better than that! 
+Nour: No one ever comes here anymore, so they’ve stopped putting together new exhibits.
+Nour: I bet if they did one featuring all of you, that could completely turn things around!
+<<ChangeLineView DialogueSystem alien>>
+Alien: You really think people would come to see us?
+<<ChangeLineView DialogueSystem default>>
+Nour: I know so.
+//yarncommand for fax falling 
+Agent: I'm very dissapointed in you for wasting this opportunity. 
+Agent: You've been taken off this mission.
+//yarncommand for going back to hub?
+<<endif>>
+===
