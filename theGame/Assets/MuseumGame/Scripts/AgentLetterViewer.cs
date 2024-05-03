@@ -7,6 +7,7 @@ using Yarn.Unity;
 public class AgentLetterViewer : MonoBehaviour
 {
     public GameObject agentLetter;
+    public GameObject ScannerUI;
     
     // Start is called before the first frame update
     void Start()
@@ -43,4 +44,34 @@ public class AgentLetterViewer : MonoBehaviour
             Debug.LogError("AgentLetter object reference is not set!");
         }
     }
+    
+    [YarnCommand]
+        public void ShowScanner()
+        {
+            // Check if the AgentLetter object exists
+            if (ScannerUI != null)
+            {
+                // Activate the AgentLetter object
+                ScannerUI.SetActive(true);
+            }
+            else
+            {
+                Debug.LogError("ScannerUI object reference is not set!");
+            }
+        }
+        
+    [YarnCommand]
+        public void HideScanner()
+        {
+            // Check if the AgentLetter object exists
+            if (ScannerUI != null)
+            {
+                // Activate the AgentLetter object
+                ScannerUI.SetActive(false);
+            }
+            else
+            {
+                Debug.LogError("ScannerUI object reference is not set!");
+            }
+        }
 }
