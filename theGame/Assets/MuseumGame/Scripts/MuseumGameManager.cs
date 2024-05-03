@@ -138,7 +138,7 @@ public class MuseumGameManager : MonoBehaviour
     }
 
     [YarnCommand]
-    void UpdateAlienCount(){
+    public void UpdateAlienCount(){
         alienCount++;
     }
 }

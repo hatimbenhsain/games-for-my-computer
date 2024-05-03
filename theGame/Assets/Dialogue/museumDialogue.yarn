@@ -29,13 +29,14 @@ position: 0,0
 Nour: This must be the package that agent guy told me to look for.
 Nour: Geez a lot of packaging... who needs this much tissue paper?? TAPE?! Who packed this...
 Nour: OH! 
-Nour: A... a sword? Don't think I'll need that... [CLANK CLANK]
-Nour: What's this thing? A scanner? Not really my style but it could be useful. [AQUIRE SCANNER]
+Nour: A... a sword? Don't think I'll need that... 
+Nour: What's this thing? A scanner? Not really my style but it could be useful.
+<<ShowScanner TaskManager>>
 Nour: And a sheet of paper? Hmm..! Finally, some info on the mission! 
-<<ShowLetter ListManager>>
+<<ShowLetter TaskManager>>
 Nour: Not super helpful! But I appreciate the artistry of those descriptions!
 Nour: And if I want to look again, I can press *Tab* to see the list.
-<<HideLetter ListManager>>
+<<HideLetter TaskManager>>
 Nour: Ok I think that's everything guess I should take a look around and start finding these aliens...
 <<endif>>
 ===
@@ -43,6 +44,7 @@ title: IntroAlien
 position: 0,0
 ---
 <<if visited("IntroAlien") is false>>
+<<IntroComplete TaskManager>>
 <<ChangeLineView DialogueSystem alien>>
 <<ActivateAlien IntroAlien>>
 Alien: Woah! Hey! Put that thing away!
@@ -69,7 +71,7 @@ Alien: I love art... I love beauty... I love love... I'm worried I'll never be a
     Alien: You think so?
     <<ChangeLineView DialogueSystem default>>
     Nour: Yeah I think it's so valid to be overwhelmed by the bigness of the universe and urge to create beauty! 
--> Of course you will. You're alive! You can't help but effect the universe around you.
+-> Of course you will. You're alive! 
     Nour: Of course you will. You're alive! You can't help but effect the universe around you.
     <<ChangeLineView DialogueSystem alien>> 
     Alien: Really?
@@ -88,7 +90,7 @@ Nour: Of course... Sorry again for scanning you.
 Alien: That's ok but get rid of that thing... just talk to us.
 <<ChangeLineView DialogueSystem default>>
 Nour: Hmmm ok. 
-//yarncommand for getting rid of scanner UI 
+<<HideScanner TaskManager>>
 <<ChangeLineView DialogueSystem alien>>
 Alien: You should go enjoy the museum it really is beautiful... see if you can find my friends, I think they would love to hear from you.
 <<ChangeLineView DialogueSystem default>>
@@ -100,6 +102,7 @@ title: ScreamAlien
 position: 0,0
 ---
 <<if visited("ScreamAlien") is false>>
+<<ScreamComplete TaskManager>>
 <<ChangeLineView DialogueSystem default>>
 Nour: Whoa! Texture alert!
 <<ChangeLineView DialogueSystem alien>>
@@ -119,13 +122,13 @@ Nour: Then what do you care about?
 <<ChangeLineView DialogueSystem alien>>
 Alien: I care about people…I want them to witness me…and find meaning.
 <<ChangeLineView DialogueSystem default>>
--> I find so much meaning in your panicked face and curves.
+-> I find so much meaning in your...
     Nour: I find so much meaning in your panicked face and curves.
     <<ChangeLineView DialogueSystem alien>>
     Alien: I was thinking about how the aesthetic choice to include so many curved lines speaks to the very nature of fear.
     <<ChangeLineView DialogueSystem default>>
     Nour: Wow, your analysis is bringing even more depth to my interpretation.  
--> Your presence brings so much meaning to everyone who has freaked out ever.
+-> Your presence brings so much meaning to...
     Nour: Your presence brings so much meaning to everyone who has freaked out ever.
     Nour: Today I have lost my cool so many times.
     Nour: Like when I found out my crush already has a partner or when my legs transformed into tentacles or when I had to do surgery...
@@ -139,12 +142,14 @@ Alien: ~Thank you~
 <<ChangeLineView DialogueSystem default>>
 Nour: That conversation felt so much deeper than just complimenting…It feels good to affirm!
 <<ActivateAlien ScreamAlien>>
+<<UpdateAlienCount MuseumGameManager>>
 <<endif>>
 ===
 title: ChairAlien
 position: 0,0
 ---
 <<if visited("ChairAlien") is false>>
+<<ChairComplete TaskManager>>
 <<ChangeLineView DialogueSystem default>>
 Nour: This chair seems like it has an attitude!
 <<ChangeLineView DialogueSystem alien>>
@@ -158,23 +163,25 @@ Nour: Squeaking is so valid.
 <<ChangeLineView DialogueSystem alien>>
 Alien: Really?
 <<ChangeLineView DialogueSystem default>>
--> Yes! You're here on this weird rock now everyone loves noises! The louder and crazier the better!
+-> Yes! You're here on this weird rock...
     Nour: Yes! You're here on this weird rock now everyone loves noises! The louder and crazier the better!
     <<ChangeLineView DialogueSystem alien>>
     Alien: SQUEAK SQUEAK CREEEEEEK SQUEEEEEEEAK CREEK ERRRRR SQUEEAK
--> Of course some sounds aren't for everyone but, that doesn't mean they aren't valid.
+-> Of course some sounds aren't for everyone but...
     Nour: Of course some sounds aren't for everyone but, that doesn't mean they aren't valid.
     <<ChangeLineView DialogueSystem alien>> 
     Alien: I'm going to make every sound I can from now on... Even the weirdest ones. 
 <<ChangeLineView DialogueSystem default>>
 Nour: Yeah! Awesome!
 <<ActivateAlien ChairAlien>>
+<<UpdateAlienCount MuseumGameManager>>
 <<endif>>
 ===
 title: SinkAlien
 position: 0,0
 ---
 <<if visited("SinkAlien") is false>>
+<<SinkComplete TaskManager>>
 <<ChangeLineView DialogueSystem default>>
 Nour: Wow you’re so out of place!
 <<ChangeLineView DialogueSystem alien>>
@@ -196,11 +203,11 @@ Alien: Am I even allowed to say I love it??
 Alien: Because intellectually I do not understand!
 Alien: How can a sink be a piece of art????
 <<ChangeLineView DialogueSystem default>>
--> There is so much beauty in all of these questions and unknowns.
+-> There is so much beauty in...
     Nour: There is so much beauty in all of these questions and unknowns.
     Nour: Maybe the artistry is in the questions themselves!
     <<ChangeLineView DialogueSystem alien>>
--> Your love for this type of art is so valid and felt by many.
+-> Your love for this type of art is...
     Nour: Your love for this type of art is so valid and felt by many.
     Nour: Art is just something someone made one time.
     <<ChangeLineView DialogueSystem alien>> 
@@ -214,12 +221,14 @@ Alien: I’ve never thought of it that way before.
 Alien: Wow I…
 Alien: I feel free in my nonsensical love.
 <<ActivateAlien SinkAlien>>
+<<UpdateAlienCount MuseumGameManager>>
 <<endif>>
 ===
 title: MobileAlien
 position: 0,0
 ---
 <<if visited("MobileAlien") is false>>
+<<MobileComplete TaskManager>>
 <<ChangeLineView DialogueSystem default>>
 Nour: How is it able to balance so well?
 <<ChangeLineView DialogueSystem alien>>
@@ -247,12 +256,14 @@ Alien: *HUFF* *SIGH* ahhhhhhh I feel so much better now that I'm able to cut loo
 <<ChangeLineView DialogueSystem default>>
 Nour: Oh yeah! You look so much more relaxed and free! 
 <<ActivateAlien MobileAlien>>
+<<UpdateAlienCount MuseumGameManager>>
 <<endif>>
 ===
 title: UFOAlien
 position: 0,0
 ---
 <<if visited("UFOAlien") is false>>
+<<UFOComplete TaskManager>>
 <<ChangeLineView DialogueSystem alien>>
 Alien: If you’re here to hurt me please just get it over with!
 <<ChangeLineView DialogueSystem default>>
@@ -275,9 +286,9 @@ Nour: That totally makes sense. This museum has safe vibes.
 Alien: All of my buddies took the form of artwork, but I…
 Alien: I don’t have it in me right now…
 <<ChangeLineView DialogueSystem default>>
--> It's totally okay to feel that way. You were able to keep your friends safe in a stressful moment.
+-> It's totally okay to feel that way. 
     Nour: It's totally okay to feel that way. You were able to keep your friends safe in a stressful moment.
--> You endured fireballs! It's so valid to feel a little burnt out.
+-> You endured fireballs!
     Nour: You endured fireballs! It's so valid to feel a little burnt out.
 <<ChangeLineView DialogueSystem alien>>
 Alien: Do you really think that?
