@@ -7,8 +7,8 @@ using Yarn.Unity;
 public class Alien : MonoBehaviour
 {
     //public GameObject alienText;
-    public Animator artMove;
-    public String artMoveName;
+    //public Animator artMove;
+    //public String artMoveName;
     public GameObject alienElements;
 
     //this function is called from Alien Interact Script. What happens here is what happens 

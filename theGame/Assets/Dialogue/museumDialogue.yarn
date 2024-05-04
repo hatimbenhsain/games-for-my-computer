@@ -48,7 +48,7 @@ position: 0,0
 //<<if visited("IntroAlien") is false and visited("Package") is true>> this isnt working if you try and click on the painting first
 <<IntroComplete TaskManager>>
 <<ChangeLineView DialogueSystem alien>>
-<<ActivateAlien IntroAlien>>
+<<ActivateAlien AlienPainting01>>
 Alien: Woah! Hey! Put that thing away!
 <<ChangeLineView DialogueSystem default>>
 Nour: Huh?! You're an alien!
@@ -86,7 +86,7 @@ Alien: ...
 <<ChangeLineView DialogueSystem default>>
 Nour: Hello? Alien?
 <<ChangeLineView DialogueSystem alien>>
-<<Animate IntroAlien AlienAppear>>
+<<Animate AlienPainting01 AlienAppear>>
 Alien: I... I really needed to hear that... thank you.
 <<ChangeLineView DialogueSystem default>>
 Nour: Of course... Sorry again for scanning you. 
@@ -111,6 +111,7 @@ position: 0,0
 <<ChangeLineView DialogueSystem default>>
 Nour: Whoa! Texture alert!
 <<ChangeLineView DialogueSystem alien>>
+<<ActivateAlien AlienPainting02>>
 Alien: Ahhhhhhhhhhhh someone is talking to me!!!!
 <<ChangeLineView DialogueSystem default>>
 Nour: Is that a good ahhhhhhhhh or a bad ahhhhhhhhh?
@@ -143,10 +144,10 @@ Alien: I care about people…I want them to witness me…and find meaning.
     <<ChangeLineView DialogueSystem default>>
     Nour: It so does.
 <<ChangeLineView DialogueSystem alien>>
+<<Animate AlienPainting02 ScreamPaintingDance>>
 Alien: ~Thank you~
 <<ChangeLineView DialogueSystem default>>
 Nour: That conversation felt so much deeper than just complimenting…It feels good to affirm!
-<<ActivateAlien ScreamAlien>>
 <<UpdateAlienCount MuseumGameManager>>
 <<endif>>
 ===
@@ -158,6 +159,7 @@ position: 0,0
 <<ChangeLineView DialogueSystem default>>
 Nour: This chair seems like it has an attitude!
 <<ChangeLineView DialogueSystem alien>>
+<<ActivateAlien AlienSculpture01>>
 Alien: Hey! What are you trying to say? That I'm annoying?
 <<ChangeLineView DialogueSystem default>>
 Nour: No I just met you.
@@ -166,6 +168,7 @@ Alien: Everyone says that I squeak and make too much noise.
 <<ChangeLineView DialogueSystem default>>
 Nour: Squeaking is so valid.
 <<ChangeLineView DialogueSystem alien>>
+<<Animate AlienSculpture01 SquidChairAnimate>>
 Alien: Really?
 <<ChangeLineView DialogueSystem default>>
 -> Yes! You're here on this weird rock...
@@ -178,7 +181,6 @@ Alien: Really?
     Alien: I'm going to make every sound I can from now on... Even the weirdest ones. 
 <<ChangeLineView DialogueSystem default>>
 Nour: Yeah! Awesome!
-<<ActivateAlien ChairAlien>>
 <<UpdateAlienCount MuseumGameManager>>
 <<endif>>
 ===
@@ -191,6 +193,7 @@ position: 0,0
 Nour: Wow you’re so out of place!
 <<ChangeLineView DialogueSystem alien>>
 Alien: I know! Do you get me?
+<<ActivateAlien SinkTriggerObject>>
 <<ChangeLineView DialogueSystem default>>
 Nour: You’re a sink!
 <<ChangeLineView DialogueSystem alien>>
@@ -225,7 +228,7 @@ Alien: How can a sink be a piece of art????
 Alien: I’ve never thought of it that way before.
 Alien: Wow I…
 Alien: I feel free in my nonsensical love.
-<<ActivateAlien SinkAlien>>
+<<Animate AlienSculpture03 SinkAnimationDance>>
 <<UpdateAlienCount MuseumGameManager>>
 <<endif>>
 ===
@@ -237,6 +240,7 @@ position: 0,0
 <<ChangeLineView DialogueSystem default>>
 Nour: How is it able to balance so well?
 <<ChangeLineView DialogueSystem alien>>
+<<ActivateAlien CalderAlienTriggerObject>>
 Alien: I'm trying really hard but I'm always worried some part of me isn't perfect 
 Alien: It's been even harder since the crash...
 <<ChangeLineView DialogueSystem default>>
@@ -256,12 +260,11 @@ Alien: Even mine?
 Alien: Maybe I should make a schedule... I think that might help me build a healthier relationship with my perfectionism.
 <<ChangeLineView DialogueSystem default>>
 Nour: Schedules can be such a useful tool to ensure you have time to be free!
-//yarncommand for strings loosening or mobile animation 
 <<ChangeLineView DialogueSystem alien>>
+<<Animate AlienSculpture02 MobileAlienDance>>
 Alien: *HUFF* *SIGH* ahhhhhhh I feel so much better now that I'm able to cut loose.
 <<ChangeLineView DialogueSystem default>>
 Nour: Oh yeah! You look so much more relaxed and free! 
-<<ActivateAlien MobileAlien>>
 <<UpdateAlienCount MuseumGameManager>>
 <<endif>>
 ===
