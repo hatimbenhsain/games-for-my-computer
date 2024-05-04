@@ -4370,11 +4370,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6f8aaebe607b4a88a1f8706f6434853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 0.5
+  sensitivity: 0.25
   lockedYAxisRotation: 0
-  maxRotationX: 10
-  maxRotationZ: 20
-  rotationSpeed: 3
+  maxRotationX: 25
+  maxRotationZ: 25
+  rotationSpeed: 10
 --- !u!33 &1895703224259638782
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6622,6 +6622,14 @@ PrefabInstance:
       propertyPath: mazePanel
       value: 
       objectReference: {fileID: 8288431308059590660}
+    - target: {fileID: 6379432268925335262, guid: 82ac0eacbedeb9e46aed1e205bcd9d25, type: 3}
+      propertyPath: m_Mass
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379432268925335262, guid: 82ac0eacbedeb9e46aed1e205bcd9d25, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6960049967662433106, guid: 82ac0eacbedeb9e46aed1e205bcd9d25, type: 3}
       propertyPath: m_Name
       value: PlayerSphere

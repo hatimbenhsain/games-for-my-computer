@@ -50,7 +50,7 @@ public class PartyLevelProgress : MonoBehaviour
         // when any key is pressed the progress bar's value will fill by the fill speed, otherwise if no key is pressed it slides back down
         if (!fish.activeInHierarchy && (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D)
         || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space))){
-            currentGrowthSpeed+=growthSpeedIncrement;
+            currentGrowthSpeed+=growthSpeedIncrement; 
         }
 
         currentGrowthSpeed=Mathf.Clamp(currentGrowthSpeed,minGrowthSpeed,maxGrowthSpeed);
