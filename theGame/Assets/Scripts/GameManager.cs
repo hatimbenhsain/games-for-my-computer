@@ -5,6 +5,7 @@ using UnityEngine;
 using Yarn.Unity;
 using Cinemachine;
 using UnityEngine.UIElements;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -45,6 +46,8 @@ public class GameManager : MonoBehaviour
 
     private bool complimentMetamorphosisHappened=false;
 
+    public ObjectAppear[] objectsToAppear;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +62,9 @@ public class GameManager : MonoBehaviour
         //isTransitioning = true;
 
         complimentValue=0;
+
+        objectsToAppear=FindObjectsOfType<ObjectAppear>();
+        AppearObjects();
     }
 
     // Update is called once per frame
@@ -229,5 +235,19 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(2f);
         }
         dialogueRunner.StartDialogue("Rain3");
+    }
+
+    public void PlayerChangedState(){
+        AppearObjects();
+    }
+
+    void AppearObjects(){
+        foreach(ObjectAppear o in objectsToAppear){
+            if(o.statesToAppearIn.Contains(playerScript.currentState)){
+                o.gameObject.SetActive(true);
+            }else{
+                o.gameObject.SetActive(false);
+            }
+        }
     }
 }
