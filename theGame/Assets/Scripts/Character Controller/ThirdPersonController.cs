@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.VFX;
 using Unity.VisualScripting;
 
+
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 using Yarn.Unity.Example;
@@ -196,6 +197,15 @@ namespace StarterAssets
 
         public float maxHeight=-1f;
 
+        private bool respawning=false;
+        private Transform respawnLocation;
+
+        private float respawnTimer=0f;
+        public float respawnTime=1f;
+        private Vector3 preRespawnPosition;
+
+        public SpriteRenderer[] shadows;
+
         private bool IsCurrentDeviceMouse
         {
             get
@@ -247,39 +257,52 @@ namespace StarterAssets
         {
             _hasAnimator = TryGetComponent(out _animator);
 
-            JumpAndGravity();
-            GroundedCheck();
-            Move();
-            
-            //Change State when M(orph) is pressed
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-                ChangeState();
+            if(!respawning){
+
+                JumpAndGravity();
+                GroundedCheck();
+                Move();
+                
+                //Change State when M(orph) is pressed
+                if (Input.GetKeyDown(KeyCode.M))
+                {
+                    ChangeState();
+                }
+
+                if (Input.GetKeyUp(KeyCode.E) && !dialogueRunner.IsDialogueRunning && !gameManager.inComplimentGame){
+                    CheckForNearbyNPC();
+                }
+
+                _moveLock=false;
+
+                // Call state-specific logic
+                HandleStateBehaviour();
+
+                Crouch();
+
+                if((dialogueRunner.IsDialogueRunning && !canMoveInDialogue) || gameManager.inComplimentGame){
+                    _moveLock=true;
+                }
+                if (inTransform)
+                {
+                    _moveLock = true;
+                }
+
+                if(_hasAnimator){
+                    Animate();
+                }
+
+            }else{
+                respawnTimer+=Time.deltaTime;
+                float k=Mathf.Sin(Mathf.Min(respawnTimer/respawnTime,1f)*Mathf.PI/2);
+                transform.position=Vector3.Lerp(preRespawnPosition,respawnLocation.position,k);
+                if(Vector3.Distance(transform.position,respawnLocation.position)<0.1f){
+                    respawning=false;
+                    GetComponent<Collider>().enabled=true;
+                    _controller.Move(Vector3.zero);
+                }
+
             }
-
-            if (Input.GetKeyUp(KeyCode.E) && !dialogueRunner.IsDialogueRunning && !gameManager.inComplimentGame){
-                CheckForNearbyNPC();
-            }
-
-            _moveLock=false;
-
-            // Call state-specific logic
-            HandleStateBehaviour();
-
-            Crouch();
-
-            if((dialogueRunner.IsDialogueRunning && !canMoveInDialogue) || gameManager.inComplimentGame){
-                _moveLock=true;
-            }
-            if (inTransform)
-            {
-                _moveLock = true;
-            }
-
-            if(_hasAnimator){
-                Animate();
-            }
-
 
         }
 
@@ -493,10 +516,14 @@ namespace StarterAssets
             if((!_moveLock || (currentState==CharacterState.Fish && !dialogueRunner.IsDialogueRunning)) && _input.move.x<0){
                 sprite.flipX=true;
                 flipped = true;
+                shadows[0].enabled=false;
+                shadows[1].enabled=true;
             }
             else if((!_moveLock || (currentState==CharacterState.Fish && !dialogueRunner.IsDialogueRunning)) && _input.move.x>0){
                 sprite.flipX=false;
                 flipped = false;
+                shadows[0].enabled=true;
+                shadows[1].enabled=false;
             }
 
             if(currentState==CharacterState.Fish || _crouch){
@@ -830,6 +857,21 @@ namespace StarterAssets
             }else{
                 _animator.SetBool("falling",false);
             }
+
+            if(Grounded){
+                float a;
+                a=shadows[0].color.a;
+                shadows[0].color=new Color(1f,1f,1f,Mathf.Lerp(a,0.72f,0.99f));
+                a=shadows[1].color.a;
+                shadows[1].color=new Color(1f,1f,1f,Mathf.Lerp(a,0.72f,0.99f));
+            }
+            else{
+                float a;
+                a=shadows[0].color.a;
+                shadows[0].color=new Color(1f,1f,1f,Mathf.Lerp(a,0f,0.99f));
+                a=shadows[1].color.a;
+                shadows[1].color=new Color(1f,1f,1f,Mathf.Lerp(a,0f,0.99f));
+            }
         }
 
         public void CheckForNearbyNPC()
@@ -861,6 +903,10 @@ namespace StarterAssets
                 hit.gameObject.GetComponent<Package>().PlayerCollide();
             }else if(hit.gameObject.tag=="Missile"){
                 hit.gameObject.GetComponent<Missile>().CollidePlayer();
+            }
+            RespawnCollider rc=hit.gameObject.GetComponent<RespawnCollider>();
+            if(rc!=null){
+                gameManager.Respawn();
             }
         }
 
@@ -908,6 +954,16 @@ namespace StarterAssets
                     break;
             }
             StartCoroutine(PlayerTransformCoroutine(cs,0f,0.5f));
+        }
+
+        public void Respawn(Transform t){
+            if(currentState!=CharacterState.Rocket){
+                respawnLocation=t;
+                respawning=true;
+                GetComponent<Collider>().enabled=false;
+                respawnTimer=0f;
+                preRespawnPosition=transform.position;
+            }
         }
     }
 }
