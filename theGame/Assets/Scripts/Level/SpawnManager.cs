@@ -83,7 +83,7 @@ public class SpawnManager : MonoBehaviour
         }
         if (surgeryFinished)
         {
-            Collider hospitalCollider = hospital.GetComponent<Collider>();
+            BoxCollider hospitalCollider = hospital.GetComponent<BoxCollider>();
             if (hospitalCollider != null)
             {
                 hospitalCollider.isTrigger = !hospitalCollider.isTrigger;
@@ -116,6 +116,7 @@ public class SpawnManager : MonoBehaviour
     }
 
     private IEnumerator StartRain(){
+        Debug.Log("start rain");
         yield return new WaitForSeconds(vfxTime+transformTime+0.1f);
         FindObjectOfType<RainThatTalks>().StartRain();
     }
