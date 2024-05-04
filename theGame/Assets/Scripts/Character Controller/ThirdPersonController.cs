@@ -303,6 +303,7 @@ namespace StarterAssets
         {
             currentState = targetState;
             GameObject.FindObjectOfType<InMemoryVariableStorage>().SetValue("$mcState",targetState.ToString());
+            gameManager.PlayerChangedState();
         }
 
         // State Machine

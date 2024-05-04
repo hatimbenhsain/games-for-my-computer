@@ -71,7 +71,7 @@ public class DanceInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             dancingBoy.Play("leftlegwiggle");
-            dancingBoy2.Play("RightArmWiggle");
+            dancingBoy2.Play("leftlegwiggle");
         }        
         if (Input.GetKey(KeyCode.S))
         {
@@ -86,7 +86,7 @@ public class DanceInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             dancingBoy.Play("Rightlegwiggle");
-            dancingBoy2.Play("RightArmWiggle");
+            dancingBoy2.Play("Rightlegwiggle");
         }        
         if (Input.GetKey(KeyCode.W))
         {
@@ -101,7 +101,7 @@ public class DanceInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             dancingBoy.Play("MiddleWiggle");
-            dancingBoy2.Play("RightArmWiggle");
+            dancingBoy2.Play("MiddleWiggle");
         }        
         if (Input.GetKey(KeyCode.Q))
         {
@@ -116,7 +116,7 @@ public class DanceInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             dancingBoy.Play("dropit");
-            dancingBoy2.Play("RightArmWiggle");
+            dancingBoy2.Play("dropit");
         }        
         if (Input.GetKey(KeyCode.E))
         {
@@ -131,7 +131,7 @@ public class DanceInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             dancingBoy.Play("wiggleit");
-            dancingBoy2.Play("RightArmWiggle");
+            dancingBoy2.Play("wiggleit");
         }        
         if (Input.GetKey(KeyCode.Space))
         {
