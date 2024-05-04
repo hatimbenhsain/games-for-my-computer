@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
 
     public ObjectAppear[] objectsToAppear;
 
+    private Transform respawnTransform;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -249,5 +251,13 @@ public class GameManager : MonoBehaviour
                 o.gameObject.SetActive(false);
             }
         }
+    }
+
+    public void Respawn(){
+        playerScript.Respawn(respawnTransform);
+    }
+
+    public void SetRespawnTransform(Transform t){
+        respawnTransform=t;
     }
 }
