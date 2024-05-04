@@ -29,9 +29,10 @@ position: 0,0
 Nour: This must be the package that agent guy told me to look for.
 Nour: Geez a lot of packaging... who needs this much tissue paper?? TAPE?! Who packed this...
 Nour: OH! 
-Nour: A... a sword? Don't think I'll need that... 
-Nour: What's this thing? A scanner? Not really my style but it could be useful.
+Nour: What's this thing? A scanner? 
 <<ShowScanner TaskManager>>
+Nour: Not really my style but it could be useful.
+Nour: A... a sword? Don't think I'll need that... 
 Nour: And a sheet of paper? Hmm..! Finally, some info on the mission! 
 <<ShowLetter TaskManager>>
 Nour: Not super helpful! But I appreciate the artistry of those descriptions!
@@ -44,6 +45,7 @@ title: IntroAlien
 position: 0,0
 ---
 <<if visited("IntroAlien") is false>>
+//<<if visited("IntroAlien") is false and visited("Package") is true>> this isnt working if you try and click on the painting first
 <<IntroComplete TaskManager>>
 <<ChangeLineView DialogueSystem alien>>
 <<ActivateAlien IntroAlien>>
@@ -55,7 +57,8 @@ Alien: Maybe to you... why are you going around scanning people?
 <<ChangeLineView DialogueSystem default>>
 Nour: I'm sorry that's what I thought I was supposed to do... why are you hiding?
 <<ChangeLineView DialogueSystem alien>>
-Alien: I'm having trouble being myself. We came here to see your planet's beautiful art but we crashed and then got a little overwhelmed and unsure about ourselves. 
+Alien: I'm having trouble being myself. 
+Alien: We came here to see your planet's beautiful art but we crashed and then got a little overwhelmed and unsure about ourselves. 
 <<ChangeLineView DialogueSystem default>>
 Nour: We? Are there more of you? 
 <<ChangeLineView DialogueSystem alien>>
@@ -63,10 +66,11 @@ Alien: Yeah we all came here together...
 <<ChangeLineView DialogueSystem default>>
 Nour: Why are you unsure of yourself?
 <<ChangeLineView DialogueSystem alien>>
-Alien: I love art... I love beauty... I love love... I'm worried I'll never be able to contribute to any of it...
+Alien: I love art... I love beauty... I love love... 
+Alien: I'm worried I'll never be able to contribute to any of it...
 <<ChangeLineView DialogueSystem default>>
--> I feel like everyone feels like that at one point or another.
-    Nour: I feel like everyone feels like that at one point or another.
+-> I feel like everyone feels like that sometimes.
+    Nour: I feel like everyone feels like that sometimes.
     <<ChangeLineView DialogueSystem alien>>
     Alien: You think so?
     <<ChangeLineView DialogueSystem default>>
@@ -92,7 +96,8 @@ Alien: That's ok but get rid of that thing... just talk to us.
 Nour: Hmmm ok. 
 <<HideScanner TaskManager>>
 <<ChangeLineView DialogueSystem alien>>
-Alien: You should go enjoy the museum it really is beautiful... see if you can find my friends, I think they would love to hear from you.
+Alien: You should go enjoy the museum it really is beautiful...
+Alien: See if you can find my friends, I think they would love to hear from you.
 <<ChangeLineView DialogueSystem default>>
 Nour: I love museums! I'll take a look around. 
 <<UpdateAlienCount MuseumGameManager>>
@@ -232,7 +237,8 @@ position: 0,0
 <<ChangeLineView DialogueSystem default>>
 Nour: How is it able to balance so well?
 <<ChangeLineView DialogueSystem alien>>
-Alien: I'm trying really hard but I'm always worried some part of me isn't perfect it's been even harder since the crash...
+Alien: I'm trying really hard but I'm always worried some part of me isn't perfect 
+Alien: It's been even harder since the crash...
 <<ChangeLineView DialogueSystem default>>
 Nour: Why do you need to be perfect?
 <<ChangeLineView DialogueSystem alien>>
