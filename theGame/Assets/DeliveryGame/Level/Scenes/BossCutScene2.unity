@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18026972, g: 0.028948724, b: 0.27063924, a: 1}
+  m_IndirectSpecularColor: {r: 0.18043664, g: 0.028920364, b: 0.27065346, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2614,7 +2614,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798946031}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -2743,7 +2743,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836809054}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -2832,7 +2832,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: fbef2178295756d4e8af73e863c5d0ce, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -4650,7 +4650,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434687565}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -4944,7 +4944,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: e27ad36d04d8b9f4290e984d43c4772b, type: 2}
-  m_InitialState: 0
+  m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -5184,7 +5184,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1638857273}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -10596,7 +10596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5419001966322259612, guid: e459e157a215cf24aa090232a7d66a09, type: 3}
       propertyPath: playableDirectors.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5419001966322259612, guid: e459e157a215cf24aa090232a7d66a09, type: 3}
       propertyPath: playableDirectors.Array.data[0]
@@ -10605,7 +10605,11 @@ PrefabInstance:
     - target: {fileID: 5419001966322259612, guid: e459e157a215cf24aa090232a7d66a09, type: 3}
       propertyPath: playableDirectors.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 891373431}
+    - target: {fileID: 5419001966322259612, guid: e459e157a215cf24aa090232a7d66a09, type: 3}
+      propertyPath: playableDirectors.Array.data[2]
+      value: 
+      objectReference: {fileID: 1087365022}
     - target: {fileID: 8558596829221043759, guid: e459e157a215cf24aa090232a7d66a09, type: 3}
       propertyPath: m_Name
       value: CutsceneLoader
