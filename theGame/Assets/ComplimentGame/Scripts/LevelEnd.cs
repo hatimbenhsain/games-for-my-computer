@@ -2,19 +2,38 @@ using UnityEngine;
 
 public class LevelEnd : MonoBehaviour
 {
-    //public GameObject ball; // Assign the ball GameObject in the Unity Editor.
+    public AudioClip startSound; // Assign this in the Unity Editor with your continuous sound.
     public AudioClip collisionSound; // Assign this in the Unity Editor with your sound effect.
+    public AudioClip otherSound; // Assign this in the Unity Editor, the other sound to manage.
 
     private AudioSource audioSource;
+    private AudioSource otherAudioSource; // This could potentially be the same as audioSource if only one source is used.
 
     private void Start()
     {
         // Get the AudioSource component attached to this GameObject.
-        // Make sure to attach an AudioSource component to this GameObject in the Unity Editor.
         audioSource = GetComponent<AudioSource>();
         if (!audioSource)
         {
-            Debug.LogWarning("CollisionHandler script expects an AudioSource component on the same GameObject.");
+            Debug.LogWarning("LevelEnd script expects an AudioSource component on the same GameObject.");
+            return;
+        }
+
+        // You can choose to use the same AudioSource or find another one in your scene to play other sounds.
+        otherAudioSource = audioSource; // If using the same source, or find another source as needed.
+
+        // Stop the other sound if it's currently playing.
+        if (otherSound && otherAudioSource.isPlaying && otherAudioSource.clip == otherSound)
+        {
+            otherAudioSource.Stop();
+        }
+
+        // Start playing the continuous sound if assigned.
+        if (startSound)
+        {
+            audioSource.clip = startSound;
+            audioSource.loop = true;  // Loop the sound until it's stopped.
+            audioSource.Play();
         }
     }
 
@@ -22,30 +41,32 @@ public class LevelEnd : MonoBehaviour
     {
         if (other.gameObject.tag == "ComplimentSphere")
         {
-
             BallSnapper ballSnapper = other.gameObject.GetComponent<BallSnapper>();
             if (ballSnapper != null)
             {
-                // Disable the BallSnapper script on the ball.
                 ballSnapper.enabled = false;
             }
 
             Collider ballCollider = other.gameObject.GetComponent<Collider>();
             if (ballCollider != null)
             {
-                // Make the ball fall through the ground by disabling its collider.
                 ballCollider.enabled = false;
             }
 
-            // Play the collision sound effect if it's assigned and the AudioSource component exists.
             if (audioSource && collisionSound)
             {
-                audioSource.PlayOneShot(collisionSound);
+                audioSource.Stop(); // Stop the continuous sound first.
+                audioSource.PlayOneShot(collisionSound);  // Play the collision sound effect.
             }
 
             FindObjectOfType<ComplimentManager>().ComplimentEnd();
 
-            //this.enabled=false;
+            // Restart the other sound if needed.
+            if (otherSound)
+            {
+                otherAudioSource.clip = otherSound;
+                otherAudioSource.Play();  // Restart the other sound.
+            }
         }
     }
 }
