@@ -206,6 +206,8 @@ namespace StarterAssets
 
         public SpriteRenderer[] shadows;
 
+        private PlayerSFX playerSFX;
+
         private bool IsCurrentDeviceMouse
         {
             get
@@ -250,6 +252,7 @@ namespace StarterAssets
             sprite=GetComponentInChildren<SpriteRenderer>();
             dialogueRunner=FindObjectOfType<DialogueRunner>();
             gameManager=FindObjectOfType<GameManager>();
+            playerSFX=FindObjectOfType<PlayerSFX>();
             
         }
 
@@ -443,7 +446,7 @@ namespace StarterAssets
             // if not can walk around and do normal jump
             if (_input.fish && Grounded)
             {
-                _moveLock = true;
+                //_moveLock = true;
                 JumpHeight = FishFlopHeight;
                 _crouch = true;
             }
@@ -687,6 +690,12 @@ namespace StarterAssets
                     Debug.Log("jumped");
                 _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
+                    if((_crouch || currentState==CharacterState.Fish)){
+                        playerSFX.JumpFish();
+                    }else{
+                        playerSFX.Jump();
+                    }
+
                     // update animator if using character
                     if (_hasAnimator)
                     {
@@ -734,6 +743,7 @@ namespace StarterAssets
                     _verticalVelocity+=FlyPower*Time.deltaTime;
                     if(!prevFly){
                         _verticalVelocity+=FlyBoost;
+                        playerSFX.RocketStart();
                     }
                     _verticalVelocity=Mathf.Min(_verticalVelocity,maxFlyPower);
                     isFlying=true;
@@ -743,6 +753,9 @@ namespace StarterAssets
                 }
             }else if(!_input.fly){
                 fuel+=fuelReplenishRate*Time.deltaTime;
+                playerSFX.RocketEnd();
+            }else{
+                playerSFX.RocketEnd();
             }
 
             fuel=Mathf.Clamp(fuel,0f,1f);
@@ -843,6 +856,7 @@ namespace StarterAssets
                 _animator.SetBool("skidding",true);
             }
             _animator.SetInteger("walkSpeed",i);
+            playerSFX.Run(i); 
             if(isJumping && !_animator.GetBool("jumping")){
                 _animator.SetTrigger("jump");
             }
@@ -854,6 +868,10 @@ namespace StarterAssets
 
             if(_verticalVelocity<0f){
                 _animator.SetBool("falling",true);
+                string nm=_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+                if(nm=="mcRocketCancel" || nm=="mcRocketFalling"){
+                    playerSFX.Fall();
+                }
             }else{
                 _animator.SetBool("falling",false);
             }
