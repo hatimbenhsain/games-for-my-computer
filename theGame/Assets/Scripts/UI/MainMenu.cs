@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
     public int spawnIndex = 0;
     public StarterAssets.ThirdPersonController.CharacterState loaderCharacterState;
     public StarterAssets.ThirdPersonController.CharacterState targetCharacterState;
+    public bool playRain = false;
 
     private void Start()
     {
@@ -62,6 +63,7 @@ public class MainMenu : MonoBehaviour
         }
         SpawnDataHolder.playTransformAnimation = playTransformAnimation;
         transition.SetTrigger("Start");
+        SpawnDataHolder.playRain = playRain;
 
 
         yield return new WaitForSeconds(transitionTime);
