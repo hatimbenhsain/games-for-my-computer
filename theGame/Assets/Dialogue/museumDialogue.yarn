@@ -39,68 +39,71 @@ Nour: Not super helpful! But I appreciate the artistry of those descriptions!
 Nour: And if I want to look again, I can press *Tab* to see the list.
 <<HideLetter TaskManager>>
 Nour: Ok I think that's everything guess I should take a look around and start finding these aliens...
+<<set $foundPackage to true>>
 <<endif>>
 ===
 title: IntroAlien
 position: 0,0
 ---
-<<if visited("IntroAlien") is false>>
-//<<if visited("IntroAlien") is false and visited("Package") is true>> this isnt working if you try and click on the painting first
-<<IntroComplete TaskManager>>
-<<ChangeLineView DialogueSystem alien>>
-<<ActivateAlien AlienPainting01>>
-Alien: Woah! Hey! Put that thing away!
-<<ChangeLineView DialogueSystem default>>
-Nour: Huh?! You're an alien!
-<<ChangeLineView DialogueSystem alien>>
-Alien: Maybe to you... why are you going around scanning people?
-<<ChangeLineView DialogueSystem default>>
-Nour: I'm sorry that's what I thought I was supposed to do... why are you hiding?
-<<ChangeLineView DialogueSystem alien>>
-Alien: I'm having trouble being myself. 
-Alien: We came here to see your planet's beautiful art but we crashed and then got a little overwhelmed and unsure about ourselves. 
-<<ChangeLineView DialogueSystem default>>
-Nour: We? Are there more of you? 
-<<ChangeLineView DialogueSystem alien>>
-Alien: Yeah we all came here together...
-<<ChangeLineView DialogueSystem default>>
-Nour: Why are you unsure of yourself?
-<<ChangeLineView DialogueSystem alien>>
-Alien: I love art... I love beauty... I love love... 
-Alien: I'm worried I'll never be able to contribute to any of it...
-<<ChangeLineView DialogueSystem default>>
--> I feel like everyone feels like that sometimes.
-    Nour: I feel like everyone feels like that sometimes.
-    <<ChangeLineView DialogueSystem alien>>
-    Alien: You think so?
-    <<ChangeLineView DialogueSystem default>>
-    Nour: Yeah I think it's so valid to be overwhelmed by the bigness of the universe and urge to create beauty! 
--> Of course you will. You're alive! 
-    Nour: Of course you will. You're alive! You can't help but effect the universe around you.
-    <<ChangeLineView DialogueSystem alien>> 
-    Alien: Really?
-    <<ChangeLineView DialogueSystem default>>
-    Nour: Totally, look at you you're livening up this dusty old museum and brightening my day.
-<<ChangeLineView DialogueSystem alien>>
-Alien: ...
-<<ChangeLineView DialogueSystem default>>
-Nour: Hello? Alien?
-<<ChangeLineView DialogueSystem alien>>
-<<Animate AlienPainting01 AlienAppear>>
-Alien: I... I really needed to hear that... thank you.
-<<ChangeLineView DialogueSystem default>>
-Nour: Of course... Sorry again for scanning you. 
-<<ChangeLineView DialogueSystem alien>>
-Alien: That's ok but get rid of that thing... just talk to us.
-<<ChangeLineView DialogueSystem default>>
-Nour: Hmmm ok. 
-<<HideScanner TaskManager>>
-<<ChangeLineView DialogueSystem alien>>
-Alien: You should go enjoy the museum it really is beautiful...
-Alien: See if you can find my friends, I think they would love to hear from you.
-<<ChangeLineView DialogueSystem default>>
-Nour: I love museums! I'll take a look around. 
-<<UpdateAlienCount MuseumGameManager>>
+<<if $foundPackage==true>>
+    <<if visited("IntroAlien") is false>>
+        //<<if visited("IntroAlien") is false and visited("Package") is true>> this isnt working if you try and click on the painting first
+        <<IntroComplete TaskManager>>
+        <<ChangeLineView DialogueSystem alien>>
+        <<ActivateAlien AlienPainting01>>
+        Alien: Woah! Hey! Put that thing away!
+        <<ChangeLineView DialogueSystem default>>
+        Nour: Huh?! You're an alien!
+        <<ChangeLineView DialogueSystem alien>>
+        Alien: Maybe to you... why are you going around scanning people?
+        <<ChangeLineView DialogueSystem default>>
+        Nour: I'm sorry that's what I thought I was supposed to do... why are you hiding?
+        <<ChangeLineView DialogueSystem alien>>
+        Alien: I'm having trouble being myself. 
+        Alien: We came here to see your planet's beautiful art but we crashed and then got a little overwhelmed and unsure about ourselves. 
+        <<ChangeLineView DialogueSystem default>>
+        Nour: We? Are there more of you? 
+        <<ChangeLineView DialogueSystem alien>>
+        Alien: Yeah we all came here together...
+        <<ChangeLineView DialogueSystem default>>
+        Nour: Why are you unsure of yourself?
+        <<ChangeLineView DialogueSystem alien>>
+        Alien: I love art... I love beauty... I love love... 
+        Alien: I'm worried I'll never be able to contribute to any of it...
+        <<ChangeLineView DialogueSystem default>>
+        -> I feel like everyone feels like that sometimes.
+            Nour: I feel like everyone feels like that sometimes.
+            <<ChangeLineView DialogueSystem alien>>
+            Alien: You think so?
+            <<ChangeLineView DialogueSystem default>>
+            Nour: Yeah I think it's so valid to be overwhelmed by the bigness of the universe and urge to create beauty! 
+        -> Of course you will. You're alive! 
+            Nour: Of course you will. You're alive! You can't help but effect the universe around you.
+            <<ChangeLineView DialogueSystem alien>> 
+            Alien: Really?
+            <<ChangeLineView DialogueSystem default>>
+            Nour: Totally, look at you you're livening up this dusty old museum and brightening my day.
+        <<ChangeLineView DialogueSystem alien>>
+        Alien: ...
+        <<ChangeLineView DialogueSystem default>>
+        Nour: Hello? Alien?
+        <<ChangeLineView DialogueSystem alien>>
+        <<Animate AlienPainting01 AlienAppear>>
+        Alien: I... I really needed to hear that... thank you.
+        <<ChangeLineView DialogueSystem default>>
+        Nour: Of course... Sorry again for scanning you. 
+        <<ChangeLineView DialogueSystem alien>>
+        Alien: That's ok but get rid of that thing... just talk to us.
+        <<ChangeLineView DialogueSystem default>>
+        Nour: Hmmm ok. 
+        <<HideScanner TaskManager>>
+        <<ChangeLineView DialogueSystem alien>>
+        Alien: You should go enjoy the museum it really is beautiful...
+        Alien: See if you can find my friends, I think they would love to hear from you.
+        <<ChangeLineView DialogueSystem default>>
+        Nour: I love museums! I'll take a look around. 
+        <<UpdateAlienCount MuseumGameManager>>
+    <<endif>>
 <<endif>>
 ===
 title: ScreamAlien
