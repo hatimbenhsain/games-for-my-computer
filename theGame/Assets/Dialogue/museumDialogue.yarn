@@ -33,10 +33,12 @@ Nour: What's this thing? A scanner?
 <<ShowScanner TaskManager>>
 Nour: Not really my style but it could be useful.
 Nour: A... a sword? Don't think I'll need that... 
-Nour: And a sheet of paper? Hmm..! Finally, some info on the mission! 
+Nour: And a sheet of paper?
+Nour: Hmm..! Finally, some info on the mission! 
 <<ShowLetter TaskManager>>
-Nour: Not super helpful! But I appreciate the artistry of those descriptions!
-Nour: And if I want to look again, I can press *Tab* to see the list.
+Nour: Sounds like I gotta use this scanner to locate the alien artworks.
+Nour: Those descriptions don't seem very helpful. But I appreciate their artistry!
+Nour: If I want to look again, I can press *Tab* to see the list.
 <<HideLetter TaskManager>>
 Nour: Ok I think that's everything guess I should take a look around and start finding these aliens...
 <<endif>>
@@ -58,7 +60,8 @@ Alien: Maybe to you... why are you going around scanning people?
 Nour: I'm sorry that's what I thought I was supposed to do... why are you hiding?
 <<ChangeLineView DialogueSystem alien>>
 Alien: I'm having trouble being myself. 
-Alien: We came here to see your planet's beautiful art but we crashed and then got a little overwhelmed and unsure about ourselves. 
+Alien: We came here to see your planet's beautiful art.
+Alien: But we crashed and then got a little overwhelmed and unsure about ourselves. 
 <<ChangeLineView DialogueSystem default>>
 Nour: We? Are there more of you? 
 <<ChangeLineView DialogueSystem alien>>
@@ -131,7 +134,7 @@ Alien: I care about people…I want them to witness me…and find meaning.
 -> I find so much meaning in your...
     Nour: I find so much meaning in your panicked face and curves.
     <<ChangeLineView DialogueSystem alien>>
-    Alien: I was thinking about how the aesthetic choice to include so many curved lines speaks to the very nature of fear.
+    Alien: My aesthetic choice to include many curved lines speaks to the very nature of fear.
     <<ChangeLineView DialogueSystem default>>
     Nour: Wow, your analysis is bringing even more depth to my interpretation.  
 -> Your presence brings so much meaning to...
@@ -257,12 +260,14 @@ Alien: Even mine?
 -> Of course. Your imperfections are so valid.
     Nour: Of course. Your imperfections are so valid.
 <<ChangeLineView DialogueSystem alien>>
-Alien: Maybe I should make a schedule... I think that might help me build a healthier relationship with my perfectionism.
+Alien: Maybe I should make a schedule... 
+Alien: I think that might help me build a healthier relationship with my perfectionism.
 <<ChangeLineView DialogueSystem default>>
 Nour: Schedules can be such a useful tool to ensure you have time to be free!
 <<ChangeLineView DialogueSystem alien>>
 <<Animate AlienSculpture02 MobileAlienDance>>
-Alien: *HUFF* *SIGH* ahhhhhhh I feel so much better now that I'm able to cut loose.
+Alien: *HUFF* *SIGH* ahhhhhhh
+Alien: I feel so much better now that I'm able to cut loose.
 <<ChangeLineView DialogueSystem default>>
 Nour: Oh yeah! You look so much more relaxed and free! 
 <<UpdateAlienCount MuseumGameManager>>
@@ -289,6 +294,9 @@ Alien: If I had regained control after they shot fireballs at us…
 Nour: Someone was shooting fireballs at you???
 <<ChangeLineView DialogueSystem alien>>
 Alien: It was those good for nothing BRAG Agents!!!
+<<ChangeLineView DialogueSystem default>>
+Nour: I'm so sorry they did that to you!
+<<ChangeLineView DialogueSystem alien>>
 Alien: After we crash landed…I thought we’d be safe here.
 <<ChangeLineView DialogueSystem default>>
 Nour: That totally makes sense. This museum has safe vibes.
@@ -317,11 +325,15 @@ Nour: I bet if they did one featuring all of you, that could completely turn thi
 Alien: You really think people would come to see us?
 <<ChangeLineView DialogueSystem default>>
 Nour: I know so.
-//yarncommand for fax falling 
 <<disableFloat MuseumGameManager>>
-Agent: I'm very dissapointed in you for wasting this opportunity. 
-Agent: You've been taken off this mission.
-//yarncommand for going back to hub?
+<<ChangeLineView DialogueSystem alien>>
+Alien: Thank you. That's very kind of you to say. 
+<<ChangeLineView DialogueSystem default>>
+Nour: Is that a fax machine?
+<<ChangeLineView DialogueSystem alien>>
+Alien: BRAG agents sent us some threatening messages using that earlier. 
+Alien: You should probably check it. 
+<<ChangeLineView DialogueSystem default>>
 <<endif>>
 ===
 
@@ -329,13 +341,12 @@ title: FaxMachine
 position: 0,0
 ---
 <<if visited("FaxMachine") is false>>
-Nour: "to fill in"
 <<ShowFax TaskManager>>
-Nour: "to fill in"
-Nour: "to fill in"
-<<HideFax TaskManager>>
-Nour: "to fill in"
-Nour: "to fill in"
+Nour: What is wrong with these BRAG agents?? 
+Nour: Why can't they just let these aliens exist in peace?!
+Nour: I want to go give him a peace of my mind!
+Nour: I just need to figure out how to get to the Mysterious Architecture in the sky.
+Nour: See ya later aliens! Can't wait to visit again!
 //yarncommand for going back to hub?
 <<endif>>
 ===
