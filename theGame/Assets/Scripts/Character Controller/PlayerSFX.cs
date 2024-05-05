@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 public class PlayerSFX : MonoBehaviour
 {
-    public string mainTrackGameObjectName="Nichole-WHub";
+    //public string mainTrackGameObjectName="Nichole-WHub";
     public AudioSource source1; //For short burst 1
     public AudioSource source2; //For short burst 2
     public AudioSource source3; // For falling
@@ -112,10 +112,11 @@ public class PlayerSFX : MonoBehaviour
         source6.volume=0;
         source6.loop=true;
         source6.Play();
-        mainTrack=GameObject.Find("Nichole-WHub").GetComponent<AudioSource>();
+        mainTrack=GameObject.FindGameObjectWithTag("Main Track").GetComponent<AudioSource>();
 
         source4.volume=0f;
         source4.loop=true;
+        source4.clip=runningClips[0];
         source4.Play();
         source7.volume=0f;
         source7.loop=true;
@@ -125,6 +126,8 @@ public class PlayerSFX : MonoBehaviour
         source8.loop=true;
         source8.clip=runningClipGong;
         source8.Play();
+
+        StartCoroutine(SyncTracks());
     }
 
     void Update()
@@ -134,9 +137,11 @@ public class PlayerSFX : MonoBehaviour
 
         
         //Rocket Control
-        if(rocketing && mainTrack.volume>0f && mainTrack.isPlaying){
+        if(rocketing){
             rocketVolume=rocketVolume+rocketVolumeSpeed*Time.deltaTime;
-            rocketPercVolume+=rocketVolume2FadeInSpeed*Time.deltaTime;
+            if(mainTrack!=null && mainTrack.isPlaying){
+                rocketPercVolume+=rocketVolume2FadeInSpeed*Time.deltaTime;
+            }
         }else{
             rocketVolume=rocketVolume-rocketVolumeSpeed*Time.deltaTime;
             rocketPercVolume-=rocketVolume2FadeOutSpeed*Time.deltaTime;
@@ -153,7 +158,7 @@ public class PlayerSFX : MonoBehaviour
         
         prevFalling=falling;
 
-        if(running && mainTrack.volume>0f && mainTrack.isPlaying){
+        if(running && mainTrack!=null && mainTrack.isPlaying){
             runningVolume+=runningFadeinSpeed*Time.deltaTime;
             runningVolume2+=runningFadeinSpeed2*Time.deltaTime;
             runningVolume3+=runningFadeinSpeed3*Time.deltaTime;
@@ -196,7 +201,6 @@ public class PlayerSFX : MonoBehaviour
     }
 
     public void Land(float force){
-        Debug.Log("landing at force "+force);
         if(Mathf.Abs(force)>=landMinForce){
             float v=Mathf.Clamp((Mathf.Abs(force)-landMinForce)/landMaxForce,0f,1f);
             int i=Mathf.FloorToInt(v*(landClips.Length-1));
@@ -206,8 +210,8 @@ public class PlayerSFX : MonoBehaviour
     }
 
     public void RocketStart(){
+        if(mainTrack!=null && !rocketing) source6.timeSamples=mainTrack.timeSamples%source6.clip.samples;
         rocketing=true;
-        source6.time=mainTrack.time%source6.clip.length;
         falling=false;
     }
 
@@ -219,14 +223,14 @@ public class PlayerSFX : MonoBehaviour
         int prevRunningSpeed=runningSpeed;
         runningSpeed=speed;
         if(runningSpeed>0){
-            if(runningSpeed!=prevRunningSpeed){
+            if(runningSpeed!=prevRunningSpeed && mainTrack!=null){
                 source4.clip=runningClips[runningSpeed-1];
                 source4.Play();
-                source4.time=mainTrack.time%source4.clip.length;
+                source4.timeSamples=mainTrack.timeSamples%source4.clip.samples;
                 source7.Play();
-                source7.time=mainTrack.time%source7.clip.length;
+                source7.timeSamples=mainTrack.timeSamples%source7.clip.samples;
                 source8.Play();
-                source8.time=mainTrack.time%source8.clip.length;
+                source8.timeSamples=mainTrack.timeSamples%source8.clip.samples;
             }
             running=true;
         }else{
@@ -241,10 +245,8 @@ public class PlayerSFX : MonoBehaviour
     public void Fall(){
         if(!rocketing){
             falling=true;
-            Debug.Log("fall "+prevFalling+" "+source3.isPlaying);
             if(!prevFalling && !source3.isPlaying){
                 PlayRandomClip(fallingClips,2,fallingMaxVolume);
-                Debug.Log("fall happen");
             }
         }
     }
@@ -265,6 +267,19 @@ public class PlayerSFX : MonoBehaviour
             pitch=pitch+Random.Range(0,0.5f)-0.25f;
         }
         PlayClip(clip,channel,volume,pitch);
+    }
+
+    IEnumerator SyncTracks(){
+        while(true){
+            if(mainTrack!=null){
+                Debug.Log("sync tracks");
+                source6.timeSamples=mainTrack.timeSamples%source6.clip.samples;
+                source4.timeSamples=mainTrack.timeSamples%source4.clip.samples;
+                source7.timeSamples=mainTrack.timeSamples%source7.clip.samples;
+                source8.timeSamples=mainTrack.timeSamples%source8.clip.samples;
+            } 
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
 }
