@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4594304, g: 0.18405464, b: 0.5590966, a: 1}
+  m_IndirectSpecularColor: {r: 0.18079044, g: 0.028862853, b: 0.27078813, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9434,11 +9434,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
+  m_fontSize: 72
   m_fontSizeBase: 14
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 10
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
@@ -21313,7 +21313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1740924354
 AudioSource:
   m_ObjectHideFlags: 0
@@ -21326,7 +21326,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bbb9d58b5aba8bd41805241cf5249f45, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.85
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -21334,7 +21334,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 20
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -21370,7 +21370,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -21385,7 +21385,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.4027778
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -23546,11 +23546,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
+  m_fontSize: 72
   m_fontSizeBase: 20
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 20
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
@@ -27718,6 +27718,8 @@ MonoBehaviour:
   fuelReplenishRate: 0.2
   fuel: 1
   maxHeight: -1
+  respawnTime: 1
+  shadows: []
 --- !u!143 &974238578851540545
 CharacterController:
   m_ObjectHideFlags: 0
@@ -29551,6 +29553,22 @@ PrefabInstance:
     - target: {fileID: 3858191793112688362, guid: 01ff1d6b85d37d949a0e7eceab71e4f7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90.000336
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955398485977074340, guid: 01ff1d6b85d37d949a0e7eceab71e4f7, type: 3}
+      propertyPath: m_Volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955398485977074340, guid: 01ff1d6b85d37d949a0e7eceab71e4f7, type: 3}
+      propertyPath: MinDistance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955398485977074340, guid: 01ff1d6b85d37d949a0e7eceab71e4f7, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0.19166666
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955398485977074340, guid: 01ff1d6b85d37d949a0e7eceab71e4f7, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4274066440358083288, guid: 01ff1d6b85d37d949a0e7eceab71e4f7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
