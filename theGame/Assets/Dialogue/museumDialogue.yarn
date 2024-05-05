@@ -278,6 +278,7 @@ Alien: If you’re here to hurt me please just get it over with!
 <<ChangeLineView DialogueSystem default>>
 Nour: I’m just here to chat!
 <<ChangeLineView DialogueSystem alien>>
+<<ActivateAlien AlineTrigger>>
 Alien: Why would anyone want to chat with me…
 Alien: I ruined everything!!!!
 <<ChangeLineView DialogueSystem default>>
@@ -317,8 +318,24 @@ Alien: You really think people would come to see us?
 <<ChangeLineView DialogueSystem default>>
 Nour: I know so.
 //yarncommand for fax falling 
+<<disableFloat MuseumGameManager>>
 Agent: I'm very dissapointed in you for wasting this opportunity. 
 Agent: You've been taken off this mission.
+//yarncommand for going back to hub?
+<<endif>>
+===
+
+title: FaxMachine
+position: 0,0
+---
+<<if visited("FaxMachine") is false>>
+Nour: "to fill in"
+<<ShowFax TaskManager>>
+Nour: "to fill in"
+Nour: "to fill in"
+<<HideFax TaskManager>>
+Nour: "to fill in"
+Nour: "to fill in"
 //yarncommand for going back to hub?
 <<endif>>
 ===
