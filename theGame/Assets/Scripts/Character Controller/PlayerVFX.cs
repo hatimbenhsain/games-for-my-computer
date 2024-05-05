@@ -19,6 +19,8 @@ public class PlayerVFX: MonoBehaviour
     private bool inAir;
     public bool playMCMagicSmoke = false;
 
+    private PlayerSFX playerSFX;
+
     // Start is called before the first frame update
 
     void Start()
@@ -48,6 +50,8 @@ public class PlayerVFX: MonoBehaviour
         {
             Debug.LogError("PlayerController not found in the scene.");
         }
+
+        playerSFX=FindObjectOfType<PlayerSFX>();
     }
     
     // Update is called once per frame
@@ -77,6 +81,7 @@ public class PlayerVFX: MonoBehaviour
                 //Debug.Log("Squirt");
                 SquirtFront.Play();
                 // play squirt when landing on the floor in fish
+                playerSFX.LandFish(thirdPersonController.playerFallSpeed);
             }
             else
             {
@@ -86,6 +91,7 @@ public class PlayerVFX: MonoBehaviour
                 landSmoke.enabled = true;
                 Debug.Log("Jump");
                 landSmoke.Play();
+                playerSFX.Land(thirdPersonController.playerFallSpeed);
                 // plan land smoke when landing on the floor in other mode
             }
 
