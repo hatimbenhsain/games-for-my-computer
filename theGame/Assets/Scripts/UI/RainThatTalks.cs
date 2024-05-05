@@ -5,6 +5,7 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
 using Yarn.Unity;
 using StarterAssets;
+using UnityEngine.UI;
 
 public class RainThatTalks : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class RainThatTalks : MonoBehaviour
     private bool isLerping = false; // Flag to indicate if we're currently lerping
     public float lerpDuration = 2.0f; // Duration of the lerp in seconds
     private float lerpTimer = 0.0f; // Timer for the lerp
+    private Canvas rainCanvas;
 
     private bool isRaining=false;
 
@@ -25,8 +27,12 @@ public class RainThatTalks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         Rain.Stop();
         GameObject playerCameraRootObject = GameObject.Find("PlayerCameraRoot");
+        rainCanvas = GameObject.Find("RainCanvas").GetComponent<Canvas>();
+        rainCanvas.enabled = false;
+
         if (playerCameraRootObject != null)
         {
             Player = playerCameraRootObject.transform; 
@@ -57,7 +63,8 @@ public class RainThatTalks : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        /*
         Rain.transform.position = Player.transform.position;
         if ( _animator != null )
         {
@@ -70,6 +77,7 @@ public class RainThatTalks : MonoBehaviour
                 EndRain();
             }
         }
+        */
         if (isLerping)
         {
             // Increment the timer by the fraction of time that has passed
@@ -91,6 +99,7 @@ public class RainThatTalks : MonoBehaviour
     public void StartRain(string rainNode=""){
         Debug.Log("start rain?");
         if(!isRaining){
+            rainCanvas.enabled = true;
             Debug.Log("start rain");
             _animator.SetTrigger("Rain");
             baseColor = colorAdjustments.colorFilter.value; // Update base color to current value
@@ -124,6 +133,7 @@ public class RainThatTalks : MonoBehaviour
     [YarnCommand]
     public void EndRain(){
         if(isRaining){
+            rainCanvas.enabled = false;
             _animator.SetTrigger("StopRain");
             baseColor = colorAdjustments.colorFilter.value; // Update base color to current value
             targetColor = Color.white; // Original color
