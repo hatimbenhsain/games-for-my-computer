@@ -19,12 +19,15 @@ public class AlienInteract : MonoBehaviour
 
     private DialogueRunner dialogueRunner;
     public float interactionRadius=3f;
+
+    private FirstPersonController fpc;
     private void Start()
     {
         // Get a reference to the first-person camera.
         playerCamera = GetComponentInChildren<Camera>();
         dialogueRunner=FindObjectOfType<DialogueRunner>();
         museumGameManager = FindObjectOfType<MuseumGameManager>();
+        fpc=FindObjectOfType<FirstPersonController>();
     }
 
     private void Update()
@@ -55,6 +58,14 @@ public class AlienInteract : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.E) && !dialogueRunner.IsDialogueRunning){
             CheckForNearbyNPC();
+        }
+
+        if(dialogueRunner.IsDialogueRunning){
+            fpc.playerCanMove=false;
+            fpc.enableHeadBob=false;
+        }else{
+            fpc.playerCanMove=true;
+            fpc.enableHeadBob=true;
         }
 
     }
