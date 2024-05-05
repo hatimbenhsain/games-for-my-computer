@@ -138,6 +138,10 @@ public class MuseumGameManager : MonoBehaviour
     }
 
     [YarnCommand]
+    public void disableFloat(){
+        isFloating = false;
+    }
+    [YarnCommand]
     public void UpdateAlienCount(){
         alienCount++;
     }
