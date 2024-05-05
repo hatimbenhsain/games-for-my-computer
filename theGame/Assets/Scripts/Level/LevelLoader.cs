@@ -50,6 +50,12 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadLevelCoroutine(destination));
     }
 
+    [YarnCommand]
+    public void LoadLevel1(string destination="")
+    {
+        LoadLevel(destination);
+    }
+
     IEnumerator LoadLevelCoroutine(string levelIndex)
     {
         transition.SetTrigger("Start");
