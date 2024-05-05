@@ -10,7 +10,7 @@ public class DeliveryGame : MonoBehaviour
 {
     public GameObject cardboardBoxPrefab;
     private Camera mainCamera;
-    private Canvas canvas;
+    public Canvas canvas;
     public GameObject package;
     private int packageIndex;
 
@@ -31,7 +31,7 @@ public class DeliveryGame : MonoBehaviour
         Cursor.visible=true;
         Cursor.lockState=CursorLockMode.None;
         mainCamera=Camera.main;
-        canvas=FindObjectOfType<Canvas>();
+        //canvas=FindObjectOfType<Canvas>();
         package=null;
         FindObjectOfType<ThirdPersonController>().canMoveInDialogue=true;
         FindObjectOfType<ThirdPersonController>().maxHeight=50f;
@@ -48,7 +48,7 @@ public class DeliveryGame : MonoBehaviour
         if(package!=null && package.GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name=="cardboardBoxIdle"){
             Destroy(package.GetComponentInChildren<Camera>().gameObject);
             mainCamera.gameObject.SetActive(true);
-            canvas.gameObject.SetActive(true);
+            canvas.enabled=true;
             package.GetComponentInChildren<Rigidbody>().isKinematic=false;
             package=null;
         }
@@ -65,8 +65,8 @@ public class DeliveryGame : MonoBehaviour
             pos=new Vector3(pos.x,package.transform.position.y,pos.z);
             package.transform.position=pos;
             package.transform.rotation=packagePositions[packageIndex].rotation;
-            mainCamera.gameObject.SetActive(false);
-            canvas.gameObject.SetActive(false);
+            //mainCamera.gameObject.SetActive(false);
+            canvas.enabled=false;
             package.GetComponentInChildren<Rigidbody>().isKinematic=true;
             package.GetComponentInChildren<Package>().index=packageIndex;
             packageIndex++;
