@@ -19,11 +19,23 @@ public class ComplimentManager : MonoBehaviour
     private string[] comparedTo={"a tree", "a dog", "the sea", "the sky", "my Mom", "the police", "King Arthur", "Napoleon", "cherry oak", "a Kinder Surprise", "a cigarette", "the Earth", "my phone", "an old guy", "climate change", "a dragon", "a tiger", "Naruto", "Goku", "Lara Croft", "Super Mario", "Batman", "Western medicine", "the market", "Web2", "a gif", "the Sun", "Spring", "Winter", "rain", "a cockroach", "tentacles", "goats", "jet fuel", "the quadratic formula", "chilly breeze", "butterfly wings", "untold secrets", "plucked flower", "midwest salad", "God", "watermelon", "fire", "a machete", "Willem Dafoe", "my neighbour's dog", "a comet ", "an eclipse ", "doors", "warm summer breeze ", "ocean mist"};
 
     private List<string> words;
+    
+    public AudioClip backgroundMusic; // Assign this AudioClip in the Unity Editor.
+
+    private AudioSource audioSource; // This will be used to play and stop the music.
 
     void Start()
     {
         variableStorage = GameObject.FindObjectOfType<InMemoryVariableStorage>();
         words=new List<string>();
+        
+        // Initialize the AudioSource and start playing the assigned music.
+        audioSource = gameObject.AddComponent<AudioSource>(); // Add an AudioSource dynamically if not already present.
+        audioSource.clip = backgroundMusic;
+        audioSource.loop = true; // Set to loop if you want the music to repeat until stopped.
+        audioSource.Play(); // Start playing the music immediately on startup.
+        
+        
         // words.Add("stench");
         // words.Add("walk");
         // words.Add("fabulous");
@@ -65,6 +77,12 @@ public class ComplimentManager : MonoBehaviour
         GenerateCompliment();
         variableStorage.SetValue("$compliment",compliment);
         FindObjectOfType<GameManager>().ComplimentEnd();
+        
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+        
     }
 
     //Function for generating compliment text from words picked
