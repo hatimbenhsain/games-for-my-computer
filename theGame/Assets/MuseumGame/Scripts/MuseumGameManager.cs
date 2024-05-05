@@ -42,7 +42,7 @@ public class MuseumGameManager : MonoBehaviour
     public int alienCount = 0;
 
     public bool isFloating = true;
-    public GameObject floatingObjects;
+    GameObject floatingObjects;
     void Start()
     {
         floatingObjects = GameObject.Find("FloatingObjects");
