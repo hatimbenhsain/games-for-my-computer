@@ -35,7 +35,8 @@ public class RainThatTalks : MonoBehaviour
 
         if (playerCameraRootObject != null)
         {
-            Player = playerCameraRootObject.transform; 
+            Player = playerCameraRootObject.transform;
+            transform.position = Player.position;
         }
         else
         {
@@ -133,7 +134,7 @@ public class RainThatTalks : MonoBehaviour
     [YarnCommand]
     public void EndRain(){
         if(isRaining){
-            rainCanvas.enabled = false;
+            StartCoroutine(disableRain());
             _animator.SetTrigger("StopRain");
             baseColor = colorAdjustments.colorFilter.value; // Update base color to current value
             targetColor = Color.white; // Original color
@@ -142,5 +143,12 @@ public class RainThatTalks : MonoBehaviour
             Rain.Stop();
             isRaining=false;
         }
+    }
+
+    private IEnumerator disableRain()
+    {
+        yield return new WaitForSeconds(2.5f);
+        _animator.SetTrigger("ResetRain");
+        //rainCanvas.enabled = false;
     }
 }
