@@ -147,7 +147,8 @@ public class RainThatTalks : MonoBehaviour
 
     private IEnumerator disableRain()
     {
-        yield return new WaitForSeconds(3f);
-        rainCanvas.enabled = false;
+        yield return new WaitForSeconds(2.5f);
+        _animator.SetTrigger("ResetRain");
+        //rainCanvas.enabled = false;
     }
 }
