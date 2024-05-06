@@ -271,7 +271,6 @@ public class PlayerSFX : MonoBehaviour
     IEnumerator SyncTracks(){
         while(true){
             if(mainTrack!=null){
-                Debug.Log("sync tracks");
                 source6.timeSamples=mainTrack.timeSamples%source6.clip.samples;
                 source4.timeSamples=mainTrack.timeSamples%source4.clip.samples;
                 source7.timeSamples=mainTrack.timeSamples%source7.clip.samples;
