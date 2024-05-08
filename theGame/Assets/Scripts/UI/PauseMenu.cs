@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using UnityEngine.UIElements;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     public string mainMenuScene;
     private CinemachineVirtualCamera playerCamera;
     private Transform playerCameraRoot; // The target position and rotation for the player
+    private CursorLockMode myLockState;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,8 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        { 
+        {
+            myLockState = UnityEngine.Cursor.lockState;
             if (GameIsPaused)
             {
                 Resume();
@@ -46,7 +49,8 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-        Cursor.visible = false;
+        UnityEngine.Cursor.visible = false;
+        UnityEngine.Cursor.lockState = myLockState;
         playerCamera.Follow = playerCameraRoot;
     }
 
@@ -54,11 +58,12 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
         // set timescale to 0, lock camera
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-        Cursor.visible = true;
+        UnityEngine.Cursor.visible = true;
         playerCamera.Follow = null;
     }
 }

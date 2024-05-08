@@ -28,6 +28,10 @@ public class CanvasScript : MonoBehaviour
     private float scatterTime=-1f;
     public float scatterSpeed=1f;
 
+    public AudioSource audioSource;
+
+    public AudioClip[] sephiroths;
+
     void Start()
     {
         canvas = FindObjectOfType<Canvas>();
@@ -130,6 +134,12 @@ public class CanvasScript : MonoBehaviour
             }
         }
         GetComponent<Animator>().SetTrigger("WhiteScreen");
+
+        if(sephiroths.Length>0){
+            audioSource.Stop();
+            audioSource.clip=sephiroths[0];
+            audioSource.Play();
+        }
     }
 
     public void RedScreen(){
@@ -137,6 +147,12 @@ public class CanvasScript : MonoBehaviour
             GetComponent<Animator>().SetTrigger("RedScreen");
             Debug.Log("red screen from canvas script");
             redScreenCooldownTimer=0f;
+
+            if(sephiroths.Length>0){
+                audioSource.Stop();
+                audioSource.clip=sephiroths[1%sephiroths.Length];
+                audioSource.Play();
+            }
         }
     }
 
@@ -154,6 +170,11 @@ public class CanvasScript : MonoBehaviour
             }
         }
         GetComponent<Animator>().SetTrigger("BlueScreen");
+        if(sephiroths.Length>0){
+                audioSource.Stop();
+                audioSource.clip=sephiroths[2%sephiroths.Length];
+                audioSource.Play();
+            }
     }
 
     public float easeOutSine(float x ){

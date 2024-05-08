@@ -15,6 +15,7 @@ public class PlayerSFX : MonoBehaviour
     public AudioSource source6; // For drone 3/rocket perc
     public AudioSource source7; // For running cymbal
     public AudioSource source8; // For running gong
+    public AudioSource source9; // For skidding
     private AudioSource[] audioSources;
 
     [Header("Fish")]
@@ -96,13 +97,29 @@ public class PlayerSFX : MonoBehaviour
     private bool falling=false;
     private bool prevFalling=false;
 
+    [Header("Skidding")]
+    private bool isSkidding=false;
+    private float skidSpeed=0f;
+    //public AudioClip skiddingClip;
+    //public float skidMinVolume=0.2f;
+    //public float skidMaxVolume=0.6f;
+    //public float skidMinSpeed=0.3f;
+    //public float skidMaxSpeed=10f;
+    public float skidPitch=0.95f;
+
+    [Header("Metamorphosis")]
+    public AudioClip metamorphosisClip1;
+    public AudioClip metamorphosisClip2;
+    public float metamorphosisVolume=1;
+
+
     [Header("Misc")]
     public float maxVolume=1f;
 
     private AudioSource mainTrack;
     void Start()
     {
-        audioSources=new AudioSource[]{source1,source2,source3,source4,source5,source6,source7,source8};
+        audioSources=new AudioSource[]{source1,source2,source3,source4,source5,source6,source7,source8,source9};
         rocketTimer=0f;
         source5.clip=rumbleClip;
         source5.volume=maxVolume*rocketVolume;
@@ -125,6 +142,10 @@ public class PlayerSFX : MonoBehaviour
         source8.loop=true;
         source8.clip=runningClipGong;
         source8.Play();
+        //source9.loop=true;
+        //source9.clip=skiddingClip;
+        //source9.Play();
+
 
         StartCoroutine(SyncTracks());
     }
@@ -157,14 +178,27 @@ public class PlayerSFX : MonoBehaviour
         
         prevFalling=falling;
 
+
         if(running && mainTrack!=null && mainTrack.isPlaying){
+            if(!isSkidding){
+                source4.pitch=1;
+                source7.pitch=1;
+                source8.pitch=1;
+            }
             runningVolume+=runningFadeinSpeed*Time.deltaTime;
             runningVolume2+=runningFadeinSpeed2*Time.deltaTime;
             runningVolume3+=runningFadeinSpeed3*Time.deltaTime;
         }else{
-            runningVolume-=runningFadeOutSpeed*Time.deltaTime;
-            runningVolume2-=runningFadeOutSpeed2*Time.deltaTime;
-            runningVolume3-=runningFadeOutSpeed3*Time.deltaTime;
+            float k=1;
+            if(isSkidding){
+                k=k/2;
+                source4.pitch=skidPitch;
+                source7.pitch=skidPitch;
+                source8.pitch=skidPitch;
+            }
+            runningVolume-=runningFadeOutSpeed*k*Time.deltaTime;
+            runningVolume2-=runningFadeOutSpeed2*k*Time.deltaTime;
+            runningVolume3-=runningFadeOutSpeed3*k*Time.deltaTime;
         }
         runningVolume=Mathf.Clamp(runningVolume,0f,1f);
         runningVolume2=Mathf.Clamp(runningVolume2,0f,1f);
@@ -173,6 +207,12 @@ public class PlayerSFX : MonoBehaviour
         source4.volume=runningVolume*maxVolume*runningMaxVolume;
         source7.volume=runningVolume2*maxVolume*runningMaxVolume;
         source8.volume=runningVolume3*maxVolume*runningMaxVolume;
+
+        if(!isSkidding){
+            source9.volume=0f;
+        }
+
+        isSkidding=false;
     }
 
     public void JumpFish(){
@@ -238,7 +278,9 @@ public class PlayerSFX : MonoBehaviour
     }
 
     public void Skid(float speed){
-
+        isSkidding=true;
+        skidSpeed=speed;
+        //source9.volume=Mathf.Clamp((skidSpeed-skidMinSpeed)/(skidMaxSpeed-skidMinSpeed),skidMinVolume,skidMaxVolume);
     }
 
     public void Fall(){
@@ -248,6 +290,16 @@ public class PlayerSFX : MonoBehaviour
                 PlayRandomClip(fallingClips,2,fallingMaxVolume);
             }
         }
+    }
+
+    public void Metamorphosis(){
+        PlayClip(metamorphosisClip1,0,metamorphosisVolume,1f);
+        StartCoroutine("Metamorphosis2");
+    }
+
+    IEnumerator Metamorphosis2(){
+        yield return new WaitForSeconds(1.5f);
+        PlayClip(metamorphosisClip2,1,metamorphosisVolume,1f);
     }
 
     void PlayClip(AudioClip clip,int channel=0,float volume=1f,float pitch=1f){
@@ -268,10 +320,10 @@ public class PlayerSFX : MonoBehaviour
         PlayClip(clip,channel,volume,pitch);
     }
 
+
     IEnumerator SyncTracks(){
         while(true){
             if(mainTrack!=null){
-                Debug.Log("sync tracks");
                 source6.timeSamples=mainTrack.timeSamples%source6.clip.samples;
                 source4.timeSamples=mainTrack.timeSamples%source4.clip.samples;
                 source7.timeSamples=mainTrack.timeSamples%source7.clip.samples;
