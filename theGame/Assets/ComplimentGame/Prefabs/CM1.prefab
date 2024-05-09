@@ -385,6 +385,8 @@ Transform:
   - {fileID: 3836507426406910578}
   - {fileID: 6386565693632184469}
   - {fileID: 5715283718184850709}
+  - {fileID: 5461592341686638172}
+  - {fileID: 565643911592558517}
   - {fileID: 1463125307275066582}
   - {fileID: 6083061250174598317}
   m_Father: {fileID: 6425182071603478776}
@@ -836,7 +838,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: tongues
+  m_text: tongue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d01af7cb9327945f983dde34fefaf1ea, type: 2}
   m_sharedMaterial: {fileID: -5489697233343829882, guid: d01af7cb9327945f983dde34fefaf1ea, type: 2}
@@ -1323,7 +1325,7 @@ GameObject:
   - component: {fileID: 8912823774823009456}
   - component: {fileID: 6754646302088701007}
   m_Layer: 0
-  m_Name: tongues
+  m_Name: everlasting
   m_TagString: Word
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1429,7 +1431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1577a278238a64ab7a582593f94bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  word: tongues
+  word: everlasting
 --- !u!1 &1772983148292440151
 GameObject:
   m_ObjectHideFlags: 0
@@ -4722,6 +4724,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5526044320882788504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 565643911592558517}
+  m_Layer: 0
+  m_Name: Slot11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &565643911592558517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5526044320882788504}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.635, y: 0, z: -0.272}
+  m_LocalScale: {x: 0.033333335, y: 1, z: 0.06666667}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7505373440199503635}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5547811816552006316
 GameObject:
   m_ObjectHideFlags: 0
@@ -4973,7 +5006,7 @@ GameObject:
   - component: {fileID: 310905286661879794}
   - component: {fileID: 1843302223133416419}
   m_Layer: 0
-  m_Name: AddedWordNeedsAName
+  m_Name: tongue
   m_TagString: Word
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5079,7 +5112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1577a278238a64ab7a582593f94bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  word: tongues
+  word: tongue
 --- !u!1 &5860549887272556004
 GameObject:
   m_ObjectHideFlags: 0
@@ -5499,7 +5532,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: tongues
+  m_text: ever lasting
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d01af7cb9327945f983dde34fefaf1ea, type: 2}
   m_sharedMaterial: {fileID: -5489697233343829882, guid: d01af7cb9327945f983dde34fefaf1ea, type: 2}
@@ -5538,7 +5571,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -20
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -8122,6 +8155,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &8245699731373807184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5461592341686638172}
+  m_Layer: 0
+  m_Name: Slot10
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5461592341686638172
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8245699731373807184}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.635, y: 0, z: 0.072}
+  m_LocalScale: {x: 0.033333335, y: 1, z: 0.06666667}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7505373440199503635}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8328116627089265169
 GameObject:
   m_ObjectHideFlags: 0
@@ -8896,6 +8960,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerSphere
       objectReference: {fileID: 0}
+    - target: {fileID: 6960049967662433106, guid: 82ac0eacbedeb9e46aed1e205bcd9d25, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7090694274106763928, guid: 82ac0eacbedeb9e46aed1e205bcd9d25, type: 3}
+      propertyPath: slots.Array.size
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 7090694274106763928, guid: 82ac0eacbedeb9e46aed1e205bcd9d25, type: 3}
       propertyPath: slots.Array.data[0]
       value: 
@@ -8932,6 +9004,18 @@ PrefabInstance:
       propertyPath: slots.Array.data[8]
       value: 
       objectReference: {fileID: 1772983148292440151}
+    - target: {fileID: 7090694274106763928, guid: 82ac0eacbedeb9e46aed1e205bcd9d25, type: 3}
+      propertyPath: slots.Array.data[9]
+      value: 
+      objectReference: {fileID: 8245699731373807184}
+    - target: {fileID: 7090694274106763928, guid: 82ac0eacbedeb9e46aed1e205bcd9d25, type: 3}
+      propertyPath: slots.Array.data[10]
+      value: 
+      objectReference: {fileID: 5526044320882788504}
+    - target: {fileID: 7090694274106763928, guid: 82ac0eacbedeb9e46aed1e205bcd9d25, type: 3}
+      propertyPath: wordArray.Array.size
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 9155757480537862541, guid: 82ac0eacbedeb9e46aed1e205bcd9d25, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.6
