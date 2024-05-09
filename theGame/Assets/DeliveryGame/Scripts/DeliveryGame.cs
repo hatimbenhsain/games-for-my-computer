@@ -25,6 +25,11 @@ public class DeliveryGame : MonoBehaviour
 
     public Transform[] packagePositions;
 
+    public AudioSource musicSource;
+
+    public AudioClip bowserHeroic;
+    public float fadeOutTime=1f;
+
     void Start()
     {
         Cursor.visible=true;
@@ -58,6 +63,9 @@ public class DeliveryGame : MonoBehaviour
 
    public void DropPackage(){
         if(!limitedPackages || packageIndex<packageNumber){
+            if(packageIndex==0){
+                StartCoroutine(MusicTransition());
+            }
             package=Instantiate(cardboardBoxPrefab);
             Vector3 pos=packagePositions[packageIndex].position;
             //pos=new Vector3(Random.Range(-5f,5f),package.transform.position.y,Random.Range(-5f,5f));
@@ -84,6 +92,20 @@ public class DeliveryGame : MonoBehaviour
         if(packageIndex<packageNumber && packageIndex-1<reorderWindows.Length){
             reorderWindows[packageIndex-1].SetActive(true);
             progressBarGame.fillSpeed=newFillSpeed;
+            musicSource.pitch=musicSource.pitch+0.025f;
         }
+    }
+
+    private IEnumerator MusicTransition(){
+        float ogVolume=musicSource.volume;
+        while(musicSource.volume>0f){
+            musicSource.volume=musicSource.volume-0.025f/fadeOutTime;
+            yield return new WaitForSeconds(0.025f);
+        }
+        musicSource.Stop();
+        musicSource.clip=bowserHeroic;
+        musicSource.volume=ogVolume;
+        musicSource.time=0f;
+        musicSource.Play();
     }
 }
