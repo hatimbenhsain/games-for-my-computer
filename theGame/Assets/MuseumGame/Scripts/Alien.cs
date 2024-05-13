@@ -10,6 +10,8 @@ public class Alien : MonoBehaviour
     //public Animator artMove;
     //public String artMoveName;
     public GameObject alienElements;
+    public bool isNormalArtwork;
+    public bool isBox;
 
     //this function is called from Alien Interact Script. What happens here is what happens 
     //here is what happens when you press E to interact with aliens
@@ -24,12 +26,18 @@ public class Alien : MonoBehaviour
 
     [YarnCommand]
     public void ActivateAlien(){
-        alienElements.SetActive(true);
+        if (!isNormalArtwork)
+        {
+            alienElements.SetActive(true);
+        }
     }
 
     [YarnCommand]
     public void Animate(string clip){
-        GetComponent<Animator>().Play(clip);
+        if (!isNormalArtwork || isBox)
+        {
+            GetComponent<Animator>().Play(clip);
+        }
     }
     
 }
