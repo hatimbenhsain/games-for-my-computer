@@ -30,10 +30,6 @@ public class MuseumGameManager : MonoBehaviour
     public Color alienColor = Color.white;
     public Color alienFrameColor = Color.white;
 
-    //lighting
-    public GameObject lightingGroup;
-    public AudioSource clangingMetal;
-    
     // scanned alien
     public bool isAlien = false;
     public bool isScannerOn = false;
@@ -42,12 +38,10 @@ public class MuseumGameManager : MonoBehaviour
     public GameObject obstacle1;
     public GameObject obstacle2;
 
-
     // alien count
     public int alienCount = 0;
 
     public bool isFloating = true;
-    public bool flickeringOn = false;
     GameObject floatingObjects;
     void Start()
     {
@@ -64,17 +58,6 @@ public class MuseumGameManager : MonoBehaviour
         {
             DisableAllFloating(floatingObjects);
         }
-        
-        if (flickeringOn == true)
-        {
-            StartCoroutine(lightFlickeringCoroutine());
-        }
-        else
-        {
-            StopCoroutine(lightFlickeringCoroutine());
-        }
-        
-        
     }
 
     void UpdateMaterialProperties()
@@ -138,13 +121,10 @@ public class MuseumGameManager : MonoBehaviour
             obstacle1.SetActive(false);
         }
 
-        if (obstacle2 != null && alienCount == 4)
+        if (obstacle2 != null && alienCount == 5)
         {
             obstacle2.SetActive(false);
-            flickeringOn = true;
-            alienCount++; //coroutine being weird if it stays on aliencount 4, it doesn't stop as it's always turning the bool back on. If u have a better way that's cool~
         }
-        
     }
 
     // make all the floating object not floating
@@ -155,19 +135,6 @@ public class MuseumGameManager : MonoBehaviour
         {
             floater.enableFloating = false;
         }
-    }
-
-    //Lights Flickering
-    IEnumerator lightFlickeringCoroutine(){
-        lightingGroup.SetActive(false);
-        yield return new WaitForSeconds(0.25f);
-        lightingGroup.SetActive(true);
-        clangingMetal.Play();
-        yield return new WaitForSeconds(0.5f);
-        lightingGroup.SetActive(false);
-        yield return new WaitForSeconds(0.75f);
-        lightingGroup.SetActive(true);
-        flickeringOn = false;
     }
 
     [YarnCommand]
