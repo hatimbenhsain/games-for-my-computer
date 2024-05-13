@@ -16,7 +16,7 @@ public class BallSnapper : MonoBehaviour
     
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         var cast =Physics.
             Raycast(transform.position, Vector3.down, maxDistance,1 <<  LayerMask.NameToLayer("MazePanel"));

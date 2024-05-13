@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     public ObjectAppear[] objectsToAppear;
 
     private Transform respawnTransform;
+    private float originalFixedDeltaTime;
 
     // Start is called before the first frame update
     void Start()
@@ -64,8 +65,8 @@ public class GameManager : MonoBehaviour
         //isTransitioning = true;
 
         complimentValue=0;
-
-        objectsToAppear=FindObjectsOfType<ObjectAppear>();
+        originalFixedDeltaTime = Time.fixedDeltaTime;
+        objectsToAppear =FindObjectsOfType<ObjectAppear>();
         AppearObjects();
     }
 
@@ -122,6 +123,7 @@ public class GameManager : MonoBehaviour
 
             //playerCamera.LookAt = null;
             isTransitioning = true;
+            Time.fixedDeltaTime = 0.005f;
             StartCoroutine(ComplimentStartCoroutine());
         }
 
@@ -152,7 +154,7 @@ public class GameManager : MonoBehaviour
             animator.SetTrigger("ComplimentOut");
             isTransitioning = false;
             //UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-
+            Time.fixedDeltaTime = originalFixedDeltaTime;
 
             StartCoroutine(ComplimentEndCoroutine());
             StartCoroutine(ComplimentEndCameraCoroutine());
