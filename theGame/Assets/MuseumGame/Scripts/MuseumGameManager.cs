@@ -29,12 +29,14 @@ public class MuseumGameManager : MonoBehaviour
     public float alienBlendFactor = 0.5f;
     public Color alienColor = Color.white;
     public Color alienFrameColor = Color.white;
+    private bool lightFlickered = false;
 
     //lighting
     public GameObject lightingGroup;
     public AudioSource clangingMetal;
-    
+
     // scanned alien
+    public bool isAlienScanned = false;
     public bool isAlien = false;
     public bool isScannerOn = false;
 
@@ -67,11 +69,11 @@ public class MuseumGameManager : MonoBehaviour
         
         if (flickeringOn == true)
         {
-            StartCoroutine(lightFlickeringCoroutine());
+            //StartCoroutine(lightFlickeringCoroutine());
         }
         else
         {
-            StopCoroutine(lightFlickeringCoroutine());
+            //StopCoroutine(lightFlickeringCoroutine());
         }
         
         
@@ -83,17 +85,17 @@ public class MuseumGameManager : MonoBehaviour
         {
 
             float cellMoveSpeed = Mathf.Lerp(controlledMaterial.GetFloat("_CellMoveSpeed"),
-                isAlien ? alienCellMoveSpeed : defaultCellMoveSpeed, Time.deltaTime * lerpSpeed);
+                isAlienScanned ? alienCellMoveSpeed : defaultCellMoveSpeed, Time.deltaTime * lerpSpeed);
             float zoom = Mathf.Lerp(controlledMaterial.GetFloat("_Zoom"),
-                isAlien ? alienZoom : defaultZoom, Time.deltaTime * lerpSpeed);
+                isAlienScanned ? alienZoom : defaultZoom, Time.deltaTime * lerpSpeed);
             float beat = Mathf.Lerp(controlledMaterial.GetFloat("_Beat"),
-                isAlien ? alienBeat : defaultBeat, Time.deltaTime * lerpSpeed);
+                isAlienScanned ? alienBeat : defaultBeat, Time.deltaTime * lerpSpeed);
             float noiseSpeed = Mathf.Lerp(controlledMaterial.GetFloat("_NoiseSpeed"),
-                isAlien ? alienNoiseSpeed : defaultNoiseSpeed, Time.deltaTime * lerpSpeed);
+                isAlienScanned ? alienNoiseSpeed : defaultNoiseSpeed, Time.deltaTime * lerpSpeed);
             float blendFactor = Mathf.Lerp(controlledMaterial.GetFloat("_BlendFactor"),
-                isAlien ? alienBlendFactor : defaultBlendFactor, Time.deltaTime * lerpSpeed);
+                isAlienScanned ? alienBlendFactor : defaultBlendFactor, Time.deltaTime * lerpSpeed);
             Color currentColor = controlledMaterial.GetColor("_MyColor");
-            Color targetColor = isAlien ? alienColor : defaultColor;
+            Color targetColor = isAlienScanned ? alienColor : defaultColor;
             Color lerpedColor = Color.Lerp(currentColor, targetColor, Time.deltaTime * lerpSpeed);
 
             controlledMaterial.SetFloat("_CellMoveSpeed", cellMoveSpeed);
@@ -110,7 +112,7 @@ public class MuseumGameManager : MonoBehaviour
         if (scannerFrame != null)
         {
             Color targetColor;
-            if (isAlien)
+            if (isAlienScanned)
             {
                 targetColor = alienFrameColor; 
             }
@@ -140,6 +142,11 @@ public class MuseumGameManager : MonoBehaviour
 
         if (obstacle2 != null && alienCount == 4)
         {
+            if (!lightFlickered)
+            {
+                StartCoroutine(lightFlickeringCoroutine());
+                lightFlickered = true;
+            }
             obstacle2.SetActive(false);
             flickeringOn = true;
             alienCount++; //coroutine being weird if it stays on aliencount 4, it doesn't stop as it's always turning the bool back on. If u have a better way that's cool~

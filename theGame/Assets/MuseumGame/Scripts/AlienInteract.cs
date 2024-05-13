@@ -38,8 +38,13 @@ public class AlienInteract : MonoBehaviour
         {
             // Check if the hit object has a script or component that allows interaction.
             Alien alien = hit.collider.GetComponent<Alien>();
+            if ( alien.isNormalArtwork == false)
+            {
+                museumGameManager.isAlienScanned = true;
+            }
             museumGameManager.isAlien = true;
-            
+            // new dialogue interaction only 
+
             // Check for player input to interact.
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -53,10 +58,11 @@ public class AlienInteract : MonoBehaviour
         else
         {
             museumGameManager.isAlien = false;
+            museumGameManager.isAlienScanned = false;
         }
        
-
-        if (Input.GetKeyUp(KeyCode.E) && !dialogueRunner.IsDialogueRunning){
+        if (Input.GetKeyUp(KeyCode.E) && !dialogueRunner.IsDialogueRunning && museumGameManager.isAlien)
+        {
             CheckForNearbyNPC();
         }
 
