@@ -854,6 +854,7 @@ namespace StarterAssets
             }else if(Grounded && Mathf.Abs(velocity)>0.3f){
                 isSkidding = true;
                 _animator.SetBool("skidding",true);
+                playerSFX.Skid(Mathf.Abs(velocity));
             }
             _animator.SetInteger("walkSpeed",i);
             playerSFX.Run(i); 
@@ -946,6 +947,7 @@ namespace StarterAssets
             yield return new WaitForSeconds(time1);
             // play smoke
             FindObjectOfType<PlayerVFX>().PlayMagicSmoke();
+            playerSFX.Metamorphosis();
             // wait until the smoke happen
             yield return new WaitForSeconds(time2);
             // change state

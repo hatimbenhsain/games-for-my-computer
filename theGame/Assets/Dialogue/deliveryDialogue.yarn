@@ -61,8 +61,12 @@ Nour: Feeling so inspired by all of you right now.
 Nour: I should introduce you all to each other….
 Nour: ....This is Crush, who I went to middle school with....
 Nour: ....And this is the doctor I subbed for a few surgeries....
-<<LoadLevel CutsceneLoader BossCutScene2>>
+Doctor: Hi everyone~
 Nour: ...These are my alien friends from the museum, they're works of art.....
+UFO: BZZZ WE ARE ALEITNS
+Nour: Oh! Looks like there's more packages dropping in. 
+<<LoadLevel CutsceneLoader BossCutScene2>>
+Nour: More friends? Hi!
 <<endif>>
 ===
 title: Bark1
@@ -70,6 +74,7 @@ position: 0,-200
 ---
 <<MoveBox2 YarnManager>>
 <<if visited("Bark1") is false>>
+Final Agent: ...
 Final Agent: WHAT -- ARE YOU SERIOUSLY ON YOUR PHONE RIGHT NOW??
 Nour: Give me a sec!!
 <<endif>>
@@ -78,6 +83,7 @@ title: Bark2
 position: 0,-200
 ---
 <<MoveBox2 YarnManager>>
+Final Agent: ...
 Final Agent: WHERE'S YOUR WEAPON??
 Nour: I'm working on it!!
 ===
@@ -85,6 +91,7 @@ title: Bark3
 position: 0,-200
 ---
 <<MoveBox2 YarnManager>>
+Nour: ...
 Nour: Does this place have an address?
 Final Agent: WHY??
 Nour: How quickly do we think they could ship a sword here?
@@ -94,6 +101,7 @@ title: Bark4
 position: 0,-200
 ---
 <<MoveBox2 YarnManager>>
+Final Agent: ...
 Final Agent: HAD YOU PLANNED AHEAD WE WOULD BE HAVING A REALLY CLIMATIC BATTLE RIGHT NOW!
 Nour: How often do you do this?
 Final Agent: Bimonthly…
@@ -102,6 +110,7 @@ title: Bark5
 position: 0,-200
 ---
 <<MoveBox2 YarnManager>>
+Final Agent: ...
 Final Agent: I WILL BE BRINGING THIS UP AT YOUR PERFORMANCE REVIEW!
 Nour: There wasn't even a contract!!!
 ===
@@ -126,6 +135,9 @@ title: BossEndingCutsceneDialogue1
 position: 0,-200
 ---
 <<MoveBox2 YarnManager>>
+Nour: ...And this is the DJ from our middle school dance. I'm actually not sure why they're here? We've never spoken.
+DJ: Happy to be here!
+Final Agent: Enough!!!
 Final Agent: I did everything right and no one is paying attention to me! I even did that cool morph into a big scary guy thing! That was hard! That took work! It took preparation!
 Final Agent: This makes me feel like I’m back at BRAG. Everyone saying nice things to each other but never to me!
 Final Agent: I thought if I did everything perfectly, if I followed every procedure, then someone would turn to me and say: “Hey, good job!” or “I strive to be like you in every way shape and form”. 
@@ -139,13 +151,13 @@ Final Agent: That felt wonderful to say.
 title: BossEndingCutsceneDialogue2
 position: 0,-200
 ---
-Final Agent: What is happening to me???
+Agent: What is happening to me???
 Nour: Just go with it dude. You´re being sent on an awesome journey.
-Final Agent: Will I ever get my legs back?
+Agent: Will I ever get my legs back?
 Nour: If you move forward with kindness in your heart and listen to the rain, you might not even want them back!
-Final Agent: But I feel…scared..without a procedure to follow.
+Agent: But I feel…scared..without a procedure to follow.
 Nour: I think it´s time you make up your own procedures.
-Final Agent: I didn't know that I could do that.
+Agent: I didn't know that I could do that.
 Nour: You so can!
 Fedora: So are we doing a dance party or what??
 <<TriggerCutscene CutsceneLoader 2>>

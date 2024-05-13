@@ -72,6 +72,9 @@ public class SurgeryController : MonoBehaviour
     private int changeMoodNumber=0;
     public int[] moodIndexArray;
 
+    public int whiteLine1State;   //-1 if never appeared 0 if appearing cut 1 if disappearing cut 2 if appearing stitch 3 if disappearing stitch
+    public SpriteRenderer whiteLineRenderer;
+
     void Start()
     {
         cam=FindObjectOfType<Camera>();
@@ -93,6 +96,8 @@ public class SurgeryController : MonoBehaviour
         songs=surgeryMusic.songs;
 
         dialogueRunner.StartDialogue("Patient"+(patientIndex+1).ToString()+"Intro");
+
+        whiteLine1State=-1;
     }
 
     void Update()
@@ -125,19 +130,15 @@ public class SurgeryController : MonoBehaviour
                 tool.layer=2;
                 tool.transform.rotation=Quaternion.Euler(Vector3.zero);
                 hand.SetActive(false);
+                if(tool.name=="Scalpel" && whiteLine1State==-1){
+                    whiteLine1State=0;
+                }else if(tool.name=="Thread" && whiteLine1State<=1 && skinDetached){
+                    whiteLine1State=2;
+                    whiteLineRenderer.gameObject.GetComponent<Animator>().SetBool("cut",false);
+                }
             }else if(tool==null){
-                //Picking up organ
-                if(heldOrgan==null && hoveredOrgan!=null){
-                    hoveredOrgan.held=true;
-                    heldOrgan=hoveredOrgan;
-                    //ChangeMood();
-                }
-                //Dropping organ
-                else if(heldOrgan!=null){
-                    heldOrgan.held=false;
-                    heldOrgan=null;
-                }
-            }else{
+
+            }else if(tool!=null){
                 //Dropping tool if above table
                 b=toolTable.GetComponent<Collider>().Raycast(ray, out hit,100f);
                 if(b){
@@ -152,17 +153,35 @@ public class SurgeryController : MonoBehaviour
         //Current left click
         if(Input.GetMouseButton(0)){
             //Cutting skin if holding scalpel
-            if (tool!=null && tool.name=="Scalpel" && !skinDetached && Physics.Raycast(ray, out hitData, 1000) && hitData.transform.gameObject.tag=="Patient Skin"){
+            if(tool!=null && tool.name=="Scalpel" && !skinDetached && Physics.Raycast(ray, out hitData, 1000) && hitData.transform.gameObject.tag=="Patient Skin"){
                 CutSkin(hitData);
+                if(whiteLine1State==0){
+                    whiteLine1State=1;
+                }
             }
             if (tool!=null && tool.name=="Thread" && skinDetached){
                 Stitch(hitData);
             }else{
                 isStitching=false;
             }
+
+            //Picking up organ
+            if(tool==null && heldOrgan==null && hoveredOrgan!=null){
+                hoveredOrgan.held=true;
+                heldOrgan=hoveredOrgan;
+                //ChangeMood();
+            }
         }else{
             audioSource.Stop();
             isStitching=false;
+        }
+
+        if(Input.GetMouseButtonUp(0)){
+            //Dropping organ
+            if(heldOrgan!=null){
+                heldOrgan.held=false;
+                heldOrgan=null;
+            }
         }
 
         //targetPlane is the collider of the plane in the scene where the current picked up objects should be
@@ -238,6 +257,14 @@ public class SurgeryController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Return)){
             SwitchPatients();
+        }
+
+        if(whiteLine1State==0 || whiteLine1State==2){
+            Color c=whiteLineRenderer.color;
+            whiteLineRenderer.color=new Color(c.r,c.g,c.b,Mathf.Clamp(c.a+Time.deltaTime,0,1));
+        }else if(whiteLine1State==1 || whiteLine1State==3){
+            Color c=whiteLineRenderer.color;
+            whiteLineRenderer.color=new Color(c.r,c.g,c.b,Mathf.Clamp(c.a-Time.deltaTime,0,1));
         }
 
     }
@@ -350,6 +377,9 @@ public class SurgeryController : MonoBehaviour
                     audioSource.clip=stitchSounds[Random.Range(0,stitchSounds.Length)];
                     audioSource.loop=true;
                     audioSource.Play();
+                }
+                if(whiteLine1State==2){
+                    whiteLine1State=3;
                 }
             }
             //The stitch is validated once it has crossed between the skin and the body     
