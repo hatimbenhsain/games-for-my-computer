@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     private bool complimentMetamorphosisHappened=false;
 
     public ObjectAppear[] objectsToAppear;
-
+    private float originalFixedDeltaTime;
     private Transform respawnTransform;
 
     // Start is called before the first frame update
@@ -62,10 +62,9 @@ public class GameManager : MonoBehaviour
         dialogueRunner=FindObjectOfType<DialogueRunner>();
         animator = GetComponentInChildren<Animator>();
         //isTransitioning = true;
-
         complimentValue=0;
-
-        objectsToAppear=FindObjectsOfType<ObjectAppear>();
+        originalFixedDeltaTime = Time.fixedDeltaTime;
+        objectsToAppear =FindObjectsOfType<ObjectAppear>();
         AppearObjects();
     }
 
@@ -119,7 +118,7 @@ public class GameManager : MonoBehaviour
             inComplimentGame = true;
             dialogueRunner.Stop();
             animator.SetTrigger("ComplimentIn");
-
+            Time.fixedDeltaTime = 0.005f;
             //playerCamera.LookAt = null;
             isTransitioning = true;
             StartCoroutine(ComplimentStartCoroutine());
@@ -152,7 +151,7 @@ public class GameManager : MonoBehaviour
             animator.SetTrigger("ComplimentOut");
             isTransitioning = false;
             //UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-
+            Time.fixedDeltaTime = originalFixedDeltaTime;
 
             StartCoroutine(ComplimentEndCoroutine());
             StartCoroutine(ComplimentEndCameraCoroutine());
