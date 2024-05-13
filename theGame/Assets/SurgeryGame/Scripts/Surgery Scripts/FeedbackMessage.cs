@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FeedbackMessage : MonoBehaviour
 {
@@ -8,19 +9,21 @@ public class FeedbackMessage : MonoBehaviour
     public Sprite organSprite;
     public Sprite stitchSprite;
 
+    public Image feedbackUI;
+
     public float lifeSpan=1f;
     private float timer;
     // Start is called before the first frame update
     void Start()
     {
         timer=0f;
-        GetComponent<Animator>().speed=1;
+        feedbackUI.GetComponent<Animator>().speed=1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Animator>().speed=1;
+        feedbackUI.GetComponent<Animator>().speed=1;
         if(timer>=lifeSpan){
             Debug.Log("destroy at "+timer);
             Destroy(gameObject);
@@ -41,6 +44,6 @@ public class FeedbackMessage : MonoBehaviour
                 s=stitchSprite;
                 break;
         }
-        GetComponent<SpriteRenderer>().sprite=s;
+        feedbackUI.GetComponent<Image>().sprite=s;
     }
 }
