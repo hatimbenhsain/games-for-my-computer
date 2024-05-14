@@ -27,14 +27,17 @@ position: 0,0
 ---
 <<if visited("Package") is false>>
 Nour: This must be the package that agent guy told me to look for.
-Nour: Geez a lot of packaging... who needs this much tissue paper?? TAPE?! Who packed this...
-Nour: OH! 
+<<Animate Box boxOpen>>
+Nour: Lots of junk in here!
+Nour: Oh!
 Nour: What's this thing? A scanner? 
+<<HideBoxScanner TaskManager>>
 <<ShowScanner TaskManager>>
 Nour: Not really my style but it could be useful.
-Nour: A... a sword? Don't think I'll need that... 
+Nour: A... a gun? Don't think I'll need that... 
 Nour: And a sheet of paper?
 Nour: Hmm..! Finally, some info on the mission! 
+<<HideBoxLetter TaskManager>>
 <<ShowLetter TaskManager>>
 Nour: Sounds like I gotta use this scanner to locate the alien artworks.
 Nour: Those descriptions don't seem very helpful. But I appreciate their artistry!
@@ -99,6 +102,7 @@ position: 0,0
         <<ChangeLineView DialogueSystem default>>
         Nour: Hmmm ok. 
         <<HideScanner TaskManager>>
+        <<DropScannerAtLocation TaskManager>>
         <<ChangeLineView DialogueSystem alien>>
         Alien: You should go enjoy the museum it really is beautiful...
         Alien: See if you can find my friends, I think they would love to hear from you.
