@@ -9,7 +9,10 @@ public class AgentLetterViewer : MonoBehaviour
     public GameObject agentLetter;
     public GameObject faxMessage;
     public GameObject ScannerUI;
-    
+    public GameObject boxScanner;
+    public GameObject boxLetter;
+
+    public bool isPickedUp = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -105,4 +108,54 @@ public class AgentLetterViewer : MonoBehaviour
             Debug.LogError("faxMessage object reference is not set!");
         }
     }
+
+    [YarnCommand]
+    public void HideBoxLetter()
+    {
+        if (boxLetter != null)
+        {
+            boxLetter.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("boxLetter object reference is not set!");
+        }
+    }
+    
+    [YarnCommand]
+    public void HideBoxScanner()
+    {
+        if (boxScanner != null)
+        {
+            boxScanner.SetActive(false);
+
+            isPickedUp = true;
+
+        }
+        else
+        {
+            Debug.LogError("boxScanner object reference is not set!");
+        }
+    }
+
+    [YarnCommand]
+    public void DropScannerAtLocation()
+    {
+        if (boxScanner != null)
+        {
+            // Activate the boxScanner object
+            boxScanner.SetActive(true);
+
+            // Set the position of the scanner to the desired location
+            Vector3 desiredPosition = new Vector3(-6.05070019f, -0.0320000015f, -23.6200008f);
+            boxScanner.transform.position = desiredPosition;
+
+            Debug.Log("Scanner position set to: " + desiredPosition);
+        }
+        else
+        {
+            Debug.LogError("boxScanner object reference is not set!");
+        }
+    }
+    
 }
