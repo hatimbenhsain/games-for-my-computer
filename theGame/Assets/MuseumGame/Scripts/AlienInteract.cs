@@ -38,10 +38,15 @@ public class AlienInteract : MonoBehaviour
         {
             // Check if the hit object has a script or component that allows interaction.
             Alien alien = hit.collider.GetComponent<Alien>();
-            if ( alien.isNormalArtwork == false)
+            NPC npc = hit.collider.GetComponent<NPC>(); // Also checking for NPC component at the same point
+            if (alien != null)
             {
-                museumGameManager.isAlienScanned = true;
+                if (alien.isNormalArtwork == false)
+                {
+                    museumGameManager.isAlienScanned = true;
+                }
             }
+
             museumGameManager.isAlien = true;
             // new dialogue interaction only 
 
@@ -54,6 +59,12 @@ public class AlienInteract : MonoBehaviour
                     //alien.Interact();
                 }
             }
+
+            if (Input.GetKeyUp(KeyCode.E) && !dialogueRunner.IsDialogueRunning && museumGameManager.isAlien && npc != null && !string.IsNullOrEmpty(npc.talkToNode))
+            {
+                //CheckForNearbyNPC();
+                dialogueRunner.StartDialogue(npc.talkToNode);
+            }
         }
         else
         {
@@ -61,10 +72,7 @@ public class AlienInteract : MonoBehaviour
             museumGameManager.isAlienScanned = false;
         }
        
-        if (Input.GetKeyUp(KeyCode.E) && !dialogueRunner.IsDialogueRunning && museumGameManager.isAlien)
-        {
-            CheckForNearbyNPC();
-        }
+
 
         if(dialogueRunner.IsDialogueRunning){
             fpc.playerCanMove=false;
