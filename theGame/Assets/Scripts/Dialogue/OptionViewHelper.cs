@@ -18,6 +18,15 @@ public class OptionViewHelper : MonoBehaviour, IDeselectHandler, ISelectHandler
         optionView=GetComponent<OptionView>();
     }
     private void LateUpdate() {
+        if(EventSystem.current.currentSelectedGameObject == gameObject)
+        {
+            selected=true;
+            optionView.targetGraphic.color=highlightedColor;
+        }else{
+            optionView.targetGraphic.color=normalColor;
+            selected=false;
+        }
+
         if(lastSelected && !selected){
             OptionView[] optionViews=FindObjectsOfType<OptionView>();
             bool optionSelected=false;
@@ -32,6 +41,10 @@ public class OptionViewHelper : MonoBehaviour, IDeselectHandler, ISelectHandler
             }
             lastSelected=false;
         }
+
+        // if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.E)){
+        //     selected=false;
+        // }
     }
 
     public void OnDeselect(BaseEventData data)
