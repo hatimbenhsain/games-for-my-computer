@@ -570,3 +570,206 @@ position: 831,-31
 Nour: This feels so great!!
 Nour: I feel like something amazing will happen if I compliment just one more person...!
 ===
+title: Cecile1
+position: 831,-31
+---
+<<if $mcState is "Fish">>
+    <<if visited("Cecile1") is false>>
+        Cecile: HEY! Do you know if there's any bathroom around???
+        Nour: Uuuh, not that I --
+        Cecile: I REALLY need to pee!
+        Nour: Ok ok! Um... I don't know, why don't you just do it in this alleyway?
+        Cecile: Oh no, not again...
+        Nour: Not again what?
+        Cecile: It's a REALLY long story that I would rather not get into right now because I REALLY need to pee and I CANNOT embarass myself again!
+        Nour: Ok! I'm sorry, I hope you figure it out!
+    <<else>>
+        Cecile: PLEASE let me know if you find out about any public bathroom anywhere!!!!
+        Nour: Sure!!!
+    <<endif>>
+<<elseif $mcState is "Leg">>
+    <<if visited("Cecile1") is false>>
+        Cecile: HEY! Do you know if there's any bathroom around???
+        Nour: So uh, I'm actually heading to this park right now. Maybe they..?
+        Cecile: OH OK THAT'S TRUE THEY PROBABLY HAVE A PUBLIC BATHROOM.
+        Nour: Yeah..!
+        Cecile: ...
+        Nour: So are you going or --
+        Cecile: YOU KNOW WHEN YOU FEEL LIKE IF YOU DO ANY SMALL MOVEMENT YOU MIGHT PISS YOURSELF?
+        Nour: Yeah...
+        Cecile: I JUST NEED TO REGAIN MY COMPOSURE.
+        Nour: Ok good luck...! I'll see you there maybe.
+        Cecile: OK.
+    <<else>>
+        Cecile: I'LL SEE YOU AT THE PARK PLEASE STOP TALKING TO OR WAITING FOR ME IT'S MAKING IT WORSE.
+        Nour: Ok!!!
+    <<endif>>
+<<elseif $mcState is "Wing">>
+    Cecile: WHAT DO YOU MEAN CLOSED FOR MAINTENANCE.
+<<elseif $mcState is "Rocket">>
+    Nour: Did you--
+    Cecile: I DID.
+    Nour: You mean--
+    Cecile: I PEED MYSELF.
+    Nour: But you look like you still--
+    Cecile: I DRANK TOO MUCH WATER.
+<<endif>>
+===
+title: Blanche1
+position: 831,-31
+---
+<<if visited("Blanche1") is false>>
+    Ms. Mouse: Hello Nour... You've found me.
+    Nour: Oh hello Ms. Mouse... (oh my god)
+    Ms. Mouse: Ms. Mouse? That's not who I am.
+    Nour: ...? Yes you are? You teach us algebra...
+    Ms. Mouse?: No, no, no... Ms. Mouse has slightly longer left whiskers and wears glasses. I am Blanche the flying mouse, protector of the innocent and the downtrodden.
+    Nour: Oh.
+    Nour: Sure I guess.
+    Blanche: ;).
+<<else>>
+    Blanche: You look fairly downtrodden to me.
+    Nour: Oh I'm fine really.
+    Nour: I mean I was really struggling earlier but now I have all these cool new abilities..!
+    Blanche: But I can still sense a deep sadness in your heart.
+    Nour: ...
+    Blanche: Do you want to talk about it?
+    Nour: It's OK Ms. Blanche I just have to deal with some stuff.
+    Blanche: Are you sure?
+    Nour: ...
+    <<ChangeStartNode Blanche Blanche2>>
+<<endif>>
+===
+title: Blanche2
+position: 831,-31
+---
+Nour: What are you doing on this rooftop anyway?
+Blanche: What are you doing avoiding your feelings?
+Nour: What??? I'm not-- I was going to ask her out, OK!!! But she kissed Fedora!!!
+Blanche: Hmm...
+Nour: I'm-- sorry, this might be inappropriate given you teach us algebra and all.
+Blanche: Again, not your teacher.
+Nour: ...Sure.
+<<ChangeStartNode Blanche Blanche3>>
+===
+title: Blanche3
+position: 831,-31
+---
+Blanche: You know, I've also faced rejection, once upon a time...
+Nour: Really??? I mean, I can't believe... Wow.
+Blanche: Yes, there was this scarlet anteater...
+Blanche: ...
+Blanche: Anyway, that's a story for another time.
+Nour: But you said I shouldn't avoid --
+Blanche: Anyway.
+<<ChangeStartNode Blanche Blanche3>>
+===
+title: Blanche4
+position: 831,-31
+---
+<<if visited("Blanche4") is false>>
+    Blanche: My point is, there are more gems this world has to offer.
+    Nour: ...Gems?
+    Blanche: Yes. Look at all the gems I have liberated tonight!
+    Nour: ...Liberated?
+    Nour: I thought you were a protector of the innocent and the downtrodden?
+    Blanche: Exactly. And these gems were miserable before I liberated them.
+    Nour: Wow...
+<<else>>
+    Nour: I hope I can be more like you one day, Ms. Blanche.
+    Blanche: No, no, no. You will be something different entirely, my weanling.
+    Nour: Thank you.
+<<endif>>
+===
+title: Igor1
+position: 831,-31
+---
+<<if $mcState is "Fish">>
+    Igor: Hi... Nour?
+    Nour: Yeah, it's me. Hi Igor.
+    Igor: You look different.
+    Nour: Yeah.
+    Igor: Do you wanna talk about it?
+    Nour: Not really.
+    <<ChangeStartNode Igor Igor2>>
+<<else>>
+    Nour: Hi Igor.
+    Igor: Hi Nour!
+    Igor: You look different!
+    Nour: Yup.
+    Igor: How do you feel about it?
+    -> Frazzled.
+        Nour: Honestly kind of frazzled.
+        Igor: Yeah...
+        <<ChangeStartNode Igor Igor3>>
+    -> Excited.
+        Nour: Honestly I'm kind of excited.
+        Nour: It's weird, but I've never been able to move this way before!
+        Igor: That's great!
+        Igor: When you have the chance, I would like to study the changes in your body. How fast can you run? Why is only one of your leg goat-ish when you're standing still? Does it hurt when I pinch you here? Can you --
+        Nour: OK OK yeah when I get the chance.
+        <<ChangeStartNode Igor Igor4>>
+    -> Befuddled.
+        Nour: Honestly kind of befuddled.
+        Igor: Yeah...
+        <<ChangeStartNode Igor Igor3>>
+<<endif>>
+===
+title: Igor2
+position: 831,-31
+---
+<<if $mcState is "Fish">>
+    Igor: Do you need help... getting back up?
+    Nour: You know what... maybe? We can try.
+    Igor: Ok... Um...
+    Nour: ...
+    Igor: I'm sorry Nour, you're awfully slippery. I don't think this is gonna work.
+    Nour: That's ok, thanks for trying...
+    Nour: I think I'm heading to the hospital, I'm sure they can fix me.
+    Igor: Yeah!
+    <<ChangeStartNode Igor Igor3>>
+<<else>>
+<<endif>>
+===
+title: Igor3
+position: 831,-31
+---
+<<if $mcState is "Fish">>
+    Igor: You know Nour, I'm sure you'll be fine.
+    Nour: Yeah?
+    Igor: Yeah! You remember when my horns first sprouted?
+    Nour: Yeah?
+    Igor: And you know how they made the doors of the school horizontal just so I could fit in?
+    Nour: That was why they did it?
+    Igor: Yeah!
+    Nour: That's cool...
+    Igor: But?
+    Nour: I just don't want people to have to... change things just for me.
+    Igor: But people want to help!
+    Nour: ...
+    Nour: I guess so.
+    <<ChangeStartNode Igor Igor4>>
+<<else>>
+
+<<endif>>
+===
+title: Igor4
+position: 831,-31
+---
+<<if visited("Igor4") is false>>
+    Nour: So, I didn't see you at the dance.
+    Igor: Yeah.
+    Nour: Wanna talk about it?
+    Igor: Oh, I just feel like we're sort of grown up for that kind of things. At least I feel that way. You know I'm training to be a mad scientist?
+    Nour: Oh! that sounds really mature, Igor!
+    Igor: Thanks! I'm really excited! My research focus is going to be extracting the remnants of souls from cicada shells and merging them into one perfect being that doesn't feel pain!
+    Nour: That's really cool!
+    Nour: ...But you know it would've also been cool to hang out with you and Nizar at the dance!
+    Igor: I'm sorry Nour, that sort of thing is really juvenile for me. But maybe we can go birdwatching together sometime!
+    Nour: I'd like that!
+<<else>>
+    Nour: By the way, why only cicada shells? Why not real cicadas?
+    Igor: That would be highly unethical, Nour.
+    Nour: Oh. Of course.
+<<endif>>
+===
