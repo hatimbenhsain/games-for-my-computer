@@ -109,6 +109,7 @@ position: 0,0
         <<ChangeLineView DialogueSystem default>>
         Nour: I love museums! I'll take a look around. 
         <<UpdateAlienCount MuseumGameManager>>
+        <<ChangeStartNode AlienPainting01 IntroPostAffirm>>
     <<endif>>
 <<endif>>
 ===
@@ -158,6 +159,7 @@ Alien: ~Thank you~
 <<ChangeLineView DialogueSystem default>>
 Nour: That conversation felt so much deeper than just complimenting…It feels good to affirm!
 <<UpdateAlienCount MuseumGameManager>>
+<<ChangeStartNode AlienPainting02 ScreamPostAffirm>>
 <<endif>>
 ===
 title: ChairAlien
@@ -191,6 +193,7 @@ Alien: Really?
 <<ChangeLineView DialogueSystem default>>
 Nour: Yeah! Awesome!
 <<UpdateAlienCount MuseumGameManager>>
+<<ChangeStartNode AlienSculpture01 ChairPostAffirm>>
 <<endif>>
 ===
 title: SinkAlien
@@ -239,6 +242,7 @@ Alien: Wow I…
 Alien: I feel free in my nonsensical love.
 <<Animate AlienSculpture03 SinkAnimationDance>>
 <<UpdateAlienCount MuseumGameManager>>
+<<ChangeStartNode AlienSculpture03 SinkPostAffirm>>
 <<endif>>
 ===
 title: MobileAlien
@@ -277,6 +281,7 @@ Alien: I feel so much better now that I'm able to cut loose.
 <<ChangeLineView DialogueSystem default>>
 Nour: Oh yeah! You look so much more relaxed and free! 
 <<UpdateAlienCount MuseumGameManager>>
+<<ChangeStartNode AlienSculpture02 MobilePostAffirm>>
 <<endif>>
 ===
 title: UFOAlien
@@ -357,6 +362,42 @@ Nour: See ya later aliens! Can't wait to visit again!
 <<HideFax TaskManager>>
 <<endif>>
 ===
+title: IntroPostAffirm
+position: 0,0
+---
+<<ChangeLineView DialogueSystem alien>>
+Alien: I think my friends are gonna love you!
+<<ChangeLineView DialogueSystem default>>
+===
+title: ChairPostAffirm
+position: 0,0
+---
+<<ChangeLineView DialogueSystem alien>>
+Alien: Weeeoooo Zooooopp BlangBAM!!
+Alien: Don't mind me! Just experimenting with sound!
+<<ChangeLineView DialogueSystem default>>
+===
+title: ScreamPostAffirm
+position: 0,0
+---
+<<ChangeLineView DialogueSystem alien>>
+Alien: AHHHHHHHHH!!!! :D
+<<ChangeLineView DialogueSystem default>>
+===
+title: SinkPostAffirm
+position: 0,0
+---
+<<ChangeLineView DialogueSystem alien>>
+Alien: My senseless love for Duchamp is unending!
+<<ChangeLineView DialogueSystem default>>
+===
+title: MobilePostAffirm
+position: 0,0
+---
+<<ChangeLineView DialogueSystem alien>>
+Alien: Wheeeeee!!! Thank you for your kind words!
+<<ChangeLineView DialogueSystem default>>
+===
 title: NourThought1
 position: 0,0
 ---
@@ -434,3 +475,44 @@ position: 0,0
 ---
 Nour: Sup little crane!
 ===
+title: NourThought16
+position: 0,0
+---
+Nour: How peaceful.
+===
+title: NourThought17
+position: 0,0
+---
+Nour: This reminds me of my recurring dream. 
+===
+title: NourThought18
+position: 0,0
+---
+Nour: My life would be so different if I could only sit in this chair. 
+===
+title: NourThought19
+position: 0,0
+---
+Nour: This is an awesome shape. 
+===
+title: NourThought20
+position: 0,0
+---
+Nour: What a splendid work of art!
+===
+title: NourThought21
+position: 0,0
+---
+Nour: This reminds me of crush and fedora...
+===
+title: NourThought22
+position: 0,0
+---
+Nour: I think I have this at home.
+===
+title: NourThought23
+position: 0,0
+---
+Nour: This one makes my tummy hurt a little.
+===
+
