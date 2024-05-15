@@ -662,7 +662,7 @@ Blanche: ...
 Blanche: Anyway, that's a story for another time.
 Nour: But you said I shouldn't avoid --
 Blanche: Anyway.
-<<ChangeStartNode Blanche Blanche3>>
+<<ChangeStartNode Blanche Blanche4>>
 ===
 title: Blanche4
 position: 831,-31
@@ -772,4 +772,456 @@ position: 831,-31
     Igor: That would be highly unethical, Nour.
     Nour: Oh. Of course.
 <<endif>>
+===
+title: Nizar1
+position: 831,-31
+---
+Nizar: Oh my!
+Nour: What?
+Nizar: You look...
+Nour: I know.
+Nizar: Why, darling, this look is really not doing it for you.
+Nour: ...
+<<ChangeStartNode Nizar Nizar2>>
+===
+title: Nizar2
+position: 831,-31
+---
+Nour: That's a really mean thing to say, Nizar.
+Nizar: Well, I was just stating my opinion!
+Nour: Your opinion isn't always welcome.
+Nizar: ...
+Nour: Especially when I have no control over my current appearance!!!
+Nizar: ...
+<<ChangeStartNode Nizar Nizar3>>
+===
+title: Nizar3
+position: 831,-31
+---
+Nizar: Nour, I have to apologize.
+Nour: It's ok, Nizar...
+Nizar: Nonsense. I was rude to you, and for that I have no excuse.
+Nour: Don't worry about it, really --
+Nizar: I shall have none of that. The truth is, I criticize other people's appearances in a manner most unbecomely as an attempt to cover up my own insecurities about my height as well as my vampire-like pale complexion.
+Nour: Nizar it's fine!!!
+Nizar: You see, ever since 3rd grade, if you recall when Mx. Lakshmini would say...
+Nour: Nizar I don't care!!!!!
+Nizar: Oh.
+Nour: Sorry, I didn't mean it like that. We're cool.
+Nizar: Cool.
+<<ChangeStartNode Nizar Nizar4>>
+===
+title: Nizar4
+position: 831,-31
+---
+Nour: Were you making fun of me just now?
+Nizar: No! I was truly being honest and sincere when I--
+Nour: Ok, ok. Don't worry about it.
+Nizar: Alright.
+<<ChangeStartNode Nizar Nizar5>>
+===
+title: Nizar5
+position: 831,-31
+---
+Nour: Is there anything going on between you and Igor...?
+Nizar: Well we are currently dating.
+Nour: I know, but I meant neither of you were at the dance but I see now that you're just kind of hanging out apart.
+Nizar: Nour, it is very healthy for a couple to spend some time apart every now and then. In fact, it only intensifies our passion for one another.
+Nour: Oh, I'm sorry for presuming...
+Nizar: It's okay. You will see, when you and Crush become a thing...
+Nour: She kissed Fedora!!!
+Nizar: She what?!
+<<ChangeStartNode Nizar Nizar6>>
+===
+title: Nizar6
+position: 831,-31
+---
+<<if visited("Nizar6") is false>>
+    Nour: She did... Wait, how did you even know I was into--?!
+    Nizar: Oh, my darling Nour. It was written all over your face for the entirety of 8th grade. And after that note-passing incident I thought --
+    Nour: See, I'm starting to think that wasn't even meant for me!!
+    Nizar: Oh... I'm sorry Nour.
+    Nour: I'll get over it...
+    Nizar: ...
+    Nizar: Well, regardless, do know that you will always have a friend - and a set of ears! - in me and Igor!
+    Nour: Thank you Nizar...
+<<else>>
+    Nour: Do you ever think about what you want to be when you grow up?
+    Nizar: Hmmm... perhaps a chiropractor? What about you, Nour?
+    Nour: Hmmm...
+    ->  A dancer.
+        Nour: Maybe a dancer?
+        Nizar: Swell! I've heard many tales (by which I mean texts) about your exploits at the school dance!
+        Nour: R-really?
+        Nizar: Yes!
+    ->  A vampire hunter.
+        Nizar: What is that supposed to mean?
+        Nour: What?
+        Nizar: What?
+        Nour: Nizar... are you a...
+        Nizar: Say it.
+        Nour: Well, I've never seen you out in the sunlight, I've never seen you eat normal food, and your teeth are really sharp...
+        Nizar: Just say it already!!!
+        ->  Are you a vampire?
+            Nour: Are you a vampire?!
+            Nizar: No.
+            Nour: Oh okay then.
+        ->  Nevermind.
+            Nour: Nevermind, that was really invasive of me I'm sorry.
+            Nizar: ? I forgive you...?
+    ->  A sea lion.
+        Nour: Maybe a sea lion?
+        Nizar: ...How would that work?
+        Nour: ...Haven't you seen me?
+        Nizar: Oh right... Well, I hope you're able to achieve it soon. Maybe Igor could help you with this endeavor..!
+        Nour: I would rather not......
+<<endif>>
+===
+title: Khaldun1
+position: 831,-31
+---
+<<if visited("Khaldun1") is false>>
+    Khaldun: Nour! I have to tell you, you looked absolutely dazzling in the dance!
+    Nour: Thanks Khaldun...
+    Khaldun: And let me tell, Crush? She does not! deserve you. You totally deserve better.
+    Nour: I appreciate it but I don't think that's -- Wait you knew??
+    Khaldun: Um, hello?? Everyone with a set of eyes does!
+    Nour: ...
+    Khaldun: Hey, you'll get over it. I mean, you're only the cutest, most talented, smartest, classiest, staturesquest, kindest, wonderfulest...
+    Nour: Th-thanks...
+    Khaldun: Plus I love your transformations! It really works on you!
+    Khaldun: And by the way, let me know if you ever wanna hang out, like, one-on-one.
+    Nour: Khaldun, are you...
+    Khaldun: What?
+    Nour: Do you like... like me?
+    Khaldun: Oh.
+    Khaldun: Well.
+    Khaldun: I'm sorry Nour, I'm already seeing someone. But hey, I'm sure there's someone out there for you!
+    Nour: That's not why I was --- Ok! Cool! Whatever!!
+    Khaldun: Yeah! We can be friends!
+    Nour: We already are!!!
+    Khaldun: Totally!
+<<else>>
+    Nour: About earlier... I didn't mean that --
+    Khaldun: It's ok Nour! We don't have to talk about it!
+    Nour: ...
+    Nour: Who are you dating anyway?
+    Khaldun: Oh, they don't go here. You wouldn't know them.
+    Nour: Oh ok.
+<<endif>>
+===
+title: Wisard1
+position: 831,-31
+---
+<<if visited("Wisard1") is false>>
+    Wisard: Why it's-- It's you! Finally, fina... Finally. Hello!
+    Nour: Hi???
+    Wisard: It's you, Asmee, isn't it?
+    Nour: No? I'm Nour.
+    Wisard: Oh right, right, right. Dayae!
+    Nour: Nour.
+    Wisard: Sorry. Nour! It is so great to finally meet you!
+    ->  Keep talking to him
+        Nour: Okay???
+    ->  Leave
+        Nour: I really have to go sorry.
+        Wisard: W--wait!!
+    Wisard: Why you.. Yes, you, little one... You are the chosen one!
+    Nour: The chosen one to do what...
+    Wisard: Why it's -- It's all here! In my crystal orb! Behold!
+    Nour: ...It's really cloudy.
+    Wisard: No matter! It's the truth! You have a destiny! You see, you were meant to... to...
+    ->  Keep talking to him
+        Nour: Yes?
+    ->  Leave
+        Nour: I really have to go seriously.
+        Wisard: I'm not done!!!
+    Wisard: You see, you are meant to deliver the great Purple Dragon from the hands of the evil A.I. Cluster!
+    Nour: How?
+    Wisard: How?
+    Wisard: With you... Do you have any weapon?
+    Nour: I used to have a katana but I left it in the gym locker once without locking it and I couldn't find it since.
+    Wisard: Well... No matter! I'm sure you will find a way, for the orb knows you are most of all a RESOURCEFUL hero!
+    ->  Leave
+        Nour: Ok listen I'm sorry but I really have a lot going on right now.
+    ->  Leave
+        Nour: Ok listen I'm sorry but I really have a lot going on right now.
+    Wisard: But... you're the only one who can --
+    Nour: Maybe some other time.
+    Wisard: ...!
+<<else>>
+    Wisard: Are you ready to embrace your destiny...?
+    Nour: Nope!!
+<<endif>>
+===
+title: Patient1
+position: 831,-31
+---
+Patient's Husband: Thank you for saving my husband!
+Patient's Child: Thank you for saving my dad!
+Patient's Cousin: Thank you for saving my cousin!
+Nour: Um it's nothing really, I kind of just walked into it...
+Patient: And you did an excellent job! I have never felt so in tune with my organs!
+Nour: ...:)
+===
+title: Rashid1
+position: 831,-31
+---
+<<if visited("Rashid1") is false>>
+Rashid: sssnello there...
+Nour: Hi.
+Rashid: you look ssss... sssnassssty...
+Nour: I look nasty???
+Rashid: ssssnooo... 
+Rashid: It's snake for "tasty".
+Nour: ...If you can speak normally why don't you just do it all the time?
+Rashid: what a ssssnawful sssthing to sssayyyy... thisss isss how I sssnexpressss mysssself...
+Nour: You're totally right I'm sssorry.
+Rashid: don't do that.
+Nour: Sorry. 
+<<else>>
+Nour: Come here often?
+Rashid: we can ssskip the sssmall talk...
+Nour: And get to...?
+Rashid: sssss... sssnothing... you don't really interesssst me. sssnot even asss a friend.
+Nour: Oh ok.
+Rashid: ssssnave a nicccce day.
+<<endif>>
+===
+title: Rashid2
+position: 831,-31
+---
+Rashid: ssss... i love being at the snedge of the cccityy...
+Rashid: it makesss me feel....
+Nour: Happy? Melancholic? Awkward? Thoughtful? Yearny? Eager? Afraid? Elated?
+Rashid: ssssnakey.....
+===
+title: B0NN-331
+position: 831,-31
+---
+<<if visited("B0NN-331") is false>>
+B0NN-33: TH1S C1TY... WH4T 15 Y0UR FAV0RITE THING 4B0UT 1T?
+Nour: Hmm..
+->  The bridges between buildings.
+    Nour: The bridges between buildings are really fun to walk on! Have you ever tried them?
+    B0NN-33: N0...
+->  The residents.
+    Nour: I really like everyone who lives here! I can't see myself going anywhere else, I'd miss my friends too much!
+    B0NN-33: 1NT3R3ST1NG...
+->  The puddles.
+    Nour: The shiny puddles are really nice to walk in!
+    B0NN-33: F45C1N4T1NG...
+B0NN-33: 50 Y0U W1LL N0T M155 TH3M WH3N TH3 4.1. D0M1N10N 4850R85 1T 4LL?
+Nour: What??? Obviously I will!
+Nour: Wait, are you like evil??
+B0NN-33: N000... W3 4R3 51MPLY... N3C3554RY...
+Nour: Can you like... be chill? I really don't want the city to be absorbed by an A.I. dominion!
+B0NN-33: 0H... W3 D1DN'T R34L1Z3 TH15 W0ULD HURT Y0UR F33L1NG5. UND3R5T00D...
+<<else>>
+Nour: So... you won't absorb the city into the A.I. Dominion?
+B0NN-33: N0 1T'5 0K... W3 W1LL F1ND 4N0TH3R C1TY.
+Nour: You probably shouldn't absorb any city at all.
+B0NN-33: 0H...
+B0NN-33: MUCH T0 PR0C355...
+Nour: Yeah...
+<<endif>>
+===
+title: Grfirufn1
+position: 831,-31
+---
+<<if visited("Grfirufn1") is false>>
+Nour: Hi!
+Grfirufn: ...
+Nour: Hello?
+Grfirufn: ...
+Nour: How's it going?
+Grfirufn: ...
+Nour: Any thoughts about... things?
+Grfirufn: Not everyone wants to talk to you.
+Nour: Oh I'm sorry. 
+<<else>>
+Grfirufn: Leave me alone little cockroach.
+Nour: I'm not a cockroach.
+Grfirufn: This wasn't a judgement on your character. There is nothing wrong with cockroaches.
+Nour: Ok but that's not what I am! I'm Nour!
+Grfirufn: Very well. Leave me alone Nour.
+Nour: Fine!
+<<endif>>
+===
+title: Tessaraheem1
+position: 831,-31
+---
+<<if visited("Tessaraheem1") is false>>
+    Tessaraheem: Hi! Do you go to the school here?
+    Nour: Well I just graduated from middle school, but yes I guess I used to.
+    Tessaraheem: That's wonderful! We're thinking of bringing our daughter here. What number score would you give this school?
+    Nour: Hmm...
+    ->  4
+        Nour: Maybe a four?
+    ->  72
+        Nour: Maybe a seventy two?
+    ->  -392
+        Nour: Maybe a minus three hundred ninety two?
+    Tessaraheem: On a scale of...?
+    Nour: I feel like that was on you to set...?
+    Tessaraheem: Ummm... Right...
+    Tessaraheem: And how would you describe it, in one word that starts with S?
+    Nour: Let's see...
+    ->  Stinky
+        Nour: Definitely stinky.
+    ->  Sporadic
+        Nour: Sporadic for sure.
+    ->  Swag
+        Nour: Pretty swag.
+    Tessaraheem: Oh! Very good to know!
+    Tessaraheem: Ok, last question... Overall, would you recommend it?
+    Nour: Well...
+    ->  Yes.
+        Nour: This is where I met my best friends in the world, I think my algebra teacher is a superhero...
+        Nour: ...and also the school dance here definitely has more production value that any other school in the region, so I'd say yes!
+        Tessaraheem: That is wonderful to hear! 
+    ->  No.
+        Nour: The bell is really loud, the PE teacher only teaches dancing (which I like but I wanna play football sometimes)...
+        Nour: And I got my heart broken by my crush just now!!!!
+        Tessaraheem: O...kay.
+        Tessaraheem: Well that is good to know. What do you think, darling?
+        Tessaraheem: I agree with this cockroach, darling. I really wouldn't want our daughter to commute all the way from 5D land everyday just to get their heart broken by some preppy middle schooler.
+        Nour: I never said she was preppy!
+    Tessaraheem: Thank you so much for your help, little cockroach!
+    Nour: I'm not a--
+    Tessaraheem: We will now retreat into our secret pocket dimension. Please look away as this takes a lot of concentration.
+    Nour: Ok.
+<<else>>
+    Nour: Are you--?
+    Tessaraheem: We are still in the process of retreating into our secret pocket dimension. Please look away as this takes a lot of concentration.
+    Nour: Right totally.
+<<endif>>
+===
+title: Starina1
+position: 831,-31
+---
+Starina: This bridge... It's wonderful isn't it?
+Nour: I guess?
+Starina: What word would you use to describe it?
+Nour: Um..
+->  Glossy
+->  Metallic
+->  Stretchy
+Starina: Wrong!
+Nour: What?
+Starina: Wrong! This bridge is liminal!
+Nour: ...Ok?
+Starina: Do you know what liminal means?
+->  Yes.
+    Nour: Yes please don't explain it me.
+    Starina: Well if you did I don't understand why you didn't just use that word!
+    Nour: *sigh*
+->  No.
+    Nour: No.
+    Starina: Liminal is everything that is in-between... It is the both and the neither... It is the space where we are forced to reckon with the Other. Do you see it??
+    Nour: Are you the other here?
+    Starina: It's a metaphor! Which is also what you're going through!
+    Nour: What?
+    Starina: Your transformations! They're a metaphor! Don't you see?
+    Nour: For what??
+    Starina: The meaning isn't there yet, it's for you to uncover! Isn't that wonderful?
+    Nour: I don't know if this is that kind of piece...
+    Starina: Open your eyes!!!
+===
+title: Starina2
+position: 831,-31
+---
+<<if visited("Starina2") is false>>
+    Starina: Isn't this broadwalk wonderful?
+    Nour: Yeah the inclination is pretty fun I guess.
+    Starina: Why this is... This is where I met my first love!
+    Nour: It is?
+    Starina: Yes... I was but a young starling back in the day... I was known as Staritina. And my lover...
+    Starina: My lover was a gust of wind! Why, it just blew right through me, and it completely reversed my world!
+    Nour: Oh?
+    Starina: Yes... It was the most wonderful feeling I ever felt.
+    Nour: *sigh*
+    Starina: What's wrong little cockroach?
+    Nour: I'm not a -- Doesn't matter.
+    Nour: It just feels like everywhere I go everyone is happy and coupled up. And I'll be alone forever!
+    Starina: Oh, poor little thing. It's okay. You know, after the wind blew through me, I never saw or felt it again. Even happiness is fleeting!
+    Nour: Oh...
+    Starina: Besides, there are other nice things in this world... Like this boardwalk!
+    Nour: Right.
+<<else>>
+    Nour: Do you ever miss your first love?
+    Starina: Yes, but there are other things in the world!
+<<endif>>
+===
+title: Starina3
+position: 831,-31
+---
+<<if visited("Starina3") is false>>
+    Starina: Isn't this building wonderful?
+    Nour: It's pretty swanky.
+    Starina: Did you know that the architect went mad and thought that they were possessed by the spirit of rumpus when they built it with their very claws before ripping their own eyes out?
+    Nour: No??? That's awful!
+    Starina: It's ok! They eventually got better and found a new appreciation for sound then released a critically acclaimed Hyperpop/Jazz fusion album.
+    Nour: Oh... good for them?
+    Starina: Yes! Until they thought they were possessed again and drilled a giant hole in the middle of the city before killing their entire step-family!
+    Nour: That's horrible!
+    Starina: It was, but then they filled the hole with this beautiful park, and the architect learnt necromancy to revive their step-family!
+    Nour: That's good...
+    Starina: You would think so! But then--
+    Nour: I don't think I can take this anymore!!
+<<else>>
+    Starina: You haven't heard the best part!
+    Nour: ...What?
+    Starina: That architect... Was me!!!
+    Nour: But... you have eyes?
+    Starina: I got better.
+    Nour: And no claws?
+    Starina: I also got worse.
+<<endif>>
+===
+title: Starina4
+position: 831,-31
+---
+Starina: Have you noticed how different buildings and the rest of the landscape can be (stylistically) in this city?
+Starina: For example, notice the buildings surrounding me. 
+Starina: Notice how some are more detailed than others, how some seem to be made of this very tactile yarn-like textures while some are made of this ethereal substance that seems out of this world?
+Nour: I guess?
+Starina: It's because, believe it or not, a lot of different folks worked on it with completely different artistic sensibilities!
+Nour: Isn't that pretty standard?
+Starina: What?
+Nour: I mean, are there cities built by a single person?
+Starina: ...
+Starina: I'm not sure, I've never been anywhere else.
+Nour: Me neither!
+===
+title: Tesseraheem2
+position: 831,-31
+---
+Tesseraheem: You see that cute couple dining on top of the pink glittery building?
+Nour: Maybe?
+Tessaraheem: They do this every weekend. I'm so jealous of them... 
+Tessaraheem: Honestly, sometimes I just crave the comforting normalcy of a gentle routine with the person(s) I love.
+Nour: Tell me about it...
+===
+title: Tesseraheem3
+position: 831,-31
+---
+Tesseraheem: Have you heard about the cicada quest?
+Nour: No?
+Tessaraheem: Rumor has it, if a brave soul find all the cicadas in this city, something amazing and dazzling will happen!
+Nour: Oh!!! Is this true?
+Tessaraheem: Well... I'm actually not sure if it was implemented yet.
+Tessaraheem: Maybe in the next version?
+Nour: I'm not sure if they're going to continue working on this.
+Tessaraheem: That's ok. At least we have each other <3
+Nour: Yeah :)
+===
+title: Tesseraheem4
+position: 831,-31
+---
+Tesseraheem: Do you ever wonder about this building we're currently standing on?
+Nour: Not really? It's just kind of become part of the landscape for me.
+Tessaraheem: Oh ok.
+Nour: Why? Do you have any fun fact about it?
+Tessaraheem: I was hoping you would!
 ===
