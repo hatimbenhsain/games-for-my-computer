@@ -118,8 +118,8 @@ Rain: Flounder on.
 Nour: Wh-- Wait! Who are you? What is going on??? I...
 Nour: I guess I'lll. AGGHHH!!
 Nour: I should probably head to the hospital. Maybe they can fix me up...
-Nour: It's that red building at the end of the street. I guess... Let's see if I can reach it.
-Nour: *SPACE* and *WASD*. Ok. And E to talk.
+Nour: It's that red building past the archway. I guess... Let's see if I can reach it.
+Nour: Press *SPACE* and *WASD*. Ok. And E to talk.
 ===
 title: Rain2
 position: 85,183
@@ -327,7 +327,8 @@ position: 350,727
         Nour: See ya later love birds.
     <<stop>>
 <<else>>
-    //PUT ONE LINER HERE
+    Nour: It is like you are swordfighting...but with love.
+    Kissing Couple: We like to think of it more like jousting!
 <<endif>>
 ===
 title: KissingCouple2
@@ -435,7 +436,8 @@ position: -377,535
                 Naut: Me too...
     <<stop>>
 <<else>>
-    //PUT ONE LINER HERE
+    Nour: You look a little sleepy friend.
+    Naut: Tell me about it...
 <<endif>>
 ===
 title: Naut2
@@ -476,7 +478,8 @@ position: -67,373
         Nour: See you around dude.    
     <<stop>>
 <<else>>
-    //PUT ONE LINER HERE
+    Thwomp: I don't feel like I'm being true to myself.
+    Nour: I hope that changes soon. Don't be afraid to show the world the real you!
 <<endif>>
 ===
 
@@ -772,4 +775,194 @@ position: 831,-31
     Igor: That would be highly unethical, Nour.
     Nour: Oh. Of course.
 <<endif>>
+===
+title: AgentEncounter
+position: 831,-31
+---
+    Agent: Don’t mind me. Just doing secret agent stuff.
+===
+title: Favian
+position: -503,697
+---
+<<MoveBox2 YarnManager>>
+<<if visited("Favian") is false>>
+    Favian: I find this sculpture unsettling…
+    Nour: Oh? Why?
+    Favian: I think this artist traveled inside my subconscious to create this work of art.
+    -> That's strange!
+        Nour: That's strange!
+        Favian: It is…
+        Nour: Do you keep a diary? Maybe they found it.
+        Favian: I do! That must be what happened.
+        Favian: Thank you for helping me figure that out!
+    -> That's magical! 
+        Nour: That's magical!
+        Favian: Do you really think so?
+        Nour: Yes! They must have rode the astral plane into your dreams.
+        Nour: There’s simply no other explanation.
+        Favian: That must be what happened!
+        Favian: Thank you for helping me figure that out
+    <<stop>>
+<<else>>
+    Favian: Thank you Nour! Now I can enjoy this sculpture of my subconscious!
+<<endif>>
+===
+title: NoseDude
+position: -503,697
+---
+<<MoveBox2 YarnManager>>
+Nose Dude: Do you smell that?
+Nour: I do… it smells like…
+-> Bubblegum flavored spaghetti.
+        Nour: Bubblegum flavored spaghetti.
+-> A tree branch dipped in caramel.
+        Nour: A tree branch dipped in caramel. 
+Nose Dude: Wow I do not smell that.
+Nose Dude: I actually don’t have very sensitive olfactory sensory neurons.
+<<endif>>
+===
+title: Paloma
+position: -503,697
+---
+<<MoveBox2 YarnManager>>
+Paloma: Sick Antenna!
+Nour: Thanks I grew it myself!
+Paloma: Do you know how many insects there are on the planet?
+Nour: I’m not sure.
+Paloma: 10 quintillion.
+Nour: That is so many.
+Paloma: Do you think of yourself as an insect?
+    -> No.
+        Nour: No, I'm just Nour, even if I have some parts that people might think make me an insect.
+    -> Yes.
+        Nour: Yes, but not in a way that makes me feel small or insignificant.
+        Nour: I feel connected to them through all the changes I’ve experienced today. 
+Paloma: Cool.
+Nour: Do you know any more insect facts?
+Paloma: Assassin bugs inject enzymes into their prey so they can liquefy their insides.
+Nour: I maybe wish I didn’t know that one.
+<<endif>>
+===
+title: Finn
+position: -503,697
+---
+<<MoveBox2 YarnManager>>
+Finn: Sup Nour! Sick goat legs! 
+Nour: Thanks! They’re new.
+Finn: You left the dance pretty quick, everything okay?
+    -> I got tired.
+        Nour: I got tired
+        Finn: You were dancing up a storm, totally makes sense.
+        Finn: Where did you learn to dance like that?
+        Nour: I trained for months with our dance teacher.
+        Finn: Very impressive commitment!
+        Nour: Thanks! I’ll see ya later.
+    ->  I was surprised to see Fedora with Crush…
+        Nour:  I was surprised to see Fedora with Crush…
+        Finn: Dude me too. 
+        Finn: I don’t really get it.
+        Nour: Me either.
+        Finn: I just hope Crush is happy and that Fedora understands how lucky he is.
+        Finn: And if he breaks Crush’s heart he will regret it!
+        Nour: You’re a good friend.
+        Finn: I try to be.
+        Nour: Thanks for the chat! I’ll see ya later.
+<<endif>>
+===
+title: Dennis
+position: 831,-31
+---
+Nour: How's it going?
+Dennis: Beautiful actually! I'm taking some time for myself!
+Dennis: Being near my nest, all of those eggs, all of the responsibilty all of the time! 
+Dennis: It's just too much!
+Nour: Sounds like it!
+Nour : Sometimes you just need a little bit of space. Then you can come back refreshed and in a new state of mind!
+Dennis: I'm so glad you understand.
+===
+title: Fuschia
+position: 831,-31
+---
+Fuschia: OH my God you SCARED me!
+Nour: My bad! Are you okay?
+Fuschia: I'm fine...that dance was just not for me.
+Nour: Me either...
+Fuschia: What are you talking about? You danced magnificently! 
+Nour: I'm a little worried I embarassed myself. 
+Fuschia: No way! It was deeply impressive. 
+Fuschia: I probably embarassed myself...I was there for like 10 seconds before I needed to leave and go as far away as I could. 
+Nour: That's so cool that you tried though! Walking in is a really good start. 
+Fuschia: That's very kind of you to say. 
+Fuschia: It's been nice chatting with you, but you're kinda ruining my lurking in the shadows thing.
+Nour: See ya later!
+===
+title: DoctorAndReceptionist
+position: 831,-31
+---
+Doctor: When I look into your eyes I see my future.
+Receptionist: Me too.
+Doctor: I worry I haven’t given you enough of my attention.
+Receptionist: You have given me some of the most intense-
+Doctor: Whoa! Nour! I didn’t see you there.
+Nour: Sorry to interrupt.
+Nour: Just wanted to say I’m glad you’re working things out!
+Receptionist: Thanks so much sweetheart!
+Doctor: Thanks for stopping by, but we have to get back to staring off into the distance romantically. 
+Nour: Enjoy!
+===
+title: CrushAndFedora
+position: 831,-31
+---
+Fedora: Nour? What happened to your legs?
+Nour : I…um…I’m going through a metamorphosis I think.
+Crush: That’s cool! Staying the same is really overrated.
+Nour : Thanks yeah…I totally agree.
+Crush: By the way...about the note....
+Nour: Yeah...I figured...
+Fedora: Oops haha awkward!
+Fedora: Soooooo you got any summer plans Nour?
+Nour : I’m just trying to live in the moment.
+Fedora: Wow, you’re so wise!
+Crush: I definitely want to dance more this summer!
+Fedora: Nour, you were really busting some wild moves at the dance, maybe you could teach us sometime.
+Nour : Yeah…Maybe later…
+Nour : I gotta go.
+===
+title: Smush
+position: 831,-31
+---
+Smush: Welcome to my mindfulness garden!
+Nour: I can totally try and be mindful.
+Nour: What should I be mindful of?
+Smush: The way the ground feels! How the air smells! The feeling of breath in your lungs!
+Nour: Whoa. Air is for sure going in and out of my lungs.
+Smush: Yes! It is!
+Nour: Do I need to be mindful of everything at once? Cause I’m not sure my brain can do that?
+Smush: No! If you get stressed out about not being mindful enough then that defeats the purpose!
+Nour: Wow, that’s a big relief.
+Nour: Thank you.
+===
+title: AbstractGuy
+position: 831,-31
+---
+Nour: Whoa! I almost didn’t see you there.
+Abstract Guy: That’s kind of the point. I’m not sure I want to be seen.
+Nour: Is that why you’re back here?
+Abstract Guy: I guess yeah.
+Nour: I’m not totally sure I want to be seen today either.
+Abstract Guy: Cool.
+Abstract Guy: Well.
+Abstract Guy: There are plenty of other places to hide. I claimed this one.
+Nour: I totally understand.
+===
+title: FryingPan
+position: 831,-31
+---
+Frying Pan: Are you hungry for breakfast?
+Nour: Breakfast for dinner does rock.
+Frying Pan: You’re welcome to have one of my eggs then!
+Nour: Will you still be able to see?
+Frying Pan: Oh. Yeah. Nevermind.
+Frying Pan: Sorry about that. 
+Nour: No biggie.
 ===
