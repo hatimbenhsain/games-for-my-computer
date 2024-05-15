@@ -126,6 +126,10 @@ public class RainThatTalks : MonoBehaviour
                         break;
                 }
             }
+            if(SpawnDataHolder.spawnLocationIndex == 3)
+            {
+                rainNode = "Rain3";
+            }
             FindObjectOfType<DialogueRunner>().StartDialogue(rainNode);
             isRaining=true;
         }

@@ -160,6 +160,7 @@ Rain: You may do so by pressing *SPACE*.
 <<EndRain  RainThatTalksToYou>>
 Nour: Ok... I'm ready. Here I go.
 <<wait  1>>
+<<TriggerCutscene CutSceneLoader 0>>
 <<jump AgentPostCompliments>>
 ===
 title: Rain4
@@ -525,6 +526,7 @@ Nour: Feelings so happen.
 title: AgentPostCompliments
 position: 831,-31
 ---
+<<wait 7>>
 <<PlaceInterlocutor DialogueSystem Agent>>
 Agent: Whoa there champ! What is going on with your body?
 Nour: I’m not sure! It’s just what’s been happening today!
@@ -815,7 +817,6 @@ Nour: I do… it smells like…
         Nour: A tree branch dipped in caramel. 
 Nose Dude: Wow I do not smell that.
 Nose Dude: I actually don’t have very sensitive olfactory sensory neurons.
-<<endif>>
 ===
 title: Paloma
 position: -503,697
@@ -837,7 +838,6 @@ Paloma: Cool.
 Nour: Do you know any more insect facts?
 Paloma: Assassin bugs inject enzymes into their prey so they can liquefy their insides.
 Nour: I maybe wish I didn’t know that one.
-<<endif>>
 ===
 title: Finn
 position: -503,697
@@ -863,7 +863,6 @@ Finn: You left the dance pretty quick, everything okay?
         Nour: You’re a good friend.
         Finn: I try to be.
         Nour: Thanks for the chat! I’ll see ya later.
-<<endif>>
 ===
 title: Dennis
 position: 831,-31
