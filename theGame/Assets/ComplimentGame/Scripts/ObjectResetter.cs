@@ -13,7 +13,7 @@ public class ObjectResetter : MonoBehaviour
     }
     private void Update()
     {
-        if (assignableObject.transform.position.y < (startingPos.position.y - 20f) || (startingPos.position.y+100f) < assignableObject.transform.position.y)
+        if (assignableObject.transform.position.y < (targetLocation.position.y - 20f) || (targetLocation.position.y+100f) < assignableObject.transform.position.y)
         {
             assignableObject.transform.position = targetLocation.position;
         }
