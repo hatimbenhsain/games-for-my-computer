@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class ScrollingText : MonoBehaviour
@@ -34,6 +35,7 @@ public class ScrollingText : MonoBehaviour
                 }
                 else
                 {
+                    SceneManager.LoadScene("GameStart");
                     break;
                 }
             }
