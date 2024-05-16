@@ -1,4 +1,5 @@
 using UnityEngine;
+using Yarn.Unity;
 
 public class SpriteChangerOnExit : MonoBehaviour
 {
@@ -8,8 +9,12 @@ public class SpriteChangerOnExit : MonoBehaviour
     // Assign the specific GameObject you want to monitor (the object leaving the trigger)
     public GameObject targetObject;
 
+    // The name of the Yarn node to trigger
+    public string yarnNodeName;
+
     private SpriteRenderer spriteRenderer;
     private AudioSource audioSource;
+    private DialogueRunner dialogueRunner;
 
     void Start()
     {
@@ -23,6 +28,9 @@ public class SpriteChangerOnExit : MonoBehaviour
             // Initially disable the AudioSource if it shouldn't play immediately
             audioSource.enabled = false;
         }
+
+        // Get the DialogueRunner component
+        dialogueRunner = FindObjectOfType<DialogueRunner>();
     }
 
     void OnTriggerExit(Collider other)
@@ -41,6 +49,12 @@ public class SpriteChangerOnExit : MonoBehaviour
 
                     // Optionally, you can start playing if the AudioSource is set to not play on enable
                     audioSource.Play();
+                }
+
+                // Trigger the specified Yarn node
+                if (dialogueRunner != null && !string.IsNullOrEmpty(yarnNodeName))
+                {
+                    dialogueRunner.StartDialogue(yarnNodeName);
                 }
             }
         }
