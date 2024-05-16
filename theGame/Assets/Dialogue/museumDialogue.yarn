@@ -76,8 +76,8 @@ position: 0,0
         Alien: I love art... I love beauty... I love love... 
         Alien: I'm worried I'll never be able to contribute to any of it...
         <<ChangeLineView DialogueSystem default>>
-        -> I feel like everyone feels like that sometimes.
-            Nour: I feel like everyone feels like that sometimes.
+        -> Everyone feels like that sometimes.
+            Nour: Everyone feels like that sometimes.
             <<ChangeLineView DialogueSystem alien>>
             Alien: You think so?
             <<ChangeLineView DialogueSystem default>>
@@ -132,7 +132,7 @@ Alien: But it feels very vulnerable!
 <<ChangeLineView DialogueSystem default>>
 Nour: I think that you’re very beautiful!
 <<ChangeLineView DialogueSystem alien>>
-Alien: We don’t care about things like beauty…
+Alien: I don’t care about things like beauty…
 <<ChangeLineView DialogueSystem default>>
 Nour: Then what do you care about?
 <<ChangeLineView DialogueSystem alien>>
@@ -144,7 +144,7 @@ Alien: I care about people…I want them to witness me…and find meaning.
     Alien: My aesthetic choice to include many curved lines speaks to the very nature of fear.
     <<ChangeLineView DialogueSystem default>>
     Nour: Wow, your analysis is bringing even more depth to my interpretation.  
--> Your presence brings so much meaning to...
+-> Your presence brings meaning to...
     Nour: Your presence brings so much meaning to everyone who has freaked out ever.
     Nour: Today I have lost my cool so many times.
     Nour: Like when I found out my crush already has a partner or when my legs transformed into tentacles or when I had to do surgery...
@@ -186,8 +186,8 @@ Alien: Really?
     Nour: Yes! You're here on this weird rock now everyone loves noises! The louder and crazier the better!
     <<ChangeLineView DialogueSystem alien>>
     Alien: SQUEAK SQUEAK CREEEEEEK SQUEEEEEEEAK CREEK ERRRRR SQUEEAK
--> Of course some sounds aren't for everyone but...
-    Nour: Of course some sounds aren't for everyone but, that doesn't mean they aren't valid.
+-> Some sounds aren't for everyone but...
+    Nour: Some sounds aren't for everyone but, that doesn't mean they aren't valid.
     <<ChangeLineView DialogueSystem alien>> 
     Alien: I'm going to make every sound I can from now on... Even the weirdest ones. 
 <<ChangeLineView DialogueSystem default>>
@@ -242,7 +242,7 @@ Alien: Wow I…
 Alien: I feel free in my nonsensical love.
 <<Animate AlienSculpture03 SinkAnimationDance>>
 <<UpdateAlienCount MuseumGameManager>>
-<<ChangeStartNode AlienSculpture03 SinkPostAffirm>>
+<<ChangeStartNode SinkTriggerObject SinkPostAffirm>>
 <<endif>>
 ===
 title: MobileAlien
@@ -263,11 +263,11 @@ Alien: Well if I'm not perfect someone might not like the thing about me that is
 <<ChangeLineView DialogueSystem default>>
 Nour: Imperfections are part of being alive 
 <<ChangeLineView DialogueSystem alien>>
-Alien: Even mine?
+Alien: Really?
 <<ChangeLineView DialogueSystem default>>
--> Totally! No one can be perfect all the time!
-    Nour: Totally! No one can be perfect all the time!
--> Of course. Your imperfections are so valid.
+-> No one can be perfect all the time!
+    Nour: No one can be perfect all the time!
+-> Your imperfections are so valid.
     Nour: Of course. Your imperfections are so valid.
 <<ChangeLineView DialogueSystem alien>>
 Alien: Maybe I should make a schedule... 
@@ -281,7 +281,7 @@ Alien: I feel so much better now that I'm able to cut loose.
 <<ChangeLineView DialogueSystem default>>
 Nour: Oh yeah! You look so much more relaxed and free! 
 <<UpdateAlienCount MuseumGameManager>>
-<<ChangeStartNode AlienSculpture02 MobilePostAffirm>>
+<<ChangeStartNode CalderAlienTriggerObject MobilePostAffirm>>
 <<endif>>
 ===
 title: UFOAlien
@@ -457,8 +457,7 @@ Nour: They have captured the essence of my childhood.
 title: NourThought12
 position: 0,0
 ---
-Nour: I wonder what this is supposed to symbolize?
-Nour: I'm not sure I understand. 
+Nour: Stop adding lampposts to my games! I mean...the museum...
 ===
 title: NourThought13
 position: 0,0
@@ -503,7 +502,7 @@ Nour: What a splendid work of art!
 title: NourThought21
 position: 0,0
 ---
-Nour: This reminds me of crush and fedora...
+Nour: This reminds me of Crush and Fedora...
 ===
 title: NourThought22
 position: 0,0
