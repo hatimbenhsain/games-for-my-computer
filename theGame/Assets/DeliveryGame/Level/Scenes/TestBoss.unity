@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1.5
+  m_AmbientIntensity: 0
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 998b23776abee9d4abd3f6c2c62a9856, type: 2}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028344, g: 0.028831363, b: 0.27056953, a: 1}
+  m_IndirectSpecularColor: {r: 0.18052712, g: 0.029023238, b: 0.27074453, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -35779,6 +35779,63 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &4280767361782216378
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 49628560895139555, guid: 9781ad759cc45cc458a2a237b63c85a6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.2865572
+      objectReference: {fileID: 0}
+    - target: {fileID: 49628560895139555, guid: 9781ad759cc45cc458a2a237b63c85a6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.7988752
+      objectReference: {fileID: 0}
+    - target: {fileID: 49628560895139555, guid: 9781ad759cc45cc458a2a237b63c85a6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -19.123434
+      objectReference: {fileID: 0}
+    - target: {fileID: 49628560895139555, guid: 9781ad759cc45cc458a2a237b63c85a6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 49628560895139555, guid: 9781ad759cc45cc458a2a237b63c85a6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 49628560895139555, guid: 9781ad759cc45cc458a2a237b63c85a6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 49628560895139555, guid: 9781ad759cc45cc458a2a237b63c85a6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 49628560895139555, guid: 9781ad759cc45cc458a2a237b63c85a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 49628560895139555, guid: 9781ad759cc45cc458a2a237b63c85a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 49628560895139555, guid: 9781ad759cc45cc458a2a237b63c85a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150003583496763713, guid: 9781ad759cc45cc458a2a237b63c85a6, type: 3}
+      propertyPath: m_Name
+      value: BossLighting
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9781ad759cc45cc458a2a237b63c85a6, type: 3}
 --- !u!114 &4287872287143347514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42856,3 +42913,4 @@ SceneRoots:
   - {fileID: 1425209946}
   - {fileID: 170912099}
   - {fileID: 1051870243}
+  - {fileID: 4280767361782216378}
