@@ -266,11 +266,13 @@ namespace StarterAssets
                 GroundedCheck();
                 Move();
                 
+                /*
                 //Change State when M(orph) is pressed
                 if (Input.GetKeyDown(KeyCode.M))
                 {
                     ChangeState();
                 }
+                */
 
                 if (Input.GetKeyUp(KeyCode.E) && !dialogueRunner.IsDialogueRunning && !gameManager.inComplimentGame){
                     CheckForNearbyNPC();
