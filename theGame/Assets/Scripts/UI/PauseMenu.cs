@@ -52,7 +52,11 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         UnityEngine.Cursor.visible = false;
         UnityEngine.Cursor.lockState = myLockState;
-        playerCamera.Follow = playerCameraRoot;
+        if (playerCamera != null)
+        {
+            playerCamera.Follow = playerCameraRoot;
+        }
+
     }
 
 
@@ -65,6 +69,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         UnityEngine.Cursor.visible = true;
-        playerCamera.Follow = null;
+        if (playerCamera != null)
+        {
+            playerCamera.Follow = null;
+        }
     }
 }
