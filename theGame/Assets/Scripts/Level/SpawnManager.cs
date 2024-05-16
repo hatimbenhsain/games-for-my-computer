@@ -26,6 +26,7 @@ public class SpawnManager : MonoBehaviour
 
     void Start()
     {
+        UnityEngine.Cursor.visible = false;
         playerVFX = GameObject.Find("PlayerVFX")?.GetComponent<PlayerVFX>();
         GameObject spawnPoint = GameObject.Find($"SpawnPoint{SpawnDataHolder.spawnLocationIndex}");
         Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
