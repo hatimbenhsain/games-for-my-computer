@@ -7,12 +7,14 @@ position: 0,0
 ---
 <<MoveBox2 YarnManager>>
 Thwomp: Kinda miss my favorite spot in the park…but this is an interesting change of scenery. 
+<<if visited("ThwompBoss1") is false>>
 Thwomp: Things are feeling very 3D here. Reminds me of home! 
 Thwomp: Can’t thank you enough for showing me that it’s ok to take up space on the z axis. 
-<<if visited("ThwompBoss1") is false>>
 Nour: Oh...uhh...hi? You don't look like the sword that I ordered, but happy to see you again!
 Nour: Better try again...
 <<Reorder DeliveryGameManager>>
+<<else>>
+
 <<endif>>
 ===
 title: DoctorBoss1
@@ -20,9 +22,9 @@ position: 0,0
 ---
 <<MoveBox2 YarnManager>>
 Doctor: I’m so happy to see that the potential I saw in you has grown exponentially. 
+<<if visited("DoctorBoss1") is false>>
 Doctor: The lessons you’ve learned at the surgical table have transcended beyond your care practice. 
 Doctor: Well done Dr. Nour!
-<<if visited("DoctorBoss1") is false>>
 Nour: Hello surgical doctor! Thanks for getting delivered...although you're not what I expected.
 Nour: Where's my sword...?
 <<Reorder DeliveryGameManager>>
@@ -34,13 +36,13 @@ position: 0,0
 <<MoveBox2 YarnManager>>
 <<ChangeLineView DialogueSystem alien>>
 UFO: Hi Nour!! 
+<<if visited("AlienBoss1") is false>>
 UFO: Your affirmations have inspired us to explore the rest of the orb called Earth~
 UFO: We wanted to find you and let you know our gratitude.
 UFO: In the words of Nour “You’re Valid”.
 UFO: We’re always here to help in your time of need! 
 <<ChangeLineView DialogueSystem default>>
 Nour: Thanks! I love how y'all helped me transcend gravity. You're another surprise order~
-<<if visited("AlienBoss1") is false>>
 Nour: ...But I'm still missing that sword....
 <<Reorder DeliveryGameManager>>
 <<endif>>
@@ -51,6 +53,7 @@ position: 0,0
 <<MoveBox2 YarnManager>>
 <<if visited("CrushBoss1") is false>>
 <<TurnOffUI UIManager>>
+<<ChangeLineView DialogueSystem default>>
 Crush: Hello Nour!! Miss seeing you groovin’, but really love the vibe you’re giving off now… rocket style!!  
 Fedora: Yeah now you’ll have so many new moves to explore on the dance floor. Actually…is this a dance floor…?
 Nour: Ermmm....maybe? No one's saying it isn't...
@@ -61,7 +64,7 @@ Nour: I should introduce you all to each other….
 Nour: ....This is Crush, who I went to middle school with....
 Nour: ....And this is the doctor I subbed for a few surgeries....
 Doctor: Hi everyone!
-Nour: ...I met this UFO at the museum, they're gonna be apart of a new exhibit there!
+Nour: ...I met UFO at the museum, they're gonna be apart of a new exhibit there!
 UFO: So nice to meet you all! Nour really turned my day around.
 Nour: Oh! Looks like there's more packages dropping in. 
 <<LoadLevel CutsceneLoader BossCutScene2>>
