@@ -1131,7 +1131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.9019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2126,9 +2126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56405b326e3e866429e21146153f8fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuLoader: {fileID: 0}
+  menuLoader: {fileID: 555624468669895558}
   destinationScene: CityA
-  transition: {fileID: 0}
+  transition: {fileID: 5343666580464281589}
 --- !u!1 &3574493131658875722
 GameObject:
   m_ObjectHideFlags: 0
@@ -5735,9 +5735,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3224523585812117859}
+      - m_Target: {fileID: 7624174817227921121}
         m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: LoadPostSurgery
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

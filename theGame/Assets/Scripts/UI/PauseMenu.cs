@@ -17,6 +17,7 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameIsPaused = false;
         playerCamera = GameObject.Find("PlayerFollowCamera")?.GetComponent<CinemachineVirtualCamera>();
         playerCameraRoot = GameObject.Find("PlayerCameraRoot")?.GetComponent<Transform>();
     }
