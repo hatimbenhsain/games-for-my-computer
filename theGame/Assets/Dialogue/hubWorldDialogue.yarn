@@ -783,27 +783,29 @@ title: Favian
 position: -503,697
 ---
 <<MoveBox2 YarnManager>>
-<<if visited("Favian") is false>>
-    Favian: I find this sculpture unsettling…
-    Nour: Oh? Why?
-    Favian: I think this artist traveled inside my subconscious to create this work of art.
-    -> That's strange!
+Favian: I find this sculpture unsettling…
+Nour: Oh? Why?
+Favian: I'm not sure how but...
+Favian: I think this artist traveled inside my subconscious to create this work of art.
+ -> That's strange!
         Nour: That's strange!
         Favian: It is…
         Nour: Do you keep a diary? Maybe they found it.
         Favian: I do! That must be what happened.
-        Favian: Thank you for helping me figure that out!
-    -> That's magical! 
+        Favian: Thank you for helping me figure that out.
+ -> That's magical! 
         Nour: That's magical!
         Favian: Do you really think so?
         Nour: Yes! They must have rode the astral plane into your dreams.
         Nour: There’s simply no other explanation.
         Favian: That must be what happened!
-        Favian: Thank you for helping me figure that out
-    <<stop>>
-<<else>>
-    Favian: Thank you Nour! Now I can enjoy this sculpture of my subconscious!
-<<endif>>
+        Favian: Thank you for helping me figure that out.
+<<ChangeStartNode npc07 FavianAgain>>
+===
+title: FavianAgain
+position: -503,697
+---
+Favian: Thank you Nour! Now I can enjoy this sculpture of my subconscious!
 ===
 title: NoseDude
 position: -503,697
@@ -817,6 +819,14 @@ Nour: I do… it smells like…
         Nour: A tree branch dipped in caramel. 
 Nose Dude: Wow I do not smell that.
 Nose Dude: I actually don’t have very sensitive olfactory sensory neurons.
+<<ChangeStartNode Sprite-0001 NoseDudeAgain>>
+===
+title: NoseDudeAgain
+position: -503,697
+---
+<<MoveBox2 YarnManager>>
+Nose Dude: Thanks for the vivid smell description! I can pratically smell it. 
+Nose Dude: Haha not really though. 
 ===
 title: Paloma
 position: -503,697
@@ -838,6 +848,13 @@ Paloma: Cool.
 Nour: Do you know any more insect facts?
 Paloma: Assassin bugs inject enzymes into their prey so they can liquefy their insides.
 Nour: I maybe wish I didn’t know that one.
+<<ChangeStartNode npc08 PalomaAgain>>
+===
+title: PalomaAgain
+position: -503,697
+---
+Paloma: And then there's the Goliath Birdeater, which is the second largest tarantula in-
+Nour: No thank you! 
 ===
 title: Finn
 position: -503,697
@@ -863,6 +880,12 @@ Finn: You left the dance pretty quick, everything okay?
         Nour: You’re a good friend.
         Finn: I try to be.
         Nour: Thanks for the chat! I’ll see ya later.
+<<ChangeStartNode npc04 FinnAgain>>
+===
+title: FinnAgain
+position: 831,-31
+---
+Finn: Have a rocking night Nour!
 ===
 title: Dennis
 position: 831,-31
@@ -874,22 +897,34 @@ Dennis: It's just too much!
 Nour: Sounds like it!
 Nour : Sometimes you just need a little bit of space. Then you can come back refreshed and in a new state of mind!
 Dennis: I'm so glad you understand.
+<<ChangeStartNode npc06 DennisAgain>>
 ===
-title: Fuschia
+title: DennisAgain
 position: 831,-31
 ---
-Fuschia: OH my God you SCARED me!
+Dennis: I hope you get to take a break from your responsibilties soon too!
+===
+title: Fuchsia
+position: 831,-31
+---
+Fuchsia: OH my God you SCARED me!
 Nour: My bad! Are you okay?
-Fuschia: I'm fine...that dance was just not for me.
+Fuchsia: I'm fine...that dance was just not for me.
 Nour: Me either...
-Fuschia: What are you talking about? You danced magnificently! 
+Fuchsia: What are you talking about? You danced magnificently! 
 Nour: I'm a little worried I embarassed myself. 
-Fuschia: No way! It was deeply impressive. 
-Fuschia: I probably embarassed myself...I was there for like 10 seconds before I needed to leave and go as far away as I could. 
+Fuchsia: No way! It was deeply impressive. 
+Fuchsia: I probably embarassed myself...I was there for like 10 seconds before I needed to leave and go as far away as I could. 
 Nour: That's so cool that you tried though! Walking in is a really good start. 
-Fuschia: That's very kind of you to say. 
-Fuschia: It's been nice chatting with you, but you're kinda ruining my lurking in the shadows thing.
+Fuchsia: That's very kind of you to say. 
+Fuchsia: It's been nice chatting with you, but you're kinda ruining my lurking in the shadows thing.
 Nour: See ya later!
+<<ChangeStartNode feltghost FuchsiaAgain>>
+===
+title: FuchsiaAgain
+position: 831,-31
+---
+Fuchsia: I'm like pretty good at lurking...
 ===
 title: DoctorAndReceptionist
 position: 831,-31
@@ -904,24 +939,37 @@ Nour: Just wanted to say I’m glad you’re working things out!
 Receptionist: Thanks so much sweetheart!
 Doctor: Thanks for stopping by, but we have to get back to staring off into the distance romantically. 
 Nour: Enjoy!
+<<ChangeStartNode Doctor DoctorAndReceptionistAgain>>
+===
+title: DoctorAndReceptionistAgain
+position: 831,-31
+---
+Receptionist: Staring off into the distance romantically with you is my favorite thing!
+Doctor: Me too darling. 
 ===
 title: CrushAndFedora
 position: 831,-31
 ---
 Fedora: Nour? What happened to your legs?
-Nour : I…um…I’m going through a metamorphosis I think.
+Nour: I…um…I’m going through a metamorphosis I think.
 Crush: That’s cool! Staying the same is really overrated.
-Nour : Thanks yeah…I totally agree.
-Crush: By the way...about the note....
+Nour: Thanks yeah…I totally agree.
+Crush: By the way...I'm sorry about the note....
 Nour: Yeah...I figured...
 Fedora: Oops haha awkward!
 Fedora: Soooooo you got any summer plans Nour?
-Nour : I’m just trying to live in the moment.
+Nour: I’m just trying to live in the moment.
 Fedora: Wow, you’re so wise!
 Crush: I definitely want to dance more this summer!
 Fedora: Nour, you were really busting some wild moves at the dance, maybe you could teach us sometime.
-Nour : Yeah…Maybe later…
-Nour : I gotta go.
+Nour: Yeah…Maybe later…
+Nour: I gotta go.
+<<ChangeStartNode Crush CrushAndFedoraAgain>>
+===
+title: CrushAndFedoraAgain
+position: 831,-31
+---
+Fedora: Looking foward to our dance lesson!
 ===
 title: Smush
 position: 831,-31
@@ -936,6 +984,13 @@ Nour: Do I need to be mindful of everything at once? Cause I’m not sure my bra
 Smush: No! If you get stressed out about not being mindful enough then that defeats the purpose!
 Nour: Wow, that’s a big relief.
 Nour: Thank you.
+<<ChangeStartNode npc03 SmushAgain>>
+===
+title: SmushAgain
+position: 831,-31
+---
+Smush: Deep breaths are super awesome. 
+Nour: They so are. 
 ===
 title: AbstractGuy
 position: 831,-31
@@ -949,6 +1004,13 @@ Abstract Guy: Cool.
 Abstract Guy: Well.
 Abstract Guy: There are plenty of other places to hide. I claimed this one.
 Nour: I totally understand.
+<<ChangeStartNode abstractFriend AbstractGuyAgain>>
+===
+title: AbstractGuyAgain
+position: 831,-31
+---
+Abstract Guy: The east island has some pretty good hiding spots. 
+Abstract Guy: You should go find one. 
 ===
 title: FryingPan
 position: 831,-31
@@ -960,6 +1022,13 @@ Nour: Will you still be able to see?
 Frying Pan: Oh. Yeah. Nevermind.
 Frying Pan: Sorry about that. 
 Nour: No biggie.
+<<ChangeStartNode FryingPan FryingPanAgain>>
+===
+title: FryingPanAgain
+position: 831,-31
+---
+Nour: What happens if your eggs go bad?
+Frying Pan: That's a problem for another day!
 ===
 title: Nizar1
 position: 831,-31
@@ -1412,4 +1481,17 @@ Nour: Not really? It's just kind of become part of the landscape for me.
 Tessaraheem: Oh ok.
 Nour: Why? Do you have any fun fact about it?
 Tessaraheem: I was hoping you would!
+===
+title: Eggs
+position: 831,-31
+---
+Nour: What's up egg friends?
+Eggs: Our dad is taking some me time!
+Eggs: So we're gonna stay up late!
+<<ChangeStartNode nest EggsAgain>>
+===
+title: EggsAgain
+position: 831,-31
+---
+Eggs: Hehehe we're gonna whisper into the night!
 ===
