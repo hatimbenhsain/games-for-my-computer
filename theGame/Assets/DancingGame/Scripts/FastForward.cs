@@ -7,10 +7,11 @@ public class FastForward : MonoBehaviour
 {
     public TMP_Text fastForward;
     public GameObject pauseMenu;
+    public bool canFastForward;
     // Start is called before the first frame update
     void Start()
     {
-        
+        canFastForward = true;
     }
 
     // Update is called once per frame
@@ -22,13 +23,28 @@ public class FastForward : MonoBehaviour
             {
                 if (Input.GetMouseButton(0)) // Left mouse button held down
                 {
-                    Time.timeScale = 10.0f;
-                    fastForward.text = "Speed x10";
+                    if (canFastForward)
+                    {
+                        Time.timeScale = 10.0f;
+                        fastForward.text = "Speed x10";
+                    }
+                    else
+                    {
+                        Time.timeScale = 1;
+                    }
+
                 }
                 else // Only the right mouse button is held down
                 {
-                    Time.timeScale = 3.0f;
-                    fastForward.text = "Speed x3, left click to go crazy";
+                    if (canFastForward)
+                    {
+                        Time.timeScale = 3.0f;
+                        fastForward.text = "Speed x3, left click to go crazy";
+                    }
+                    else
+                    {
+                        Time.timeScale = 1;
+                    }
                 }
 
             }
@@ -38,5 +54,10 @@ public class FastForward : MonoBehaviour
                 fastForward.text = "Right click to fast forward";
             }
         }
+    }
+
+    public void DeactivateFastForward()
+    {
+        canFastForward = false;
     }
 }
