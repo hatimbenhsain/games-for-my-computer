@@ -1,4 +1,4 @@
-﻿title: museumDialogue
+title: museumDialogue
 tags:
 ---
 
@@ -42,6 +42,7 @@ Nour: Hmm..! Finally, some info on the mission!
 Nour: Sounds like I gotta use this scanner to locate the alien artworks.
 Nour: Those descriptions don't seem very helpful. But I appreciate their artistry!
 Nour: If I want to look again, I can press *Tab* to see the list.
+Nour: And I need to press E to initalize the scanning of the alien.
 <<HideLetter TaskManager>>
 Nour: Ok I think that's everything guess I should take a look around and start finding these aliens...
 <<set $foundPackage to true>>
@@ -236,7 +237,6 @@ Alien: How can a sink be a piece of art????
     Nour: The love the people writing those papers have is just as valid as yours.
     Nour: You don't need to understand things to love them. 
     <<ChangeLineView DialogueSystem alien>>
-    Alien: I’ve never thought of it that way before.
 Alien: I’ve never thought of it that way before.
 Alien: Wow I…
 Alien: I feel free in my nonsensical love.
@@ -355,7 +355,7 @@ position: 0,0
 Nour: What is wrong with these BRAG agents?? 
 Nour: Why can't they just let these aliens exist in peace?!
 Nour: I want to go give him a peace of my mind!
-Nour: I just need to figure out how to get to the Mysterious Architecture in the sky.
+Nour: I just need to figure out how to get to the Mysterious Architecture in the Sky.
 Nour: See ya later aliens! Can't wait to visit again!
 //yarncommand for going back to hub?
 <<LoadLevel1 LevelLoader CityA>>
@@ -514,4 +514,8 @@ position: 0,0
 ---
 Nour: This one makes my tummy hurt a little.
 ===
-
+title: NourThought24
+position: 0,0
+---
+Nour: This one radiates comforting energy.
+===
